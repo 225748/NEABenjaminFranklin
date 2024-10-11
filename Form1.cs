@@ -16,5 +16,15 @@ namespace NEABenjaminFranklin
         {
             InitializeComponent();
         }
+
+        private void btnHostLogin_Click(object sender, EventArgs e)
+        {
+            //check for email in database
+            //if present hash pasword and compare to hash stored
+                //if the same open the host view
+                //else print incorrect password
+            //else print We couldn't find your account
+
+        }
     }
 }
