@@ -19,12 +19,24 @@ namespace NEABenjaminFranklin
 
         private void btnHostLogin_Click(object sender, EventArgs e)
         {
+            //for testing
+            bool validCredentials = true;
+
+            //bool validCredentials = false;
             //check for email in database
             //if present hash pasword and compare to hash stored
-                //if the same open the host view
-                //else print incorrect password
+            //if the same open the host view
+            //else print incorrect password
             //else print We couldn't find your account
+            if (validCredentials)
+            {
+                this.Hide();
+                frmHostLandingPage hostLandingPage = new frmHostLandingPage();
+                hostLandingPage.ShowDialog();
+                this.Close();
 
+            }
+           
         }
     }
 }

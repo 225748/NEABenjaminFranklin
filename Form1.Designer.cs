@@ -43,16 +43,16 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(67, 17);
+            this.txtEmail.Location = new System.Drawing.Point(63, 17);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(176, 20);
+            this.txtEmail.Size = new System.Drawing.Size(170, 20);
             this.txtEmail.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(67, 58);
+            this.txtPassword.Location = new System.Drawing.Point(63, 58);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(176, 20);
+            this.txtPassword.Size = new System.Drawing.Size(170, 20);
             this.txtPassword.TabIndex = 2;
             this.txtPassword.UseSystemPasswordChar = true;
             // 
