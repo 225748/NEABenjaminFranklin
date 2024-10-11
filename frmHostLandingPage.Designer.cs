@@ -29,36 +29,45 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHostLandingPage));
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlHostView = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.btnAddNewUser = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnManageUsers = new System.Windows.Forms.Button();
             this.lblUsers = new System.Windows.Forms.Label();
             this.lblHostView = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.flpUsers = new System.Windows.Forms.FlowLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.pnlUsersGroup = new System.Windows.Forms.Panel();
+            this.pnlRotasGroup = new System.Windows.Forms.Panel();
+            this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCreateRota = new System.Windows.Forms.Button();
+            this.btnManageRotas = new System.Windows.Forms.Button();
+            this.lblRotas = new System.Windows.Forms.Label();
+            this.pnlHostView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.pnlTopBar.SuspendLayout();
+            this.flpUsers.SuspendLayout();
+            this.pnlUsersGroup.SuspendLayout();
+            this.pnlRotasGroup.SuspendLayout();
+            this.flpRotas.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // pnlHostView
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.lblUsers);
-            this.panel1.Controls.Add(this.lblWelcome);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 450);
-            this.panel1.TabIndex = 0;
-            this.panel1.Tag = "";
+            this.pnlHostView.BackColor = System.Drawing.Color.White;
+            this.pnlHostView.Controls.Add(this.pnlRotasGroup);
+            this.pnlHostView.Controls.Add(this.pnlUsersGroup);
+            this.pnlHostView.Controls.Add(this.pnlTopBar);
+            this.pnlHostView.Controls.Add(this.lblWelcome);
+            this.pnlHostView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlHostView.Location = new System.Drawing.Point(0, 0);
+            this.pnlHostView.Name = "pnlHostView";
+            this.pnlHostView.Size = new System.Drawing.Size(800, 450);
+            this.pnlHostView.TabIndex = 0;
+            this.pnlHostView.Tag = "";
             // 
             // picRotaConnect
             // 
@@ -66,7 +75,7 @@
             this.picRotaConnect.Image = ((System.Drawing.Image)(resources.GetObject("picRotaConnect.Image")));
             this.picRotaConnect.Location = new System.Drawing.Point(0, 0);
             this.picRotaConnect.Name = "picRotaConnect";
-            this.picRotaConnect.Size = new System.Drawing.Size(105, 31);
+            this.picRotaConnect.Size = new System.Drawing.Size(121, 31);
             this.picRotaConnect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRotaConnect.TabIndex = 7;
             this.picRotaConnect.TabStop = false;
@@ -75,16 +84,16 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(50, 78);
+            this.lblWelcome.Location = new System.Drawing.Point(60, 71);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(244, 40);
+            this.lblWelcome.Size = new System.Drawing.Size(236, 40);
             this.lblWelcome.TabIndex = 8;
-            this.lblWelcome.Text = "Welcome, -------";
+            this.lblWelcome.Text = "Welcome -------";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button1.Location = new System.Drawing.Point(210, 3);
+            this.button1.Location = new System.Drawing.Point(251, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(105, 23);
             this.button1.TabIndex = 0;
@@ -94,27 +103,27 @@
             // btnAddNewUser
             // 
             this.btnAddNewUser.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.btnAddNewUser.Location = new System.Drawing.Point(3, 3);
+            this.btnAddNewUser.Location = new System.Drawing.Point(10, 61);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(153, 50);
-            this.btnAddNewUser.TabIndex = 10;
+            this.btnAddNewUser.TabIndex = 11;
             this.btnAddNewUser.Text = "Add New User";
             this.btnAddNewUser.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnManageUsers
             // 
-            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(3, 59);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 52);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Manage Current Users";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnManageUsers.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageUsers.Location = new System.Drawing.Point(10, 3);
+            this.btnManageUsers.Name = "btnManageUsers";
+            this.btnManageUsers.Size = new System.Drawing.Size(153, 52);
+            this.btnManageUsers.TabIndex = 10;
+            this.btnManageUsers.Text = "Manage Current Users";
+            this.btnManageUsers.UseVisualStyleBackColor = true;
             // 
             // lblUsers
             // 
             this.lblUsers.AutoSize = true;
-            this.lblUsers.Location = new System.Drawing.Point(30, 154);
+            this.lblUsers.Location = new System.Drawing.Point(16, 11);
             this.lblUsers.Name = "lblUsers";
             this.lblUsers.Size = new System.Drawing.Size(34, 13);
             this.lblUsers.TabIndex = 12;
@@ -124,76 +133,149 @@
             // 
             this.lblHostView.AutoSize = true;
             this.lblHostView.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHostView.Location = new System.Drawing.Point(111, 3);
+            this.lblHostView.Location = new System.Drawing.Point(134, 3);
             this.lblHostView.Name = "lblHostView";
             this.lblHostView.Size = new System.Drawing.Size(93, 21);
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
             // 
-            // panel2
+            // pnlTopBar
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.picRotaConnect);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.lblHostView);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 31);
-            this.panel2.TabIndex = 13;
+            this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTopBar.Controls.Add(this.button3);
+            this.pnlTopBar.Controls.Add(this.picRotaConnect);
+            this.pnlTopBar.Controls.Add(this.button1);
+            this.pnlTopBar.Controls.Add(this.lblHostView);
+            this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
+            this.pnlTopBar.Name = "pnlTopBar";
+            this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
+            this.pnlTopBar.TabIndex = 13;
             // 
-            // flowLayoutPanel1
+            // flpUsers
             // 
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.btnAddNewUser);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(29, 170);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(176, 236);
-            this.flowLayoutPanel1.TabIndex = 14;
+            this.flpUsers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpUsers.Controls.Add(this.btnManageUsers);
+            this.flpUsers.Controls.Add(this.btnAddNewUser);
+            this.flpUsers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpUsers.Location = new System.Drawing.Point(12, 27);
+            this.flpUsers.Name = "flpUsers";
+            this.flpUsers.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.flpUsers.Size = new System.Drawing.Size(176, 236);
+            this.flpUsers.TabIndex = 14;
+            this.flpUsers.WrapContents = false;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button3.Location = new System.Drawing.Point(321, 3);
+            this.button3.Location = new System.Drawing.Point(362, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(105, 23);
             this.button3.TabIndex = 9;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = false;
             // 
+            // pnlUsersGroup
+            // 
+            this.pnlUsersGroup.Controls.Add(this.flpUsers);
+            this.pnlUsersGroup.Controls.Add(this.lblUsers);
+            this.pnlUsersGroup.Location = new System.Drawing.Point(40, 139);
+            this.pnlUsersGroup.Name = "pnlUsersGroup";
+            this.pnlUsersGroup.Size = new System.Drawing.Size(200, 266);
+            this.pnlUsersGroup.TabIndex = 15;
+            // 
+            // pnlRotasGroup
+            // 
+            this.pnlRotasGroup.Controls.Add(this.flpRotas);
+            this.pnlRotasGroup.Controls.Add(this.lblRotas);
+            this.pnlRotasGroup.Location = new System.Drawing.Point(306, 139);
+            this.pnlRotasGroup.Name = "pnlRotasGroup";
+            this.pnlRotasGroup.Size = new System.Drawing.Size(200, 266);
+            this.pnlRotasGroup.TabIndex = 16;
+            // 
+            // flpRotas
+            // 
+            this.flpRotas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpRotas.Controls.Add(this.btnManageRotas);
+            this.flpRotas.Controls.Add(this.btnCreateRota);
+            this.flpRotas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flpRotas.Location = new System.Drawing.Point(12, 27);
+            this.flpRotas.Name = "flpRotas";
+            this.flpRotas.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.flpRotas.Size = new System.Drawing.Size(176, 236);
+            this.flpRotas.TabIndex = 14;
+            this.flpRotas.WrapContents = false;
+            // 
+            // btnCreateRota
+            // 
+            this.btnCreateRota.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.btnCreateRota.Location = new System.Drawing.Point(10, 61);
+            this.btnCreateRota.Name = "btnCreateRota";
+            this.btnCreateRota.Size = new System.Drawing.Size(153, 50);
+            this.btnCreateRota.TabIndex = 13;
+            this.btnCreateRota.Text = "Create New Rota";
+            this.btnCreateRota.UseVisualStyleBackColor = true;
+            // 
+            // btnManageRotas
+            // 
+            this.btnManageRotas.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageRotas.Location = new System.Drawing.Point(10, 3);
+            this.btnManageRotas.Name = "btnManageRotas";
+            this.btnManageRotas.Size = new System.Drawing.Size(153, 52);
+            this.btnManageRotas.TabIndex = 12;
+            this.btnManageRotas.Text = "View and Manage Current Rotas";
+            this.btnManageRotas.UseVisualStyleBackColor = true;
+            // 
+            // lblRotas
+            // 
+            this.lblRotas.AutoSize = true;
+            this.lblRotas.Location = new System.Drawing.Point(16, 11);
+            this.lblRotas.Name = "lblRotas";
+            this.lblRotas.Size = new System.Drawing.Size(35, 13);
+            this.lblRotas.TabIndex = 12;
+            this.lblRotas.Text = "Rotas";
+            // 
             // frmHostLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlHostView);
             this.Name = "frmHostLandingPage";
             this.Text = "Host View";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlHostView.ResumeLayout(false);
+            this.pnlHostView.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.pnlTopBar.ResumeLayout(false);
+            this.pnlTopBar.PerformLayout();
+            this.flpUsers.ResumeLayout(false);
+            this.pnlUsersGroup.ResumeLayout(false);
+            this.pnlUsersGroup.PerformLayout();
+            this.pnlRotasGroup.ResumeLayout(false);
+            this.pnlRotasGroup.PerformLayout();
+            this.flpRotas.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlHostView;
         private System.Windows.Forms.PictureBox picRotaConnect;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAddNewUser;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnManageUsers;
+        private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.Label lblUsers;
         private System.Windows.Forms.Label lblHostView;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpUsers;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel pnlRotasGroup;
+        private System.Windows.Forms.FlowLayoutPanel flpRotas;
+        private System.Windows.Forms.Button btnCreateRota;
+        private System.Windows.Forms.Button btnManageRotas;
+        private System.Windows.Forms.Label lblRotas;
+        private System.Windows.Forms.Panel pnlUsersGroup;
     }
 }
