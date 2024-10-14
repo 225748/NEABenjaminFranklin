@@ -60,6 +60,7 @@
             this.btnAcceptDate.TabIndex = 2;
             this.btnAcceptDate.Text = "Accept";
             this.btnAcceptDate.UseVisualStyleBackColor = true;
+            this.btnAcceptDate.Click += new System.EventHandler(this.btnAcceptDate_Click);
             // 
             // btnDeclineDate
             // 
@@ -69,6 +70,7 @@
             this.btnDeclineDate.TabIndex = 3;
             this.btnDeclineDate.Text = "Decline";
             this.btnDeclineDate.UseVisualStyleBackColor = true;
+            this.btnDeclineDate.Click += new System.EventHandler(this.btnDeclineDate_Click);
             // 
             // cntrlAcceptDeclineDates
             // 
@@ -80,6 +82,7 @@
             this.Controls.Add(this.lblDate);
             this.Name = "cntrlAcceptDeclineDates";
             this.Size = new System.Drawing.Size(166, 63);
+            this.Load += new System.EventHandler(this.cntrlAcceptDeclineDates_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
