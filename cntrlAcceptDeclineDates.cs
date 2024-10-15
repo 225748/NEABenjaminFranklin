@@ -13,8 +13,8 @@ namespace NEABenjaminFranklin
     public partial class cntrlAcceptDeclineDates : UserControl
     {
         public string Date { get; set; }
-        public string Role { get; set; }
         public string Time { get; set; }
+        public string Role { get; set; }
         public bool Accepted { get; set; }
 
         public cntrlAcceptDeclineDates()
@@ -25,8 +25,8 @@ namespace NEABenjaminFranklin
         private void cntrlAcceptDeclineDates_Load(object sender, EventArgs e)
         {
             lblDate.Text = Date;
-            lblRole.Text = Role;
             lblTime.Text = Time;
+            lblRole.Text = Role;
             btnAcceptDate.Enabled = true;
             btnDeclineDate.Enabled = true;
         }
@@ -53,14 +53,12 @@ namespace NEABenjaminFranklin
         {
             Accepted = true;
             updateADstate();
-
         }
 
         private void btnDeclineDate_Click(object sender, EventArgs e)
         {
             Accepted = false;
             updateADstate();
-
         }
     }
 }
