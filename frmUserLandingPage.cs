@@ -19,14 +19,17 @@ namespace NEABenjaminFranklin
 
         private void frmUserLandingPage_Load(object sender, EventArgs e)
         {
+            //Filled list with testing values for now - fill lists from databases, be sure to include provision for no role
             List<string> userRotaDates = new List<string> { "12/10/2024", "19/10/2024", "30/03/2026", "12/09/2040" };
+            List<string> userRotaRoles = new List<string> { "Sound", "Door Team", "Visuals","NO ROLE" };
 
-            foreach (string date in userRotaDates)
+            for (int i = 0; i < userRotaDates.Count(); i++)
             {
                 cntrlAcceptDeclineDates ADModule = new cntrlAcceptDeclineDates();
-                ADModule.Name = $"ADModule {date}";
+                ADModule.Name = $"ADModule {i}";
                 ADModule.Tag = ADModule.Name;
-                ADModule.Date = date;
+                ADModule.Date = userRotaDates[i];
+                ADModule.Role = userRotaRoles[i];
                 ADModule.Show();
                 flpDates.Controls.Add(ADModule);
             }

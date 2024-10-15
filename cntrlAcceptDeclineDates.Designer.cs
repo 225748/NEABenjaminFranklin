@@ -38,7 +38,7 @@
             // 
             this.lblDate.AutoSize = true;
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(15, 11);
+            this.lblDate.Location = new System.Drawing.Point(3, 11);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(42, 13);
             this.lblDate.TabIndex = 0;
@@ -47,7 +47,7 @@
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(115, 11);
+            this.lblRole.Location = new System.Drawing.Point(85, 11);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(32, 13);
             this.lblRole.TabIndex = 1;
