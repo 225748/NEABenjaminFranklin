@@ -113,11 +113,12 @@
             // 
             // pnlDatesGroup
             // 
+            this.pnlDatesGroup.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.pnlDatesGroup.Controls.Add(this.flpDates);
             this.pnlDatesGroup.Controls.Add(this.lblDates);
             this.pnlDatesGroup.Location = new System.Drawing.Point(12, 118);
             this.pnlDatesGroup.Name = "pnlDatesGroup";
-            this.pnlDatesGroup.Size = new System.Drawing.Size(247, 266);
+            this.pnlDatesGroup.Size = new System.Drawing.Size(247, 320);
             this.pnlDatesGroup.TabIndex = 16;
             // 
             // flpDates
@@ -128,7 +129,7 @@
             this.flpDates.Location = new System.Drawing.Point(12, 27);
             this.flpDates.Name = "flpDates";
             this.flpDates.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpDates.Size = new System.Drawing.Size(222, 236);
+            this.flpDates.Size = new System.Drawing.Size(222, 290);
             this.flpDates.TabIndex = 14;
             this.flpDates.WrapContents = false;
             // 

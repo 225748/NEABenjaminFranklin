@@ -32,6 +32,7 @@
             this.lblRole = new System.Windows.Forms.Label();
             this.btnAcceptDate = new System.Windows.Forms.Button();
             this.btnDeclineDate = new System.Windows.Forms.Button();
+            this.lblTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDate
@@ -47,7 +48,7 @@
             // lblRole
             // 
             this.lblRole.AutoSize = true;
-            this.lblRole.Location = new System.Drawing.Point(85, 11);
+            this.lblRole.Location = new System.Drawing.Point(3, 30);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(32, 13);
             this.lblRole.TabIndex = 1;
@@ -56,7 +57,7 @@
             // btnAcceptDate
             // 
             this.btnAcceptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(190)))));
-            this.btnAcceptDate.Location = new System.Drawing.Point(3, 37);
+            this.btnAcceptDate.Location = new System.Drawing.Point(3, 48);
             this.btnAcceptDate.Name = "btnAcceptDate";
             this.btnAcceptDate.Size = new System.Drawing.Size(75, 23);
             this.btnAcceptDate.TabIndex = 2;
@@ -67,7 +68,7 @@
             // btnDeclineDate
             // 
             this.btnDeclineDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnDeclineDate.Location = new System.Drawing.Point(88, 37);
+            this.btnDeclineDate.Location = new System.Drawing.Point(88, 48);
             this.btnDeclineDate.Name = "btnDeclineDate";
             this.btnDeclineDate.Size = new System.Drawing.Size(75, 23);
             this.btnDeclineDate.TabIndex = 3;
@@ -75,17 +76,27 @@
             this.btnDeclineDate.UseVisualStyleBackColor = false;
             this.btnDeclineDate.Click += new System.EventHandler(this.btnDeclineDate_Click);
             // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(85, 11);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(34, 13);
+            this.lblTime.TabIndex = 4;
+            this.lblTime.Text = "{time}";
+            // 
             // cntrlAcceptDeclineDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnDeclineDate);
             this.Controls.Add(this.btnAcceptDate);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblDate);
             this.Name = "cntrlAcceptDeclineDates";
-            this.Size = new System.Drawing.Size(164, 61);
+            this.Size = new System.Drawing.Size(164, 75);
             this.Load += new System.EventHandler(this.cntrlAcceptDeclineDates_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -98,5 +109,6 @@
         private System.Windows.Forms.Label lblRole;
         private System.Windows.Forms.Button btnAcceptDate;
         private System.Windows.Forms.Button btnDeclineDate;
+        private System.Windows.Forms.Label lblTime;
     }
 }
