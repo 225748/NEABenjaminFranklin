@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.Common;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +30,11 @@ namespace NEABenjaminFranklin
 
 
             //create a temporary password
-            string tempPassword = "TEST";
+            Random random = new Random();
+            string tempPassword = "";
+            tempPassword += txtLastName.Text.ToUpper().Substring(0,3);
+            tempPassword += txtFirstName.Text.ToUpper();
+            tempPassword += random.Next(10, 99);
             //hash password using a function
             string hashedPassword = "TEST";
 
