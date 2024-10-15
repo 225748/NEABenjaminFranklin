@@ -49,8 +49,6 @@ namespace NEABenjaminFranklin
 
         private void btnAcceptDate_Click(object sender, EventArgs e)
         {
-            //access a public var in the main form (like ive made at top of this) to then set a value there;
-
             //Once pressed, change state to accepted and overide state of decline button (if it was declined)
             Accepted = true;
             updateADstate();
@@ -59,7 +57,6 @@ namespace NEABenjaminFranklin
 
         private void btnDeclineDate_Click(object sender, EventArgs e)
         {
-            //access a public var in the main form (like ive made at top of this) to then set a value there;
             //Once pressed, change state to accepted and overide state of decline button (if it was declined)
             Accepted = false;
             updateADstate();
