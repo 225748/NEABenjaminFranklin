@@ -37,9 +37,10 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(15, 11);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(36, 13);
+            this.lblDate.Size = new System.Drawing.Size(42, 13);
             this.lblDate.TabIndex = 0;
             this.lblDate.Text = "{date}";
             // 
@@ -54,34 +55,37 @@
             // 
             // btnAcceptDate
             // 
+            this.btnAcceptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(190)))));
             this.btnAcceptDate.Location = new System.Drawing.Point(3, 37);
             this.btnAcceptDate.Name = "btnAcceptDate";
             this.btnAcceptDate.Size = new System.Drawing.Size(75, 23);
             this.btnAcceptDate.TabIndex = 2;
             this.btnAcceptDate.Text = "Accept";
-            this.btnAcceptDate.UseVisualStyleBackColor = true;
+            this.btnAcceptDate.UseVisualStyleBackColor = false;
             this.btnAcceptDate.Click += new System.EventHandler(this.btnAcceptDate_Click);
             // 
             // btnDeclineDate
             // 
+            this.btnDeclineDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btnDeclineDate.Location = new System.Drawing.Point(88, 37);
             this.btnDeclineDate.Name = "btnDeclineDate";
             this.btnDeclineDate.Size = new System.Drawing.Size(75, 23);
             this.btnDeclineDate.TabIndex = 3;
             this.btnDeclineDate.Text = "Decline";
-            this.btnDeclineDate.UseVisualStyleBackColor = true;
+            this.btnDeclineDate.UseVisualStyleBackColor = false;
             this.btnDeclineDate.Click += new System.EventHandler(this.btnDeclineDate_Click);
             // 
             // cntrlAcceptDeclineDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnDeclineDate);
             this.Controls.Add(this.btnAcceptDate);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblDate);
             this.Name = "cntrlAcceptDeclineDates";
-            this.Size = new System.Drawing.Size(166, 63);
+            this.Size = new System.Drawing.Size(164, 61);
             this.Load += new System.EventHandler(this.cntrlAcceptDeclineDates_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

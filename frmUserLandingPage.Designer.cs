@@ -41,7 +41,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
@@ -118,17 +117,18 @@
             this.pnlDatesGroup.Controls.Add(this.lblDates);
             this.pnlDatesGroup.Location = new System.Drawing.Point(12, 118);
             this.pnlDatesGroup.Name = "pnlDatesGroup";
-            this.pnlDatesGroup.Size = new System.Drawing.Size(200, 266);
+            this.pnlDatesGroup.Size = new System.Drawing.Size(247, 266);
             this.pnlDatesGroup.TabIndex = 16;
             // 
             // flpDates
             // 
+            this.flpDates.AutoScroll = true;
             this.flpDates.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpDates.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpDates.Location = new System.Drawing.Point(12, 27);
             this.flpDates.Name = "flpDates";
             this.flpDates.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpDates.Size = new System.Drawing.Size(176, 236);
+            this.flpDates.Size = new System.Drawing.Size(222, 236);
             this.flpDates.TabIndex = 14;
             this.flpDates.WrapContents = false;
             // 
@@ -171,27 +171,18 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // elementHost1
-            // 
-            this.elementHost1.Location = new System.Drawing.Point(272, 235);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(200, 100);
-            this.elementHost1.TabIndex = 18;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
-            // 
             // frmUserLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.elementHost1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.pnlDatesGroup);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmUserLandingPage";
             this.Text = "frmUserLandingPage";
+            this.Load += new System.EventHandler(this.frmUserLandingPage_Load);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
@@ -217,6 +208,5 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
     }
 }
