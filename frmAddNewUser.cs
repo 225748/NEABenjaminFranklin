@@ -22,6 +22,7 @@ namespace NEABenjaminFranklin
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
+            //put all validators in a seperate class and access the functions like db connector
             //create validate string functions for firstname and last name
 
             //create validate email function
