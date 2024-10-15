@@ -16,7 +16,8 @@ namespace NEABenjaminFranklin
         {
             InitializeComponent();
         }
-
+        //need to either allow login with just email for first login to create a password
+        //or have a default password and then prompt for change on first login
         private void btnHostLogin_Click(object sender, EventArgs e)
         {
             //for testing
