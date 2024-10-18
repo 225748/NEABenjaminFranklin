@@ -212,6 +212,7 @@
             this.ClientSize = new System.Drawing.Size(457, 288);
             this.Controls.Add(this.pnlHostView);
             this.Name = "frmAddNewUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddNewUser";
             this.pnlHostView.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

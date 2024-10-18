@@ -24,5 +24,11 @@ namespace NEABenjaminFranklin
             //show not show dialogue here as i want it to close if the parent form closes
             //also why this form doesnt close too - dont want it
         }
+
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            frmManageUsers frmManageUsers = new frmManageUsers();
+            frmManageUsers.Show();
+        }
     }
 }

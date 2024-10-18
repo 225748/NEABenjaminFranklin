@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHostLandingPage));
             this.pnlHostView = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.lblRoles = new System.Windows.Forms.Label();
             this.pnlRotasGroup = new System.Windows.Forms.Panel();
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageRotas = new System.Windows.Forms.Button();
@@ -46,20 +51,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lblHostView = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.lblRoles = new System.Windows.Forms.Label();
             this.pnlHostView.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.pnlRotasGroup.SuspendLayout();
             this.flpRotas.SuspendLayout();
             this.pnlUsersGroup.SuspendLayout();
             this.flpUsers.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHostView
@@ -76,6 +76,57 @@
             this.pnlHostView.Size = new System.Drawing.Size(800, 450);
             this.pnlHostView.TabIndex = 0;
             this.pnlHostView.Tag = "";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.lblRoles);
+            this.panel1.Location = new System.Drawing.Point(569, 139);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 266);
+            this.panel1.TabIndex = 17;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(176, 236);
+            this.flowLayoutPanel1.TabIndex = 14;
+            this.flowLayoutPanel1.WrapContents = false;
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(10, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(153, 52);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "View and Manage Current Roles";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.button4.Location = new System.Drawing.Point(10, 61);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(153, 50);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "Create New Role";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // lblRoles
+            // 
+            this.lblRoles.AutoSize = true;
+            this.lblRoles.Location = new System.Drawing.Point(16, 11);
+            this.lblRoles.Name = "lblRoles";
+            this.lblRoles.Size = new System.Drawing.Size(34, 13);
+            this.lblRoles.TabIndex = 12;
+            this.lblRoles.Text = "Roles";
             // 
             // pnlRotasGroup
             // 
@@ -159,6 +210,7 @@
             this.btnManageUsers.TabIndex = 10;
             this.btnManageUsers.Text = "Manage Current Users";
             this.btnManageUsers.UseVisualStyleBackColor = true;
+            this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
             // btnAddNewUser
             // 
@@ -243,57 +295,6 @@
             this.lblWelcome.TabIndex = 8;
             this.lblWelcome.Text = "Welcome -------";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.lblRoles);
-            this.panel1.Location = new System.Drawing.Point(569, 139);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 266);
-            this.panel1.TabIndex = 17;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(176, 236);
-            this.flowLayoutPanel1.TabIndex = 14;
-            this.flowLayoutPanel1.WrapContents = false;
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(10, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 52);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "View and Manage Current Roles";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.button4.Location = new System.Drawing.Point(10, 61);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 50);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Create New Role";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // lblRoles
-            // 
-            this.lblRoles.AutoSize = true;
-            this.lblRoles.Location = new System.Drawing.Point(16, 11);
-            this.lblRoles.Name = "lblRoles";
-            this.lblRoles.Size = new System.Drawing.Size(34, 13);
-            this.lblRoles.TabIndex = 12;
-            this.lblRoles.Text = "Roles";
-            // 
             // frmHostLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,9 +302,13 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.pnlHostView);
             this.Name = "frmHostLandingPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Host View";
             this.pnlHostView.ResumeLayout(false);
             this.pnlHostView.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.pnlRotasGroup.ResumeLayout(false);
             this.pnlRotasGroup.PerformLayout();
             this.flpRotas.ResumeLayout(false);
@@ -313,9 +318,6 @@
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

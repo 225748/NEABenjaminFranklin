@@ -183,6 +183,7 @@
             this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmUserLandingPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUserLandingPage";
             this.Load += new System.EventHandler(this.frmUserLandingPage_Load);
             this.pnlTopBar.ResumeLayout(false);
