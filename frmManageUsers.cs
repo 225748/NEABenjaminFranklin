@@ -44,6 +44,34 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
         }
+
+        private void btnDeleteUser_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (DialogResult != DialogResult.OK)
+            {
+                MessageBox.Show("User not deleted","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+            {
+                //do delete
+            }
+            //clear and update list view box, clear all inputs to textboxes
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (DialogResult != DialogResult.OK)
+            {
+                MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                //do update
+            }
+            //clear and update list view box, clear all inputs to textboxes
+        }
     }
 }
 
