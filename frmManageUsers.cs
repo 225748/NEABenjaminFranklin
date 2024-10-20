@@ -45,6 +45,15 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
+        private void initaliseInputFields()//possibly covert to also doing the combo box fill
+        {
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtEmail.Text = "";
+            dtpDOB.Controls.Clear();
+            chkHostRole.Checked = false;
+        }
+
         private void deleteUser(string firstName, string lastName)
         {
             try
@@ -54,6 +63,7 @@ namespace NEABenjaminFranklin
                 string sqlCommand = $"DELETE FROM tblPeople WHERE FirstName = '{firstName}' AND LastName = '{lastName}'";
                 dbConnector.Connect();
                 dbConnector.DoSQL(sqlCommand);
+                MessageBox.Show("User Deleted","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch (Exception)
             {
@@ -67,12 +77,13 @@ namespace NEABenjaminFranklin
             if (promptResult == DialogResult.OK)
             {
                 deleteUser(txtFirstName.Text, txtLastName.Text);
+                DisplayUsers();
+                initaliseInputFields();
             }
             else
             {
                 MessageBox.Show("User not deleted","",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
-            //clear and update list view box, clear all inputs to textboxes
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
