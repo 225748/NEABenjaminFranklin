@@ -45,30 +45,46 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
+        private void deleteUser(string firstName, string lastName)
+        {
+            try
+            {
+                clsDBConnector dbConnector = new clsDBConnector();
+                OleDbDataReader dr;
+                string sqlCommand = $"DELETE FROM tblPeople WHERE FirstName = '{firstName}' AND LastName = '{lastName}'";
+                dbConnector.Connect();
+                dbConnector.DoSQL(sqlCommand);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("User not deleted","Database Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
-            if (DialogResult != DialogResult.OK)
+            var promptResult = MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (promptResult == DialogResult.OK)
             {
-                MessageBox.Show("User not deleted","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                deleteUser(txtFirstName.Text, txtLastName.Text);
             }
             else
             {
-                //do delete
+                MessageBox.Show("User not deleted","",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             //clear and update list view box, clear all inputs to textboxes
         }
 
         private void btnUpdateUser_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (DialogResult != DialogResult.OK)
+            var promptResult = MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (promptResult == DialogResult.OK)
             {
-                MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //do update
             }
             else
             {
-                //do update
+                MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             //clear and update list view box, clear all inputs to textboxes
         }
