@@ -53,14 +53,29 @@ namespace NEABenjaminFranklin
             dtpDOB.Controls.Clear();
             chkHostRole.Checked = false;
         }
+        private int getUserID(string firstName, string lastName, DateTime dob, bool hostRole, string email)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "Select UserID FROM tblPeople" +
+                $"WHERE FirstName = '{firstName}'" +
+                $"AND LastName = '{lastName}'" +
+                $"AND DOB = '{dob}'" +
+                $"AND HostRole = {hostRole}" +
+                $"AND Email = '{email}'";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            return Convert.ToInt32(dr);
 
-        private void deleteUser(string firstName, string lastName)
+        }
+
+        private void deleteUser(int userID)
         {
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
                 OleDbDataReader dr;
-                string sqlCommand = $"DELETE FROM tblPeople WHERE FirstName = '{firstName}' AND LastName = '{lastName}'";
+                string sqlCommand = $"DELETE FROM tblPeople WHERE UserID = {userID}";
                 dbConnector.Connect();
                 dbConnector.DoSQL(sqlCommand);
                 MessageBox.Show("User Deleted","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -71,12 +86,36 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private void updateUser(int userID, string firstName, string lastName, DateTime dob, bool hostRole, string email)
+        {
+            try
+            {
+                clsDBConnector dbConnector = new clsDBConnector();
+                OleDbDataReader dr;
+                string sqlCommand = $"UPDATE tblPeople" +
+                    $"SET FirstName = '{firstName}'" +
+                    $"AND LastName = '{lastName}'" +
+                    $"AND DOB = '{dob.Date}'" +
+                    $"AND HostRole = {hostRole}" +
+                    $"AND Email = '{email}'" +
+                    $"WHERE UserID = {userID}";
+                dbConnector.Connect();
+                dbConnector.DoSQL(sqlCommand);
+                MessageBox.Show("User Updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Changes not updated", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
             var promptResult = MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (promptResult == DialogResult.OK)
             {
-                deleteUser(txtFirstName.Text, txtLastName.Text);
+                int userID = getUserID(txtFirstName.Text, txtLastName.Text, dtpDOB.Value.Date,chkHostRole.Checked,txtEmail.Text);
+                deleteUser(userID);
                 DisplayUsers();
                 initaliseInputFields();
             }
@@ -95,7 +134,7 @@ namespace NEABenjaminFranklin
             }
             else
             {
-                MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Changes Not Saved","", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             //clear and update list view box, clear all inputs to textboxes
         }
