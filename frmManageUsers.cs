@@ -33,7 +33,7 @@ namespace NEABenjaminFranklin
             lstVUsers.Items.Clear();
 
 
-                //bubble up host roles to the top
+            //bubble up host roles to the top
             while (dr.Read()) // change this so all the sub items are added using a nested loop
             {
                 lstVUsers.Items.Add(dr[0].ToString());
@@ -53,19 +53,28 @@ namespace NEABenjaminFranklin
             dtpDOB.Controls.Clear();
             chkHostRole.Checked = false;
         }
-        private int getUserID(string firstName, string lastName, DateTime dob, bool hostRole, string email)
+        private string getUserID(string firstName, string lastName, DateTime dob, bool hostRole, string email)
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
             string sqlCommand = "Select UserID FROM tblPeople" +
-                $"WHERE FirstName = '{firstName}'" +
-                $"AND LastName = '{lastName}'" +
-                $"AND DOB = '{dob}'" +
-                $"AND HostRole = {hostRole}" +
-                $"AND Email = '{email}'";
+                $" WHERE FirstName = '{firstName}'" +
+                $" AND LastName = '{lastName}'" +
+                $" AND DOB = #" + dob.ToString("MM/dd/yyyy") + "#" +
+                $" AND HostRole = {hostRole}" +
+                $" AND Email = '{email}'";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
-            return Convert.ToInt32(dr);
+            string sqlReturn = "";
+            while (dr.Read())
+            {
+                sqlReturn = sqlReturn + dr[0].ToString();
+            }
+            if (sqlReturn == "")
+            {
+                return null;
+            }
+            return sqlReturn;
 
         }
 
@@ -78,11 +87,11 @@ namespace NEABenjaminFranklin
                 string sqlCommand = $"DELETE FROM tblPeople WHERE UserID = {userID}";
                 dbConnector.Connect();
                 dbConnector.DoSQL(sqlCommand);
-                MessageBox.Show("User Deleted","Confirmation",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("User Deleted", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
             {
-                MessageBox.Show("User not deleted","Database Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("User not deleted", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -114,14 +123,22 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (promptResult == DialogResult.OK)
             {
-                int userID = getUserID(txtFirstName.Text, txtLastName.Text, dtpDOB.Value.Date,chkHostRole.Checked,txtEmail.Text);
-                deleteUser(userID);
-                DisplayUsers();
-                initaliseInputFields();
+                string userIDString = getUserID(txtFirstName.Text, txtLastName.Text, dtpDOB.Value.Date, chkHostRole.Checked, txtEmail.Text);
+                if (userIDString == null)
+                {
+                    MessageBox.Show("Cannot locate user in database", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                }
+                else
+                {
+                    int userIDInt = Convert.ToInt32(userIDString);
+                    deleteUser(userIDInt);
+                    DisplayUsers();
+                    initaliseInputFields();
+                }
             }
             else
             {
-                MessageBox.Show("User not deleted","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("User not deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -134,7 +151,7 @@ namespace NEABenjaminFranklin
             }
             else
             {
-                MessageBox.Show("Changes Not Saved","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             //clear and update list view box, clear all inputs to textboxes
         }
