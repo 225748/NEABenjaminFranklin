@@ -21,6 +21,7 @@ namespace NEABenjaminFranklin
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
             DisplayUsers();
+            FillCombo();
         }
 
         private void DisplayUsers()
@@ -43,6 +44,10 @@ namespace NEABenjaminFranklin
                 lstVUsers.Items[lstVUsers.Items.Count - 1].SubItems.Add(dr[4].ToString());
             }
             dbConnector.Close();
+        }
+        private void FillCombo()
+        {
+
         }
 
         private void initaliseInputFields()//possibly covert to also doing the combo box fill
@@ -78,7 +83,7 @@ namespace NEABenjaminFranklin
 
         }
 
-        private void deleteUser(int userID)
+        private void DeleteUser(int userID)
         {
             try
             {
@@ -95,7 +100,7 @@ namespace NEABenjaminFranklin
             }
         }
 
-        private void updateUser(int userID, string firstName, string lastName, DateTime dob, bool hostRole, string email)
+        private void UpdateUser(int userID, string firstName, string lastName, DateTime dob, bool hostRole, string email)
         {
             try
             {
@@ -104,7 +109,7 @@ namespace NEABenjaminFranklin
                 string sqlCommand = $"UPDATE tblPeople" +
                     $"SET FirstName = '{firstName}'" +
                     $"AND LastName = '{lastName}'" +
-                    $"AND DOB = '{dob.Date}'" +
+                    $"AND DOB = #" + dob.ToString("MM/dd/yyyy") + "#" +
                     $"AND HostRole = {hostRole}" +
                     $"AND Email = '{email}'" +
                     $"WHERE UserID = {userID}";
@@ -131,7 +136,7 @@ namespace NEABenjaminFranklin
                 else
                 {
                     int userIDInt = Convert.ToInt32(userIDString);
-                    deleteUser(userIDInt);
+                    DeleteUser(userIDInt);
                     DisplayUsers();
                     initaliseInputFields();
                 }
@@ -147,7 +152,7 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (promptResult == DialogResult.OK)
             {
-                //do update
+                // get userID from combo box of user selected
             }
             else
             {

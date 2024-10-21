@@ -39,7 +39,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnUpdateUser = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbUsers = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkHostRole = new System.Windows.Forms.CheckBox();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
@@ -139,13 +139,13 @@
             this.btnUpdateUser.UseVisualStyleBackColor = true;
             this.btnUpdateUser.Click += new System.EventHandler(this.btnUpdateUser_Click);
             // 
-            // comboBox1
+            // cmbUsers
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(603, 65);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 21);
-            this.comboBox1.TabIndex = 17;
+            this.cmbUsers.FormattingEnabled = true;
+            this.cmbUsers.Location = new System.Drawing.Point(603, 65);
+            this.cmbUsers.Name = "cmbUsers";
+            this.cmbUsers.Size = new System.Drawing.Size(168, 21);
+            this.cmbUsers.TabIndex = 17;
             // 
             // panel1
             // 
@@ -265,7 +265,7 @@
             this.ClientSize = new System.Drawing.Size(800, 365);
             this.Controls.Add(this.btnDeleteUser);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbUsers);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.lstVUsers);
             this.Controls.Add(this.pnlTopBar);
@@ -293,7 +293,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button btnUpdateUser;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbUsers;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox chkHostRole;
         private System.Windows.Forms.DateTimePicker dtpDOB;
