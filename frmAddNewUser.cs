@@ -39,7 +39,7 @@ namespace NEABenjaminFranklin
             //hash password using a function
             string hashedPassword = "TEST";
 
-
+            bool successfulUserCreation = false;
             //insert data into people table
             try
             {
@@ -50,17 +50,25 @@ namespace NEABenjaminFranklin
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
-
+                successfulUserCreation = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Error adding user to database\nUser has not been created","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 throw;
             }
-            //send email to new user containing login details (email signed up and temporay password)
-            //try except that, if error, display messaage box containing temp password to communicate to user manually
-            //if all goes well display a message box saying user created and login email sent
-           
+            if (!successfulUserCreation)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("User successfully created", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //send email to new user containing login details (email signed up and temporay password)
+                //try except that, if error, display messaage box containing temp password to communicate to user manually
+                //if all goes well display a message box saying user created and login email sent
+                this.Close();
+            }
 
         }
 

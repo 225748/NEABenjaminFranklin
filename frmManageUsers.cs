@@ -17,7 +17,7 @@ namespace NEABenjaminFranklin
         {
             InitializeComponent();
         }
-
+        public virtual System.Drawing.Font font { get; set; }
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
             DisplayUsers();
@@ -88,6 +88,8 @@ namespace NEABenjaminFranklin
                 dtpDOB.Controls.Clear();
                 chkHostRole.Checked = false;
                 cmbUsers.Text = "-- Select a user to modify --";
+                //cmbUsers.Font = new Font(cmbUsers.Font, FontStyle.Bold);
+
                 pnlUserInfoInputFields.Enabled = false;
             }
         }

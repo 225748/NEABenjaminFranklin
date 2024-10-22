@@ -142,6 +142,7 @@
             // 
             // cmbUsers
             // 
+            this.cmbUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUsers.FormattingEnabled = true;
             this.cmbUsers.Location = new System.Drawing.Point(603, 65);
             this.cmbUsers.Name = "cmbUsers";
