@@ -47,6 +47,15 @@ namespace NEABenjaminFranklin
         }
         private void FillCombo()
         {
+            clsDBConnector dBConnector = new clsDBConnector();
+            dBConnector.Connect();
+            string sqlString = "SELECT userID, (FirstName & " + "' '" + " & LastName) as userName FROM tblPeople ORDER BY LastName ";
+            OleDbDataAdapter da = new OleDbDataAdapter(sqlString, dBConnector.GetConnectionString());
+            DataSet ds = new DataSet();
+            da.Fill(ds, "tblPeople");
+            cmbUsers.DisplayMember = "userName";
+            cmbUsers.ValueMember = "UserID";
+            cmbUsers.DataSource = ds.Tables["tblPeople"];
 
         }
 
@@ -88,7 +97,6 @@ namespace NEABenjaminFranklin
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
-                OleDbDataReader dr;
                 string sqlCommand = $"DELETE FROM tblPeople WHERE UserID = {userID}";
                 dbConnector.Connect();
                 dbConnector.DoSQL(sqlCommand);
@@ -105,7 +113,6 @@ namespace NEABenjaminFranklin
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
-                OleDbDataReader dr;
                 string sqlCommand = $"UPDATE tblPeople" +
                     $"SET FirstName = '{firstName}'" +
                     $"AND LastName = '{lastName}'" +

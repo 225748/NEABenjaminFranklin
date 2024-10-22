@@ -6,7 +6,7 @@ namespace NEABenjaminFranklin
 {
     class clsDBConnector
     {
-        OleDbConnection conn = new OleDbConnection();
+         OleDbConnection conn = new OleDbConnection();
         string dbProvider;
         string dbSource;
         string workingDirectory = Environment.CurrentDirectory;
@@ -16,10 +16,12 @@ namespace NEABenjaminFranklin
             dbProvider = "Provider=Microsoft.ACE.OLEDB.12.0;";
             dbSource = @"Data Source = " + workingDirectory + @"\NEADatabaseBenFranklin.accdb";
             conn.ConnectionString = dbProvider + dbSource;
-            //conn.ConnectionString =  Properties.Settings.Default.dbStudentlatesConnectionString ;
             conn.Open();
         }
-
+        public string GetConnectionString()
+        {
+            return conn.ConnectionString;
+        }
         public void Close()
         {
             conn.Close();
