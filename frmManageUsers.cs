@@ -22,14 +22,13 @@ namespace NEABenjaminFranklin
         {
             DisplayUsers();
             FillCombo();
-            FillInputFields(false);
         }
 
         private void DisplayUsers()
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "Select FirstName, LastName, DOB, HostRole, Email FROM tblPeople ORDER BY HostRole, LastName, FirstName";
+            string sqlCommand = "Select FirstName, LastName, DOB, HostRole, Email FROM tblPeople";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             lstVUsers.Items.Clear();
@@ -50,7 +49,7 @@ namespace NEABenjaminFranklin
         {
             clsDBConnector dBConnector = new clsDBConnector();
             dBConnector.Connect();
-            string sqlString = "SELECT userID,Email,DOB,HostRole,(FirstName & " + "' '" + " & LastName) as userName FROM tblPeople ORDER BY LastName ";
+            string sqlString = "SELECT userID, (FirstName & " + "' '" + " & LastName) as userName FROM tblPeople ORDER BY LastName ";
             OleDbDataAdapter da = new OleDbDataAdapter(sqlString, dBConnector.GetConnectionString());
             DataSet ds = new DataSet();
             da.Fill(ds, "tblPeople");
@@ -60,27 +59,13 @@ namespace NEABenjaminFranklin
 
         }
 
-        private void FillInputFields(bool useCombo)
+        private void initaliseInputFields()//possibly covert to also doing the combo box fill
         {
-            if (useCombo)
-            {
-                //fill fields from the combo box
-                //look for space and seperate first and last name there
-                txtFirstName.Text = cmbUsers.Text.Split()[0];
-                txtLastName.Text = cmbUsers.Text.Split()[1];
-                //txtEmail.Text = cmbUsers.
-                //dtpDOB
-                //chkHostRole.Checked = 
-            }
-            else
-            {
-                //initalise fields
-                txtFirstName.Text = "";
-                txtLastName.Text = "";
-                txtEmail.Text = "";
-                dtpDOB.Controls.Clear();
-                chkHostRole.Checked = false;
-            }
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtEmail.Text = "";
+            dtpDOB.Controls.Clear();
+            chkHostRole.Checked = false;
         }
         private string getUserID(string firstName, string lastName, DateTime dob, bool hostRole, string email)
         {
@@ -104,6 +89,7 @@ namespace NEABenjaminFranklin
                 return null;
             }
             return sqlReturn;
+
         }
 
         private void DeleteUser(int userID)
@@ -143,10 +129,6 @@ namespace NEABenjaminFranklin
                 MessageBox.Show("Changes not updated", "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void cmbUsers_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FillInputFields(true);
-        }
 
         private void btnDeleteUser_Click(object sender, EventArgs e)
         {
@@ -156,14 +138,14 @@ namespace NEABenjaminFranklin
                 string userIDString = getUserID(txtFirstName.Text, txtLastName.Text, dtpDOB.Value.Date, chkHostRole.Checked, txtEmail.Text);
                 if (userIDString == null)
                 {
-                    MessageBox.Show("Cannot locate user in database", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cannot locate user in database", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 else
                 {
                     int userIDInt = Convert.ToInt32(userIDString);
                     DeleteUser(userIDInt);
                     DisplayUsers();
-                    FillInputFields(false);
+                    initaliseInputFields();
                 }
             }
             else
@@ -185,7 +167,6 @@ namespace NEABenjaminFranklin
             }
             //clear and update list view box, clear all inputs to textboxes
         }
-
     }
 }
 

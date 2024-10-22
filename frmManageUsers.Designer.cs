@@ -146,7 +146,6 @@
             this.cmbUsers.Name = "cmbUsers";
             this.cmbUsers.Size = new System.Drawing.Size(168, 21);
             this.cmbUsers.TabIndex = 17;
-            this.cmbUsers.SelectedIndexChanged += new System.EventHandler(this.cmbUsers_SelectedIndexChanged);
             // 
             // panel1
             // 
