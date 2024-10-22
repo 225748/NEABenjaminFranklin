@@ -122,7 +122,8 @@
             // columnHeader4
             // 
             this.columnHeader4.Text = "Host";
-            this.columnHeader4.Width = 36;
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 48;
             // 
             // columnHeader5
             // 
