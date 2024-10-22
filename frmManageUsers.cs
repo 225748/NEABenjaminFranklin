@@ -34,8 +34,6 @@ namespace NEABenjaminFranklin
             dr = dbConnector.DoSQL(sqlCommand);
             lstVUsers.Items.Clear();
 
-
-            //bubble up host roles to the top
             while (dr.Read()) // change this so all the sub items are added using a nested loop
             {
                 lstVUsers.Items.Add(dr[0].ToString());
@@ -50,27 +48,36 @@ namespace NEABenjaminFranklin
         {
             clsDBConnector dBConnector = new clsDBConnector();
             dBConnector.Connect();
-            string sqlString = "SELECT userID,Email,DOB,HostRole,(FirstName & " + "' '" + " & LastName) as userName FROM tblPeople ORDER BY LastName ";
+            string sqlString = "SELECT userID, (FirstName & " + "' '" + " & LastName) as userName FROM tblPeople ORDER BY LastName ";
             OleDbDataAdapter da = new OleDbDataAdapter(sqlString, dBConnector.GetConnectionString());
             DataSet ds = new DataSet();
             da.Fill(ds, "tblPeople");
             cmbUsers.DisplayMember = "userName";
             cmbUsers.ValueMember = "UserID";
             cmbUsers.DataSource = ds.Tables["tblPeople"];
-
         }
 
         private void FillInputFields(bool useCombo)
         {
             if (useCombo)
             {
-                //fill fields from the combo box
-                //look for space and seperate first and last name there
-                txtFirstName.Text = cmbUsers.Text.Split()[0];
-                txtLastName.Text = cmbUsers.Text.Split()[1];
-                //txtEmail.Text = cmbUsers.
-                //dtpDOB
-                //chkHostRole.Checked = 
+                clsDBConnector dbConnector = new clsDBConnector();
+                OleDbDataReader dr;
+                dbConnector.Connect();
+                string sqlString = "SELECT FirstName, LastName, DOB, HostRole, Email" +
+                    " FROM tblPeople" +
+                    " WHERE UserID = " + cmbUsers.SelectedValue;
+                dr = dbConnector.DoSQL(sqlString);
+
+                while (dr.Read())
+                {
+                    txtFirstName.Text = dr[0].ToString();
+                    txtLastName.Text = dr[1].ToString();
+                    dtpDOB.Value = Convert.ToDateTime(dr[2]);
+                    chkHostRole.Checked = Convert.ToBoolean(dr[3]);
+                    txtEmail.Text = dr[4].ToString();
+                }
+                dbConnector.Close();
             }
             else
             {
