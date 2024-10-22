@@ -40,7 +40,7 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnUpdateUser = new System.Windows.Forms.Button();
             this.cmbUsers = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlUserInfoInputFields = new System.Windows.Forms.Panel();
             this.chkHostRole = new System.Windows.Forms.CheckBox();
             this.dtpDOB = new System.Windows.Forms.DateTimePicker();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -54,7 +54,7 @@
             this.btnDeleteUser = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlUserInfoInputFields.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -148,23 +148,23 @@
             this.cmbUsers.TabIndex = 17;
             this.cmbUsers.SelectedIndexChanged += new System.EventHandler(this.cmbUsers_SelectedIndexChanged);
             // 
-            // panel1
+            // pnlUserInfoInputFields
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.chkHostRole);
-            this.panel1.Controls.Add(this.dtpDOB);
-            this.panel1.Controls.Add(this.txtEmail);
-            this.panel1.Controls.Add(this.txtLastName);
-            this.panel1.Controls.Add(this.txtFirstName);
-            this.panel1.Controls.Add(this.lblHostRole);
-            this.panel1.Controls.Add(this.lblEmail);
-            this.panel1.Controls.Add(this.lblDOB);
-            this.panel1.Controls.Add(this.lblLastName);
-            this.panel1.Controls.Add(this.lblFirstName);
-            this.panel1.Location = new System.Drawing.Point(581, 102);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(207, 157);
-            this.panel1.TabIndex = 18;
+            this.pnlUserInfoInputFields.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserInfoInputFields.Controls.Add(this.chkHostRole);
+            this.pnlUserInfoInputFields.Controls.Add(this.dtpDOB);
+            this.pnlUserInfoInputFields.Controls.Add(this.txtEmail);
+            this.pnlUserInfoInputFields.Controls.Add(this.txtLastName);
+            this.pnlUserInfoInputFields.Controls.Add(this.txtFirstName);
+            this.pnlUserInfoInputFields.Controls.Add(this.lblHostRole);
+            this.pnlUserInfoInputFields.Controls.Add(this.lblEmail);
+            this.pnlUserInfoInputFields.Controls.Add(this.lblDOB);
+            this.pnlUserInfoInputFields.Controls.Add(this.lblLastName);
+            this.pnlUserInfoInputFields.Controls.Add(this.lblFirstName);
+            this.pnlUserInfoInputFields.Location = new System.Drawing.Point(581, 102);
+            this.pnlUserInfoInputFields.Name = "pnlUserInfoInputFields";
+            this.pnlUserInfoInputFields.Size = new System.Drawing.Size(207, 157);
+            this.pnlUserInfoInputFields.TabIndex = 18;
             // 
             // chkHostRole
             // 
@@ -265,7 +265,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 365);
             this.Controls.Add(this.btnDeleteUser);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlUserInfoInputFields);
             this.Controls.Add(this.cmbUsers);
             this.Controls.Add(this.btnUpdateUser);
             this.Controls.Add(this.lstVUsers);
@@ -276,8 +276,8 @@
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlUserInfoInputFields.ResumeLayout(false);
+            this.pnlUserInfoInputFields.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -295,7 +295,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.Button btnUpdateUser;
         private System.Windows.Forms.ComboBox cmbUsers;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlUserInfoInputFields;
         private System.Windows.Forms.CheckBox chkHostRole;
         private System.Windows.Forms.DateTimePicker dtpDOB;
         private System.Windows.Forms.TextBox txtEmail;

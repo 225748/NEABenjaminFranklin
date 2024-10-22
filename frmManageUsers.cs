@@ -59,7 +59,7 @@ namespace NEABenjaminFranklin
 
         private void FillInputFields(bool useCombo)
         {
-            if (useCombo)
+            if (useCombo) // uses userID of selected user from the combo box
             {
                 clsDBConnector dbConnector = new clsDBConnector();
                 OleDbDataReader dr;
@@ -76,17 +76,19 @@ namespace NEABenjaminFranklin
                     dtpDOB.Value = Convert.ToDateTime(dr[2]);
                     chkHostRole.Checked = Convert.ToBoolean(dr[3]);
                     txtEmail.Text = dr[4].ToString();
+                    pnlUserInfoInputFields.Enabled = true;
                 }
                 dbConnector.Close();
             }
             else
             {
-                //initalise fields
                 txtFirstName.Text = "";
                 txtLastName.Text = "";
                 txtEmail.Text = "";
                 dtpDOB.Controls.Clear();
                 chkHostRole.Checked = false;
+                cmbUsers.Text = "-- Select a user to modify --";
+                pnlUserInfoInputFields.Enabled = false;
             }
         }
         private string getUserID(string firstName, string lastName, DateTime dob, bool hostRole, string email)
@@ -99,6 +101,8 @@ namespace NEABenjaminFranklin
                 $" AND DOB = #" + dob.ToString("MM/dd/yyyy") + "#" +
                 $" AND HostRole = {hostRole}" +
                 $" AND Email = '{email}'";
+
+
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             string sqlReturn = "";
@@ -110,7 +114,10 @@ namespace NEABenjaminFranklin
             {
                 return null;
             }
-            return sqlReturn;
+            else
+            {
+                return sqlReturn;
+            }
         }
 
         private void DeleteUser(int userID)
@@ -135,12 +142,12 @@ namespace NEABenjaminFranklin
             {
                 clsDBConnector dbConnector = new clsDBConnector();
                 string sqlCommand = $"UPDATE tblPeople" +
-                    $"SET FirstName = '{firstName}'" +
-                    $"AND LastName = '{lastName}'" +
-                    $"AND DOB = #" + dob.ToString("MM/dd/yyyy") + "#" +
-                    $"AND HostRole = {hostRole}" +
-                    $"AND Email = '{email}'" +
-                    $"WHERE UserID = {userID}";
+                    $" SET FirstName = '{firstName}'" +
+                    $", LastName = '{lastName}'" +
+                    $", DOB = #" + dob.ToString("MM/dd/yyyy") + "#" +
+                    $", HostRole = {hostRole}" +
+                    $", Email = '{email}'" +
+                    $" WHERE UserID = {userID}";
                 dbConnector.Connect();
                 dbConnector.DoSQL(sqlCommand);
                 MessageBox.Show("User Updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -184,13 +191,14 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (promptResult == DialogResult.OK)
             {
-                // get userID from combo box of user selected
+                UpdateUser(Convert.ToInt32(cmbUsers.SelectedValue), txtFirstName.Text, txtLastName.Text, dtpDOB.Value.Date, chkHostRole.Checked, txtEmail.Text);
+                DisplayUsers();
+                FillInputFields(false);
             }
             else
             {
                 MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            //clear and update list view box, clear all inputs to textboxes
         }
 
     }
