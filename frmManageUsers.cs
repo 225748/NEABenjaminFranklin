@@ -57,7 +57,7 @@ namespace NEABenjaminFranklin
             cmbUsers.DataSource = ds.Tables["tblPeople"];
         }
 
-        private void FillInputFields(bool useCombo)
+        private void FillInputFields(bool useCombo) //also used to initalise fields at the start
         {
             if (useCombo) // uses userID of selected user from the combo box
             {

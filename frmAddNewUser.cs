@@ -27,7 +27,7 @@ namespace NEABenjaminFranklin
 
             //create validate email function
 
-            string validatedEmail = "TEST@TEST.COM";
+            string validatedEmail = "NeedtoValidate@TEST.COM";
 
 
             //create a temporary password
@@ -37,6 +37,7 @@ namespace NEABenjaminFranklin
             tempPassword += txtFirstName.Text.ToUpper();
             tempPassword += random.Next(10, 99);
             //hash password using a function
+
             string hashedPassword = "TEST";
 
             bool successfulUserCreation = false;
