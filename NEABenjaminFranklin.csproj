@@ -92,6 +92,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="cntrlAcceptDeclineDates.resx">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
     </EmbeddedResource>
