@@ -32,6 +32,8 @@ namespace NEABenjaminFranklin
             }
         }
         //SEE ONENote for interger stuff
+        //int validation should be able to test for int, real +ve int, -ve int, +ve real, -ve real all using one regex expression
+        //it will then return int, real +ve int, +ve real etc.
 
     }
 }
