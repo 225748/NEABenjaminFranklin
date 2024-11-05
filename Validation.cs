@@ -4,36 +4,73 @@ namespace NEABenjaminFranklin
 {
     public class Validation
     {
-        public string plainTextValidation(string text)
+        public bool presenceCheck(string text)
         {
-            const string regexExpression = @"^[a-zA-Z]$";
-            Match tryToMatch = Regex.Match(text, regexExpression);
-            if (tryToMatch.Success)
+            if (string.IsNullOrEmpty(text))
             {
-                return "string";
+                return false;
             }
             else
             {
-                return "invalid";
+                return true;
+            }
+        }
+
+        public string plainTextValidation(string text)
+        {
+            if (presenceCheck(text) == false)
+            {
+                return "nullString";
+            }
+            else
+            {
+                const string regexExpression = @"^[a-zA-Z]$";
+                Match tryToMatch = Regex.Match(text, regexExpression);
+                if (tryToMatch.Success)
+                {
+                    return "string";
+                }
+                else
+                {
+                    return "invalid";
+                }
             }
             
         }
         public string emailValidation(string email)
         {
-            const string regexExpression = @"  EXPRESSION GOES HERE $";
-            Match tryToMatch = Regex.Match(email, regexExpression);
+            if (presenceCheck(email) == false)
+            {
+                return "nullString";
+            }
+            else
+            {
+                const string regexExpression = @"[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-A-Za-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?\.)+[A-Za-z0-9](?:[-A-Za-z0-9]*[A-Za-z0-9])?$";
+                Match tryToMatch = Regex.Match(email, regexExpression);
+                if (tryToMatch.Success)
+                {
+                    return "email";
+                }
+                else
+                {
+                    return "invalid";
+                }
+            }
+        }
+
+        public string integerValidation(int number)
+        {
+            string strNum = number.ToString();
+            const string regexExpression = @"[0-9]+$";
+            Match tryToMatch = Regex.Match(strNum, regexExpression);
             if (tryToMatch.Success)
             {
-                return "email";
+                return "integer";
             }
             else
             {
                 return "invalid";
             }
         }
-        //SEE ONENote for interger stuff
-        //int validation should be able to test for int, real +ve int, -ve int, +ve real, -ve real all using one regex expression
-        //it will then return int, real +ve int, +ve real etc.
-
     }
 }
