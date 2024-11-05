@@ -170,6 +170,7 @@
             this.btnCreateRota.TabIndex = 13;
             this.btnCreateRota.Text = "Create New Rota";
             this.btnCreateRota.UseVisualStyleBackColor = true;
+            this.btnCreateRota.Click += new System.EventHandler(this.btnCreateRota_Click);
             // 
             // lblRotas
             // 

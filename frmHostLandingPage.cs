@@ -36,5 +36,11 @@ namespace NEABenjaminFranklin
             frmManageRoles frmManageRoles = new frmManageRoles();
             frmManageRoles.Show();
         }
+
+        private void btnCreateRota_Click(object sender, EventArgs e)
+        {
+            frmCreateNewRota frmCreateNewRota = new frmCreateNewRota();
+            frmCreateNewRota.Show();
+        }
     }
 }
