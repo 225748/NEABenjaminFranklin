@@ -41,19 +41,17 @@
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
+            this.pnlUserControls = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
+            this.pnlUserControls.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnAddNewRole);
-            this.panel1.Controls.Add(this.txtRoleName);
-            this.panel1.Controls.Add(this.lblRoleName);
-            this.panel1.Controls.Add(this.btnDeleteRole);
+            this.panel1.Controls.Add(this.pnlUserControls);
             this.panel1.Controls.Add(this.cmbRoles);
-            this.panel1.Controls.Add(this.btnUpdateRole);
             this.panel1.Controls.Add(this.lstVRoles);
             this.panel1.Location = new System.Drawing.Point(-5, 59);
             this.panel1.Name = "panel1";
@@ -62,7 +60,7 @@
             // 
             // btnAddNewRole
             // 
-            this.btnAddNewRole.Location = new System.Drawing.Point(189, 141);
+            this.btnAddNewRole.Location = new System.Drawing.Point(11, 64);
             this.btnAddNewRole.Name = "btnAddNewRole";
             this.btnAddNewRole.Size = new System.Drawing.Size(168, 34);
             this.btnAddNewRole.TabIndex = 27;
@@ -72,7 +70,7 @@
             // 
             // txtRoleName
             // 
-            this.txtRoleName.Location = new System.Drawing.Point(189, 102);
+            this.txtRoleName.Location = new System.Drawing.Point(11, 25);
             this.txtRoleName.Name = "txtRoleName";
             this.txtRoleName.Size = new System.Drawing.Size(168, 20);
             this.txtRoleName.TabIndex = 26;
@@ -80,7 +78,7 @@
             // lblRoleName
             // 
             this.lblRoleName.AutoSize = true;
-            this.lblRoleName.Location = new System.Drawing.Point(186, 86);
+            this.lblRoleName.Location = new System.Drawing.Point(8, 9);
             this.lblRoleName.Name = "lblRoleName";
             this.lblRoleName.Size = new System.Drawing.Size(55, 13);
             this.lblRoleName.TabIndex = 25;
@@ -89,7 +87,7 @@
             // btnDeleteRole
             // 
             this.btnDeleteRole.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDeleteRole.Location = new System.Drawing.Point(189, 221);
+            this.btnDeleteRole.Location = new System.Drawing.Point(11, 144);
             this.btnDeleteRole.Name = "btnDeleteRole";
             this.btnDeleteRole.Size = new System.Drawing.Size(168, 19);
             this.btnDeleteRole.TabIndex = 24;
@@ -101,15 +99,15 @@
             // 
             this.cmbRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbRoles.FormattingEnabled = true;
-            this.cmbRoles.Location = new System.Drawing.Point(189, 22);
+            this.cmbRoles.Location = new System.Drawing.Point(182, 22);
             this.cmbRoles.Name = "cmbRoles";
-            this.cmbRoles.Size = new System.Drawing.Size(168, 21);
+            this.cmbRoles.Size = new System.Drawing.Size(186, 21);
             this.cmbRoles.TabIndex = 22;
             this.cmbRoles.SelectedIndexChanged += new System.EventHandler(this.cmbRoles_SelectedIndexChanged);
             // 
             // btnUpdateRole
             // 
-            this.btnUpdateRole.Location = new System.Drawing.Point(189, 181);
+            this.btnUpdateRole.Location = new System.Drawing.Point(11, 104);
             this.btnUpdateRole.Name = "btnUpdateRole";
             this.btnUpdateRole.Size = new System.Drawing.Size(168, 34);
             this.btnUpdateRole.TabIndex = 21;
@@ -167,6 +165,18 @@
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
             // 
+            // pnlUserControls
+            // 
+            this.pnlUserControls.Controls.Add(this.lblRoleName);
+            this.pnlUserControls.Controls.Add(this.btnAddNewRole);
+            this.pnlUserControls.Controls.Add(this.btnUpdateRole);
+            this.pnlUserControls.Controls.Add(this.txtRoleName);
+            this.pnlUserControls.Controls.Add(this.btnDeleteRole);
+            this.pnlUserControls.Location = new System.Drawing.Point(182, 68);
+            this.pnlUserControls.Name = "pnlUserControls";
+            this.pnlUserControls.Size = new System.Drawing.Size(186, 209);
+            this.pnlUserControls.TabIndex = 28;
+            // 
             // frmManageRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -178,10 +188,11 @@
             this.Text = "frmManageRoles";
             this.Load += new System.EventHandler(this.frmManageRoles_Load);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
+            this.pnlUserControls.ResumeLayout(false);
+            this.pnlUserControls.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -200,5 +211,6 @@
         private System.Windows.Forms.TextBox txtRoleName;
         private System.Windows.Forms.Label lblRoleName;
         private System.Windows.Forms.Button btnAddNewRole;
+        private System.Windows.Forms.Panel pnlUserControls;
     }
 }
