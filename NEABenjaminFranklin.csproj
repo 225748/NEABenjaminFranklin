@@ -60,6 +60,12 @@
     <Compile Include="cntrlAcceptDeclineDates.Designer.cs">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="cntrlRotaOverview.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntrlRotaOverview.Designer.cs">
+      <DependentUpon>cntrlRotaOverview.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="cntrlAcceptDeclineDates.resx">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cntrlRotaOverview.resx">
+      <DependentUpon>cntrlRotaOverview.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
