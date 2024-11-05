@@ -13,7 +13,10 @@ namespace NEABenjaminFranklin
     public partial class cntrlRotaOverview : UserControl
     {
         public string RotaName { get; set; }
-        public string Facility { get; set; }
+        public int RotaID { get; set; }
+        public string FacilityName { get; set; }
+        public int FacilityID {  get; set; }
+
 
         public cntrlRotaOverview()
         {
@@ -23,7 +26,7 @@ namespace NEABenjaminFranklin
         private void cntrlRotaOverview_Load(object sender, EventArgs e)
         {
             lblRotaName.Text = RotaName;
-            lblFacility.Text = Facility;
+            lblFacility.Text = FacilityName;
         }
 
         private void btnEditRotaInfo_Click(object sender, EventArgs e)

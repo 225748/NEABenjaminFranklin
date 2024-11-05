@@ -160,6 +160,7 @@
             this.btnManageRotas.TabIndex = 12;
             this.btnManageRotas.Text = "View and Manage Current Rotas";
             this.btnManageRotas.UseVisualStyleBackColor = true;
+            this.btnManageRotas.Click += new System.EventHandler(this.btnManageRotas_Click);
             // 
             // btnCreateRota
             // 

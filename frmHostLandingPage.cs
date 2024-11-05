@@ -42,5 +42,11 @@ namespace NEABenjaminFranklin
             frmCreateNewRota frmCreateNewRota = new frmCreateNewRota();
             frmCreateNewRota.Show();
         }
+
+        private void btnManageRotas_Click(object sender, EventArgs e)
+        {
+            frmManageRotas frmManageRotas = new frmManageRotas();
+            frmManageRotas.Show();
+        }
     }
 }

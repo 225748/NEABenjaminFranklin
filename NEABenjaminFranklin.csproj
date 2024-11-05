@@ -96,6 +96,12 @@
     <Compile Include="frmManageRoles.Designer.cs">
       <DependentUpon>frmManageRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageRotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageRotas.Designer.cs">
+      <DependentUpon>frmManageRotas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRoles.resx">
       <DependentUpon>frmManageRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageRotas.resx">
+      <DependentUpon>frmManageRotas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
