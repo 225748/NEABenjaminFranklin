@@ -30,5 +30,11 @@ namespace NEABenjaminFranklin
             frmManageUsers frmManageUsers = new frmManageUsers();
             frmManageUsers.Show();
         }
+
+        private void btnVMCRoles_Click(object sender, EventArgs e)
+        {
+            frmManageRoles frmManageRoles = new frmManageRoles();
+            frmManageRoles.Show();
+        }
     }
 }

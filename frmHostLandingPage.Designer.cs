@@ -32,7 +32,7 @@
             this.pnlHostView = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnVMCRoles = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.lblRoles = new System.Windows.Forms.Label();
             this.pnlRotasGroup = new System.Windows.Forms.Panel();
@@ -89,7 +89,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.button2);
+            this.flowLayoutPanel1.Controls.Add(this.btnVMCRoles);
             this.flowLayoutPanel1.Controls.Add(this.button4);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
@@ -99,24 +99,25 @@
             this.flowLayoutPanel1.TabIndex = 14;
             this.flowLayoutPanel1.WrapContents = false;
             // 
-            // button2
+            // btnVMCRoles
             // 
-            this.button2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(10, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(153, 52);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "View and Manage Current Roles";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnVMCRoles.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVMCRoles.Location = new System.Drawing.Point(10, 3);
+            this.btnVMCRoles.Name = "btnVMCRoles";
+            this.btnVMCRoles.Size = new System.Drawing.Size(153, 52);
+            this.btnVMCRoles.TabIndex = 12;
+            this.btnVMCRoles.Text = "View, Manage and Create Roles";
+            this.btnVMCRoles.UseVisualStyleBackColor = true;
+            this.btnVMCRoles.Click += new System.EventHandler(this.btnVMCRoles_Click);
             // 
             // button4
             // 
-            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(10, 61);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(153, 50);
             this.button4.TabIndex = 13;
-            this.button4.Text = "Create New Role";
+            this.button4.Text = "Search User by Role";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // lblRoles
@@ -343,7 +344,7 @@
         private System.Windows.Forms.Panel pnlUsersGroup;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnVMCRoles;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lblRoles;
     }

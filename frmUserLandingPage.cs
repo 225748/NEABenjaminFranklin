@@ -19,15 +19,15 @@ namespace NEABenjaminFranklin
 
         private void frmUserLandingPage_Load(object sender, EventArgs e)
         {
-            initaliseForm(); //treat this function as the form load
+            InitaliseForm(); //treat this function as the form load
         }
 
-        private void initaliseForm()
+        private void InitaliseForm()
         {
-            fillADDates();
+            FillADDates();
         }
 
-        private void fillADDates()
+        private void FillADDates()
         {
             //Filled list with testing values for now - fill lists from databases, be sure to include provision for no role
             //

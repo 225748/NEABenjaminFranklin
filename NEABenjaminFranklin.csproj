@@ -78,6 +78,12 @@
     <Compile Include="frmHostLandingPage.Designer.cs">
       <DependentUpon>frmHostLandingPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageRoles.Designer.cs">
+      <DependentUpon>frmManageRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmHostLandingPage.resx">
       <DependentUpon>frmHostLandingPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageRoles.resx">
+      <DependentUpon>frmManageRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageUsers.resx">
       <DependentUpon>frmManageUsers.cs</DependentUpon>
