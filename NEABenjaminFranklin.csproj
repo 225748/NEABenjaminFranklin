@@ -72,6 +72,12 @@
     <Compile Include="frmAddNewUser.Designer.cs">
       <DependentUpon>frmAddNewUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCreateNewRota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreateNewRota.Designer.cs">
+      <DependentUpon>frmCreateNewRota.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmHostLandingPage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewUser.resx">
       <DependentUpon>frmAddNewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreateNewRota.resx">
+      <DependentUpon>frmCreateNewRota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmHostLandingPage.resx">
       <DependentUpon>frmHostLandingPage.cs</DependentUpon>
