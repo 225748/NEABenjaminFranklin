@@ -35,11 +35,11 @@
             this.chklstRoles = new System.Windows.Forms.CheckedListBox();
             this.btnCreateRota = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbFacility = new System.Windows.Forms.ComboBox();
+            this.lblRoles = new System.Windows.Forms.Label();
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
-            this.lblRoles = new System.Windows.Forms.Label();
-            this.cmbFacility = new System.Windows.Forms.ComboBox();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,6 +78,7 @@
             // 
             // chklstRoles
             // 
+            this.chklstRoles.CheckOnClick = true;
             this.chklstRoles.FormattingEnabled = true;
             this.chklstRoles.Location = new System.Drawing.Point(151, 76);
             this.chklstRoles.Name = "chklstRoles";
@@ -108,6 +109,23 @@
             this.panel1.Size = new System.Drawing.Size(297, 330);
             this.panel1.TabIndex = 18;
             // 
+            // cmbFacility
+            // 
+            this.cmbFacility.FormattingEnabled = true;
+            this.cmbFacility.Location = new System.Drawing.Point(151, 41);
+            this.cmbFacility.Name = "cmbFacility";
+            this.cmbFacility.Size = new System.Drawing.Size(122, 21);
+            this.cmbFacility.TabIndex = 21;
+            // 
+            // lblRoles
+            // 
+            this.lblRoles.AutoSize = true;
+            this.lblRoles.Location = new System.Drawing.Point(14, 76);
+            this.lblRoles.Name = "lblRoles";
+            this.lblRoles.Size = new System.Drawing.Size(120, 13);
+            this.lblRoles.TabIndex = 20;
+            this.lblRoles.Text = "Select roles for this rota:";
+            // 
             // txtRotaName
             // 
             this.txtRotaName.Location = new System.Drawing.Point(151, 15);
@@ -132,23 +150,6 @@
             this.lblRotaName.Size = new System.Drawing.Size(56, 13);
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
-            // 
-            // lblRoles
-            // 
-            this.lblRoles.AutoSize = true;
-            this.lblRoles.Location = new System.Drawing.Point(14, 76);
-            this.lblRoles.Name = "lblRoles";
-            this.lblRoles.Size = new System.Drawing.Size(120, 13);
-            this.lblRoles.TabIndex = 20;
-            this.lblRoles.Text = "Select roles for this rota:";
-            // 
-            // cmbFacility
-            // 
-            this.cmbFacility.FormattingEnabled = true;
-            this.cmbFacility.Location = new System.Drawing.Point(151, 41);
-            this.cmbFacility.Name = "cmbFacility";
-            this.cmbFacility.Size = new System.Drawing.Size(122, 21);
-            this.cmbFacility.TabIndex = 21;
             // 
             // frmCreateNewRota
             // 

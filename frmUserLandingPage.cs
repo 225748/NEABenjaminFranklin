@@ -46,7 +46,9 @@ namespace NEABenjaminFranklin
                 ADModule.Time = userRotaTimes[i];
                 ADModule.Show();
                 flpDates.Controls.Add(ADModule);
+                
             }
+            // check for no dates (like the no roles bit in create new rota)
         }
 
     }
