@@ -60,7 +60,7 @@ namespace NEABenjaminFranklin
             }
             if (!successfulUserCreation)
             {
-
+                //error message
             }
             else
             {

@@ -68,6 +68,7 @@
             this.btnAddNewRole.TabIndex = 27;
             this.btnAddNewRole.Text = "Add New Role";
             this.btnAddNewRole.UseVisualStyleBackColor = true;
+            this.btnAddNewRole.Click += new System.EventHandler(this.btnAddNewRole_Click);
             // 
             // txtRoleName
             // 
@@ -94,6 +95,7 @@
             this.btnDeleteRole.TabIndex = 24;
             this.btnDeleteRole.Text = "Delete Role";
             this.btnDeleteRole.UseVisualStyleBackColor = false;
+            this.btnDeleteRole.Click += new System.EventHandler(this.btnDeleteRole_Click);
             // 
             // cmbRoles
             // 
@@ -113,6 +115,7 @@
             this.btnUpdateRole.TabIndex = 21;
             this.btnUpdateRole.Text = "Update Selected Role";
             this.btnUpdateRole.UseVisualStyleBackColor = true;
+            this.btnUpdateRole.Click += new System.EventHandler(this.btnUpdateRole_Click);
             // 
             // lstVRoles
             // 

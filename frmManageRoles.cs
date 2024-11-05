@@ -23,6 +23,7 @@ namespace NEABenjaminFranklin
             CenterToParent();
             DisplayRoles();
             FillCombo();
+            txtRoleName.Clear();
         }
         private void DisplayRoles()
         {
@@ -64,6 +65,71 @@ namespace NEABenjaminFranklin
             while (dr.Read())
             {
                 txtRoleName.Text = dr[0].ToString();
+            }
+        }
+
+        private void AddRole(string roleName)
+        {
+            try
+            {
+                clsDBConnector dbConnector = new clsDBConnector();
+                string cmdStr = $"INSERT INTO tblRoles  (RoleName) " +
+                    $"VALUES ('{roleName}')";
+                dbConnector.Connect();
+                dbConnector.DoDML(cmdStr);
+                dbConnector.Close();
+                DisplayRoles();
+                FillCombo();
+                MessageBox.Show("Role successfully created", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error adding role to database\nRole has not been created", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw;
+            }
+        }
+
+
+
+
+        private void btnAddNewRole_Click(object sender, EventArgs e)
+        {
+            var promptResult = MessageBox.Show("Are you sure you wish to add this role", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (promptResult == DialogResult.OK)
+            {
+                //validate the text field - for now skipping
+                string validatedRoleName = txtRoleName.Text;
+                AddRole(validatedRoleName);
+            }
+            else
+            {
+                MessageBox.Show("Role Not Created", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnUpdateRole_Click(object sender, EventArgs e)
+        {
+            var promptResult = MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (promptResult == DialogResult.OK)
+            {
+                //update
+            }
+            else
+            {
+                MessageBox.Show("Changes Not Saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnDeleteRole_Click(object sender, EventArgs e)
+        {
+            var promptResult = MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (promptResult == DialogResult.OK)
+            {
+                //delete
+            }
+            else
+            {
+                MessageBox.Show("Role not deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
