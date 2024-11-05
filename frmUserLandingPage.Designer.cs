@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserLandingPage));
             this.pnlTopBar = new System.Windows.Forms.Panel();
-            this.picRefreshIcon = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.btnAccountSettings = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.pnlTopBar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefreshIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -52,7 +50,6 @@
             // pnlTopBar
             // 
             this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTopBar.Controls.Add(this.picRefreshIcon);
             this.pnlTopBar.Controls.Add(this.button3);
             this.pnlTopBar.Controls.Add(this.picRotaConnect);
             this.pnlTopBar.Controls.Add(this.btnAccountSettings);
@@ -62,17 +59,6 @@
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
             this.pnlTopBar.TabIndex = 14;
-            // 
-            // picRefreshIcon
-            // 
-            this.picRefreshIcon.Image = ((System.Drawing.Image)(resources.GetObject("picRefreshIcon.Image")));
-            this.picRefreshIcon.Location = new System.Drawing.Point(768, 2);
-            this.picRefreshIcon.Name = "picRefreshIcon";
-            this.picRefreshIcon.Size = new System.Drawing.Size(25, 24);
-            this.picRefreshIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picRefreshIcon.TabIndex = 18;
-            this.picRefreshIcon.TabStop = false;
-            this.picRefreshIcon.Click += new System.EventHandler(this.picRefreshIcon_Click);
             // 
             // button3
             // 
@@ -202,7 +188,6 @@
             this.Load += new System.EventHandler(this.frmUserLandingPage_Load);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picRefreshIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
             this.pnlDatesGroup.ResumeLayout(false);
             this.pnlDatesGroup.PerformLayout();
@@ -226,6 +211,5 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.PictureBox picRefreshIcon;
     }
 }

@@ -19,18 +19,14 @@ namespace NEABenjaminFranklin
 
         private void frmUserLandingPage_Load(object sender, EventArgs e)
         {
-            initaliseForm();
+            initaliseForm(); //treat this function as the form load
         }
 
         private void initaliseForm()
         {
             fillADDates();
         }
-        private void picRefreshIcon_Click(object sender, EventArgs e)
-        {
-            //Clear all controls and lists etc then call
-            initaliseForm(); //to 'refresh' the page
-        }
+
         private void fillADDates()
         {
             //Filled list with testing values for now - fill lists from databases, be sure to include provision for no role

@@ -2,9 +2,9 @@
 
 namespace NEABenjaminFranklin
 {
-    public class Validation
+    public static class Validation
     {
-        public bool presenceCheck(string text)
+        public static bool presenceCheck(string text)
         {
             if (string.IsNullOrEmpty(text))
             {
@@ -16,7 +16,7 @@ namespace NEABenjaminFranklin
             }
         }
 
-        public string plainTextValidation(string text)
+        public static string plainTextValidation(string text)
         {
             if (presenceCheck(text) == false)
             {
@@ -37,7 +37,7 @@ namespace NEABenjaminFranklin
             }
             
         }
-        public string emailValidation(string email)
+        public static string emailValidation(string email)
         {
             if (presenceCheck(email) == false)
             {
@@ -58,7 +58,7 @@ namespace NEABenjaminFranklin
             }
         }
 
-        public string integerValidation(int number)
+        public static string integerValidation(int number)
         {
             string strNum = number.ToString();
             const string regexExpression = @"[0-9]+$";
