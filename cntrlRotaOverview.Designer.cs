@@ -30,7 +30,7 @@
         {
             this.lblRotaName = new System.Windows.Forms.Label();
             this.lblFacility = new System.Windows.Forms.Label();
-            this.btnEditRotaInfo = new System.Windows.Forms.Button();
+            this.btnEditRotaSettings = new System.Windows.Forms.Button();
             this.btnMangeRotaInstances = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -53,15 +53,15 @@
             this.lblFacility.TabIndex = 2;
             this.lblFacility.Text = "{locaton}";
             // 
-            // btnEditRotaInfo
+            // btnEditRotaSettings
             // 
-            this.btnEditRotaInfo.Location = new System.Drawing.Point(129, 7);
-            this.btnEditRotaInfo.Name = "btnEditRotaInfo";
-            this.btnEditRotaInfo.Size = new System.Drawing.Size(101, 23);
-            this.btnEditRotaInfo.TabIndex = 3;
-            this.btnEditRotaInfo.Text = "Edit Information";
-            this.btnEditRotaInfo.UseVisualStyleBackColor = true;
-            this.btnEditRotaInfo.Click += new System.EventHandler(this.btnEditRotaInfo_Click);
+            this.btnEditRotaSettings.Location = new System.Drawing.Point(129, 7);
+            this.btnEditRotaSettings.Name = "btnEditRotaSettings";
+            this.btnEditRotaSettings.Size = new System.Drawing.Size(101, 23);
+            this.btnEditRotaSettings.TabIndex = 3;
+            this.btnEditRotaSettings.Text = "Rota Settings";
+            this.btnEditRotaSettings.UseVisualStyleBackColor = true;
+            this.btnEditRotaSettings.Click += new System.EventHandler(this.btnEditRotaSettings_Click);
             // 
             // btnMangeRotaInstances
             // 
@@ -79,7 +79,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.btnMangeRotaInstances);
-            this.Controls.Add(this.btnEditRotaInfo);
+            this.Controls.Add(this.btnEditRotaSettings);
             this.Controls.Add(this.lblFacility);
             this.Controls.Add(this.lblRotaName);
             this.Name = "cntrlRotaOverview";
@@ -94,7 +94,7 @@
 
         private System.Windows.Forms.Label lblRotaName;
         private System.Windows.Forms.Label lblFacility;
-        private System.Windows.Forms.Button btnEditRotaInfo;
+        private System.Windows.Forms.Button btnEditRotaSettings;
         private System.Windows.Forms.Button btnMangeRotaInstances;
     }
 }

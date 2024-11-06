@@ -29,12 +29,12 @@ namespace NEABenjaminFranklin
             {lblRotaName.Text = RotaName.Substring(0, 9) + "...";}
             else { lblRotaName.Text = RotaName; }
             lblFacility.Text = FacilityName;
+            //Set back colour to what ever was passed in under a new public called RotaThemeColour 
         }
 
-        private void btnEditRotaInfo_Click(object sender, EventArgs e)
+        private void btnEditRotaSettings_Click(object sender, EventArgs e)
         {
             //create an instance of the edit rota form and give it this info - use publics? - may need to put rota ID into this as a public
-
         }
 
         private void btnMangeRotaInstances_Click(object sender, EventArgs e)

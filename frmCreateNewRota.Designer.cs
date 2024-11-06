@@ -40,6 +40,7 @@
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
+            this.btnThemeColour = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -93,10 +94,12 @@
             this.btnCreateRota.TabIndex = 19;
             this.btnCreateRota.Text = "Create new rota";
             this.btnCreateRota.UseVisualStyleBackColor = true;
+            this.btnCreateRota.Click += new System.EventHandler(this.btnCreateRota_Click);
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnThemeColour);
             this.panel1.Controls.Add(this.cmbFacility);
             this.panel1.Controls.Add(this.btnCreateRota);
             this.panel1.Controls.Add(this.lblRoles);
@@ -151,6 +154,16 @@
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
             // 
+            // btnThemeColour
+            // 
+            this.btnThemeColour.Location = new System.Drawing.Point(17, 116);
+            this.btnThemeColour.Name = "btnThemeColour";
+            this.btnThemeColour.Size = new System.Drawing.Size(117, 35);
+            this.btnThemeColour.TabIndex = 22;
+            this.btnThemeColour.Text = "Set Rota Theme Colour";
+            this.btnThemeColour.UseVisualStyleBackColor = true;
+            this.btnThemeColour.Click += new System.EventHandler(this.btnThemeColour_Click);
+            // 
             // frmCreateNewRota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,5 +196,6 @@
         private System.Windows.Forms.Label lblRotaName;
         private System.Windows.Forms.Label lblRoles;
         private System.Windows.Forms.ComboBox cmbFacility;
+        private System.Windows.Forms.Button btnThemeColour;
     }
 }

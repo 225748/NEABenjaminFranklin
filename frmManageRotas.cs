@@ -44,12 +44,13 @@ namespace NEABenjaminFranklin
                 ccRotaOverview.FacilityID = Convert.ToInt32(dr[1]);
                 ccRotaOverview.RotaName = dr[2].ToString();
                 ccRotaOverview.FacilityName = dr[3].ToString();
+                //Add sql to retrieve rota theme colour and add it to a new public in control
                 ccRotaOverview.Show();
                 flpRotas.Controls.Add(ccRotaOverview);
             }
             if (!dr.Read())
             {
-                //append a label saying please create a rota to manage wit the rota creation menu
+                //append a label saying please create a rota to manage with the rota creation menu
             }
             dbConnector.Close();
         }

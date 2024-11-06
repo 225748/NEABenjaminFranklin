@@ -72,7 +72,7 @@
             // 
             this.flpRotas.Location = new System.Drawing.Point(12, 38);
             this.flpRotas.Name = "flpRotas";
-            this.flpRotas.Size = new System.Drawing.Size(766, 315);
+            this.flpRotas.Size = new System.Drawing.Size(501, 315);
             this.flpRotas.TabIndex = 16;
             // 
             // frmManageRotas
