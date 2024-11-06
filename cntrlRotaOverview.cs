@@ -25,7 +25,9 @@ namespace NEABenjaminFranklin
 
         private void cntrlRotaOverview_Load(object sender, EventArgs e)
         {
-            lblRotaName.Text = RotaName;
+            if (RotaName.Length > 15) //15 chars fit nicely into control
+            {lblRotaName.Text = RotaName.Substring(0, 9) + "...";}
+            else { lblRotaName.Text = RotaName; }
             lblFacility.Text = FacilityName;
         }
 
