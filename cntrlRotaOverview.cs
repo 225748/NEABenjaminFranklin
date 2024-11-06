@@ -27,12 +27,12 @@ namespace NEABenjaminFranklin
 
         private void cntrlRotaOverview_Load(object sender, EventArgs e)
         {
-            if (RotaName.Length > 15) //15 chars fit nicely into control
-            {lblRotaName.Text = RotaName.Substring(0, 9) + "...";}
+            int lengthLimit = 23;
+            if (RotaName.Length > lengthLimit) 
+            {lblRotaName.Text = RotaName.Substring(0, lengthLimit - 3) + "...";}
             else { lblRotaName.Text = RotaName; }
             lblFacility.Text = FacilityName;
             btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
-            btnThemeColour.ForeColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
         }
 
         private void btnEditRotaSettings_Click(object sender, EventArgs e)

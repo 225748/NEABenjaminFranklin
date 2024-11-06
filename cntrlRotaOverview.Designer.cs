@@ -39,7 +39,7 @@
             // 
             this.lblRotaName.AutoSize = true;
             this.lblRotaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRotaName.Location = new System.Drawing.Point(8, 10);
+            this.lblRotaName.Location = new System.Drawing.Point(16, 10);
             this.lblRotaName.Name = "lblRotaName";
             this.lblRotaName.Size = new System.Drawing.Size(97, 16);
             this.lblRotaName.TabIndex = 1;
@@ -48,7 +48,7 @@
             // lblFacility
             // 
             this.lblFacility.AutoSize = true;
-            this.lblFacility.Location = new System.Drawing.Point(8, 33);
+            this.lblFacility.Location = new System.Drawing.Point(16, 33);
             this.lblFacility.Name = "lblFacility";
             this.lblFacility.Size = new System.Drawing.Size(50, 13);
             this.lblFacility.TabIndex = 2;
@@ -56,7 +56,7 @@
             // 
             // btnEditRotaSettings
             // 
-            this.btnEditRotaSettings.Location = new System.Drawing.Point(129, 7);
+            this.btnEditRotaSettings.Location = new System.Drawing.Point(202, 7);
             this.btnEditRotaSettings.Name = "btnEditRotaSettings";
             this.btnEditRotaSettings.Size = new System.Drawing.Size(101, 23);
             this.btnEditRotaSettings.TabIndex = 3;
@@ -66,7 +66,7 @@
             // 
             // btnMangeRotaInstances
             // 
-            this.btnMangeRotaInstances.Location = new System.Drawing.Point(129, 31);
+            this.btnMangeRotaInstances.Location = new System.Drawing.Point(202, 31);
             this.btnMangeRotaInstances.Name = "btnMangeRotaInstances";
             this.btnMangeRotaInstances.Size = new System.Drawing.Size(101, 23);
             this.btnMangeRotaInstances.TabIndex = 4;
@@ -76,9 +76,12 @@
             // 
             // btnThemeColour
             // 
-            this.btnThemeColour.Location = new System.Drawing.Point(236, 3);
+            this.btnThemeColour.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnThemeColour.FlatAppearance.BorderSize = 0;
+            this.btnThemeColour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnThemeColour.Location = new System.Drawing.Point(0, 0);
             this.btnThemeColour.Name = "btnThemeColour";
-            this.btnThemeColour.Size = new System.Drawing.Size(16, 15);
+            this.btnThemeColour.Size = new System.Drawing.Size(10, 63);
             this.btnThemeColour.TabIndex = 5;
             this.btnThemeColour.UseVisualStyleBackColor = true;
             // 
@@ -93,7 +96,7 @@
             this.Controls.Add(this.lblFacility);
             this.Controls.Add(this.lblRotaName);
             this.Name = "cntrlRotaOverview";
-            this.Size = new System.Drawing.Size(253, 63);
+            this.Size = new System.Drawing.Size(314, 63);
             this.Load += new System.EventHandler(this.cntrlRotaOverview_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
