@@ -17,6 +17,7 @@ namespace NEABenjaminFranklin
         {
             InitializeComponent();
         }
+        private string themeColour {  get; set; }
 
         private void frmCreateNewRota_Load(object sender, EventArgs e)
         {
@@ -60,11 +61,9 @@ namespace NEABenjaminFranklin
 
         private void CreateRota()
         {
-            //yet to code
-            //pull theme colour - currently setting button to it for testing
-            btnCreateRota.BackColor = Color.FromArgb(Convert.ToInt32(themeColour)); //if no color is set it defaults to 0 which is default control colour
-
+            //yet to code roles into this
             //need to validate all inputs for presence checks including roles
+
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
@@ -86,7 +85,6 @@ namespace NEABenjaminFranklin
             this.Close();
 
         }
-        private string themeColour {  get; set; }
         private void btnThemeColour_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();

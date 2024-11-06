@@ -45,7 +45,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(669, 31);
             this.pnlTopBar.TabIndex = 15;
             // 
             // picRotaConnect
@@ -70,16 +70,17 @@
             // 
             // flpRotas
             // 
+            this.flpRotas.AutoScroll = true;
             this.flpRotas.Location = new System.Drawing.Point(12, 38);
             this.flpRotas.Name = "flpRotas";
-            this.flpRotas.Size = new System.Drawing.Size(501, 315);
+            this.flpRotas.Size = new System.Drawing.Size(640, 315);
             this.flpRotas.TabIndex = 16;
             // 
             // frmManageRotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 365);
+            this.ClientSize = new System.Drawing.Size(669, 365);
             this.Controls.Add(this.flpRotas);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmManageRotas";

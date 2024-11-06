@@ -76,14 +76,16 @@
             // 
             // btnThemeColour
             // 
+            this.btnThemeColour.BackColor = System.Drawing.Color.Silver;
             this.btnThemeColour.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnThemeColour.Enabled = false;
             this.btnThemeColour.FlatAppearance.BorderSize = 0;
             this.btnThemeColour.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThemeColour.Location = new System.Drawing.Point(0, 0);
             this.btnThemeColour.Name = "btnThemeColour";
             this.btnThemeColour.Size = new System.Drawing.Size(10, 63);
             this.btnThemeColour.TabIndex = 5;
-            this.btnThemeColour.UseVisualStyleBackColor = true;
+            this.btnThemeColour.UseVisualStyleBackColor = false;
             // 
             // cntrlRotaOverview
             // 
