@@ -16,6 +16,8 @@ namespace NEABenjaminFranklin
         public int RotaID { get; set; }
         public string FacilityName { get; set; }
         public int FacilityID {  get; set; }
+        public string ThemeColour { get; set; }
+
 
 
         public cntrlRotaOverview()
@@ -29,7 +31,8 @@ namespace NEABenjaminFranklin
             {lblRotaName.Text = RotaName.Substring(0, 9) + "...";}
             else { lblRotaName.Text = RotaName; }
             lblFacility.Text = FacilityName;
-            //Set back colour to what ever was passed in under a new public called RotaThemeColour 
+            btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
+            btnThemeColour.ForeColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
         }
 
         private void btnEditRotaSettings_Click(object sender, EventArgs e)
@@ -42,6 +45,5 @@ namespace NEABenjaminFranklin
             //create an instance of the rota instances form and give it this info - use publics? - may need to put rota ID into this as a public
 
         }
-
     }
 }

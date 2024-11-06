@@ -31,7 +31,7 @@ namespace NEABenjaminFranklin
             //" FROM (tblRota INNER JOIN tblFacility)" +
             //" WHERE tblRota.FacilityID = tblFacility.FacilityID" +
             //" ORDER BY RotaNumber";
-            string sqlCommand = "SELECT tblRota.RotaID, tblRota.FacilityID, tblRota.RotaName, tblFacility.FacilityName" +
+            string sqlCommand = "SELECT tblRota.RotaID, tblRota.FacilityID, tblRota.RotaName, tblRota.RotaThemeColour, tblFacility.FacilityName" +
                 " FROM (tblRota INNER JOIN tblFacility ON tblRota.FacilityID = tblFacility.FacilityID)";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
@@ -43,7 +43,8 @@ namespace NEABenjaminFranklin
                 ccRotaOverview.RotaID = Convert.ToInt32(dr[0]);
                 ccRotaOverview.FacilityID = Convert.ToInt32(dr[1]);
                 ccRotaOverview.RotaName = dr[2].ToString();
-                ccRotaOverview.FacilityName = dr[3].ToString();
+                ccRotaOverview.ThemeColour = dr[3].ToString();
+                ccRotaOverview.FacilityName = dr[4].ToString();
                 //Add sql to retrieve rota theme colour and add it to a new public in control
                 ccRotaOverview.Show();
                 flpRotas.Controls.Add(ccRotaOverview);

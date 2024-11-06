@@ -32,6 +32,7 @@
             this.lblFacility = new System.Windows.Forms.Label();
             this.btnEditRotaSettings = new System.Windows.Forms.Button();
             this.btnMangeRotaInstances = new System.Windows.Forms.Button();
+            this.btnThemeColour = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblRotaName
@@ -73,11 +74,20 @@
             this.btnMangeRotaInstances.UseVisualStyleBackColor = true;
             this.btnMangeRotaInstances.Click += new System.EventHandler(this.btnMangeRotaInstances_Click);
             // 
+            // btnThemeColour
+            // 
+            this.btnThemeColour.Location = new System.Drawing.Point(236, 3);
+            this.btnThemeColour.Name = "btnThemeColour";
+            this.btnThemeColour.Size = new System.Drawing.Size(16, 15);
+            this.btnThemeColour.TabIndex = 5;
+            this.btnThemeColour.UseVisualStyleBackColor = true;
+            // 
             // cntrlRotaOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.btnThemeColour);
             this.Controls.Add(this.btnMangeRotaInstances);
             this.Controls.Add(this.btnEditRotaSettings);
             this.Controls.Add(this.lblFacility);
@@ -96,5 +106,6 @@
         private System.Windows.Forms.Label lblFacility;
         private System.Windows.Forms.Button btnEditRotaSettings;
         private System.Windows.Forms.Button btnMangeRotaInstances;
+        private System.Windows.Forms.Button btnThemeColour;
     }
 }
