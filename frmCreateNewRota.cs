@@ -74,6 +74,7 @@ namespace NEABenjaminFranklin
                 dbConnector.Close();
                 //Now do sql for roles - retrieve rotaID first
 
+
             }
             catch (Exception)
             {
