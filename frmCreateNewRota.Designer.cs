@@ -35,13 +35,15 @@
             this.chklstRoles = new System.Windows.Forms.CheckedListBox();
             this.btnCreateRota = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnColourDisplay = new System.Windows.Forms.Button();
             this.btnThemeColour = new System.Windows.Forms.Button();
             this.cmbFacility = new System.Windows.Forms.ComboBox();
             this.lblRoles = new System.Windows.Forms.Label();
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
-            this.btnColourDisplay = new System.Windows.Forms.Button();
+            this.lstRoles = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -100,6 +102,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lstRoles);
             this.panel1.Controls.Add(this.btnColourDisplay);
             this.panel1.Controls.Add(this.btnThemeColour);
             this.panel1.Controls.Add(this.cmbFacility);
@@ -113,6 +116,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 330);
             this.panel1.TabIndex = 18;
+            // 
+            // btnColourDisplay
+            // 
+            this.btnColourDisplay.BackColor = System.Drawing.Color.Silver;
+            this.btnColourDisplay.Enabled = false;
+            this.btnColourDisplay.FlatAppearance.BorderSize = 0;
+            this.btnColourDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColourDisplay.Location = new System.Drawing.Point(17, 157);
+            this.btnColourDisplay.Name = "btnColourDisplay";
+            this.btnColourDisplay.Size = new System.Drawing.Size(117, 10);
+            this.btnColourDisplay.TabIndex = 19;
+            this.btnColourDisplay.UseVisualStyleBackColor = false;
             // 
             // btnThemeColour
             // 
@@ -166,17 +181,23 @@
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
             // 
-            // btnColourDisplay
+            // lstRoles
             // 
-            this.btnColourDisplay.BackColor = System.Drawing.Color.Silver;
-            this.btnColourDisplay.Enabled = false;
-            this.btnColourDisplay.FlatAppearance.BorderSize = 0;
-            this.btnColourDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColourDisplay.Location = new System.Drawing.Point(17, 157);
-            this.btnColourDisplay.Name = "btnColourDisplay";
-            this.btnColourDisplay.Size = new System.Drawing.Size(117, 10);
-            this.btnColourDisplay.TabIndex = 19;
-            this.btnColourDisplay.UseVisualStyleBackColor = false;
+            this.lstRoles.CheckBoxes = true;
+            this.lstRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lstRoles.HideSelection = false;
+            this.lstRoles.Location = new System.Drawing.Point(13, 173);
+            this.lstRoles.Name = "lstRoles";
+            this.lstRoles.Size = new System.Drawing.Size(121, 129);
+            this.lstRoles.TabIndex = 23;
+            this.lstRoles.UseCompatibleStateImageBehavior = false;
+            this.lstRoles.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Roles";
+            this.columnHeader1.Width = 90;
             // 
             // frmCreateNewRota
             // 
@@ -213,5 +234,7 @@
         private System.Windows.Forms.ComboBox cmbFacility;
         private System.Windows.Forms.Button btnThemeColour;
         private System.Windows.Forms.Button btnColourDisplay;
+        private System.Windows.Forms.ListView lstRoles;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

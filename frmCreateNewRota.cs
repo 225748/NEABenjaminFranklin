@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace NEABenjaminFranklin
 {
@@ -17,7 +19,7 @@ namespace NEABenjaminFranklin
         {
             InitializeComponent();
         }
-        private string themeColour {  get; set; }
+        private string themeColour { get; set; }
 
         private void frmCreateNewRota_Load(object sender, EventArgs e)
         {
@@ -42,16 +44,16 @@ namespace NEABenjaminFranklin
         }
         private void FillCheckedList()
         {
+            chklstRoles.Items.Clear();
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT RoleName FROM tblRoles ORDER BY RoleName";
+            string sqlCommand = "SELECT RoleName, RoleNumber FROM tblRoles ORDER BY RoleName";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
-            chklstRoles.Items.Clear();
-
             while (dr.Read())
             {
                 chklstRoles.Items.Add(dr[0].ToString());
+                lstRoles.Items.Add(dr[0].ToString(), dr[1].ToString());
             }
             if (!dr.Read())
             {
@@ -59,7 +61,30 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
         }
-
+        private string GetRotaID(string rotaName, string rotaThemeColour, int facilityID)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "Select RotaID FROM tblRota" +
+                $" WHERE RotaName = '{rotaName}'" +
+                $" AND RotaThemeColour = '{rotaThemeColour}" +
+                $" AND FacilityID = {facilityID}";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            string sqlReturn = "";
+            while (dr.Read())
+            {
+                sqlReturn = sqlReturn + dr[0].ToString();
+            }
+            if (sqlReturn == "")
+            {
+                return null;
+            }
+            else
+            {
+                return sqlReturn;
+            }
+        }
         private void CreateRota()
         {
             //yet to code roles into this
@@ -71,9 +96,21 @@ namespace NEABenjaminFranklin
                     $"VALUES ('{txtRotaName.Text}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue)})";
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
-                dbConnector.Close();
-                //Now do sql for roles - retrieve rotaID first
 
+                //need to get rotaID to insert roles into tbl rota roles
+                string rotaID = GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue));
+                for (int i = 0; i < lstRoles.Items.Count; i++)
+                {
+                    if (lstRoles.Items[i].Checked == true)
+                    {
+                        //MessageBox.Show(lstRoles.Items[i].Text, lstRoles.Items[i].ImageKey);
+                        cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
+                            $"VALUES ({rotaID}, {lstRoles.Items[i].ImageKey})";
+                        dbConnector.DoDML(cmdStr);
+                    }
+                }//doesnt work - despite what error says its to do with formatting of the statement but not sql formatting
+
+                dbConnector.Close();
 
 
             }
