@@ -20,6 +20,7 @@ namespace NEABenjaminFranklin
         public virtual System.Drawing.Font font { get; set; }
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
+            
             DisplayUsers();
             FillCombo();
             FillInputFields(false);

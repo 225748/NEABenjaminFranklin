@@ -273,6 +273,7 @@
             this.Controls.Add(this.lstVUsers);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmManageUsers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmManageUsers";
             this.Load += new System.EventHandler(this.frmManageUsers_Load);
             this.pnlTopBar.ResumeLayout(false);

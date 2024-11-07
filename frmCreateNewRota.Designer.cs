@@ -35,12 +35,12 @@
             this.chklstRoles = new System.Windows.Forms.CheckedListBox();
             this.btnCreateRota = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnThemeColour = new System.Windows.Forms.Button();
             this.cmbFacility = new System.Windows.Forms.ComboBox();
             this.lblRoles = new System.Windows.Forms.Label();
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
-            this.btnThemeColour = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -112,6 +112,16 @@
             this.panel1.Size = new System.Drawing.Size(297, 330);
             this.panel1.TabIndex = 18;
             // 
+            // btnThemeColour
+            // 
+            this.btnThemeColour.Location = new System.Drawing.Point(17, 116);
+            this.btnThemeColour.Name = "btnThemeColour";
+            this.btnThemeColour.Size = new System.Drawing.Size(117, 35);
+            this.btnThemeColour.TabIndex = 22;
+            this.btnThemeColour.Text = "Set Rota Theme Colour";
+            this.btnThemeColour.UseVisualStyleBackColor = true;
+            this.btnThemeColour.Click += new System.EventHandler(this.btnThemeColour_Click);
+            // 
             // cmbFacility
             // 
             this.cmbFacility.FormattingEnabled = true;
@@ -154,16 +164,6 @@
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
             // 
-            // btnThemeColour
-            // 
-            this.btnThemeColour.Location = new System.Drawing.Point(17, 116);
-            this.btnThemeColour.Name = "btnThemeColour";
-            this.btnThemeColour.Size = new System.Drawing.Size(117, 35);
-            this.btnThemeColour.TabIndex = 22;
-            this.btnThemeColour.Text = "Set Rota Theme Colour";
-            this.btnThemeColour.UseVisualStyleBackColor = true;
-            this.btnThemeColour.Click += new System.EventHandler(this.btnThemeColour_Click);
-            // 
             // frmCreateNewRota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,6 +172,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmCreateNewRota";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmCreateNewRota";
             this.Load += new System.EventHandler(this.frmCreateNewRota_Load);
             this.pnlTopBar.ResumeLayout(false);
