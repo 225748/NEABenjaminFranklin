@@ -41,6 +41,7 @@
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
+            this.btnColourDisplay = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -99,6 +100,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnColourDisplay);
             this.panel1.Controls.Add(this.btnThemeColour);
             this.panel1.Controls.Add(this.cmbFacility);
             this.panel1.Controls.Add(this.btnCreateRota);
@@ -164,6 +166,18 @@
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
             // 
+            // btnColourDisplay
+            // 
+            this.btnColourDisplay.BackColor = System.Drawing.Color.Silver;
+            this.btnColourDisplay.Enabled = false;
+            this.btnColourDisplay.FlatAppearance.BorderSize = 0;
+            this.btnColourDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColourDisplay.Location = new System.Drawing.Point(17, 157);
+            this.btnColourDisplay.Name = "btnColourDisplay";
+            this.btnColourDisplay.Size = new System.Drawing.Size(117, 10);
+            this.btnColourDisplay.TabIndex = 19;
+            this.btnColourDisplay.UseVisualStyleBackColor = false;
+            // 
             // frmCreateNewRota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,5 +212,6 @@
         private System.Windows.Forms.Label lblRoles;
         private System.Windows.Forms.ComboBox cmbFacility;
         private System.Windows.Forms.Button btnThemeColour;
+        private System.Windows.Forms.Button btnColourDisplay;
     }
 }
