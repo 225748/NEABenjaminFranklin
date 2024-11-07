@@ -25,6 +25,7 @@ namespace NEABenjaminFranklin
             FillCheckedList();
             btnThemeColour.Text = "Set Rota Theme Colour";
             themeColour = "0";
+            btnColourDisplay.Visible = false;
         }
         private void FillCombo()
         {
@@ -63,17 +64,15 @@ namespace NEABenjaminFranklin
         {
             //yet to code roles into this
             //need to validate all inputs for presence checks including roles
-
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
-                string cmdStr = $"INSERT INTO tblRota " +
-                    $"(FacilityID, RotaName, RotaThemeColour) " +
-                    $"VALUES ({cmbFacility.SelectedValue.ToString()}, '{txtRotaName.Text}','{themeColour}')";
+                string cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
+                    $"VALUES ('{txtRotaName.Text}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue)})";
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
-                //NOW SQL THE ROLES TABLE TO CREATE - PULL THE ROTAID FIRST
+                //Now do sql for roles - retrieve rotaID first
 
 
             }
@@ -92,6 +91,8 @@ namespace NEABenjaminFranklin
             colorDialog.ShowDialog();
             btnThemeColour.Text = "Change Rota Theme Colour";
             themeColour = colorDialog.Color.ToArgb().ToString();
+            btnColourDisplay.BackColor = colorDialog.Color;
+            btnColourDisplay.Show();
         }
 
         private void btnCreateRota_Click(object sender, EventArgs e)
