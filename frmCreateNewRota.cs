@@ -97,18 +97,18 @@ namespace NEABenjaminFranklin
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
 
-                //need to get rotaID to insert roles into tbl rota roles
-                string rotaID = GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue));
-                for (int i = 0; i < lstRoles.Items.Count; i++)
-                {
-                    if (lstRoles.Items[i].Checked == true)
-                    {
-                        //MessageBox.Show(lstRoles.Items[i].Text, lstRoles.Items[i].ImageKey);
-                        cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
-                            $"VALUES ({rotaID}, {lstRoles.Items[i].ImageKey})";
-                        dbConnector.DoDML(cmdStr);
-                    }
-                }//doesnt work - despite what error says its to do with formatting of the statement but not sql formatting
+                ////need to get rotaID to insert roles into tbl rota roles
+                //string rotaID = GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue));
+                //for (int i = 0; i < lstRoles.Items.Count; i++)
+                //{
+                //    if (lstRoles.Items[i].Checked == true)
+                //    {
+                //        //MessageBox.Show(lstRoles.Items[i].Text, lstRoles.Items[i].ImageKey);
+                //        cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
+                //            $"VALUES ({rotaID}, {lstRoles.Items[i].ImageKey})";
+                //        dbConnector.DoDML(cmdStr);
+                //    }
+                //}//doesnt work - despite what error says its to do with formatting of the statement but not sql formatting
 
                 dbConnector.Close();
 
