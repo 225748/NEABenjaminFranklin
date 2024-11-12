@@ -113,7 +113,7 @@ namespace NEABenjaminFranklin
             cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
                 $"VALUES ('{rotaName}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue.ToString())})";
             dbConnector.Connect();
-            dbConnector.DoDML(cmdStr);
+             dbConnector.DoDML(cmdStr);
             dbConnector.Close();
 
             //Now that rota has been created, create its roles in tblrotaroles
