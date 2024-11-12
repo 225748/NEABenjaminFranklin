@@ -100,7 +100,7 @@ namespace NEABenjaminFranklin
 
             //Now that rota has been created, create its roles in tblrotaroles
             //int rotaID = Convert.ToInt32(GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue)));
-            int rotaid = 17;
+            int rotaID = 17; //using pizza planet id for now
             for (int i = 0; i < lstVRoles.Items.Count; i++)
             {
                 if (lstVRoles.Items[i].Checked == true)
