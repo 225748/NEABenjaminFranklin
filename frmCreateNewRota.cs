@@ -92,15 +92,18 @@ namespace NEABenjaminFranklin
             //need to validate all inputs for presence checks including roles
 
             clsDBConnector dbConnector = new clsDBConnector();
+            string cmdStr;
             string rotaName = txtRotaName.Text.Replace("'", "''"); // Replace single quotes - sql thinks it is the end of a string
-            string cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
+            cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
                 $"VALUES ('{rotaName}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue.ToString())})";
             dbConnector.Connect();
             dbConnector.DoDML(cmdStr);
+            dbConnector.Close();
+            // int rotaID = dbConnector.DoDMLwithScalar(cmdStr);
 
             //Now that rota has been created, create its roles in tblrotaroles
-            //int rotaID = Convert.ToInt32(GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue)));
-            int rotaID = 17; //using pizza planet id for now
+            int rotaID = Convert.ToInt32(GetRotaID(rotaName, themeColour, Convert.ToInt32(cmbFacility.SelectedValue.ToString())));
+
             for (int i = 0; i < lstVRoles.Items.Count; i++)
             {
                 if (lstVRoles.Items[i].Checked == true)

@@ -33,7 +33,13 @@ namespace NEABenjaminFranklin
             cmd = new OleDbCommand(dmlString, conn);
             cmd.ExecuteNonQuery();
         }
+        public int DoDMLwithScalar(string dmlString)
+        {
+            OleDbCommand cmd;
+            cmd = new OleDbCommand(dmlString, conn);
+            return Convert.ToInt32(cmd.ExecuteScalar());
 
+        }
         public OleDbDataReader DoSQL(string sqlString)
         {
             OleDbCommand cmd;
