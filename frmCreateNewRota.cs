@@ -20,11 +20,13 @@ namespace NEABenjaminFranklin
             InitializeComponent();
         }
         private string themeColour { get; set; }
+        private List<clsRoles> roleList { get; set; }
+        private List<string> selectedRoles { get; set; }
 
         private void frmCreateNewRota_Load(object sender, EventArgs e)
         {
             FillCombo();
-            FillCheckedList();
+            FillRolesList();
             btnThemeColour.Text = "Set Rota Theme Colour";
             themeColour = "0";
             btnColourDisplay.Visible = false;
@@ -42,22 +44,20 @@ namespace NEABenjaminFranklin
             cmbFacility.DataSource = ds.Tables["tblFacility"];
             cmbFacility.Text = "-- Select a Venue --";
         }
-        private void FillCheckedList()
+
+        private void FillRolesList()
         {
-            chklstRoles.Items.Clear();
+            lstVRoles.Items.Clear();
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT RoleName, RoleNumber FROM tblRoles ORDER BY RoleName";
+            string sqlCommand = "Select RoleName, RoleNumber FROM tblRoles ORDER BY RoleName";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
+
             while (dr.Read())
             {
-                chklstRoles.Items.Add(dr[0].ToString());
-                //lstRoles.Items.Add(dr[0].ToString(), dr[1].ToString());
-            }
-            if (!dr.Read())
-            {
-                chklstRoles.Text = "Please create a role to begin assigning";
+                lstVRoles.Items.Add(dr[0].ToString());
+                lstVRoles.Items[lstVRoles.Items.Count - 1].SubItems.Add(dr[1].ToString());
             }
             dbConnector.Close();
         }
@@ -65,9 +65,10 @@ namespace NEABenjaminFranklin
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
+            rotaName = rotaName.Replace("'", "''"); // Replace single quotes - sql thinks it is the end of a string
             string sqlCommand = "Select RotaID FROM tblRota" +
                 $" WHERE RotaName = '{rotaName}'" +
-                $" AND RotaThemeColour = '{rotaThemeColour}" +
+                $" AND RotaThemeColour = '{rotaThemeColour}'" +
                 $" AND FacilityID = {facilityID}";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
@@ -88,38 +89,33 @@ namespace NEABenjaminFranklin
         private void CreateRota()
         {
             bool succsessfulCreation = false;
-            //yet to code roles into this
             //need to validate all inputs for presence checks including roles
-            try
-            {
-                clsDBConnector dbConnector = new clsDBConnector();
-                string rotaName = txtRotaName.Text.Replace("'", "''"); // Replace single quotes - sql thinks it is the end of a string
-                string cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
-                    $"VALUES ('{rotaName}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue.ToString())})";
-                dbConnector.Connect();
-                dbConnector.DoDML(cmdStr);
 
-                ////need to get rotaID to insert roles into tbl rota roles
-                //string rotaID = GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue));
-                //for (int i = 0; i < lstRoles.Items.Count; i++)
-                //{
-                //    if (lstRoles.Items[i].Checked == true)
-                //    {
-                //        //MessageBox.Show(lstRoles.Items[i].Text, lstRoles.Items[i].ImageKey);
-                //        cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
-                //            $"VALUES ({rotaID}, {lstRoles.Items[i].ImageKey})";
-                //        dbConnector.DoDML(cmdStr);
-                //    }
-                //}//doesnt work - despite what error says its to do with formatting of the statement but not sql formatting
+            clsDBConnector dbConnector = new clsDBConnector();
+            string rotaName = txtRotaName.Text.Replace("'", "''"); // Replace single quotes - sql thinks it is the end of a string
+            string cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
+                $"VALUES ('{rotaName}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue.ToString())})";
+            dbConnector.Connect();
+            dbConnector.DoDML(cmdStr);
 
-                dbConnector.Close();
-                succsessfulCreation = true;
-            }
-            catch (Exception)
+            //Now that rota has been created, create its roles in tblrotaroles
+            //int rotaID = Convert.ToInt32(GetRotaID(txtRotaName.Text, themeColour, Convert.ToInt32(cmbFacility.SelectedValue)));
+            int rotaid = 17;
+            for (int i = 0; i < lstVRoles.Items.Count; i++)
             {
-                MessageBox.Show("Error adding rota to database\n Rota has not been created", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
+                if (lstVRoles.Items[i].Checked == true)
+                {
+                    int roleNumber = Convert.ToInt32(lstVRoles.Items[i].SubItems[1].Text);
+                    dbConnector = new clsDBConnector();
+                    cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
+                        $"VALUES ({rotaID}, {roleNumber})";
+                    dbConnector.Connect();
+                    dbConnector.DoDML(cmdStr);
+                }
             }
+
+            dbConnector.Close();
+            succsessfulCreation = true;
             if (succsessfulCreation)
             {
                 MessageBox.Show("Rota Created Successfully", "RotaConnect", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -142,5 +138,6 @@ namespace NEABenjaminFranklin
         {
             CreateRota();
         }
+
     }
 }

@@ -32,9 +32,10 @@
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
-            this.chklstRoles = new System.Windows.Forms.CheckedListBox();
             this.btnCreateRota = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lstVRoles = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnColourDisplay = new System.Windows.Forms.Button();
             this.btnThemeColour = new System.Windows.Forms.Button();
             this.cmbFacility = new System.Windows.Forms.ComboBox();
@@ -42,8 +43,7 @@
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
-            this.lstRoles = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -80,15 +80,6 @@
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
             // 
-            // chklstRoles
-            // 
-            this.chklstRoles.CheckOnClick = true;
-            this.chklstRoles.FormattingEnabled = true;
-            this.chklstRoles.Location = new System.Drawing.Point(151, 76);
-            this.chklstRoles.Name = "chklstRoles";
-            this.chklstRoles.Size = new System.Drawing.Size(122, 184);
-            this.chklstRoles.TabIndex = 16;
-            // 
             // btnCreateRota
             // 
             this.btnCreateRota.Location = new System.Drawing.Point(157, 280);
@@ -102,7 +93,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.lstRoles);
+            this.panel1.Controls.Add(this.lstVRoles);
             this.panel1.Controls.Add(this.btnColourDisplay);
             this.panel1.Controls.Add(this.btnThemeColour);
             this.panel1.Controls.Add(this.cmbFacility);
@@ -110,12 +101,30 @@
             this.panel1.Controls.Add(this.lblRoles);
             this.panel1.Controls.Add(this.txtRotaName);
             this.panel1.Controls.Add(this.lblVenue);
-            this.panel1.Controls.Add(this.chklstRoles);
             this.panel1.Controls.Add(this.lblRotaName);
             this.panel1.Location = new System.Drawing.Point(29, 66);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 330);
             this.panel1.TabIndex = 18;
+            // 
+            // lstVRoles
+            // 
+            this.lstVRoles.CheckBoxes = true;
+            this.lstVRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lstVRoles.HideSelection = false;
+            this.lstVRoles.Location = new System.Drawing.Point(151, 76);
+            this.lstVRoles.Name = "lstVRoles";
+            this.lstVRoles.Size = new System.Drawing.Size(122, 169);
+            this.lstVRoles.TabIndex = 23;
+            this.lstVRoles.UseCompatibleStateImageBehavior = false;
+            this.lstVRoles.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Roles";
+            this.columnHeader1.Width = 117;
             // 
             // btnColourDisplay
             // 
@@ -181,23 +190,10 @@
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
             // 
-            // lstRoles
+            // columnHeader2
             // 
-            this.lstRoles.CheckBoxes = true;
-            this.lstRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lstRoles.HideSelection = false;
-            this.lstRoles.Location = new System.Drawing.Point(13, 173);
-            this.lstRoles.Name = "lstRoles";
-            this.lstRoles.Size = new System.Drawing.Size(121, 129);
-            this.lstRoles.TabIndex = 23;
-            this.lstRoles.UseCompatibleStateImageBehavior = false;
-            this.lstRoles.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Roles";
-            this.columnHeader1.Width = 90;
+            this.columnHeader2.Text = "RoleNumber";
+            this.columnHeader2.Width = 0;
             // 
             // frmCreateNewRota
             // 
@@ -224,7 +220,6 @@
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.PictureBox picRotaConnect;
         private System.Windows.Forms.Label lblHostView;
-        private System.Windows.Forms.CheckedListBox chklstRoles;
         private System.Windows.Forms.Button btnCreateRota;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtRotaName;
@@ -234,7 +229,8 @@
         private System.Windows.Forms.ComboBox cmbFacility;
         private System.Windows.Forms.Button btnThemeColour;
         private System.Windows.Forms.Button btnColourDisplay;
-        private System.Windows.Forms.ListView lstRoles;
+        private System.Windows.Forms.ListView lstVRoles;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

@@ -66,6 +66,7 @@
     <Compile Include="cntrlRotaOverview.Designer.cs">
       <DependentUpon>cntrlRotaOverview.cs</DependentUpon>
     </Compile>
+    <Compile Include="clsRoles.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
