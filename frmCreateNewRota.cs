@@ -86,6 +86,22 @@ namespace NEABenjaminFranklin
                 return sqlReturn;
             }
         }
+        private int FindLargestID(string tableName, string keyName)//largest ID is allways the one you have just created
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlStr;
+            dbConnector.Connect();
+            sqlStr = $" SELECT MAX({keyName}) AS maxID FROM {tableName} ";
+            dr = dbConnector.DoSQL(sqlStr);
+            while (dr.Read())
+            {
+                return Convert.ToInt32(dr[0]);
+            }
+            dbConnector.Close();
+            return 0;
+        }
+
         private void CreateRota()
         {
             bool succsessfulCreation = false;
@@ -99,11 +115,10 @@ namespace NEABenjaminFranklin
             dbConnector.Connect();
             dbConnector.DoDML(cmdStr);
             dbConnector.Close();
-            // int rotaID = dbConnector.DoDMLwithScalar(cmdStr);
 
             //Now that rota has been created, create its roles in tblrotaroles
             int rotaID = Convert.ToInt32(GetRotaID(rotaName, themeColour, Convert.ToInt32(cmbFacility.SelectedValue.ToString())));
-
+            //int rotaID = FindLargestID(rotaName, "RotaID"); // - migrate getting userID to this method - max ID is allways the one you have just made
             for (int i = 0; i < lstVRoles.Items.Count; i++)
             {
                 if (lstVRoles.Items[i].Checked == true)

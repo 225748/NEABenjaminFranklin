@@ -21,9 +21,14 @@ namespace NEABenjaminFranklin
 
 
 
-        public cntrlRotaOverview()
+        public cntrlRotaOverview(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour)
         {
             InitializeComponent();
+            RotaName = rotaName;
+            RotaID = rotaID;
+            FacilityName = facilityName;
+            FacilityID = facilityID;
+            ThemeColour = themeColour;
         }
 
         private void cntrlRotaOverview_Load(object sender, EventArgs e)
@@ -51,6 +56,8 @@ namespace NEABenjaminFranklin
         private void btnMangeRotaInstances_Click(object sender, EventArgs e)
         {
             //create an instance of the rota instances form and give it this info - use publics? - may need to put rota ID into this as a public
+            frmRotaSettings frmRotaSettings = new frmRotaSettings(RotaName,RotaID,FacilityName,FacilityID,ThemeColour);
+            frmRotaSettings.ShowDialog();
         }
     }
 }

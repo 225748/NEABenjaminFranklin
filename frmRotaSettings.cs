@@ -12,14 +12,37 @@ namespace NEABenjaminFranklin
 {
     public partial class frmRotaSettings : Form
     {
-        public frmRotaSettings()
+        public string RotaName { get; set; }
+        public int RotaID { get; set; }
+        public string FacilityName { get; set; }
+        public int FacilityID { get; set; }
+        public string ThemeColour { get; set; }
+        public frmRotaSettings(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour)
         {
             InitializeComponent();
+            RotaName = rotaName;
+            RotaID = rotaID;
+            FacilityName = facilityName;
+            FacilityID = facilityID;
+            ThemeColour = themeColour;
         }
 
         private void btnChangeThemeColour_Click(object sender, EventArgs e)
         {
             //see code in add new rota
+        }
+
+        private void frmRotaSettings_Load(object sender, EventArgs e)
+        {
+            InitaliseInputFields();
+        }
+        private void InitaliseInputFields()
+        {
+            //populate combo and list
+            //set the colour to theme colour
+            txtRotaName.Text = RotaName;
+            cmbFacility.SelectedItem = FacilityName;
+
         }
     }
 }
