@@ -53,7 +53,7 @@ namespace NEABenjaminFranklin
             while (dr.Read())
             {
                 chklstRoles.Items.Add(dr[0].ToString());
-                lstRoles.Items.Add(dr[0].ToString(), dr[1].ToString());
+                //lstRoles.Items.Add(dr[0].ToString(), dr[1].ToString());
             }
             if (!dr.Read())
             {
@@ -87,13 +87,15 @@ namespace NEABenjaminFranklin
         }
         private void CreateRota()
         {
+            bool succsessfulCreation = false;
             //yet to code roles into this
             //need to validate all inputs for presence checks including roles
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
+                string rotaName = txtRotaName.Text.Replace("'", "''"); // Replace single quotes - sql thinks it is the end of a string
                 string cmdStr = $"INSERT INTO tblRota (RotaName, RotaThemeColour, FacilityID) " +
-                    $"VALUES ('{txtRotaName.Text}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue)})";
+                    $"VALUES ('{rotaName}', '{themeColour}', {Convert.ToInt32(cmbFacility.SelectedValue.ToString())})";
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
 
@@ -111,13 +113,16 @@ namespace NEABenjaminFranklin
                 //}//doesnt work - despite what error says its to do with formatting of the statement but not sql formatting
 
                 dbConnector.Close();
-
-
+                succsessfulCreation = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Error adding rota to database\n Rota has not been created", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
+            }
+            if (succsessfulCreation)
+            {
+                MessageBox.Show("Rota Created Successfully", "RotaConnect", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             this.Close();
 
