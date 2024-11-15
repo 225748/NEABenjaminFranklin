@@ -55,7 +55,7 @@ namespace NEABenjaminFranklin
             cmbFacility.ValueMember = "FacilityID";
             cmbFacility.DataSource = ds.Tables["tblFacility"];
         }
-        private void FillRolesList()//identical to one in create rota
+        private void FillRolesList()//almost identical to one in create rota - apart from the sql and the while loop's contentes
         {
             lstVRoles.Items.Clear();
             clsDBConnector dbConnector = new clsDBConnector();
@@ -63,7 +63,6 @@ namespace NEABenjaminFranklin
             string sqlCommand = "Select RoleName, RoleNumber FROM tblRoles ORDER BY RoleName";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
-
             while (dr.Read())
             {
                 lstVRoles.Items.Add(dr[0].ToString());
@@ -73,9 +72,28 @@ namespace NEABenjaminFranklin
         }
         private void PreSelectRoles()
         {
-               // work out if a given role has an associated rotarole for it (meaning its been checked for this rota)
-               // if so then set its checked state to true
-               //can possibly do this using an agregate query in the fill list function and get rid of this function
+            // work out if a given role has an associated rotarole for it (meaning its been checked for this rota)
+            // if so then set its checked state to true
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT tblRoles.RoleName " +
+                "FROM((tblRota INNER JOIN tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID) INNER JOIN " +
+                "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber AND tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
+                $"WHERE(tblRotaRoles.RotaID = {RotaID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                for (int i = 0; i < lstVRoles.Items.Count; i++)
+                {
+                    if (lstVRoles.Items[i].Text == dr[0].ToString())
+                    {
+                        //the current role in the roles list is assigned to this database as it is in rota role
+                        lstVRoles.Items[i].Checked = true;
+                    }
+                }
+            }
+            dbConnector.Close();
         }
 
 
