@@ -28,25 +28,25 @@ namespace NEABenjaminFranklin
         private void btnManageUsers_Click(object sender, EventArgs e)
         {
             frmManageUsers frmManageUsers = new frmManageUsers();
-            frmManageUsers.Show();
+            frmManageUsers.ShowDialog();
         }
 
         private void btnVMCRoles_Click(object sender, EventArgs e)
         {
             frmManageRoles frmManageRoles = new frmManageRoles();
-            frmManageRoles.Show();
+            frmManageRoles.ShowDialog();
         }
 
         private void btnCreateRota_Click(object sender, EventArgs e)
         {
             frmCreateNewRota frmCreateNewRota = new frmCreateNewRota();
-            frmCreateNewRota.Show();
+            frmCreateNewRota.ShowDialog();
         }
 
         private void btnManageRotas_Click(object sender, EventArgs e)
         {
             frmManageRotas frmManageRotas = new frmManageRotas();
-            frmManageRotas.Show();
+            frmManageRotas.ShowDialog();
         }
 
     }

@@ -20,8 +20,8 @@ namespace NEABenjaminFranklin
             InitializeComponent();
         }
         private string themeColour { get; set; }
-        private List<clsRoles> roleList { get; set; }
-        private List<string> selectedRoles { get; set; }
+        //private List<clsRoles> roleList { get; set; } - not used
+        // private List<string> selectedRoles { get; set; } - not used
 
         private void frmCreateNewRota_Load(object sender, EventArgs e)
         {

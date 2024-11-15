@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRotaSettings));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnColourDisplay = new System.Windows.Forms.Button();
+            this.lstVRoles = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnChangeThemeColour = new System.Windows.Forms.Button();
             this.btnDeleteRota = new System.Windows.Forms.Button();
             this.cmbFacility = new System.Windows.Forms.ComboBox();
@@ -41,10 +45,6 @@
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
-            this.lstVRoles = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnColourDisplay = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
@@ -68,6 +68,42 @@
             this.panel1.Size = new System.Drawing.Size(273, 279);
             this.panel1.TabIndex = 20;
             // 
+            // btnColourDisplay
+            // 
+            this.btnColourDisplay.BackColor = System.Drawing.Color.Silver;
+            this.btnColourDisplay.Enabled = false;
+            this.btnColourDisplay.FlatAppearance.BorderSize = 0;
+            this.btnColourDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnColourDisplay.Location = new System.Drawing.Point(23, 159);
+            this.btnColourDisplay.Name = "btnColourDisplay";
+            this.btnColourDisplay.Size = new System.Drawing.Size(105, 10);
+            this.btnColourDisplay.TabIndex = 25;
+            this.btnColourDisplay.UseVisualStyleBackColor = false;
+            // 
+            // lstVRoles
+            // 
+            this.lstVRoles.CheckBoxes = true;
+            this.lstVRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lstVRoles.HideSelection = false;
+            this.lstVRoles.Location = new System.Drawing.Point(146, 76);
+            this.lstVRoles.Name = "lstVRoles";
+            this.lstVRoles.Size = new System.Drawing.Size(122, 180);
+            this.lstVRoles.TabIndex = 24;
+            this.lstVRoles.UseCompatibleStateImageBehavior = false;
+            this.lstVRoles.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Roles";
+            this.columnHeader1.Width = 117;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "RoleNumber";
+            this.columnHeader2.Width = 0;
+            // 
             // btnChangeThemeColour
             // 
             this.btnChangeThemeColour.Location = new System.Drawing.Point(22, 118);
@@ -86,6 +122,7 @@
             this.btnDeleteRota.TabIndex = 20;
             this.btnDeleteRota.Text = "Delete Rota";
             this.btnDeleteRota.UseVisualStyleBackColor = true;
+            this.btnDeleteRota.Click += new System.EventHandler(this.btnDeleteRota_Click);
             // 
             // cmbFacility
             // 
@@ -103,6 +140,7 @@
             this.btnUpdateRota.TabIndex = 19;
             this.btnUpdateRota.Text = "Update Rota";
             this.btnUpdateRota.UseVisualStyleBackColor = true;
+            this.btnUpdateRota.Click += new System.EventHandler(this.btnUpdateRota_Click);
             // 
             // lblRoles
             // 
@@ -168,42 +206,6 @@
             this.lblHostView.Size = new System.Drawing.Size(93, 21);
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
-            // 
-            // lstVRoles
-            // 
-            this.lstVRoles.CheckBoxes = true;
-            this.lstVRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.lstVRoles.HideSelection = false;
-            this.lstVRoles.Location = new System.Drawing.Point(146, 76);
-            this.lstVRoles.Name = "lstVRoles";
-            this.lstVRoles.Size = new System.Drawing.Size(122, 180);
-            this.lstVRoles.TabIndex = 24;
-            this.lstVRoles.UseCompatibleStateImageBehavior = false;
-            this.lstVRoles.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Roles";
-            this.columnHeader1.Width = 117;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "RoleNumber";
-            this.columnHeader2.Width = 0;
-            // 
-            // btnColourDisplay
-            // 
-            this.btnColourDisplay.BackColor = System.Drawing.Color.Silver;
-            this.btnColourDisplay.Enabled = false;
-            this.btnColourDisplay.FlatAppearance.BorderSize = 0;
-            this.btnColourDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColourDisplay.Location = new System.Drawing.Point(23, 159);
-            this.btnColourDisplay.Name = "btnColourDisplay";
-            this.btnColourDisplay.Size = new System.Drawing.Size(105, 10);
-            this.btnColourDisplay.TabIndex = 25;
-            this.btnColourDisplay.UseVisualStyleBackColor = false;
             // 
             // frmRotaSettings
             // 

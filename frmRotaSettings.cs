@@ -18,6 +18,7 @@ namespace NEABenjaminFranklin
         public string FacilityName { get; set; }
         public int FacilityID { get; set; }
         public string ThemeColour { get; set; }
+        private List<clsRoles> rotaRolesList { get; set; }
         public frmRotaSettings(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour)
         {
             InitializeComponent();
@@ -76,7 +77,7 @@ namespace NEABenjaminFranklin
             // if so then set its checked state to true
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT tblRoles.RoleName " +
+            string sqlCommand = "SELECT tblRoles.RoleName, tblRoles.RoleNumber " +
                 "FROM((tblRota INNER JOIN tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID) INNER JOIN " +
                 "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber AND tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
                 $"WHERE(tblRotaRoles.RotaID = {RotaID})";
@@ -90,12 +91,69 @@ namespace NEABenjaminFranklin
                     {
                         //the current role in the roles list is assigned to this database as it is in rota role
                         lstVRoles.Items[i].Checked = true;
+                        rotaRolesList.Add(new clsRoles(dr[0].ToString(), Convert.ToInt32(dr[1].ToString()), true)); //add  role and number for this rota to a list to use for update, with checked = true
+
+                    }
+                    else
+                    {
+                        rotaRolesList.Add(new clsRoles(dr[0].ToString(), Convert.ToInt32(dr[1].ToString()))); //add role and number for this rota, not checked
+
                     }
                 }
             }
             dbConnector.Close();
         }
 
+        private void UpdateRota()
+        {
+            // validate inputs - for now directly assigning them
+            string VrotaName = txtRotaName.Text;
+            int VFacilityID = Convert.ToInt32(cmbFacility.SelectedValue.ToString());
+            clsDBConnector dbConnector = new clsDBConnector();
+            string sqlCommand = $"UPDATE tblRota" +
+                $" SET RotaName = '{VrotaName}'" +
+                $", RotaThemeColour = '{ThemeColour}'" +
+                $", FacilityID = {VFacilityID}" +
+                $" WHERE RotaID = {RotaID}";
+            dbConnector.Connect();
+            dbConnector.DoSQL(sqlCommand);
+            dbConnector.Close();
+
+            ////////////////////////////
+            //THIS BIT IS NOT TESTED YET
+            ////////////////////////////
+
+            //now check for each role in the Vlist if it is assigned to this rota by using the list created by the sql which fills the vlistbox with assigned roles
+            for (int i = 0; i < lstVRoles.Items.Count; i++)
+            {
+                if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == true) //checked in list and database
+                {
+                    //do nothing
+                }
+                else if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == false)//checked in list not in database
+                {
+                    //add to database
+                    dbConnector = new clsDBConnector();
+                    string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
+                        $"VALUES ({RotaID}, {rotaRolesList[i].RoleNumber})";
+                    dbConnector.Connect();
+                    dbConnector.DoDML(cmdStr);
+                    dbConnector.Close();
+                }
+                else if (lstVRoles.Items[i].Checked == false && rotaRolesList[i].CheckedInList == true)//checked in database but not list
+                {
+                    //delete from database
+                    dbConnector = new clsDBConnector();
+                    string cmdStr = $"DELETE FROM tblRotaRoles WHERE RotaID = {RotaID} AND RoleNummber = {rotaRolesList[i].RoleNumber}";
+                    dbConnector.Connect();
+                    dbConnector.DoSQL(sqlCommand);
+                }
+                else
+                {
+                    //not in database or checked in list - do nothing
+                }
+            }
+        }
 
 
         private void btnChangeThemeColour_Click(object sender, EventArgs e)
@@ -109,5 +167,14 @@ namespace NEABenjaminFranklin
             btnColourDisplay.Show();
         }
 
+        private void btnUpdateRota_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDeleteRota_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
