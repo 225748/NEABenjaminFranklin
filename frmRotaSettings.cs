@@ -128,12 +128,12 @@ namespace NEABenjaminFranklin
             {
                 if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == true) //checked in list and database
                 {
-                    MessageBox.Show("debugging - went to if - doing nothing");
+                    //MessageBox.Show("debugging - went to if - doing nothing");
                     //do nothing
                 }
                 else if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == false)//checked in list not in database
                 {
-                    MessageBox.Show("debugging - adding");
+                    //MessageBox.Show("debugging - adding");
                     //add to database
                     dbConnector = new clsDBConnector();
                     string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
@@ -145,7 +145,7 @@ namespace NEABenjaminFranklin
                 }
                 else if (lstVRoles.Items[i].Checked == false && rotaRolesList[i].CheckedInList == true)//checked in database but not list
                 {
-                    MessageBox.Show("debugging - deleting");
+                    //MessageBox.Show("debugging - deleting");
                     //delete from database
                     dbConnector = new clsDBConnector();
                     string cmdStr = $"DELETE FROM tblRotaRoles WHERE (RotaID = {RotaID}) AND (RoleNumber = {rotaRolesList[i].RoleNumber})";
@@ -156,7 +156,7 @@ namespace NEABenjaminFranklin
                 }
                 else
                 {
-                    MessageBox.Show("debugging - Went to else - doing nothing");
+                    //MessageBox.Show("debugging - Went to else - doing nothing");
                     //not in database or checked in list - do nothing
                 }
             }
