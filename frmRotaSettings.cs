@@ -68,7 +68,7 @@ namespace NEABenjaminFranklin
             {
                 lstVRoles.Items.Add(dr[0].ToString());
                 lstVRoles.Items[lstVRoles.Items.Count - 1].SubItems.Add(dr[1].ToString());
-                rotaRolesList.Add(new clsRoles (dr[0].ToString(), Convert.ToInt32(dr[1].ToString())));
+                rotaRolesList.Add(new clsRoles(dr[0].ToString(), Convert.ToInt32(dr[1].ToString())));
             }
             dbConnector.Close();
         }
@@ -87,19 +87,16 @@ namespace NEABenjaminFranklin
             int i = 0;
             while (dr.Read())
             {
-                //for (int i = 0; i < lstVRoles.Items.Count; i++)
-                //{
-                    if (lstVRoles.Items[i].Text == dr[0].ToString())
-                    {
-                        //the current role in the roles list is assigned to this rota as it is in rota role
-                        lstVRoles.Items[i].Checked = true;
-                        rotaRolesList[i].CheckedInList = true;
-                    }
-                    else
-                    {
-                        lstVRoles.Items[i].Checked = false;
-                    }
-                //}
+                if (rotaRolesList[i].RoleName == dr[0].ToString())
+                {
+                    //the current role in the roles list is assigned to this rota as it is in rota role
+                    lstVRoles.Items[i].Checked = true;
+                    rotaRolesList[i].CheckedInList = true;
+                }
+                else
+                {
+                    lstVRoles.Items[i].Checked = false;
+                }
                 i++;
             }
             dbConnector.Close();
@@ -124,36 +121,36 @@ namespace NEABenjaminFranklin
             //now check for each role in the Vlist if it is assigned to this rota by using the list created by the sql which fills the vlistbox with assigned roles
             for (int i = 0; i < lstVRoles.Items.Count; i++)
             {
-                    if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == true) //checked in list and database
-                    {
-                        //do nothing
-                    }
-                    else if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == false)//checked in list not in database
-                    {
-                        ////add to database
-                        //dbConnector = new clsDBConnector();
-                        //string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
-                        //    $"VALUES ({RotaID}, {rotaRolesList[i].RoleNumber})";
-                        //dbConnector.Connect();
-                        //dbConnector.DoDML(cmdStr);
-                        //dbConnector.Close();
-                        string strin = lstVRoles.Items[i].Text;
-                        MessageBox.Show($"now Checked, {strin}");
-                    }
-                    else if (lstVRoles.Items[i].Checked == false && rotaRolesList[i].CheckedInList == true)//checked in database but not list
-                    {
-                        ////delete from database
-                        //dbConnector = new clsDBConnector();
-                        //string cmdStr = $"DELETE FROM tblRotaRoles WHERE RotaID = {RotaID} AND RoleNummber = {rotaRolesList[i].RoleNumber}";
-                        //dbConnector.Connect();
-                        //dbConnector.DoSQL(sqlCommand);
-                        string strin = lstVRoles.Items[i].Text;
-                        MessageBox.Show($"now unchecked, {strin}");
-                    }
-                    else
-                    {
-                        //not in database or checked in list - do nothing
-                    }
+                if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == true) //checked in list and database
+                {
+                    //do nothing
+                }
+                else if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == false)//checked in list not in database
+                {
+                    ////add to database
+                    //dbConnector = new clsDBConnector();
+                    //string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
+                    //    $"VALUES ({RotaID}, {rotaRolesList[i].RoleNumber})";
+                    //dbConnector.Connect();
+                    //dbConnector.DoDML(cmdStr);
+                    //dbConnector.Close();
+                    string strin = lstVRoles.Items[i].Text;
+                    MessageBox.Show($"now Checked, {strin}");
+                }
+                else if (lstVRoles.Items[i].Checked == false && rotaRolesList[i].CheckedInList == true)//checked in database but not list
+                {
+                    ////delete from database
+                    //dbConnector = new clsDBConnector();
+                    //string cmdStr = $"DELETE FROM tblRotaRoles WHERE RotaID = {RotaID} AND RoleNummber = {rotaRolesList[i].RoleNumber}";
+                    //dbConnector.Connect();
+                    //dbConnector.DoSQL(sqlCommand);
+                    string strin = lstVRoles.Items[i].Text;
+                    MessageBox.Show($"now unchecked, {strin}");
+                }
+                else
+                {
+                    //not in database or checked in list - do nothing
+                }
             }
         }
 
