@@ -84,20 +84,25 @@ namespace NEABenjaminFranklin
                 $"WHERE(tblRotaRoles.RotaID = tblRota.RotaID AND tblRota.RotaID = {RotaID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
-            int i = 0;
+            bool roleFound = false;
             while (dr.Read())
             {
-                if (rotaRolesList[i].RoleName == dr[0].ToString())
+                int i = 0;
+                for (i = 0; i < rotaRolesList.Count; i++)
                 {
-                    //the current role in the roles list is assigned to this rota as it is in rota role
-                    lstVRoles.Items[i].Checked = true;
-                    rotaRolesList[i].CheckedInList = true;
+                    if (rotaRolesList[i].RoleName == dr[0].ToString())
+                    {
+                        //the current role in the roles list is assigned to this rota as it is in rota role
+                        lstVRoles.Items[i].Checked = true;
+                        rotaRolesList[i].CheckedInList = true;
+                        roleFound = true;
+                    }
                 }
-                else
+                if (!roleFound)
                 {
                     lstVRoles.Items[i].Checked = false;
+
                 }
-                i++;
             }
             dbConnector.Close();
         }
@@ -143,9 +148,11 @@ namespace NEABenjaminFranklin
                     MessageBox.Show("debugging - deleting");
                     //delete from database
                     dbConnector = new clsDBConnector();
-                    string cmdStr = $"DELETE FROM tblRotaRoles WHERE RotaID = {RotaID} AND RoleNummber = {rotaRolesList[i].RoleNumber}";
+                    string cmdStr = $"DELETE FROM tblRotaRoles WHERE (RotaID = {RotaID}) AND (RoleNumber = {rotaRolesList[i].RoleNumber})";
                     dbConnector.Connect();
                     dbConnector.DoSQL(sqlCommand);
+                    MessageBox.Show(cmdStr);
+                    dbConnector.Close();
                 }
                 else
                 {
