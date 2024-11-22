@@ -150,7 +150,7 @@ namespace NEABenjaminFranklin
                     dbConnector = new clsDBConnector();
                     string cmdStr = $"DELETE FROM tblRotaRoles WHERE (RotaID = {RotaID}) AND (RoleNumber = {rotaRolesList[i].RoleNumber})";
                     dbConnector.Connect();
-                    dbConnector.DoSQL(sqlCommand);
+                    dbConnector.DoSQL(cmdStr);
                     MessageBox.Show(cmdStr);
                     dbConnector.Close();
                 }
