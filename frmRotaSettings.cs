@@ -123,32 +123,33 @@ namespace NEABenjaminFranklin
             {
                 if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == true) //checked in list and database
                 {
+                    MessageBox.Show("debugging - went to if - doing nothing");
                     //do nothing
                 }
                 else if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == false)//checked in list not in database
                 {
-                    ////add to database
-                    //dbConnector = new clsDBConnector();
-                    //string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
-                    //    $"VALUES ({RotaID}, {rotaRolesList[i].RoleNumber})";
-                    //dbConnector.Connect();
-                    //dbConnector.DoDML(cmdStr);
-                    //dbConnector.Close();
-                    string strin = lstVRoles.Items[i].Text;
-                    MessageBox.Show($"now Checked, {strin}");
+                    MessageBox.Show("debugging - adding");
+                    //add to database
+                    dbConnector = new clsDBConnector();
+                    string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
+                        $"VALUES ({RotaID}, {rotaRolesList[i].RoleNumber})";
+                    dbConnector.Connect();
+                    dbConnector.DoDML(cmdStr);
+                    dbConnector.Close();
+
                 }
                 else if (lstVRoles.Items[i].Checked == false && rotaRolesList[i].CheckedInList == true)//checked in database but not list
                 {
-                    ////delete from database
-                    //dbConnector = new clsDBConnector();
-                    //string cmdStr = $"DELETE FROM tblRotaRoles WHERE RotaID = {RotaID} AND RoleNummber = {rotaRolesList[i].RoleNumber}";
-                    //dbConnector.Connect();
-                    //dbConnector.DoSQL(sqlCommand);
-                    string strin = lstVRoles.Items[i].Text;
-                    MessageBox.Show($"now unchecked, {strin}");
+                    MessageBox.Show("debugging - deleting");
+                    //delete from database
+                    dbConnector = new clsDBConnector();
+                    string cmdStr = $"DELETE FROM tblRotaRoles WHERE RotaID = {RotaID} AND RoleNummber = {rotaRolesList[i].RoleNumber}";
+                    dbConnector.Connect();
+                    dbConnector.DoSQL(sqlCommand);
                 }
                 else
                 {
+                    MessageBox.Show("debugging - Went to else - doing nothing");
                     //not in database or checked in list - do nothing
                 }
             }
@@ -169,6 +170,7 @@ namespace NEABenjaminFranklin
         private void btnUpdateRota_Click(object sender, EventArgs e)
         {
             UpdateRota();
+            this.Close();
         }
 
         private void btnDeleteRota_Click(object sender, EventArgs e)
