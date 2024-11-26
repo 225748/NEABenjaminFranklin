@@ -171,12 +171,11 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("This action is irreversible", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (promptResult == DialogResult.OK)
             {
-
-                DeleteRole(cmbRoles.SelectedValue.ToString()); //no!!!
+                DeleteRole(cmbRoles.SelectedValue.ToString());
             }
             else
             {
-                MessageBox.Show("Role not deleted", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Role not deleted", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

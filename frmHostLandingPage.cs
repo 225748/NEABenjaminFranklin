@@ -49,5 +49,10 @@ namespace NEABenjaminFranklin
             frmManageRotas.ShowDialog();
         }
 
+        private void btnManageFacilities_Click(object sender, EventArgs e)
+        {
+            frmManageFacilities frmManageFacilities = new frmManageFacilities();
+            frmManageFacilities.ShowDialog();
+        }
     }
 }

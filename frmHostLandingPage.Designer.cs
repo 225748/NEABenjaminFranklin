@@ -39,6 +39,7 @@
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageRotas = new System.Windows.Forms.Button();
             this.btnCreateRota = new System.Windows.Forms.Button();
+            this.btnManageFacilities = new System.Windows.Forms.Button();
             this.lblRotas = new System.Windows.Forms.Label();
             this.pnlUsersGroup = new System.Windows.Forms.Panel();
             this.flpUsers = new System.Windows.Forms.FlowLayoutPanel();
@@ -51,7 +52,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.lblHostView = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.btnManageFacilities = new System.Windows.Forms.Button();
             this.pnlHostView.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -176,6 +176,17 @@
             this.btnCreateRota.Text = "Create New Rota";
             this.btnCreateRota.UseVisualStyleBackColor = true;
             this.btnCreateRota.Click += new System.EventHandler(this.btnCreateRota_Click);
+            // 
+            // btnManageFacilities
+            // 
+            this.btnManageFacilities.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageFacilities.Location = new System.Drawing.Point(10, 119);
+            this.btnManageFacilities.Name = "btnManageFacilities";
+            this.btnManageFacilities.Size = new System.Drawing.Size(153, 52);
+            this.btnManageFacilities.TabIndex = 14;
+            this.btnManageFacilities.Text = "Create and Manage Facilities";
+            this.btnManageFacilities.UseVisualStyleBackColor = true;
+            this.btnManageFacilities.Click += new System.EventHandler(this.btnManageFacilities_Click);
             // 
             // lblRotas
             // 
@@ -302,16 +313,6 @@
             this.lblWelcome.Size = new System.Drawing.Size(236, 40);
             this.lblWelcome.TabIndex = 8;
             this.lblWelcome.Text = "Welcome -------";
-            // 
-            // btnManageFacilities
-            // 
-            this.btnManageFacilities.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageFacilities.Location = new System.Drawing.Point(10, 119);
-            this.btnManageFacilities.Name = "btnManageFacilities";
-            this.btnManageFacilities.Size = new System.Drawing.Size(153, 52);
-            this.btnManageFacilities.TabIndex = 14;
-            this.btnManageFacilities.Text = "Create and Manage Facilities";
-            this.btnManageFacilities.UseVisualStyleBackColor = true;
             // 
             // frmHostLandingPage
             // 
