@@ -106,6 +106,16 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
         }
+        private void btnChangeThemeColour_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            //colorDialog.AllowFullOpen = false; restricts to system colours
+            colorDialog.ShowDialog();
+            btnChangeThemeColour.Text = "Change Rota Theme Colour";
+            ThemeColour = colorDialog.Color.ToArgb().ToString();
+            btnColourDisplay.BackColor = colorDialog.Color;
+            btnColourDisplay.Show();
+        }
 
         private void UpdateRota()  //need to fix pre check roles updating the class list with checked or not before the roles code below will work
         {
@@ -162,17 +172,17 @@ namespace NEABenjaminFranklin
             }
         }
 
-
-        private void btnChangeThemeColour_Click(object sender, EventArgs e)
+        private void DeleteRota()
         {
-            ColorDialog colorDialog = new ColorDialog();
-            //colorDialog.AllowFullOpen = false; restricts to system colours
-            colorDialog.ShowDialog();
-            btnChangeThemeColour.Text = "Change Rota Theme Colour";
-            ThemeColour = colorDialog.Color.ToArgb().ToString();
-            btnColourDisplay.BackColor = colorDialog.Color;
-            btnColourDisplay.Show();
+            clsDBConnector dbConnector = new clsDBConnector();
+            string sqlCommand = $"DELETE FROM tblRota WHERE RotaID = {RotaID}";
+            dbConnector.Connect();
+            dbConnector.DoSQL(sqlCommand);
+            MessageBox.Show("Rota Deleted", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
+
+
 
         private void btnUpdateRota_Click(object sender, EventArgs e)
         {
@@ -183,7 +193,17 @@ namespace NEABenjaminFranklin
 
         private void btnDeleteRota_Click(object sender, EventArgs e)
         {
-
+            var promptResult = MessageBox.Show($"Are you sure you wish to delete this Rota?\nChanges are irreversible!","Warning",MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (promptResult == DialogResult.OK)
+            {
+                DeleteRota();
+                (Application.OpenForms["frmManageRotas"] as frmManageRotas).RefresFlp();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Rota Not Deleted", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }
