@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lstVRoles = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnColourDisplay = new System.Windows.Forms.Button();
             this.btnThemeColour = new System.Windows.Forms.Button();
             this.cmbFacility = new System.Windows.Forms.ComboBox();
@@ -43,7 +44,6 @@
             this.txtRotaName = new System.Windows.Forms.TextBox();
             this.lblVenue = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -57,7 +57,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(361, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(319, 31);
             this.pnlTopBar.TabIndex = 15;
             // 
             // picRotaConnect
@@ -102,7 +102,7 @@
             this.panel1.Controls.Add(this.txtRotaName);
             this.panel1.Controls.Add(this.lblVenue);
             this.panel1.Controls.Add(this.lblRotaName);
-            this.panel1.Location = new System.Drawing.Point(29, 66);
+            this.panel1.Location = new System.Drawing.Point(12, 37);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 330);
             this.panel1.TabIndex = 18;
@@ -125,6 +125,11 @@
             // 
             this.columnHeader1.Text = "Roles";
             this.columnHeader1.Width = 117;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "RoleNumber";
+            this.columnHeader2.Width = 0;
             // 
             // btnColourDisplay
             // 
@@ -190,16 +195,11 @@
             this.lblRotaName.TabIndex = 0;
             this.lblRotaName.Text = "Rota Title:";
             // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "RoleNumber";
-            this.columnHeader2.Width = 0;
-            // 
             // frmCreateNewRota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 442);
+            this.ClientSize = new System.Drawing.Size(319, 377);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmCreateNewRota";

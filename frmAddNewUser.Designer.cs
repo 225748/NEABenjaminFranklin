@@ -60,13 +60,13 @@
             this.pnlHostView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHostView.Location = new System.Drawing.Point(0, 0);
             this.pnlHostView.Name = "pnlHostView";
-            this.pnlHostView.Size = new System.Drawing.Size(457, 288);
+            this.pnlHostView.Size = new System.Drawing.Size(364, 254);
             this.pnlHostView.TabIndex = 1;
             this.pnlHostView.Tag = "";
             // 
             // btnAddUser
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(53, 224);
+            this.btnAddUser.Location = new System.Drawing.Point(14, 205);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(106, 35);
             this.btnAddUser.TabIndex = 15;
@@ -87,7 +87,7 @@
             this.panel1.Controls.Add(this.lblDOB);
             this.panel1.Controls.Add(this.lblLastName);
             this.panel1.Controls.Add(this.lblFirstName);
-            this.panel1.Location = new System.Drawing.Point(53, 61);
+            this.panel1.Location = new System.Drawing.Point(14, 42);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(331, 157);
             this.panel1.TabIndex = 14;
@@ -182,7 +182,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(457, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(364, 31);
             this.pnlTopBar.TabIndex = 13;
             // 
             // picRotaConnect
@@ -209,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 288);
+            this.ClientSize = new System.Drawing.Size(364, 254);
             this.Controls.Add(this.pnlHostView);
             this.Name = "frmAddNewUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -60,6 +60,12 @@
     <Compile Include="cntrlAcceptDeclineDates.Designer.cs">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="cntrlRoleWithAssignedUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntrlRoleWithAssignedUsers.Designer.cs">
+      <DependentUpon>cntrlRoleWithAssignedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="cntrlRotaOverview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -67,6 +73,12 @@
       <DependentUpon>cntrlRotaOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="clsRoles.cs" />
+    <Compile Include="cntrlRotaInstance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntrlRotaInstance.Designer.cs">
+      <DependentUpon>cntrlRotaInstance.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +115,12 @@
     <Compile Include="frmManageRoles.Designer.cs">
       <DependentUpon>frmManageRoles.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmManageRotaInstances.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmManageRotaInstances.Designer.cs">
+      <DependentUpon>frmManageRotaInstances.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmManageRotas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,8 +151,14 @@
     <EmbeddedResource Include="cntrlAcceptDeclineDates.resx">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cntrlRoleWithAssignedUsers.resx">
+      <DependentUpon>cntrlRoleWithAssignedUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cntrlRotaOverview.resx">
       <DependentUpon>cntrlRotaOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cntrlRotaInstance.resx">
+      <DependentUpon>cntrlRotaInstance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -153,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRoles.resx">
       <DependentUpon>frmManageRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmManageRotaInstances.resx">
+      <DependentUpon>frmManageRotaInstances.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRotas.resx">
       <DependentUpon>frmManageRotas.cs</DependentUpon>
