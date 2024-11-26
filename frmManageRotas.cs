@@ -20,10 +20,13 @@ namespace NEABenjaminFranklin
 
         private void frmManageRotas_Load(object sender, EventArgs e)
         {
-            fillFlpRotas();
+            FillFlpRotas();
         }
-
-        private void fillFlpRotas()
+        public void RefresFlp()
+        {
+            FillFlpRotas();
+        }
+        private void FillFlpRotas()
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;

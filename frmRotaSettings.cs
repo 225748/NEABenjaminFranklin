@@ -177,6 +177,7 @@ namespace NEABenjaminFranklin
         private void btnUpdateRota_Click(object sender, EventArgs e)
         {
             UpdateRota();
+            (Application.OpenForms["frmManageRotas"] as frmManageRotas).RefresFlp();
             this.Close();
         }
 
