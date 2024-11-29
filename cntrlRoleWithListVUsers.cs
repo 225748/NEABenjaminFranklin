@@ -29,7 +29,7 @@ namespace NEABenjaminFranklin
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader Usersdr;
-            string sqlCommand = "Select (FirstName & " + "', '" + "& LastName) as Name " +
+            string sqlCommand = "Select (FirstName & " + "', '" + "& LastName) as Name, UserID " +
                 "FROM tblPeople";
             dbConnector.Connect();
             Usersdr = dbConnector.DoSQL(sqlCommand);
@@ -39,6 +39,7 @@ namespace NEABenjaminFranklin
             }
 
         }
+        public void 
 
     }
 }

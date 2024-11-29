@@ -24,6 +24,7 @@ namespace NEABenjaminFranklin
         private void frmAddNewInstance_Load(object sender, EventArgs e)
         {
             FillFlp();
+            dtpDate.MinDate = DateTime.Now;
         }
         private void FillFlp()
         {
@@ -45,6 +46,28 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
             
+        }
+        private void AddNewInstance()
+        {
+            //assign users to roles and create an instance of this date and time
+            DateTime date = new DateTime(dtpDate.Value.Year,
+                                    dtpDate.Value.Month,
+                                    dtpDate.Value.Day,
+                                    dtpTime.Value.Hour,
+                                    dtpTime.Value.Minute,
+                                    0, 0);
+            //for each role update assigned roles with the UserID and role number and this instance
+
+            //Have a public method on cntrlRoleListVUsers, called from this frm, to do sql for all users for its role
+            //1.Create an instance of the rota with this datetime - can be done here
+            //2.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID - use public in cntrl?
+            //3.Create RotaInstanceRole Number using assignedRotaRoleID and RotaInstanceID - use public in cntrl?
+
+        }
+
+        private void btnAddInstance_Click(object sender, EventArgs e)
+        {
+            AddNewInstance();
         }
     }
 }

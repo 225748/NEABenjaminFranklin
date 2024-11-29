@@ -134,6 +134,7 @@
             // 
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Location = new System.Drawing.Point(73, 82);
+            this.dtpDate.MinDate = new System.DateTime(2024, 10, 29, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(93, 20);
             this.dtpDate.TabIndex = 23;
@@ -161,6 +162,7 @@
             this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpTime.Location = new System.Drawing.Point(218, 82);
             this.dtpTime.Name = "dtpTime";
+            this.dtpTime.ShowUpDown = true;
             this.dtpTime.Size = new System.Drawing.Size(93, 20);
             this.dtpTime.TabIndex = 25;
             // 
@@ -172,6 +174,7 @@
             this.btnAddInstance.TabIndex = 27;
             this.btnAddInstance.Text = "Add a new Date";
             this.btnAddInstance.UseVisualStyleBackColor = true;
+            this.btnAddInstance.Click += new System.EventHandler(this.btnAddInstance_Click);
             // 
             // frmAddNewInstance
             // 
