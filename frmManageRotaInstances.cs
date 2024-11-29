@@ -55,12 +55,20 @@ namespace NEABenjaminFranklin
         {
 
             //code below is tesiting for now
-            //Do SQL TO get date and time
-            string rotaDate = "10/12/2024";
-            string rotaTime = "9:00";
-            List<int> roleNumbers = new List<int>(new int[] { 2, 3, 5, 6, 7, 8 }); //pull from database, this is just for testing
-            cntrlRotaInstance cntrlRotaInstance = new cntrlRotaInstance(rotaDate, rotaTime, roleNumbers);
+            //Do SQL TO get InstanceID, date and time and role numbers for rota
+            string instanceDate = "10/12/2024";
+            string instanceTime = "9:00";
+            int instanceID = 0;
+            //List<int> roleNumbers = new List<int>(new int[] { 2, 3, 5, 6, 7, 8 }); //pull from database, this is just for testing
+
+            cntrlRotaInstance cntrlRotaInstance = new cntrlRotaInstance(RotaID, instanceDate, instanceTime, instanceID);
             flpInstances.Controls.Add(cntrlRotaInstance);
+        }
+
+        private void btnAddInstance_Click(object sender, EventArgs e)
+        {
+            frmAddNewInstance frmAddNewInstance = new frmAddNewInstance(RotaID);
+            frmAddNewInstance.ShowDialog();
         }
     }
 }

@@ -66,6 +66,12 @@
     <Compile Include="cntrlRoleWithAssignedUsers.Designer.cs">
       <DependentUpon>cntrlRoleWithAssignedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="cntrlRoleWithListVUsers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntrlRoleWithListVUsers.Designer.cs">
+      <DependentUpon>cntrlRoleWithListVUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="cntrlRotaOverview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddNewInstance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddNewInstance.Designer.cs">
+      <DependentUpon>frmAddNewInstance.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddNewUser.cs">
       <SubType>Form</SubType>
@@ -154,6 +166,9 @@
     <EmbeddedResource Include="cntrlRoleWithAssignedUsers.resx">
       <DependentUpon>cntrlRoleWithAssignedUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="cntrlRoleWithListVUsers.resx">
+      <DependentUpon>cntrlRoleWithListVUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cntrlRotaOverview.resx">
       <DependentUpon>cntrlRotaOverview.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddNewInstance.resx">
+      <DependentUpon>frmAddNewInstance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewUser.resx">
       <DependentUpon>frmAddNewUser.cs</DependentUpon>
