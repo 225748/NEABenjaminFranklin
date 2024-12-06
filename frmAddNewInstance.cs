@@ -30,7 +30,7 @@ namespace NEABenjaminFranklin
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT tblRoles.RoleName " +
+            string sqlCommand = "SELECT tblRoles.RoleName, tblRotaRoles.RotaRoleNumber " +
                 "FROM((tblRota INNER JOIN " +
                 "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblRota.RotaID = tblRotaRoles.RotaID) INNER JOIN " +
                 "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
@@ -40,13 +40,30 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-                cntrlRoleWithListVUsers roleWithUsersLst = new cntrlRoleWithListVUsers();
-                roleWithUsersLst.RoleName = dr[0].ToString();
-                flpRoles.Controls.Add(roleWithUsersLst);
+                cntrlRoleWithListVUsers cntrlroleWithUsersList = new cntrlRoleWithListVUsers();
+                cntrlroleWithUsersList.RoleName = dr[0].ToString();
+                cntrlroleWithUsersList.RotaRoleNumber = Convert.ToInt32(dr[1]);
+                flpRoles.Controls.Add(cntrlroleWithUsersList);
             }
             dbConnector.Close();
             
         }
+        private int FindLargestID(string tableName, string keyName)//largest ID is allways the one you have just created
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlStr;
+            dbConnector.Connect();
+            sqlStr = $" SELECT MAX({keyName}) AS maxID FROM {tableName} ";
+            dr = dbConnector.DoSQL(sqlStr);
+            while (dr.Read())
+            {
+                return Convert.ToInt32(dr[0]);
+            }
+            dbConnector.Close();
+            return 0;
+        }
+
         private void AddNewInstance()
         {
             //assign users to roles and create an instance of this date and time
@@ -56,12 +73,36 @@ namespace NEABenjaminFranklin
                                     dtpTime.Value.Hour,
                                     dtpTime.Value.Minute,
                                     0, 0);
-            //for each role update assigned roles with the UserID and role number and this instance
 
-            //Have a public method on cntrlRoleListVUsers, called from this frm, to do sql for all users for its role
-            //1.Create an instance of the rota with this datetime - can be done here
-            //2.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID - use public in cntrl?
-            //3.Create RotaInstanceRole Number using assignedRotaRoleID and RotaInstanceID - use public in cntrl?
+            //1.Create an instance of the rota with this datetime
+            clsDBConnector dbConnector = new clsDBConnector();
+            string cmdStr = $"INSERT INTO tblRotaInstance (RotaID, RotaInstanceDateTime) " +
+                $"VALUES ({RotaID}, '{Convert.ToString(date)}')";
+            dbConnector.Connect();
+            dbConnector.DoDML(cmdStr);
+            dbConnector.Close();
+            int rotaInstanceID = FindLargestID("tblRotaInstance", "RotaInstanceID");
+
+            foreach (cntrlRoleWithListVUsers cntrl in flpRoles.Controls)
+            {
+                //2.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
+                cntrl.AssignUsersToRotaRole();
+
+
+                //3.Create RotaInstanceRole Number using assignedRotaRoleID pulled from each control and RotaInstanceID from local var
+                //////////////////////////////
+                ///THIS BIT ISNT WORKING YET//
+                //////////////////////////////
+                foreach (int assignedrotaroleID in cntrl.AssignedRotaRoleIDs)
+                {
+                    dbConnector = new clsDBConnector();
+                    cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID) " +
+                        $"VALUES ({rotaInstanceID}, {assignedrotaroleID})";
+                    dbConnector.Connect();
+                    dbConnector.DoDML(cmdStr);
+                    dbConnector.Close();
+                }
+            }
 
         }
 
