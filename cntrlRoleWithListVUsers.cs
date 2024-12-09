@@ -69,7 +69,7 @@ namespace NEABenjaminFranklin
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
-                AssignedRotaRoleIDs.Append(FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"));
+                AssignedRotaRoleIDs.Add(FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"));
             }
         }
         

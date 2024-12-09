@@ -74,7 +74,12 @@ namespace NEABenjaminFranklin
                                     dtpTime.Value.Minute,
                                     0, 0);
 
-            //1.Create an instance of the rota with this datetime
+
+            //Need to do//
+            //1. --- Check if this datetime  of this specific rota already exisits, if so dont do any more of these steps
+            
+            //1a.Create an instance of the rota with this datetime
+
             clsDBConnector dbConnector = new clsDBConnector();
             string cmdStr = $"INSERT INTO tblRotaInstance (RotaID, RotaInstanceDateTime) " +
                 $"VALUES ({RotaID}, '{Convert.ToString(date)}')";
@@ -85,19 +90,19 @@ namespace NEABenjaminFranklin
 
             foreach (cntrlRoleWithListVUsers cntrl in flpRoles.Controls)
             {
-                //2.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
-                cntrl.AssignUsersToRotaRole();
+                //Need to do//
+                //2 check if an assigned rota role id for this user id and this rota already exsist, if so do not add one - do this in the cntrl
+
+                //2a.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
+                cntrl.AssignUsersToRotaRole(); // up to this point works
 
 
                 //3.Create RotaInstanceRole Number using assignedRotaRoleID pulled from each control and RotaInstanceID from local var
-                //////////////////////////////
-                ///THIS BIT ISNT WORKING YET//
-                //////////////////////////////
-                foreach (int assignedrotaroleID in cntrl.AssignedRotaRoleIDs)
+                for (int i = 0; i < cntrl.AssignedRotaRoleIDs.Count; i++)
                 {
                     dbConnector = new clsDBConnector();
                     cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID) " +
-                        $"VALUES ({rotaInstanceID}, {assignedrotaroleID})";
+                        $"VALUES ({rotaInstanceID}, {cntrl.AssignedRotaRoleIDs[i]})";
                     dbConnector.Connect();
                     dbConnector.DoDML(cmdStr);
                     dbConnector.Close();
