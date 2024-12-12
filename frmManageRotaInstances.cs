@@ -67,7 +67,7 @@ namespace NEABenjaminFranklin
 
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
-            frmAddNewInstance frmAddNewInstance = new frmAddNewInstance(RotaID);
+            frmAddNewInstance frmAddNewInstance = new frmAddNewInstance(RotaID, RotaName, ThemeColour);
             frmAddNewInstance.ShowDialog();
         }
     }

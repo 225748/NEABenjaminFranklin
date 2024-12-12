@@ -14,17 +14,34 @@ namespace NEABenjaminFranklin
     public partial class frmAddNewInstance : Form
     {
         public int RotaID { get; set; }
+        public string RotaName { get; set; }
+        public string ThemeColour { get; set; }
 
-        public frmAddNewInstance(int rotaID)
+        public frmAddNewInstance(int rotaID, string rotaName, string themeColour)
         {
             InitializeComponent();
             RotaID = rotaID;
+            RotaName = rotaName;
+            ThemeColour = themeColour; 
         }
 
         private void frmAddNewInstance_Load(object sender, EventArgs e)
         {
             FillFlp();
             dtpDate.MinDate = DateTime.Now;
+            int lengthLimit = 20;
+            if (RotaName.Length > lengthLimit)
+            { lblRotaName.Text = RotaName.Substring(0, lengthLimit - 3) + "..."; }
+            else { lblRotaName.Text = RotaName; }
+            lblRotaName.Text = RotaName;
+            if (ThemeColour == "0") //default - no user colour set
+            {
+                btnThemeColour.BackColor = Color.Silver;
+            }
+            else
+            {
+                btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
+            }
         }
         private void FillFlp()
         {
