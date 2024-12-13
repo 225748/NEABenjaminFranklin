@@ -20,9 +20,7 @@ namespace NEABenjaminFranklin
         private void btnAddNewUser_Click(object sender, EventArgs e)
         {
             frmAddNewUser addNewUser = new frmAddNewUser();
-            addNewUser.Show();
-            //show not show dialogue here as i want it to close if the parent form closes
-            //also why this form doesnt close too - dont want it
+            addNewUser.ShowDialog();
         }
 
         private void btnManageUsers_Click(object sender, EventArgs e)
