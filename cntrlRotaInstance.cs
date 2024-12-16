@@ -66,7 +66,6 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
 
-
         }
     }
 }

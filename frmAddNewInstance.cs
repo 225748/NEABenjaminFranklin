@@ -60,7 +60,6 @@ namespace NEABenjaminFranklin
                 cntrlRoleWithListVUsers cntrlroleWithUsersList = new cntrlRoleWithListVUsers();
                 cntrlroleWithUsersList.RoleName = dr[0].ToString();
                 cntrlroleWithUsersList.RotaRoleNumber = Convert.ToInt32(dr[1]);
-                cntrlroleWithUsersList.RotaID = RotaID;
                 flpRoles.Controls.Add(cntrlroleWithUsersList);
             }
             dbConnector.Close();
@@ -93,7 +92,7 @@ namespace NEABenjaminFranklin
                                     0, 0);
 
 
-            //Need to do// -------
+            //Need to do//
             //1. --- Check if this datetime  of this specific rota already exisits, if so dont do any more of these steps
             
             //1a.Create an instance of the rota with this datetime
@@ -109,10 +108,11 @@ namespace NEABenjaminFranklin
             foreach (cntrlRoleWithListVUsers cntrl in flpRoles.Controls)
             {
                 //Need to do//
-                //2 check if an assigned rota role id for this user id, role and this rota already exsist, if so do not add one - do this in the cntrl
+                //2 check if an assigned rota role id for this user id and this rota already exsist, if so do not add one - do this in the cntrl
+
                 //2a.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
-                cntrl.AssignUsersToRotaRole();
-                
+                cntrl.AssignUsersToRotaRole(); // up to this point works
+
 
                 //3.Create RotaInstanceRole Number using assignedRotaRoleID pulled from each control and RotaInstanceID from local var
                 for (int i = 0; i < cntrl.AssignedRotaRoleIDs.Count; i++)
