@@ -89,6 +89,7 @@ namespace NEABenjaminFranklin
             {
                 //First check if they already have been assigned this rota role, if so do nothing
                 int existingAssignmentID = CheckForExistingAssignment(lstVUsers.CheckedItems[i]);
+                MessageBox.Show(existingAssignmentID.ToString());
                 if (existingAssignmentID == 0) //none already existing, therfore can add a new one
                 {
                     clsDBConnector dbConnector = new clsDBConnector();
