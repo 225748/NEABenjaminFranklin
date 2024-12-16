@@ -104,6 +104,7 @@ namespace NEABenjaminFranklin
                     AssignedRotaRoleIDs.Add(existingAssignmentID);
                 }
 
+
             }
         }
         
