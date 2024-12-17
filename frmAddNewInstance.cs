@@ -112,8 +112,8 @@ namespace NEABenjaminFranklin
                 //2 check if an assigned rota role id for this user id, role and this rota already exsist, if so do not add one - do this in the cntrl
                 //2a.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
                 cntrl.AssignUsersToRotaRole();
-                
 
+                //For a new instance we dont need to check if an instance role already exists - when editing you will need to check
                 //3.Create RotaInstanceRole Number using assignedRotaRoleID pulled from each control and RotaInstanceID from local var
                 for (int i = 0; i < cntrl.AssignedRotaRoleIDs.Count; i++)
                 {

@@ -65,19 +65,14 @@ namespace NEABenjaminFranklin
             int userID = Convert.ToInt32(CheckedItem.SubItems[1].Text);
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT tblAssignedRotaRoles.AssignedRotaRolesID " +
-                "FROM((tblAssignedRotaRoles INNER JOIN " +
-                "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber AND tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber AND " +
-                "tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) INNER JOIN " +
-                "tblRota ON tblRotaRoles.RotaID = tblRota.RotaID) " +
-                $"WHERE (tblAssignedRotaRoles.UserID = {userID}) " +
-                $"AND (tblRotaRoles.RotaID = {RotaID}) " +
-                $"AND (tblRotaRoles.RoleNumber = {RotaRoleNumber})";
+            string sqlCommand = "SELECT AssignedRotaRolesID " +
+                "FROM tblAssignedRotaRoles " +
+                $"WHERE(RotaRoleNumber = {RotaRoleNumber}) " +
+                $"AND(UserID = {userID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
             {
-                dbConnector.Close();
                 return Convert.ToInt32(dr[0].ToString()); //return AssignedRotaRoleID if there is one
             }
             dbConnector.Close();
