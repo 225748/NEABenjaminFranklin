@@ -126,11 +126,15 @@ namespace NEABenjaminFranklin
                 }
             }
 
+            //Check if successfull ----- to do
+            MessageBox.Show("Date Added and User(s) Assigned Successfully", "Rota Connect Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
             AddNewInstance();
+            this.Close();
         }
     }
 }
