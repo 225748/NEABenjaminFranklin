@@ -117,8 +117,10 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
 
             //Now that rota has been created, create its roles in tblrotaroles
-            int rotaID = Convert.ToInt32(GetRotaID(rotaName, themeColour, Convert.ToInt32(cmbFacility.SelectedValue.ToString())));
-            //int rotaID = FindLargestID(rotaName, "RotaID"); // - migrate getting userID to this method - max ID is allways the one you have just made
+            //Old Code
+            //int rotaID = Convert.ToInt32(GetRotaID(rotaName, themeColour, Convert.ToInt32(cmbFacility.SelectedValue.ToString())));
+
+            int rotaID = FindLargestID("tblRota", "RotaID"); // - migrated getting userID to this method - max ID is allways the one you have just made
             for (int i = 0; i < lstVRoles.Items.Count; i++)
             {
                 if (lstVRoles.Items[i].Checked == true)

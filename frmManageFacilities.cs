@@ -77,6 +77,7 @@ namespace NEABenjaminFranklin
         private void AddFacility(string facilityName)
         {
             clsDBConnector dbConnector = new clsDBConnector();
+            facilityName = facilityName.Replace("'", "''");
             string cmdStr = $"INSERT INTO tblFacility (FacilityName) " +
                 $"VALUES ('{facilityName}')";
             dbConnector.Connect();
