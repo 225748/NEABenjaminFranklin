@@ -36,7 +36,6 @@
             this.lblFacility = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.flpInstances = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddInstance = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
@@ -119,29 +118,20 @@
             this.panel1.Size = new System.Drawing.Size(800, 29);
             this.panel1.TabIndex = 20;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(539, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(173, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "See onenote design for this section";
-            // 
             // flpInstances
             // 
             this.flpInstances.AutoScroll = true;
             this.flpInstances.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpInstances.Location = new System.Drawing.Point(12, 81);
             this.flpInstances.Name = "flpInstances";
-            this.flpInstances.Size = new System.Drawing.Size(410, 357);
+            this.flpInstances.Size = new System.Drawing.Size(622, 357);
             this.flpInstances.TabIndex = 22;
             // 
             // btnAddInstance
             // 
-            this.btnAddInstance.Location = new System.Drawing.Point(473, 99);
+            this.btnAddInstance.Location = new System.Drawing.Point(669, 81);
             this.btnAddInstance.Name = "btnAddInstance";
-            this.btnAddInstance.Size = new System.Drawing.Size(109, 23);
+            this.btnAddInstance.Size = new System.Drawing.Size(109, 57);
             this.btnAddInstance.TabIndex = 23;
             this.btnAddInstance.Text = "Add a new Date";
             this.btnAddInstance.UseVisualStyleBackColor = true;
@@ -154,7 +144,6 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAddInstance);
             this.Controls.Add(this.flpInstances);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmManageRotaInstances";
@@ -166,7 +155,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -179,7 +167,6 @@
         private System.Windows.Forms.Label lblFacility;
         private System.Windows.Forms.Label lblRotaName;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flpInstances;
         private System.Windows.Forms.Button btnAddInstance;
     }

@@ -48,9 +48,13 @@ namespace NEABenjaminFranklin
                 ccRotaOverview.Show();
                 flpRotas.Controls.Add(ccRotaOverview);
             }
-            if (!dr.Read())
+            if (flpRotas.Controls.Count == 0)
             {
                 //append a label saying please create a rota to manage with the rota creation menu
+                Label lblNoRota = new Label();
+                lblNoRota.Text = "There are no rotas to display.\nPlease create a rota to manage with the rota creation menu";
+                lblNoRota.AutoSize = true;
+                flpRotas.Controls.Add(lblNoRota);
             }
             dbConnector.Close();
         }
