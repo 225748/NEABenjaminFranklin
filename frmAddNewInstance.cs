@@ -17,12 +17,13 @@ namespace NEABenjaminFranklin
         public string RotaName { get; set; }
         public string ThemeColour { get; set; }
 
+
         public frmAddNewInstance(int rotaID, string rotaName, string themeColour)
         {
             InitializeComponent();
             RotaID = rotaID;
             RotaName = rotaName;
-            ThemeColour = themeColour; 
+            ThemeColour = themeColour;
         }
 
         private void frmAddNewInstance_Load(object sender, EventArgs e)
@@ -164,7 +165,6 @@ namespace NEABenjaminFranklin
         {
             AddNewInstance();
             this.Close();
-            (Application.OpenForms["frmManage"] as frmManageRotas).RefreshFlp();
         }
 
         private void dtpDate_ValueChanged(object sender, EventArgs e)

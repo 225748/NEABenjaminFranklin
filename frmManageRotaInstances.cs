@@ -51,11 +51,14 @@ namespace NEABenjaminFranklin
                 btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
             }
         }
+        public void RefreshFlp()
+        {
+            FillFlpInstances();
+        }
 
         private void FillFlpInstances()
         {
 
-            //code below is tesiting for now
             //Do SQL TO get InstanceID, date and time and role numbers for rota
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -91,6 +94,7 @@ namespace NEABenjaminFranklin
         {
             frmAddNewInstance frmAddNewInstance = new frmAddNewInstance(RotaID, RotaName, ThemeColour);
             frmAddNewInstance.ShowDialog();
+            RefreshFlp();
         }
     }
 }

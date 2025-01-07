@@ -69,22 +69,31 @@ namespace NEABenjaminFranklin
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber " +
-                "FROM((((tblRotaInstanceRoles INNER JOIN " +
-                "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
-                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
-                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
-                "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-                $"WHERE (tblRotaInstance.RotaInstanceID = {instanceID}) " +
-                $"AND (tblRotaRoles.RotaRoleNumber = {roleNumber})";
-            dbConnector.Connect();
-            dr = dbConnector.DoSQL(sqlCommand);
-            while (dr.Read())
-            {
-                Label lblUser = new Label();
-                lblUser.Text = dr[0].ToString();
-                flpAssignedRoles.Controls.Add(lblUser);
-            }
+
+            /////////////////////
+            ///Not sure on this sql yet
+            ///THIS CODE CAUSES "UNSPECIFIED ERROR" IN THE sql connector class
+            ///as the previous connection is still open
+            ///
+            /// Potentially just get the previous function to add all roles to a list and then find all users for those roles and then add to flp
+            /////////////////////
+           
+            //string sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber " +
+            //    "FROM((((tblRotaInstanceRoles INNER JOIN " +
+            //    "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
+            //    "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+            //    "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
+            //    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+            //    $"WHERE (tblRotaInstance.RotaInstanceID = {instanceID}) " +
+            //    $"AND (tblRotaRoles.RotaRoleNumber = {roleNumber})";
+            //dbConnector.Connect();
+            //dr = dbConnector.DoSQL(sqlCommand);
+            //while (dr.Read())
+            //{
+            //    Label lblUser = new Label();
+            //    lblUser.Text = dr[0].ToString();
+            //    flpAssignedRoles.Controls.Add(lblUser);
+            //}
         }
     }
 }
