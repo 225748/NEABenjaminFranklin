@@ -29,7 +29,7 @@ namespace NEABenjaminFranklin
         {
             FillFlp();
             dtpDate.MinDate = DateTime.Now;
-            dtpTime.CustomFormat = "HH:MM"; //Captials for 24HR
+            dtpTime.CustomFormat = "HH:mm"; //Captial HH for 24HR NOT for mins as that becomes month
             dtpTime.Format = DateTimePickerFormat.Custom;
             dtpTime.ShowUpDown = true;
             int lengthLimit = 20;
@@ -87,12 +87,13 @@ namespace NEABenjaminFranklin
 
         private bool CheckForExistingInstance(int rotaID, DateTime dateTime)
         {
+            //MessageBox.Show(dateTime.ToString("MM/dd/yyyy HH:mm:00"));
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
             string sqlCommand = "SELECT RotaInstanceID " +
                 "FROM tblRotaInstance " +
                 $"WHERE (RotaID = {rotaID}) " +
-                $"AND (RotaInstanceDateTime = #{dateTime.ToString("MM/dd/yyyy/g")}#)"; //Convert date to us format with time
+                $"AND (RotaInstanceDateTime = #{dateTime.ToString("MM/dd/yyyy HH:mm:00")}#)"; //Convert date to us format with time
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
