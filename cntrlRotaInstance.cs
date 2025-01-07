@@ -62,7 +62,6 @@ namespace NEABenjaminFranklin
                 lblRoleName.Text = dr[0].ToString();
                 flpAssignedRoles.Controls.Add(lblRoleName);
                 //Now have a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
-
             }
             dbConnector.Close();
 
