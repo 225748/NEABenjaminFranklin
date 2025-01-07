@@ -22,7 +22,7 @@ namespace NEABenjaminFranklin
         {
             FillFlpRotas();
         }
-        public void RefresFlp()
+        public void RefreshFlp()
         {
             FillFlpRotas();
         }

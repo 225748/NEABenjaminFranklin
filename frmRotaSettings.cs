@@ -187,7 +187,7 @@ namespace NEABenjaminFranklin
         private void btnUpdateRota_Click(object sender, EventArgs e)
         {
             UpdateRota();
-            (Application.OpenForms["frmManageRotas"] as frmManageRotas).RefresFlp();
+            (Application.OpenForms["frmManageRotas"] as frmManageRotas).RefreshFlp();
             this.Close();
         }
 
@@ -197,7 +197,7 @@ namespace NEABenjaminFranklin
             if (promptResult == DialogResult.OK)
             {
                 DeleteRota();
-                (Application.OpenForms["frmManageRotas"] as frmManageRotas).RefresFlp();
+                (Application.OpenForms["frmManageRotas"] as frmManageRotas).RefreshFlp();
                 this.Close();
             }
             else

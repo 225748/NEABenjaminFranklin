@@ -27,10 +27,6 @@ namespace NEABenjaminFranklin
             InstanceDate = instanceDate;
             InstanceTime = instanceTime;
             InstanceID = instanceID;
-            //foreach (int role in roleNumbers)
-            //{
-            //    RoleNumbers.Add(role);
-            //}
             InitaliseTextFields();
             FillFlp();
         }
@@ -48,7 +44,7 @@ namespace NEABenjaminFranklin
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT tblRoles.RoleName " +
+            string sqlCommand = "SELECT tblRoles.RoleName, tblRoles.RoleNumber " +
                 "FROM((tblRota INNER JOIN " +
                 "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblRota.RotaID = tblRotaRoles.RotaID) INNER JOIN " +
                 "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
@@ -62,9 +58,33 @@ namespace NEABenjaminFranklin
                 lblRoleName.Text = dr[0].ToString();
                 flpAssignedRoles.Controls.Add(lblRoleName);
                 //Now have a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
+                FindAndDisplayUsersForRole(Convert.ToInt32(dr[1].ToString()),InstanceID);
+
             }
             dbConnector.Close();
 
+        }
+        private void FindAndDisplayUsersForRole(int roleNumber, int instanceID)
+        { //Given a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
+
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber " +
+                "FROM((((tblRotaInstanceRoles INNER JOIN " +
+                "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
+                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
+                "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                $"WHERE (tblRotaInstance.RotaInstanceID = {instanceID}) " +
+                $"AND (tblRotaRoles.RotaRoleNumber = {roleNumber})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                Label lblUser = new Label();
+                lblUser.Text = dr[0].ToString();
+                flpAssignedRoles.Controls.Add(lblUser);
+            }
         }
     }
 }

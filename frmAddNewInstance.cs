@@ -164,6 +164,7 @@ namespace NEABenjaminFranklin
         {
             AddNewInstance();
             this.Close();
+            (Application.OpenForms["frmManage"] as frmManageRotas).RefreshFlp();
         }
 
         private void dtpDate_ValueChanged(object sender, EventArgs e)
