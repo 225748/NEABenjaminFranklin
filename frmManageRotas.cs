@@ -36,7 +36,7 @@ namespace NEABenjaminFranklin
             dr = dbConnector.DoSQL(sqlCommand);
             flpRotas.Controls.Clear();
 
-            while (dr.Read()) // change this so all the sub items are added using a nested loop
+            while (dr.Read())
             {//dr[0].ToString()
                 cntrlRotaOverview ccRotaOverview = new cntrlRotaOverview(dr[2].ToString(), Convert.ToInt32(dr[0]), dr[4].ToString(), Convert.ToInt32(dr[1]), dr[3].ToString());
                 //ccRotaOverview.RotaID = Convert.ToInt32(dr[0]);

@@ -51,7 +51,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(915, 31);
             this.pnlTopBar.TabIndex = 16;
             // 
             // picRotaConnect
@@ -115,7 +115,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 29);
+            this.panel1.Size = new System.Drawing.Size(915, 29);
             this.panel1.TabIndex = 20;
             // 
             // flpInstances
@@ -124,12 +124,12 @@
             this.flpInstances.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpInstances.Location = new System.Drawing.Point(12, 81);
             this.flpInstances.Name = "flpInstances";
-            this.flpInstances.Size = new System.Drawing.Size(622, 357);
+            this.flpInstances.Size = new System.Drawing.Size(731, 357);
             this.flpInstances.TabIndex = 22;
             // 
             // btnAddInstance
             // 
-            this.btnAddInstance.Location = new System.Drawing.Point(669, 81);
+            this.btnAddInstance.Location = new System.Drawing.Point(774, 81);
             this.btnAddInstance.Name = "btnAddInstance";
             this.btnAddInstance.Size = new System.Drawing.Size(109, 57);
             this.btnAddInstance.TabIndex = 23;
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(915, 450);
             this.Controls.Add(this.btnAddInstance);
             this.Controls.Add(this.flpInstances);
             this.Controls.Add(this.panel1);

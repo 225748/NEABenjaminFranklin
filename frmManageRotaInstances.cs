@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -56,14 +57,35 @@ namespace NEABenjaminFranklin
 
             //code below is tesiting for now
             //Do SQL TO get InstanceID, date and time and role numbers for rota
-            string instanceDate = "10/12/2024";
-            string instanceTime = "9:00";
-            int instanceID = 0;
-            //List<int> roleNumbers = new List<int>(new int[] { 2, 3, 5, 6, 7, 8 }); //pull from database, this is just for testing
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            //select instance date, time and ID for this rota ID
+            string sqlCommand = "SELECT RotaInstanceDateTime, RotaInstanceID " +
+                "FROM tblRotaInstance " +
+                $"WHERE(RotaID = {RotaID}) " +
+                $"ORDER BY RotaInstanceDateTime";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            flpInstances.Controls.Clear();
 
-            cntrlRotaInstance cntrlRotaInstance = new cntrlRotaInstance(RotaID, instanceDate, instanceTime, instanceID);
-            flpInstances.Controls.Add(cntrlRotaInstance);
+            while (dr.Read())
+            {
+                string instanceDate = dr[0].ToString().Substring(0,10);
+                string instanceTime = dr[0].ToString().Substring(11, 5);
+                cntrlRotaInstance cntrlRotaInstance = new cntrlRotaInstance(RotaID, instanceDate, instanceTime, Convert.ToInt32(dr[1].ToString()));
+                cntrlRotaInstance.Show();
+                flpInstances.Controls.Add(cntrlRotaInstance);
+            }
+            if (flpInstances.Controls.Count == 0)
+            {
+                Label lblNoInstance = new Label();
+                lblNoInstance.Text = "There are no instances to display.\nPlease create an instance to manage with the instance creation menu";
+                lblNoInstance.AutoSize = true;
+                flpInstances.Controls.Add(lblNoInstance);
+            }
+            dbConnector.Close();
         }
+
 
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
