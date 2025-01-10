@@ -19,6 +19,7 @@ namespace NEABenjaminFranklin
         public string InstanceTime { get; set; }
         public int InstanceID { get; set; }
         //public List<int> RoleNumbers = new List<int>();
+        public List<clsRoles> Roleslst = new List<clsRoles>();
 
         public cntrlRotaInstance(int rotaID, string instanceDate, string instanceTime, int instanceID)
         {
@@ -54,14 +55,28 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-                Label lblRoleName = new Label();
-                lblRoleName.Text = dr[0].ToString();
-                flpAssignedRoles.Controls.Add(lblRoleName);
-                //Now have a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
-                FindAndDisplayUsersForRole(Convert.ToInt32(dr[1].ToString()),InstanceID);
+
+                clsRoles Role = new clsRoles(dr[0].ToString(), Convert.ToInt32(dr[1].ToString()));
+
+                Roleslst.Add(Role);
+
+                //Old Code from before list plan
+                //Label lblRoleName = new Label();
+                //lblRoleName.Text = dr[0].ToString();
+                //flpAssignedRoles.Controls.Add(lblRoleName);
+                ////Now have a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
+                //FindAndDisplayUsersForRole(Convert.ToInt32(dr[1].ToString()),InstanceID);
 
             }
             dbConnector.Close();
+
+            foreach (clsRoles role in Roleslst)
+            {
+                Label lblRoleName = new Label();
+                lblRoleName.Text = role.RoleName;
+                flpAssignedRoles.Controls.Add(lblRoleName);
+                FindAndDisplayUsersForRole(role.RoleNumber, InstanceID);
+            }
 
         }
         private void FindAndDisplayUsersForRole(int roleNumber, int instanceID)
@@ -77,23 +92,24 @@ namespace NEABenjaminFranklin
             ///
             /// Potentially just get the previous function to add all roles to a list and then find all users for those roles and then add to flp
             /////////////////////
-           
-            //string sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber " +
-            //    "FROM((((tblRotaInstanceRoles INNER JOIN " +
-            //    "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
-            //    "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
-            //    "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
-            //    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-            //    $"WHERE (tblRotaInstance.RotaInstanceID = {instanceID}) " +
-            //    $"AND (tblRotaRoles.RotaRoleNumber = {roleNumber})";
-            //dbConnector.Connect();
-            //dr = dbConnector.DoSQL(sqlCommand);
-            //while (dr.Read())
-            //{
-            //    Label lblUser = new Label();
-            //    lblUser.Text = dr[0].ToString();
-            //    flpAssignedRoles.Controls.Add(lblUser);
-            //}
+
+            string sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber " +
+                "FROM((((tblRotaInstanceRoles INNER JOIN " +
+                "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
+                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
+                "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                $"WHERE (tblRotaInstance.RotaInstanceID = {instanceID}) " +
+                $"AND (tblRotaRoles.RotaRoleNumber = {roleNumber})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                Label lblUser = new Label();
+                lblUser.Text = dr[0].ToString();
+                flpAssignedRoles.Controls.Add(lblUser);
+            }
+            dbConnector.Close();
         }
     }
 }

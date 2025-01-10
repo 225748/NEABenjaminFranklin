@@ -58,8 +58,10 @@ namespace NEABenjaminFranklin
         private void btnMangeRotaInstances_Click(object sender, EventArgs e)
         {
             //create an instance of the rota instances form and give it this info - use publics? - may need to put rota ID into this as a public
+            this.Cursor = Cursors.WaitCursor;
             frmManageRotaInstances frmManageRotaInstances = new frmManageRotaInstances(RotaName, RotaID, FacilityName, FacilityID, ThemeColour);
             frmManageRotaInstances.ShowDialog();
+            this.Cursor = Cursors.Default;
         }
     }
 }

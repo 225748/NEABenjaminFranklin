@@ -33,6 +33,7 @@ namespace NEABenjaminFranklin
         {
             InitaliseTextFields();
             FillFlpInstances();
+            this.Cursor = Cursors.Default;
         }
 
         private void InitaliseTextFields()
