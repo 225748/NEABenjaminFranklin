@@ -96,12 +96,7 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
 
             //now with each rota role number (passed in) and eached assigned rotarolesID check for a userID in assignedrotaroles
-
-            ///////////////////////////////
-            ///CODE WORKS UP TO THIS SQL!
-            ///THE ISSUE IS THE STATEMENT, NOT CODE
-            ////////////////////////////////
-            
+           
 
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
