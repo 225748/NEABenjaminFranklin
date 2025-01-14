@@ -38,6 +38,18 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // horizontalLine
+            // 
+            horizontalLine.BackColor = System.Drawing.Color.Black;
+            horizontalLine.Enabled = false;
+            horizontalLine.Location = new System.Drawing.Point(11, 40);
+            horizontalLine.Margin = new System.Windows.Forms.Padding(0);
+            horizontalLine.Name = "horizontalLine";
+            horizontalLine.Size = new System.Drawing.Size(207, 10);
+            horizontalLine.TabIndex = 0;
+            horizontalLine.TabStop = false;
+            horizontalLine.UseVisualStyleBackColor = false;
+            // 
             // lblDate
             // 
             this.lblDate.AutoSize = true;
@@ -82,22 +94,11 @@
             // 
             // flpAssignedRoles
             // 
+            this.flpAssignedRoles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpAssignedRoles.Location = new System.Drawing.Point(11, 54);
             this.flpAssignedRoles.Name = "flpAssignedRoles";
             this.flpAssignedRoles.Size = new System.Drawing.Size(205, 211);
             this.flpAssignedRoles.TabIndex = 3;
-            // 
-            // horizontalLine
-            // 
-            horizontalLine.BackColor = System.Drawing.Color.Black;
-            horizontalLine.Enabled = false;
-            horizontalLine.Location = new System.Drawing.Point(11, 40);
-            horizontalLine.Margin = new System.Windows.Forms.Padding(0);
-            horizontalLine.Name = "horizontalLine";
-            horizontalLine.Size = new System.Drawing.Size(207, 10);
-            horizontalLine.TabIndex = 0;
-            horizontalLine.TabStop = false;
-            horizontalLine.UseVisualStyleBackColor = false;
             // 
             // cntrlRotaInstance
             // 
