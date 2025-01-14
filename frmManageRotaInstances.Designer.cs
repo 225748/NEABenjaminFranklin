@@ -121,6 +121,7 @@
             // flpInstances
             // 
             this.flpInstances.AutoScroll = true;
+            this.flpInstances.BackColor = System.Drawing.SystemColors.ControlLight;
             this.flpInstances.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpInstances.Location = new System.Drawing.Point(12, 81);
             this.flpInstances.Name = "flpInstances";

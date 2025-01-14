@@ -94,11 +94,13 @@
             // 
             // flpAssignedRoles
             // 
+            this.flpAssignedRoles.AutoScroll = true;
             this.flpAssignedRoles.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpAssignedRoles.Location = new System.Drawing.Point(11, 54);
             this.flpAssignedRoles.Name = "flpAssignedRoles";
             this.flpAssignedRoles.Size = new System.Drawing.Size(205, 211);
             this.flpAssignedRoles.TabIndex = 3;
+            this.flpAssignedRoles.WrapContents = false;
             // 
             // cntrlRotaInstance
             // 

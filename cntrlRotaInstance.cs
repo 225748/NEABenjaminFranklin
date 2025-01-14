@@ -113,7 +113,8 @@ namespace NEABenjaminFranklin
                 while (dr.Read())
                 {
                     Label lblUser = new Label();
-                    lblUser.Text = dr[0].ToString() + dr[1].ToString();
+                    //appending spaces so the names are 'tab shifted' right under the role headings
+                    lblUser.Text = "     " + dr[0].ToString() + dr[1].ToString();
                     flpAssignedRoles.Controls.Add(lblUser);
                 }
                 dbConnector.Close();
