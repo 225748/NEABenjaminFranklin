@@ -45,7 +45,7 @@ namespace NEABenjaminFranklin
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT tblRoles.RoleName, tblRoles.RoleNumber " +
+            string sqlCommand = "SELECT tblRoles.RoleName, tblRotaRoles.RoleNumber " +
                 "FROM((tblRota INNER JOIN " +
                 "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblRota.RotaID = tblRotaRoles.RotaID) INNER JOIN " +
                 "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
@@ -55,18 +55,8 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-
                 clsRoles Role = new clsRoles(dr[0].ToString(), Convert.ToInt32(dr[1].ToString()));
-
                 Roleslst.Add(Role);
-
-                //Old Code from before list plan
-                //Label lblRoleName = new Label();
-                //lblRoleName.Text = dr[0].ToString();
-                //flpAssignedRoles.Controls.Add(lblRoleName);
-                ////Now have a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
-                //FindAndDisplayUsersForRole(Convert.ToInt32(dr[1].ToString()),InstanceID);
-
             }
             dbConnector.Close();
 
@@ -79,37 +69,47 @@ namespace NEABenjaminFranklin
             }
 
         }
-        private void FindAndDisplayUsersForRole(int roleNumber, int instanceID)
+        private void FindAndDisplayUsersForRole(int rotaRoleNumber, int instanceID)
         { //Given a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
 
+            //given the instanceID, find all associated assignedRotaRoles for this instanceID (from RotaInstanceRoles)
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-
-            /////////////////////
-            ///Not sure on this sql yet
-            ///THIS CODE CAUSES "UNSPECIFIED ERROR" IN THE sql connector class
-            ///as the previous connection is still open
-            ///
-            /// Potentially just get the previous function to add all roles to a list and then find all users for those roles and then add to flp
-            /////////////////////
-
-            string sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber " +
-                "FROM((((tblRotaInstanceRoles INNER JOIN " +
-                "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
-                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
-                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
+            string sqlCommand = "SELECT tblRotaInstanceRoles.AssignedRotaRolesID " +
+                "FROM((tblAssignedRotaRoles INNER JOIN " +
+                "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
                 "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-                $"WHERE (tblRotaInstance.RotaInstanceID = {instanceID}) " +
-                $"AND (tblRotaRoles.RotaRoleNumber = {roleNumber})";
+                $"WHERE(tblRotaInstanceRoles.RotaInstanceID = {instanceID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
+
+            List<int> assignedRotaRoleIDs = new List<int>();
             while (dr.Read())
             {
-                Label lblUser = new Label();
-                lblUser.Text = dr[0].ToString();
-                flpAssignedRoles.Controls.Add(lblUser);
+                assignedRotaRoleIDs.Add(Convert.ToInt32(dr[0].ToString()));
             }
             dbConnector.Close();
+
+            //now with each rota role number (passed in) and eached assigned rotarolesID check for a userID in assignedrotaroles
+            foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
+            {
+                dbConnector = new clsDBConnector();
+                sqlCommand = "SELECT tblAssignedRotaRoles.UserID, tblPeople.FirstName, tblPeople.LastName " +
+                    "FROM(tblAssignedRotaRoles INNER JOIN " +
+                    "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) " +
+                    $"WHERE(tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) AND(tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID}) " +
+                    "AND(tblAssignedRotaRoles.UserID = tblPeople.UserID)";
+                dbConnector.Connect();
+                dr = dbConnector.DoSQL(sqlCommand);
+
+                while (dr.Read())
+                {
+                    Label lblUser = new Label();
+                    lblUser.Text = dr[1].ToString() + dr[2].ToString();
+                    flpAssignedRoles.Controls.Add(lblUser);
+                }
+                dbConnector.Close();
+            }
         }
     }
 }
