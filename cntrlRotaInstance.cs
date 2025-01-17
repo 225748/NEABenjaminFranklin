@@ -86,7 +86,7 @@ namespace NEABenjaminFranklin
                 "FROM((tblAssignedRotaRoles INNER JOIN " +
                 "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
                 "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-                $"WHERE(tblRotaInstanceRoles.RotaInstanceID = {instanceID})";
+                $"WHERE(tblRotaInstanceRoles.RotaInstanceID = {instanceID}) AND (tblRotaRoles.RotaRoleNumber = {rotaRoleNumber})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
 
@@ -119,7 +119,7 @@ namespace NEABenjaminFranklin
                 {
                     Label lblUser = new Label();
                     //appending spaces so the names are 'tab shifted' right under the role headings
-                    lblUser.Text = "    " + dr[0].ToString() + " " + dr[1].ToString();
+                    lblUser.Text = "       " + dr[0].ToString() + " " + dr[1].ToString();
                     lblUser.AutoSize = true;
                     lblUser.Margin = new System.Windows.Forms.Padding(0,2,0,6);
                     lblUser.Show();
