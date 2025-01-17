@@ -65,6 +65,8 @@ namespace NEABenjaminFranklin
                 Label lblRoleName = new Label();
                 lblRoleName.Text = role.RoleName;
                 lblRoleName.Font = new Font(lblRoleName.Font.Name, 9, FontStyle.Bold);
+                lblRoleName.AutoSize = true;
+                lblRoleName.MinimumSize = new System.Drawing.Size(0,20);
                 flpAssignedRoles.Controls.Add(lblRoleName);
 
                 //Using the role class to easily send name and role number around
@@ -117,9 +119,9 @@ namespace NEABenjaminFranklin
                 {
                     Label lblUser = new Label();
                     //appending spaces so the names are 'tab shifted' right under the role headings
-                    MessageBox.Show(dr[0].ToString() + " " + dr[1].ToString());
                     lblUser.Text = "    " + dr[0].ToString() + " " + dr[1].ToString();
                     lblUser.AutoSize = true;
+                    lblUser.Margin = new System.Windows.Forms.Padding(0,2,0,6);
                     lblUser.Show();
                     flpAssignedRoles.Controls.Add(lblUser);
                 }

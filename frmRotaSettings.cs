@@ -161,7 +161,7 @@ namespace NEABenjaminFranklin
                     string cmdStr = $"DELETE FROM tblRotaRoles WHERE (RotaID = {RotaID}) AND (RoleNumber = {rotaRolesList[i].RoleNumber})";
                     dbConnector.Connect();
                     dbConnector.DoSQL(cmdStr);
-                    MessageBox.Show(cmdStr);
+                    //MessageBox.Show(cmdStr);
                     dbConnector.Close();
                 }
                 else
