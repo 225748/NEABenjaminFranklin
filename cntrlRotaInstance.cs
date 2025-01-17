@@ -97,7 +97,10 @@ namespace NEABenjaminFranklin
 
             //now with each rota role number (passed in) and eached assigned rotarolesID check for a userID in assignedrotaroles
            
-
+            ////////
+            //error in this sql, if a person is on one role, it outputs them on that role on EVERY instance
+            // IT doesnt seem to be storing duplicates so error is in how we replicate the data here
+            ////////
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
                 dbConnector = new clsDBConnector();
@@ -114,7 +117,10 @@ namespace NEABenjaminFranklin
                 {
                     Label lblUser = new Label();
                     //appending spaces so the names are 'tab shifted' right under the role headings
-                    lblUser.Text = "     " + dr[0].ToString() + dr[1].ToString();
+                    MessageBox.Show(dr[0].ToString() + " " + dr[1].ToString());
+                    lblUser.Text = "    " + dr[0].ToString() + " " + dr[1].ToString();
+                    lblUser.AutoSize = true;
+                    lblUser.Show();
                     flpAssignedRoles.Controls.Add(lblUser);
                 }
                 dbConnector.Close();
