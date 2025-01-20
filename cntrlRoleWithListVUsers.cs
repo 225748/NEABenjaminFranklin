@@ -19,7 +19,7 @@ namespace NEABenjaminFranklin
         //These below are used when edit mode of AddEditNewInstance is active
         public bool PreSelectUsers { get; set; }
         public int InstanceID { get; set; }
-        public List<clsUser> users { get; set; }
+        public List<clsUser> lstUsers = new List<clsUser>();
         //
         public List<int> AssignedRotaRoleIDs = new List<int>();
         public cntrlRoleWithListVUsers()
@@ -30,7 +30,6 @@ namespace NEABenjaminFranklin
         private void cntrlRoleWithListVUsers_Load(object sender, EventArgs e)
         {
             lblRoleName.Text = RoleName;
-            PreSelectUsers = false;
             FillChkList();
         }
         private void FillChkList()
@@ -51,11 +50,12 @@ namespace NEABenjaminFranklin
                     clsUser user = new clsUser();
                     user.userID = Convert.ToInt32(dr[1].ToString());
                     user.chkListIndex = (lstVUsers.Items.Count - 1);
+                    lstUsers.Add(user);
                 }
             }
             if (PreSelectUsers)
             {//do SQL to find if already assigned, if so then make selected true
-                foreach (clsUser user in users)
+                foreach (clsUser user in lstUsers)
                 {
                     dbConnector = new clsDBConnector();
                     sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber, tblAssignedRotaRoles.UserID " +
@@ -67,9 +67,8 @@ namespace NEABenjaminFranklin
                     dr = dbConnector.DoSQL(sqlCommand);
                     while (dr.Read())
                     {//Its found an assignedRotaRoleID
-                        lstVUsers.Items[user.chkListIndex].Selected = true;
-                       
-
+                        //MessageBox.Show(dr[1].ToString() + " " + dr[0].ToString());
+                        lstVUsers.Items[user.chkListIndex].Checked = true;
                     }
                     dbConnector.Close();
 
