@@ -91,11 +91,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmAddNewInstance.cs">
+    <Compile Include="frmAddEditNewInstance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmAddNewInstance.Designer.cs">
-      <DependentUpon>frmAddNewInstance.cs</DependentUpon>
+    <Compile Include="frmAddEditNewInstance.Designer.cs">
+      <DependentUpon>frmAddEditNewInstance.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddNewUser.cs">
       <SubType>Form</SubType>
@@ -178,8 +178,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmAddNewInstance.resx">
-      <DependentUpon>frmAddNewInstance.cs</DependentUpon>
+    <EmbeddedResource Include="frmAddEditNewInstance.resx">
+      <DependentUpon>frmAddEditNewInstance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddNewUser.resx">
       <DependentUpon>frmAddNewUser.cs</DependentUpon>

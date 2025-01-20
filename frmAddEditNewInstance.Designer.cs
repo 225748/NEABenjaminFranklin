@@ -1,6 +1,6 @@
 ﻿namespace NEABenjaminFranklin
 {
-    partial class frmAddNewInstance
+    partial class frmAddEditNewInstance
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewInstance));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditNewInstance));
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
@@ -42,9 +42,13 @@
             this.lblTime = new System.Windows.Forms.Label();
             this.dtpTime = new System.Windows.Forms.DateTimePicker();
             this.btnAddInstance = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.pnlEditMode = new System.Windows.Forms.Panel();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlEditMode.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -96,7 +100,7 @@
             this.lblRotaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRotaName.Location = new System.Drawing.Point(16, 6);
             this.lblRotaName.Name = "lblRotaName";
-            this.lblRotaName.Size = new System.Drawing.Size(97, 16);
+            this.lblRotaName.Size = new System.Drawing.Size(100, 16);
             this.lblRotaName.TabIndex = 17;
             this.lblRotaName.Text = "{Rota Name}";
             // 
@@ -138,7 +142,6 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(93, 20);
             this.dtpDate.TabIndex = 23;
-            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // lblDate
             // 
@@ -177,11 +180,39 @@
             this.btnAddInstance.UseVisualStyleBackColor = true;
             this.btnAddInstance.Click += new System.EventHandler(this.btnAddInstance_Click);
             // 
-            // frmAddNewInstance
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(0, 3);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(77, 23);
+            this.btnUpdate.TabIndex = 28;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(83, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(94, 23);
+            this.btnDelete.TabIndex = 29;
+            this.btnDelete.Text = "Delete Date";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // pnlEditMode
+            // 
+            this.pnlEditMode.Controls.Add(this.btnUpdate);
+            this.pnlEditMode.Controls.Add(this.btnDelete);
+            this.pnlEditMode.Location = new System.Drawing.Point(19, 405);
+            this.pnlEditMode.Name = "pnlEditMode";
+            this.pnlEditMode.Size = new System.Drawing.Size(177, 33);
+            this.pnlEditMode.TabIndex = 30;
+            // 
+            // frmAddEditNewInstance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 450);
+            this.Controls.Add(this.pnlEditMode);
             this.Controls.Add(this.btnAddInstance);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.dtpTime);
@@ -190,7 +221,7 @@
             this.Controls.Add(this.flpRoles);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
-            this.Name = "frmAddNewInstance";
+            this.Name = "frmAddEditNewInstance";
             this.Text = "frmAddNewInstance";
             this.Load += new System.EventHandler(this.frmAddNewInstance_Load);
             this.pnlTopBar.ResumeLayout(false);
@@ -198,6 +229,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnlEditMode.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,5 +250,8 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.DateTimePicker dtpTime;
         private System.Windows.Forms.Button btnAddInstance;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Panel pnlEditMode;
     }
 }

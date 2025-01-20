@@ -18,7 +18,6 @@ namespace NEABenjaminFranklin
         public string InstanceDate { get; set; }
         public string InstanceTime { get; set; }
         public int InstanceID { get; set; }
-        //public List<int> RoleNumbers = new List<int>();
         public List<clsRoles> Roleslst = new List<clsRoles>();
 
         public cntrlRotaInstance(int rotaID, string instanceDate, string instanceTime, int instanceID)
@@ -76,7 +75,7 @@ namespace NEABenjaminFranklin
             }
 
         }
-        private void FindAndDisplayUsersForRole(int rotaRoleNumber, int instanceID)
+        private void FindAndDisplayUsersForRole(int rotaRoleNumber, int instanceID) // can potentially do these 2 sql in one - see onenote page
         { //Given a role - get all assigned users for this role for this instance - if none then add a "No user assigned label"
 
             //given the instanceID, find all associated assignedRotaRoles for this instanceID (from RotaInstanceRoles)
@@ -99,10 +98,6 @@ namespace NEABenjaminFranklin
 
             //now with each rota role number (passed in) and eached assigned rotarolesID check for a userID in assignedrotaroles
            
-            ////////
-            //error in this sql, if a person is on one role, it outputs them on that role on EVERY instance
-            // IT doesnt seem to be storing duplicates so error is in how we replicate the data here
-            ////////
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
                 dbConnector = new clsDBConnector();
@@ -127,6 +122,12 @@ namespace NEABenjaminFranklin
                 }
                 dbConnector.Close();
             }
+        }
+
+        private void btnEditAssignments_Click(object sender, EventArgs e)
+        {
+            frmAddEditNewInstance frmAddNewInstance = new frmAddEditNewInstance(RotaID,"","",true);
+            frmAddNewInstance.ShowDialog();
         }
     }
 }

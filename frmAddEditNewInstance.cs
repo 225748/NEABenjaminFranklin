@@ -11,19 +11,46 @@ using System.Windows.Forms;
 
 namespace NEABenjaminFranklin
 {
-    public partial class frmAddNewInstance : Form
+    public partial class frmAddEditNewInstance : Form
     {
         public int RotaID { get; set; }
         public string RotaName { get; set; }
         public string ThemeColour { get; set; }
+        public bool EditMode { get; set; }
 
 
-        public frmAddNewInstance(int rotaID, string rotaName, string themeColour)
+        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false)
         {
             InitializeComponent();
             RotaID = rotaID;
-            RotaName = rotaName;
-            ThemeColour = themeColour;
+
+            //If we have only been given rotaID, do sql to get name and theme colour - provision for the cntrlRotaInstance creating an object of this
+            //As the cntrl itself is not given this info
+
+            if (rotaName == "" | themeColour == "")
+            {
+                clsDBConnector dbConnector = new clsDBConnector();
+                OleDbDataReader dr;
+                string sqlCommand = "SELECT RotaName, RotaThemeColour " +
+                    "FROM tblRota " +
+                    $"WHERE RotaID = {rotaID}";
+                dbConnector.Connect();
+                dr = dbConnector.DoSQL(sqlCommand);
+
+                while (dr.Read())
+                {
+                    RotaName = dr[0].ToString();
+                    ThemeColour = dr[1].ToString();
+                }
+                dbConnector.Close();
+            }
+            else
+            {
+                RotaName = rotaName;
+                ThemeColour = themeColour;
+            }
+            EditMode = editMode;
+
         }
 
         private void frmAddNewInstance_Load(object sender, EventArgs e)
@@ -45,6 +72,23 @@ namespace NEABenjaminFranklin
             else
             {
                 btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
+            }
+
+            if (EditMode)
+            {
+                this.Text = "Update / Delete Instance";
+                pnlEditMode.Enabled = true;
+                pnlEditMode.Show();
+                btnAddInstance.Enabled = false;
+                btnAddInstance.Hide();
+            }
+            else
+            {
+                this.Text = "Add New Instance";
+                pnlEditMode.Enabled = false;
+                pnlEditMode.Hide();
+                btnAddInstance.Enabled = true;
+                btnAddInstance.Show();
             }
         }
         private void FillFlp()
@@ -68,7 +112,7 @@ namespace NEABenjaminFranklin
                 flpRoles.Controls.Add(cntrlroleWithUsersList);
             }
             dbConnector.Close();
-            
+
         }
         private int FindLargestID(string tableName, string keyName)//largest ID is allways the one you have just created
         {
@@ -164,26 +208,9 @@ namespace NEABenjaminFranklin
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
             AddNewInstance();
+            (Application.OpenForms["frmManageRotaInstances"] as frmManageRotaInstances).RefreshFlp();
             this.Close();
         }
 
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
-        {
-            //Not working correctly - forcing time and not allowing user to update
-            //if (dtpDate.Value.ToString("HH:mm") == DateTime.Now.ToString("HH:mm"))//set min time to now if date is also today, else allow any time
-            //{
-            //    dtpTime.MinDate = DateTime.Now;
-            //}
-            //else
-            //{
-            //    DateTime dateTime = new DateTime(DateTime.Now.Year,
-            //            DateTime.Now.Month,
-            //            DateTime.Now.Day,
-            //            0,
-            //            0,
-            //            0, 0);
-            //    dtpTime.MinDate = dateTime;
-            //}
-        }
     }
 }

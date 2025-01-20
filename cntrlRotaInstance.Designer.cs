@@ -56,7 +56,7 @@
             this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDate.Location = new System.Drawing.Point(8, 5);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(52, 16);
+            this.lblDate.Size = new System.Drawing.Size(53, 16);
             this.lblDate.TabIndex = 2;
             this.lblDate.Text = "{Date}";
             // 
@@ -82,6 +82,7 @@
             this.btnEditAssignments.TabIndex = 0;
             this.btnEditAssignments.Text = "Edit Assignments";
             this.btnEditAssignments.UseVisualStyleBackColor = true;
+            this.btnEditAssignments.Click += new System.EventHandler(this.btnEditAssignments_Click);
             // 
             // lblTime
             // 

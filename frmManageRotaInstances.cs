@@ -93,9 +93,8 @@ namespace NEABenjaminFranklin
 
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
-            frmAddNewInstance frmAddNewInstance = new frmAddNewInstance(RotaID, RotaName, ThemeColour);
+            frmAddEditNewInstance frmAddNewInstance = new frmAddEditNewInstance(RotaID, RotaName, ThemeColour);
             frmAddNewInstance.ShowDialog();
-            RefreshFlp();
         }
     }
 }
