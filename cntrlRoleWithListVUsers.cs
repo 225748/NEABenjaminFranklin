@@ -73,10 +73,7 @@ namespace NEABenjaminFranklin
                     dbConnector.Close();
 
                 }
-
-
             }
-
 
         }
         private int FindLargestID(string tableName, string keyName)//largest ID is allways the one you have just created

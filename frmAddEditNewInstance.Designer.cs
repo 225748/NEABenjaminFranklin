@@ -100,7 +100,7 @@
             this.lblRotaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRotaName.Location = new System.Drawing.Point(16, 6);
             this.lblRotaName.Name = "lblRotaName";
-            this.lblRotaName.Size = new System.Drawing.Size(100, 16);
+            this.lblRotaName.Size = new System.Drawing.Size(97, 16);
             this.lblRotaName.TabIndex = 17;
             this.lblRotaName.Text = "{Rota Name}";
             // 
@@ -188,6 +188,7 @@
             this.btnUpdate.TabIndex = 28;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnDelete
             // 

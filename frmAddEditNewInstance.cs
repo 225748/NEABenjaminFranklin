@@ -213,6 +213,27 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private void UpdateInstance(int rotaInstanceID)
+        {
+            //For every item in each list in each flp in each control
+                //If checked then see if there is an exisitng AssignedRotaRoleNunber for that user (done in control as above i believe)
+                  //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
+                    //If so do nothing as it started as checked and has ended as checked
+                  //If there isn't, add them to a list of people needing to be added
+                    //started unchecked but have has this assigned rota role before
+               //If checked but not AssignedRotaRoleNumber for that user, make one and then add them to the list of people needing to be added
+                    //Started unchecked and have never had this assigned rota role before
+               //If not checked, see if they have an exsiting AssignedRotaRoleNunber for this role and rota
+                  //If so then check if they were assigned to this instance by checking for  RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
+                    //If There is a RotaInstanceRole Number, delete it (remove them from this instance)
+                    //If not do nothing (They've had the role before but were never assigned to it for this specific instance)
+                  //If not then do nothing (They've never had the role before on this rota and therefore are not assigned to it)
+
+            //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
+                 //They started unchecked but we want to add them.
+
+        }
+
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
             AddNewInstance();
@@ -220,5 +241,11 @@ namespace NEABenjaminFranklin
             this.Close();
         }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateInstance(EditModeInstanceID);
+            (Application.OpenForms["frmManageRotaInstances"] as frmManageRotaInstances).RefreshFlp();
+            this.Close();
+        }
     }
 }
