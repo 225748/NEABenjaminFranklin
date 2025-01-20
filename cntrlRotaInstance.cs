@@ -106,7 +106,7 @@ namespace NEABenjaminFranklin
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
                 dbConnector = new clsDBConnector();
-                sqlCommand = "SELECT tblPeople.FirstName, tblPeople.LastName " +
+                sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName " +
                     "FROM(((tblAssignedRotaRoles INNER JOIN " +
                     "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
                     "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
