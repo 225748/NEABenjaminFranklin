@@ -60,12 +60,6 @@
     <Compile Include="cntrlAcceptDeclineDates.Designer.cs">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
     </Compile>
-    <Compile Include="cntrlRoleWithAssignedUsers.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="cntrlRoleWithAssignedUsers.Designer.cs">
-      <DependentUpon>cntrlRoleWithAssignedUsers.cs</DependentUpon>
-    </Compile>
     <Compile Include="cntrlRoleWithListVUsers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,9 +156,6 @@
     <Compile Include="Validation.cs" />
     <EmbeddedResource Include="cntrlAcceptDeclineDates.resx">
       <DependentUpon>cntrlAcceptDeclineDates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="cntrlRoleWithAssignedUsers.resx">
-      <DependentUpon>cntrlRoleWithAssignedUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cntrlRoleWithListVUsers.resx">
       <DependentUpon>cntrlRoleWithListVUsers.cs</DependentUpon>

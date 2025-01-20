@@ -126,7 +126,7 @@ namespace NEABenjaminFranklin
 
         private void btnEditAssignments_Click(object sender, EventArgs e)
         {
-            frmAddEditNewInstance frmAddNewInstance = new frmAddEditNewInstance(RotaID,"","",true);
+            frmAddEditNewInstance frmAddNewInstance = new frmAddEditNewInstance(RotaID,"","",true,InstanceID);
             frmAddNewInstance.ShowDialog();
         }
     }

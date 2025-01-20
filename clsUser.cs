@@ -10,6 +10,7 @@ namespace NEABenjaminFranklin
         public DateTime dob { get; set; }
         public string email { get; set; }
         public bool hostRole { get; set; }
+        public int chkListIndex { get; set; }
 
     }
 }

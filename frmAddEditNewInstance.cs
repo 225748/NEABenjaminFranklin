@@ -17,9 +17,10 @@ namespace NEABenjaminFranklin
         public string RotaName { get; set; }
         public string ThemeColour { get; set; }
         public bool EditMode { get; set; }
+        //IF edit mode
+        public int EditModeInstanceID { get; set; }
 
-
-        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false)
+        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0)
         {
             InitializeComponent();
             RotaID = rotaID;
@@ -50,6 +51,7 @@ namespace NEABenjaminFranklin
                 ThemeColour = themeColour;
             }
             EditMode = editMode;
+            EditModeInstanceID = InstanceIDIfEditMode;
 
         }
 
@@ -76,6 +78,7 @@ namespace NEABenjaminFranklin
 
             if (EditMode)
             {
+                
                 this.Text = "Update / Delete Instance";
                 pnlEditMode.Enabled = true;
                 pnlEditMode.Show();
@@ -109,6 +112,11 @@ namespace NEABenjaminFranklin
                 cntrlroleWithUsersList.RoleName = dr[0].ToString();
                 cntrlroleWithUsersList.RotaRoleNumber = Convert.ToInt32(dr[1]);
                 cntrlroleWithUsersList.RotaID = RotaID;
+                if (EditMode)
+                {//Need to fill with currently selected users
+                    cntrlroleWithUsersList.PreSelectUsers = true;
+                    cntrlroleWithUsersList.InstanceID = EditModeInstanceID;
+                }
                 flpRoles.Controls.Add(cntrlroleWithUsersList);
             }
             dbConnector.Close();

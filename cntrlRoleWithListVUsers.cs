@@ -16,7 +16,11 @@ namespace NEABenjaminFranklin
         public string RoleName { get; set; }
         public int RotaRoleNumber { get; set; }
         public int RotaID { get; set; }
-
+        //These below are used when edit mode of AddEditNewInstance is active
+        public bool PreSelectUsers { get; set; }
+        public int InstanceID { get; set; }
+        public List<clsUser> users { get; set; }
+        //
         public List<int> AssignedRotaRoleIDs = new List<int>();
         public cntrlRoleWithListVUsers()
         {
@@ -26,22 +30,54 @@ namespace NEABenjaminFranklin
         private void cntrlRoleWithListVUsers_Load(object sender, EventArgs e)
         {
             lblRoleName.Text = RoleName;
+            PreSelectUsers = false;
             FillChkList();
         }
         private void FillChkList()
         {
             clsDBConnector dbConnector = new clsDBConnector();
-            OleDbDataReader Usersdr;
+            OleDbDataReader dr;
             string sqlCommand = "Select (FirstName & " + "', '" + "& LastName) as Name, UserID, FirstName, LastName " +
                 "FROM tblPeople " +
                 "ORDER BY LastName, FirstName";
             dbConnector.Connect();
-            Usersdr = dbConnector.DoSQL(sqlCommand);
-            while (Usersdr.Read())
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
             {
-                lstVUsers.Items.Add(Usersdr[0].ToString());
-                lstVUsers.Items[lstVUsers.Items.Count - 1].SubItems.Add(Usersdr[1].ToString());
+                lstVUsers.Items.Add(dr[0].ToString());
+                lstVUsers.Items[lstVUsers.Items.Count - 1].SubItems.Add(dr[1].ToString());
+                if (PreSelectUsers)
+                {
+                    clsUser user = new clsUser();
+                    user.userID = Convert.ToInt32(dr[1].ToString());
+                    user.chkListIndex = (lstVUsers.Items.Count - 1);
+                }
             }
+            if (PreSelectUsers)
+            {//do SQL to find if already assigned, if so then make selected true
+                foreach (clsUser user in users)
+                {
+                    dbConnector = new clsDBConnector();
+                    sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber, tblAssignedRotaRoles.UserID " +
+                        "FROM(tblAssignedRotaRoles INNER JOIN " +
+                        "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
+                        $"WHERE(tblRotaInstanceRoles.RotaInstanceID = {InstanceID}) AND(tblAssignedRotaRoles.RotaRoleNumber = {RotaRoleNumber}) " +
+                        $"AND(tblAssignedRotaRoles.UserID = {user.userID})";
+                    dbConnector.Connect();
+                    dr = dbConnector.DoSQL(sqlCommand);
+                    while (dr.Read())
+                    {//Its found an assignedRotaRoleID
+                        lstVUsers.Items[user.chkListIndex].Selected = true;
+                       
+
+                    }
+                    dbConnector.Close();
+
+                }
+
+
+            }
+
 
         }
         private int FindLargestID(string tableName, string keyName)//largest ID is allways the one you have just created
@@ -102,7 +138,7 @@ namespace NEABenjaminFranklin
 
             }
         }
-        
+
 
     }
 }
