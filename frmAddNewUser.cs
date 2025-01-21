@@ -33,7 +33,14 @@ namespace NEABenjaminFranklin
             //create a temporary password
             Random random = new Random();
             string tempPassword = "";
-            tempPassword += txtLastName.Text.ToUpper().Substring(0,3);
+            if (txtLastName.Text.Length > 3)
+            {
+                tempPassword += txtLastName.Text.ToUpper().Substring(0, 3);
+            }
+            else
+            {
+                tempPassword += txtLastName.Text.ToUpper();
+            }
             tempPassword += txtFirstName.Text.ToUpper();
             tempPassword += random.Next(10, 99);
             //hash password using a function
@@ -55,7 +62,7 @@ namespace NEABenjaminFranklin
             }
             catch (Exception)
             {
-                MessageBox.Show("Error adding user to database\nUser has not been created","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error adding user to database\nUser has not been created", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw;
             }
             if (!successfulUserCreation)

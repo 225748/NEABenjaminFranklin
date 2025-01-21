@@ -180,6 +180,7 @@ namespace NEABenjaminFranklin
                     int userIDInt = Convert.ToInt32(userIDString);
                     DeleteUser(userIDInt);
                     DisplayUsers();
+                    FillCombo();
                     FillInputFields(false);
                 }
             }
@@ -197,6 +198,7 @@ namespace NEABenjaminFranklin
                 UpdateUser(Convert.ToInt32(cmbUsers.SelectedValue), txtFirstName.Text, txtLastName.Text, dtpDOB.Value.Date, chkHostRole.Checked, txtEmail.Text);
                 DisplayUsers();
                 FillInputFields(false);
+                FillCombo();
             }
             else
             {
