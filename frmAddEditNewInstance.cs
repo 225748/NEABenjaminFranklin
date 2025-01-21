@@ -215,7 +215,33 @@ namespace NEABenjaminFranklin
 
         private void UpdateInstance(int rotaInstanceID)
         {
-            //For every item in each list in each flp in each control
+            List<clsUser> preUpdatelst = new List<clsUser>();
+            List<clsUser> updatelst = new List<clsUser>();
+            //  - remember lstVusers is the actual lists
+            //  THEREFORE it is want the user wants as the update
+            //  userslist is a list of checked users in a class list upon creation
+            //  THEREFORE it can be used to compare as a comparison to see what has changed
+
+
+            //For every cntrl in flproles, get each userID in its lstVUsers and see if checked
+            foreach (cntrlRoleWithListVUsers cntrlRoleWithListVUsers in flpRoles.Controls)
+            {
+                for (int i = 0; i < cntrlRoleWithListVUsers.lstVUsers.Items.Count; i++)
+                {//sub items of this list is userID
+                    //This code gets userID of each user in a cntrl's listV and whether is it checked or not and assigns to an update list
+                    clsUser user = new clsUser();
+                    user.userID = Convert.ToInt32(cntrlRoleWithListVUsers.lstVUsers.Items[i].SubItems[1].Text);
+                    if (cntrlRoleWithListVUsers.lstVUsers.Items[i].Checked == true)
+                    {
+                        user.CheckedinListV = true;
+                    }
+                    else
+                    {
+                        user.CheckedinListV = false;
+                    }
+                    updatelst.Add(user); //list containing all userIDs and whether they are checked or not
+                }
+            
                 //If checked then see if there is an exisitng AssignedRotaRoleNunber for that user (done in control as above i believe)
                   //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
                     //If so do nothing as it started as checked and has ended as checked
@@ -229,9 +255,9 @@ namespace NEABenjaminFranklin
                     //If not do nothing (They've had the role before but were never assigned to it for this specific instance)
                   //If not then do nothing (They've never had the role before on this rota and therefore are not assigned to it)
 
-            //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
+               //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
                  //They started unchecked but we want to add them.
-
+            }
         }
 
         private void btnAddInstance_Click(object sender, EventArgs e)

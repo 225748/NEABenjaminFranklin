@@ -10,7 +10,13 @@ namespace NEABenjaminFranklin
         public DateTime dob { get; set; }
         public string email { get; set; }
         public bool hostRole { get; set; }
-        public int chkListIndex { get; set; }
+
+        //These bits are for various other uses of user
+        public int chkListIndex { get; set; } //cntrlRoleWithListVUsers
+
+        public int AssignedRotaRoleID { get; set; } //frmAddEditNewInstance
+        public bool CheckedinListV { get; set; } //frmAddEditNewInstance
+
 
     }
 }

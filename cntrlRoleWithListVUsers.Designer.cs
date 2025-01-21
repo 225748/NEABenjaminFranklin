@@ -31,6 +31,7 @@
             this.lblRoleName = new System.Windows.Forms.Label();
             this.lstVUsers = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lblRoleName
@@ -47,7 +48,8 @@
             // 
             this.lstVUsers.CheckBoxes = true;
             this.lstVUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
+            this.columnHeader1,
+            this.columnHeader2});
             this.lstVUsers.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lstVUsers.HideSelection = false;
             this.lstVUsers.Location = new System.Drawing.Point(6, 28);
@@ -61,6 +63,11 @@
             // 
             this.columnHeader1.Text = "User";
             this.columnHeader1.Width = 169;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "UserID";
+            this.columnHeader2.Width = 0;
             // 
             // cntrlRoleWithListVUsers
             // 
@@ -80,7 +87,8 @@
         #endregion
 
         private System.Windows.Forms.Label lblRoleName;
-        private System.Windows.Forms.ListView lstVUsers;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        public System.Windows.Forms.ListView lstVUsers;
     }
 }

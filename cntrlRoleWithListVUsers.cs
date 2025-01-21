@@ -19,7 +19,7 @@ namespace NEABenjaminFranklin
         //These below are used when edit mode of AddEditNewInstance is active
         public bool PreSelectUsers { get; set; }
         public int InstanceID { get; set; }
-        public List<clsUser> lstUsers = new List<clsUser>();
+        public List<clsUser> UsersList = new List<clsUser>();
         //
         public List<int> AssignedRotaRoleIDs = new List<int>();
         public cntrlRoleWithListVUsers()
@@ -50,12 +50,12 @@ namespace NEABenjaminFranklin
                     clsUser user = new clsUser();
                     user.userID = Convert.ToInt32(dr[1].ToString());
                     user.chkListIndex = (lstVUsers.Items.Count - 1);
-                    lstUsers.Add(user);
+                    UsersList.Add(user);
                 }
             }
             if (PreSelectUsers)
             {//do SQL to find if already assigned, if so then make selected true
-                foreach (clsUser user in lstUsers)
+                foreach (clsUser user in UsersList)
                 {
                     dbConnector = new clsDBConnector();
                     sqlCommand = "SELECT tblRotaInstanceRoles.RotaInstanceRoleNumber, tblAssignedRotaRoles.UserID " +
