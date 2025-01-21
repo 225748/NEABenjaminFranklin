@@ -223,7 +223,7 @@ namespace NEABenjaminFranklin
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
             {
-                return Convert.ToInt32(dr[1].ToString());
+                return Convert.ToInt32(dr[0].ToString());
             }
             dbConnector.Close();
             return 0;
@@ -300,7 +300,7 @@ namespace NEABenjaminFranklin
                             if (rotaInstanceRoleNumber !=0)//There is a RotaInstanceRole Number, delete it (remove them from this instance)
                             {
                                 clsDBConnector dbConnector = new clsDBConnector();
-                                string sqlCommand = $"DELETE FROM tblRotaInstanceRoles" +
+                                string sqlCommand = $"DELETE FROM tblRotaInstanceRoles " +
                                     $"WHERE RotaInstanceID = {rotaInstanceID} AND AssignedRotaRolesID = {user.assignedRotaRoleID}";
                                 dbConnector.Connect();
                                 dbConnector.DoSQL(sqlCommand);
