@@ -268,7 +268,12 @@ namespace NEABenjaminFranklin
                         if (user.assignedRotaRoleID != 0) //There is one, and it has been returned
                         {
                             //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
+
+
+                            ///Issue is this line - it is returning the wrong rota instance role number
                             int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
+
+
                             //If so do nothing as it started as checked and has ended as checked
                             //If there isn't, add them to a list of people needing to be added to the Instance with their assRotaRoleNum
                             //started unchecked (not assigned to instance) but have has this assigned rota role before
