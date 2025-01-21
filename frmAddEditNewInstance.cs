@@ -293,6 +293,7 @@ namespace NEABenjaminFranklin
                             dbConnector.DoDML(cmdStr);
                             dbConnector.Close();
                             user.assignedRotaRoleID = FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"); //Gets their new assRotaRoleID
+                            needRotaInstRoleNum.Add(user);
                         }
                     }
                     else//not checked
