@@ -95,6 +95,10 @@ namespace NEABenjaminFranklin
         private int CheckForExistingAssignment(ListViewItem CheckedItem)
         {
             int userID = Convert.ToInt32(CheckedItem.SubItems[1].Text);
+            return CheckForExistingAssignmentByUserID(userID);
+        }
+        public int CheckForExistingAssignmentByUserID(int userID)
+        {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
             string sqlCommand = "SELECT AssignedRotaRolesID " +
@@ -105,10 +109,11 @@ namespace NEABenjaminFranklin
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
             {
-                return Convert.ToInt32(dr[0].ToString()); //return AssignedRotaRoleID if there is one
+                return Convert.ToInt32(dr[0].ToString()); //return assignedRotaRoleID if there is one
             }
             dbConnector.Close();
             return 0; //if there isn't one
+
         }
         public void AssignUsersToRotaRole()
         {

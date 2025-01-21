@@ -137,7 +137,6 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
             return 0;
         }
-
         private bool CheckForExistingInstance(int rotaID, DateTime dateTime)
         {
             //MessageBox.Show(dateTime.ToString("MM/dd/yyyy HH:mm:00"));
@@ -213,10 +212,28 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private int CheckForExistingRotaInstanceRoleNumber(int assignedRotaRoleID, int instanceID)//Used in edit mode
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT RotaInstanceRoleNumber " +
+                "FROM tblRotaInstanceRoles " +
+                $"WHERE(RotaInstanceID = {instanceID}) AND(AssignedRotaRolesID = {assignedRotaRoleID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                return Convert.ToInt32(dr[1].ToString());
+            }
+            dbConnector.Close();
+            return 0;
+        }
+
         private void UpdateInstance(int rotaInstanceID)
         {
             List<clsUser> preUpdatelst = new List<clsUser>();
-            List<clsUser> updatelst = new List<clsUser>();
+            List<clsUser> desiredUpdatelst = new List<clsUser>();
+            List<clsUser> needRotaInstRoleNum  = new List<clsUser>();
             //  - remember lstVusers is the actual lists
             //  THEREFORE it is want the user wants as the update
             //  userslist is a list of checked users in a class list upon creation
@@ -239,24 +256,70 @@ namespace NEABenjaminFranklin
                     {
                         user.CheckedinListV = false;
                     }
-                    updatelst.Add(user); //list containing all userIDs and whether they are checked or not
+                    desiredUpdatelst.Add(user); //list containing all userIDs and whether they are checked or not
                 }
-            
-                //If checked then see if there is an exisitng AssignedRotaRoleNunber for that user (done in control as above i believe)
-                  //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
-                    //If so do nothing as it started as checked and has ended as checked
-                  //If there isn't, add them to a list of people needing to be added
-                    //started unchecked but have has this assigned rota role before
-               //If checked but not AssignedRotaRoleNumber for that user, make one and then add them to the list of people needing to be added
-                    //Started unchecked and have never had this assigned rota role before
-               //If not checked, see if they have an exsiting AssignedRotaRoleNunber for this role and rota
-                  //If so then check if they were assigned to this instance by checking for  RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
-                    //If There is a RotaInstanceRole Number, delete it (remove them from this instance)
-                    //If not do nothing (They've had the role before but were never assigned to it for this specific instance)
-                  //If not then do nothing (They've never had the role before on this rota and therefore are not assigned to it)
+                //Assigning to list and then reading from it to prevent too many nested loops
 
-               //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
-                 //They started unchecked but we want to add them.
+                //If checked then see if there is an exisitng AssignedRotaRoleNunber for that user (done in control as above i believe)
+                foreach (clsUser user in desiredUpdatelst)
+                {
+                    if (user.CheckedinListV == true)
+                    {
+                        user.assignedRotaRoleID = cntrlRoleWithListVUsers.CheckForExistingAssignmentByUserID(user.userID);
+                        if (user.assignedRotaRoleID != 0) //There is one, and it has been returned
+                        {
+                            //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
+                            int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
+                            //If so do nothing as it started as checked and has ended as checked
+                            //If there isn't, add them to a list of people needing to be added to the Instance with their assRotaRoleNum
+                            //started unchecked (not assigned to instance) but have has this assigned rota role before
+                            if (rotaInstanceRoleNumber == 0) //0  returned as no RIRN found
+                            {
+                                needRotaInstRoleNum.Add(user);
+                            }
+                        }
+                        else //0 has been returned therefore there isnt an existing assRotaRoleID
+                        {//checked but no AssignedRotaRoleNumber, make one and then add them to the list of people needing a RIRN
+                            //They Started unchecked and have never had this assigned rota role before
+
+                            clsDBConnector dbConnector = new clsDBConnector();
+                            string cmdStr = $"INSERT INTO tblAssignedRotaRoles (RotaRoleNumber, UserID) " +
+                                $"VALUES ({cntrlRoleWithListVUsers.RotaRoleNumber}, '{user.userID}')";
+                            dbConnector.Connect();
+                            dbConnector.DoDML(cmdStr);
+                            dbConnector.Close();
+                            user.assignedRotaRoleID = FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"); //Gets their new assRotaRoleID
+                        }
+                    }
+                    else//not checked
+                    {//If not checked, see if they have an exsiting AssignedRotaRoleNunber for this role and rota
+                        user.assignedRotaRoleID = cntrlRoleWithListVUsers.CheckForExistingAssignmentByUserID(user.userID);
+                        if (user.assignedRotaRoleID != 0)//There is one, and it has been returned
+                        {
+                            //Check if they were assigned to this instance by checking for RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
+                            int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
+                            if (rotaInstanceRoleNumber !=0)//There is a RotaInstanceRole Number, delete it (remove them from this instance)
+                            {
+                                clsDBConnector dbConnector = new clsDBConnector();
+                                string sqlCommand = $"DELETE FROM tblRotaInstanceRoles" +
+                                    $"WHERE RotaInstanceID = {rotaInstanceID} AND AssignedRotaRolesID = {user.assignedRotaRoleID}";
+                                dbConnector.Connect();
+                                dbConnector.DoSQL(sqlCommand);
+                            }
+                            //If a RIRN = 0 do nothing (They've had the role before but were never assigned to it for this specific instance hence 0)
+                        }
+                        //No assRotaRoleID, do nothing (They've never had the role before on this rota and therefore are not assigned to it)
+
+                    }
+                }
+                foreach (clsUser item in collection)
+                {
+
+                }
+                //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
+                //They started unchecked but we want to add them.
+
+
             }
         }
 

@@ -14,7 +14,7 @@ namespace NEABenjaminFranklin
         //These bits are for various other uses of user
         public int chkListIndex { get; set; } //cntrlRoleWithListVUsers
 
-        public int AssignedRotaRoleID { get; set; } //frmAddEditNewInstance
+        public int assignedRotaRoleID { get; set; } //frmAddEditNewInstance
         public bool CheckedinListV { get; set; } //frmAddEditNewInstance
 
 
