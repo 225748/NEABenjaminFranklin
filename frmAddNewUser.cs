@@ -26,8 +26,18 @@ namespace NEABenjaminFranklin
             //create validate string functions for firstname and last name
 
             //create validate email function
-
-            string validatedEmail = "NeedtoValidate@TEST.COM";
+            Validation validator = new Validation();
+            string response = validator.emailValidation(txtEmail.Text);
+            string validatedEmail = "";
+            if (response == "email")
+            {
+                validatedEmail = txtEmail.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid email","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; //breaks out the function
+            }
 
 
             //create a temporary password
@@ -43,8 +53,8 @@ namespace NEABenjaminFranklin
             }
             tempPassword += txtFirstName.Text.ToUpper();
             tempPassword += random.Next(10, 99);
-            //hash password using a function
 
+            //hash password using a function
             string hashedPassword = "TEST";
 
             bool successfulUserCreation = false;

@@ -20,7 +20,6 @@ namespace NEABenjaminFranklin
         public virtual System.Drawing.Font font { get; set; }
         private void frmManageUsers_Load(object sender, EventArgs e)
         {
-            
             DisplayUsers();
             FillCombo();
             FillInputFields(false);
@@ -141,6 +140,19 @@ namespace NEABenjaminFranklin
 
         private void UpdateUser(int userID, string firstName, string lastName, DateTime dob, bool hostRole, string email)
         {
+            Validation validator = new Validation();
+            string response = validator.emailValidation(email);
+            string validatedEmail = "";
+            if (response == "email")
+            {
+                validatedEmail = email;
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; //breaks out the function
+            }
+
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
