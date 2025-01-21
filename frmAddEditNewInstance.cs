@@ -231,7 +231,6 @@ namespace NEABenjaminFranklin
 
         private void UpdateInstance(int rotaInstanceID)
         {
-            List<clsUser> preUpdatelst = new List<clsUser>();
             List<clsUser> desiredUpdatelst = new List<clsUser>();
             List<clsUser> needRotaInstRoleNum  = new List<clsUser>();
             //  - remember lstVusers is the actual lists
@@ -312,12 +311,17 @@ namespace NEABenjaminFranklin
 
                     }
                 }
-                foreach (clsUser item in collection)
-                {
-
-                }
                 //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
                 //They started unchecked but we want to add them.
+                foreach (clsUser user in needRotaInstRoleNum)
+                {
+                    clsDBConnector dbConnector = new clsDBConnector();
+                    string cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID) " +
+                        $"VALUES({rotaInstanceID},{user.assignedRotaRoleID})";
+                    dbConnector.Connect();
+                    dbConnector.DoDML(cmdStr);
+                    dbConnector.Close();
+                }
 
 
             }
