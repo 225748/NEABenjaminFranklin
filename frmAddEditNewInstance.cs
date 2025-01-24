@@ -310,6 +310,7 @@ namespace NEABenjaminFranklin
                                     $"WHERE RotaInstanceID = {rotaInstanceID} AND AssignedRotaRolesID = {user.assignedRotaRoleID}";
                                 dbConnector.Connect();
                                 dbConnector.DoSQL(sqlCommand);
+                                dbConnector.Close();
                             }
                             //If a RIRN = 0 do nothing (They've had the role before but were never assigned to it for this specific instance hence 0)
                         }
@@ -333,6 +334,16 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private void DeleteInstance(int rotaInstanceID)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            string sqlCommand = $"DELETE FROM tblRotaInstance " +
+                $"WHERE RotaInstanceID = {rotaInstanceID}";
+            dbConnector.Connect();
+            dbConnector.DoSQL(sqlCommand);
+            dbConnector.Close();
+        }
+
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
             AddNewInstance();
@@ -343,6 +354,13 @@ namespace NEABenjaminFranklin
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateInstance(EditModeInstanceID);
+            (Application.OpenForms["frmManageRotaInstances"] as frmManageRotaInstances).RefreshFlp();
+            this.Close();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DeleteInstance(EditModeInstanceID);
             (Application.OpenForms["frmManageRotaInstances"] as frmManageRotaInstances).RefreshFlp();
             this.Close();
         }
