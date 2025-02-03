@@ -78,7 +78,7 @@ namespace NEABenjaminFranklin
 
             if (EditMode)
             {
-                
+
                 this.Text = "Update / Delete Instance";
                 pnlEditMode.Enabled = true;
                 pnlEditMode.Show();
@@ -231,17 +231,19 @@ namespace NEABenjaminFranklin
 
         private void UpdateInstance(int rotaInstanceID)
         {
-            List<clsUser> desiredUpdatelst = new List<clsUser>();
-            List<clsUser> needRotaInstRoleNum  = new List<clsUser>();
-            //  - remember lstVusers is the actual lists
-            //  THEREFORE it is want the user wants as the update
-            //  userslist is a list of checked users in a class list upon creation
-            //  THEREFORE it can be used to compare as a comparison to see what has changed
 
 
             //For every cntrl in flproles, get each userID in its lstVUsers and see if checked
             foreach (cntrlRoleWithListVUsers cntrlRoleWithListVUsers in flpRoles.Controls)
             {
+                List<clsUser> desiredUpdatelst = new List<clsUser>();
+                List<clsUser> needRotaInstRoleNum = new List<clsUser>();
+                //  - remember lstVusers is the actual lists
+                //  THEREFORE it is want the user wants as the update
+                //  userslist is a list of checked users in a class list upon creation
+                //  THEREFORE it can be used to compare as a comparison to see what has changed
+
+
                 for (int i = 0; i < cntrlRoleWithListVUsers.lstVUsers.Items.Count; i++)
                 {//sub items of this list is userID
                     //This code gets userID of each user in a cntrl's listV and whether is it checked or not and assigns to an update list
@@ -270,7 +272,6 @@ namespace NEABenjaminFranklin
                             //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
 
 
-                            ///Issue is this line - it is returning the wrong rota instance role number
                             int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
 
 
@@ -303,7 +304,7 @@ namespace NEABenjaminFranklin
                         {
                             //Check if they were assigned to this instance by checking for RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
                             int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
-                            if (rotaInstanceRoleNumber !=0)//There is a RotaInstanceRole Number, delete it (remove them from this instance)
+                            if (rotaInstanceRoleNumber != 0)//There is a RotaInstanceRole Number, delete it (remove them from this instance)
                             {
                                 clsDBConnector dbConnector = new clsDBConnector();
                                 string sqlCommand = $"DELETE FROM tblRotaInstanceRoles " +
