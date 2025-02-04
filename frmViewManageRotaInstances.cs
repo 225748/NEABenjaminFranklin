@@ -11,15 +11,16 @@ using System.Windows.Forms;
 
 namespace NEABenjaminFranklin
 {
-    public partial class frmManageRotaInstances : Form
+    public partial class frmViewManageRotaInstances : Form
     {
         public string RotaName { get; set; }
         public int RotaID { get; set; }
         public string FacilityName { get; set; }
         public int FacilityID { get; set; }
         public string ThemeColour { get; set; }
+        public bool HostMode { get; set; }
 
-        public frmManageRotaInstances(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour)
+        public frmViewManageRotaInstances(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour, bool hostMode = true)
         {
             InitializeComponent();
             RotaName = rotaName;
@@ -27,6 +28,7 @@ namespace NEABenjaminFranklin
             FacilityName = facilityName;
             FacilityID = facilityID;
             ThemeColour = themeColour;
+            HostMode = hostMode;
         }
 
         private void frmManageRotaInstance_Load(object sender, EventArgs e)
@@ -34,6 +36,16 @@ namespace NEABenjaminFranklin
             InitaliseTextFields();
             FillFlpInstances();
             this.Cursor = Cursors.Default;
+            if (HostMode)
+            {
+                btnAddInstance.Enabled = true;
+                btnAddInstance.Visible = true;
+            }
+            else
+            {
+                btnAddInstance.Enabled = false;
+                btnAddInstance.Visible = false;
+            }
         }
 
         private void InitaliseTextFields()
@@ -50,6 +62,14 @@ namespace NEABenjaminFranklin
             else
             {
                 btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
+            }
+            if (HostMode)
+            {
+                lblHostView.Text = "Host View";
+            }
+            else
+            {
+                lblHostView.Text = "User View";
             }
         }
         public void RefreshFlp()

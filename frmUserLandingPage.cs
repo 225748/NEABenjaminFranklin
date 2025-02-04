@@ -12,6 +12,8 @@ namespace NEABenjaminFranklin
 {
     public partial class frmUserLandingPage : Form
     {
+        public int UserID { get; set; }
+
         public frmUserLandingPage()
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace NEABenjaminFranklin
         private void InitaliseForm()
         {
             FillADDates();
+            FillFlpRotas();
         }
 
         private void FillADDates()
@@ -49,6 +52,14 @@ namespace NEABenjaminFranklin
                 
             }
             // check for no dates (like the no roles bit in create new rota)
+        }
+        private void FillFlpRotas()
+        {
+            //Add controls for the rotas this user currently has at least one instancerolenum in
+
+            //Testing control
+            cntrlRotaOverview cntrlRotaOverview = new cntrlRotaOverview("Pizza Planet", 17, "Auditorium", 1, "-510201", false);
+            flpRotas.Controls.Add(cntrlRotaOverview);
         }
 
     }

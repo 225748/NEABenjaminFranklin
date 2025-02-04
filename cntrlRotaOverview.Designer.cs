@@ -104,16 +104,16 @@
             // pnlUserButtons
             // 
             this.pnlUserButtons.Controls.Add(this.btnViewRota);
-            this.pnlUserButtons.Location = new System.Drawing.Point(186, 16);
+            this.pnlUserButtons.Location = new System.Drawing.Point(186, 6);
             this.pnlUserButtons.Name = "pnlUserButtons";
-            this.pnlUserButtons.Size = new System.Drawing.Size(125, 30);
+            this.pnlUserButtons.Size = new System.Drawing.Size(125, 49);
             this.pnlUserButtons.TabIndex = 7;
             // 
             // btnViewRota
             // 
-            this.btnViewRota.Location = new System.Drawing.Point(16, 3);
+            this.btnViewRota.Location = new System.Drawing.Point(16, 6);
             this.btnViewRota.Name = "btnViewRota";
-            this.btnViewRota.Size = new System.Drawing.Size(101, 23);
+            this.btnViewRota.Size = new System.Drawing.Size(101, 37);
             this.btnViewRota.TabIndex = 0;
             this.btnViewRota.Text = "View Rota";
             this.btnViewRota.UseVisualStyleBackColor = true;

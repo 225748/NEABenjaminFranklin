@@ -1,6 +1,6 @@
 ﻿namespace NEABenjaminFranklin
 {
-    partial class frmManageRotaInstances
+    partial class frmViewManageRotaInstances
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmManageRotaInstances));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmViewManageRotaInstances));
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(915, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(756, 31);
             this.pnlTopBar.TabIndex = 16;
             // 
             // picRotaConnect
@@ -90,7 +90,7 @@
             // lblFacility
             // 
             this.lblFacility.AutoSize = true;
-            this.lblFacility.Location = new System.Drawing.Point(682, 8);
+            this.lblFacility.Location = new System.Drawing.Point(641, 6);
             this.lblFacility.Name = "lblFacility";
             this.lblFacility.Size = new System.Drawing.Size(50, 13);
             this.lblFacility.TabIndex = 18;
@@ -109,13 +109,14 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnAddInstance);
             this.panel1.Controls.Add(this.lblRotaName);
             this.panel1.Controls.Add(this.btnThemeColour);
             this.panel1.Controls.Add(this.lblFacility);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 29);
+            this.panel1.Size = new System.Drawing.Size(756, 29);
             this.panel1.TabIndex = 20;
             // 
             // flpInstances
@@ -130,24 +131,24 @@
             // 
             // btnAddInstance
             // 
-            this.btnAddInstance.Location = new System.Drawing.Point(774, 81);
+            this.btnAddInstance.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddInstance.Location = new System.Drawing.Point(258, 2);
             this.btnAddInstance.Name = "btnAddInstance";
-            this.btnAddInstance.Size = new System.Drawing.Size(109, 57);
+            this.btnAddInstance.Size = new System.Drawing.Size(231, 27);
             this.btnAddInstance.TabIndex = 23;
             this.btnAddInstance.Text = "Add a new Date";
             this.btnAddInstance.UseVisualStyleBackColor = true;
             this.btnAddInstance.Click += new System.EventHandler(this.btnAddInstance_Click);
             // 
-            // frmManageRotaInstances
+            // frmViewManageRotaInstances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 450);
-            this.Controls.Add(this.btnAddInstance);
+            this.ClientSize = new System.Drawing.Size(756, 450);
             this.Controls.Add(this.flpInstances);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
-            this.Name = "frmManageRotaInstances";
+            this.Name = "frmViewManageRotaInstances";
             this.Text = "frmManageRotaInstance";
             this.Load += new System.EventHandler(this.frmManageRotaInstance_Load);
             this.pnlTopBar.ResumeLayout(false);

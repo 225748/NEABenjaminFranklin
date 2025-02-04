@@ -121,11 +121,11 @@
     <Compile Include="frmManageRoles.Designer.cs">
       <DependentUpon>frmManageRoles.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmManageRotaInstances.cs">
+    <Compile Include="frmViewManageRotaInstances.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmManageRotaInstances.Designer.cs">
-      <DependentUpon>frmManageRotaInstances.cs</DependentUpon>
+    <Compile Include="frmViewManageRotaInstances.Designer.cs">
+      <DependentUpon>frmViewManageRotaInstances.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageRotas.cs">
       <SubType>Form</SubType>
@@ -187,8 +187,8 @@
     <EmbeddedResource Include="frmManageRoles.resx">
       <DependentUpon>frmManageRoles.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmManageRotaInstances.resx">
-      <DependentUpon>frmManageRotaInstances.cs</DependentUpon>
+    <EmbeddedResource Include="frmViewManageRotaInstances.resx">
+      <DependentUpon>frmViewManageRotaInstances.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageRotas.resx">
       <DependentUpon>frmManageRotas.cs</DependentUpon>
