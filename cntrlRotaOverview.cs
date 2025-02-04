@@ -51,7 +51,7 @@ namespace NEABenjaminFranklin
             if (HostMode)
             {
                 pnlHostButtons.Enabled = true;
-                pnlHostButtons.Visible = true;
+                pnlHostButtons.Visible = true; 
                 pnlUserButtons.Enabled = false;
                 pnlUserButtons.Visible = false;
             }
