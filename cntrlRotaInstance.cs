@@ -19,14 +19,26 @@ namespace NEABenjaminFranklin
         public string InstanceTime { get; set; }
         public int InstanceID { get; set; }
         public List<clsRoles> Roleslst = new List<clsRoles>();
+        public bool HostMode { get; set; }
 
-        public cntrlRotaInstance(int rotaID, string instanceDate, string instanceTime, int instanceID)
+        public cntrlRotaInstance(int rotaID, string instanceDate, string instanceTime, int instanceID, bool hostMode = true)
         {
             InitializeComponent();
             RotaID = rotaID;
             InstanceDate = instanceDate;
             InstanceTime = instanceTime;
             InstanceID = instanceID;
+            HostMode = hostMode;
+            if (HostMode)
+            {
+                btnEditAssignments.Enabled = true;
+                btnEditAssignments.Visible = true;
+            }
+            else
+            {
+                btnEditAssignments.Enabled = false;
+                btnEditAssignments.Visible = false;
+            }
             InitaliseTextFields();
             FillFlp();
         }

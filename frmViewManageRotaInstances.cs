@@ -96,7 +96,7 @@ namespace NEABenjaminFranklin
             {
                 string instanceDate = dr[0].ToString().Substring(0,10);
                 string instanceTime = dr[0].ToString().Substring(11, 5);
-                cntrlRotaInstance cntrlRotaInstance = new cntrlRotaInstance(RotaID, instanceDate, instanceTime, Convert.ToInt32(dr[1].ToString()));
+                cntrlRotaInstance cntrlRotaInstance = new cntrlRotaInstance(RotaID, instanceDate, instanceTime, Convert.ToInt32(dr[1].ToString()),HostMode);
                 cntrlRotaInstance.Show();
                 flpInstances.Controls.Add(cntrlRotaInstance);
             }
