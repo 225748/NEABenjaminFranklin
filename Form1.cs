@@ -18,7 +18,7 @@ namespace NEABenjaminFranklin
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+             
         }
 
         //have a default password and then prompt for change on first login
