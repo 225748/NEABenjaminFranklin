@@ -77,6 +77,22 @@ namespace NEABenjaminFranklin
         private void FillFlpRotas()
         {
             //Add controls for the rotas this user currently has at least one instancerolenum in
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            while (dr.Read())
+            {
+
+            }
+            dbConnector.Close();
+
+
+
+
+
 
             //Testing control
             cntrlRotaOverview cntrlRotaOverview = new cntrlRotaOverview("Pizza Planet", 17, "Auditorium", 1, "-510201", false);

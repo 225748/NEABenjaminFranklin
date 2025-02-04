@@ -348,21 +348,21 @@ namespace NEABenjaminFranklin
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
             AddNewInstance();
-            (Application.OpenForms["frmManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
+            (Application.OpenForms["frmViewManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
             this.Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             UpdateInstance(EditModeInstanceID);
-            (Application.OpenForms["frmManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
+            (Application.OpenForms["frmViewManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
             this.Close();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DeleteInstance(EditModeInstanceID);
-            (Application.OpenForms["frmManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
+            (Application.OpenForms["frmViewManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
             this.Close();
         }
     }
