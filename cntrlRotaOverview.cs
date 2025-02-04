@@ -18,10 +18,11 @@ namespace NEABenjaminFranklin
         public string FacilityName { get; set; }
         public int FacilityID { get; set; }
         public string ThemeColour { get; set; }
+        public bool HostMode { get; set; }
 
 
 
-        public cntrlRotaOverview(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour)
+        public cntrlRotaOverview(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour, bool hostMode = true)
         {
             InitializeComponent();
             RotaName = rotaName;
@@ -29,6 +30,7 @@ namespace NEABenjaminFranklin
             FacilityName = facilityName;
             FacilityID = facilityID;
             ThemeColour = themeColour;
+            HostMode = hostMode;
         }
 
         private void cntrlRotaOverview_Load(object sender, EventArgs e)
@@ -46,6 +48,20 @@ namespace NEABenjaminFranklin
             {
                 btnThemeColour.BackColor = Color.FromArgb(Convert.ToInt32(ThemeColour));
             }
+            if (HostMode)
+            {
+                pnlHostButtons.Enabled = true;
+                pnlHostButtons.Visible = true;
+                pnlUserButtons.Enabled = false;
+                pnlUserButtons.Visible = false;
+            }
+            else
+            {
+                pnlHostButtons.Enabled = false;
+                pnlHostButtons.Visible = false;
+                pnlUserButtons.Enabled = true;
+                pnlUserButtons.Visible = true;
+            }
         }
 
         private void btnEditRotaSettings_Click(object sender, EventArgs e)
@@ -62,6 +78,11 @@ namespace NEABenjaminFranklin
             frmManageRotaInstances frmManageRotaInstances = new frmManageRotaInstances(RotaName, RotaID, FacilityName, FacilityID, ThemeColour);
             frmManageRotaInstances.ShowDialog();
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnViewRota_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

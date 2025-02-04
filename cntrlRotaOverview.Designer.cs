@@ -33,6 +33,11 @@
             this.btnEditRotaSettings = new System.Windows.Forms.Button();
             this.btnMangeRotaInstances = new System.Windows.Forms.Button();
             this.btnThemeColour = new System.Windows.Forms.Button();
+            this.pnlHostButtons = new System.Windows.Forms.Panel();
+            this.pnlUserButtons = new System.Windows.Forms.Panel();
+            this.btnViewRota = new System.Windows.Forms.Button();
+            this.pnlHostButtons.SuspendLayout();
+            this.pnlUserButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblRotaName
@@ -56,7 +61,7 @@
             // 
             // btnEditRotaSettings
             // 
-            this.btnEditRotaSettings.Location = new System.Drawing.Point(202, 7);
+            this.btnEditRotaSettings.Location = new System.Drawing.Point(8, 4);
             this.btnEditRotaSettings.Name = "btnEditRotaSettings";
             this.btnEditRotaSettings.Size = new System.Drawing.Size(101, 23);
             this.btnEditRotaSettings.TabIndex = 3;
@@ -66,7 +71,7 @@
             // 
             // btnMangeRotaInstances
             // 
-            this.btnMangeRotaInstances.Location = new System.Drawing.Point(202, 31);
+            this.btnMangeRotaInstances.Location = new System.Drawing.Point(8, 29);
             this.btnMangeRotaInstances.Name = "btnMangeRotaInstances";
             this.btnMangeRotaInstances.Size = new System.Drawing.Size(101, 23);
             this.btnMangeRotaInstances.TabIndex = 4;
@@ -87,20 +92,49 @@
             this.btnThemeColour.TabIndex = 5;
             this.btnThemeColour.UseVisualStyleBackColor = false;
             // 
+            // pnlHostButtons
+            // 
+            this.pnlHostButtons.Controls.Add(this.btnEditRotaSettings);
+            this.pnlHostButtons.Controls.Add(this.btnMangeRotaInstances);
+            this.pnlHostButtons.Location = new System.Drawing.Point(194, 3);
+            this.pnlHostButtons.Name = "pnlHostButtons";
+            this.pnlHostButtons.Size = new System.Drawing.Size(117, 57);
+            this.pnlHostButtons.TabIndex = 6;
+            // 
+            // pnlUserButtons
+            // 
+            this.pnlUserButtons.Controls.Add(this.btnViewRota);
+            this.pnlUserButtons.Location = new System.Drawing.Point(186, 16);
+            this.pnlUserButtons.Name = "pnlUserButtons";
+            this.pnlUserButtons.Size = new System.Drawing.Size(125, 30);
+            this.pnlUserButtons.TabIndex = 7;
+            // 
+            // btnViewRota
+            // 
+            this.btnViewRota.Location = new System.Drawing.Point(16, 3);
+            this.btnViewRota.Name = "btnViewRota";
+            this.btnViewRota.Size = new System.Drawing.Size(101, 23);
+            this.btnViewRota.TabIndex = 0;
+            this.btnViewRota.Text = "View Rota";
+            this.btnViewRota.UseVisualStyleBackColor = true;
+            this.btnViewRota.Click += new System.EventHandler(this.btnViewRota_Click);
+            // 
             // cntrlRotaOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.pnlUserButtons);
             this.Controls.Add(this.btnThemeColour);
-            this.Controls.Add(this.btnMangeRotaInstances);
-            this.Controls.Add(this.btnEditRotaSettings);
             this.Controls.Add(this.lblFacility);
             this.Controls.Add(this.lblRotaName);
+            this.Controls.Add(this.pnlHostButtons);
             this.Name = "cntrlRotaOverview";
             this.Size = new System.Drawing.Size(314, 63);
             this.Load += new System.EventHandler(this.cntrlRotaOverview_Load);
+            this.pnlHostButtons.ResumeLayout(false);
+            this.pnlUserButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +147,8 @@
         private System.Windows.Forms.Button btnEditRotaSettings;
         private System.Windows.Forms.Button btnMangeRotaInstances;
         private System.Windows.Forms.Button btnThemeColour;
+        private System.Windows.Forms.Panel pnlHostButtons;
+        private System.Windows.Forms.Panel pnlUserButtons;
+        private System.Windows.Forms.Button btnViewRota;
     }
 }
