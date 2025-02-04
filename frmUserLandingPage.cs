@@ -85,7 +85,7 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-
+                 
             }
             dbConnector.Close();
 
