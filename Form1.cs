@@ -57,8 +57,8 @@ namespace NEABenjaminFranklin
             //else print We couldn't find your account
             if (validCredentials)
             {
-                this.Hide();
-                frmUserLandingPage userLandingPage = new frmUserLandingPage();
+                this.Hide();                            //THIS (Currently 17 for testing) SHOULD BE THE USER ID OF THE LOGGED IN USER
+                frmUserLandingPage userLandingPage = new frmUserLandingPage(17);
                 userLandingPage.ShowDialog();
                 this.Close();
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,20 +15,40 @@ namespace NEABenjaminFranklin
     {
         public int UserID { get; set; }
 
-        public frmUserLandingPage()
+        public frmUserLandingPage(int userID)
         {
             InitializeComponent();
+            UserID = userID;
         }
 
         private void frmUserLandingPage_Load(object sender, EventArgs e)
         {
-            InitaliseForm(); //treat this function as the form load
+            InitaliseForm(); //treat this function as the form load - it is used as a reset called from other functions
         }
 
         private void InitaliseForm()
         {
             FillADDates();
             FillFlpRotas();
+            lblFullName.Text = GetUserFullName(UserID);
+        }
+
+        private string GetUserFullName(int userID)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT FirstName, LastName " +
+                "FROM tblPeople " +
+                $"WHERE (UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            while (dr.Read())
+            {
+               return dr[0].ToString() + " " + dr[1].ToString();
+            }
+            dbConnector.Close();
+            return "";
         }
 
         private void FillADDates()
