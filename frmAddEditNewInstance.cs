@@ -21,7 +21,7 @@ namespace NEABenjaminFranklin
         public int EditModeInstanceID { get; set; }
         public DateTime EditModeDateTime { get; set; }
 
-        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, DateTime ifEditModeInstanceDateTime = )
+        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, string ifEditModeInstanceDateTime = "")
         {
             InitializeComponent();
             RotaID = rotaID;
@@ -53,7 +53,7 @@ namespace NEABenjaminFranklin
             }
             EditMode = editMode;
             EditModeInstanceID = InstanceIDIfEditMode;
-            EditModeDateTime = ifEditModeInstanceDateTime;
+            EditModeDateTime = Convert.ToDateTime(ifEditModeInstanceDateTime);
 
         }
 

@@ -138,7 +138,8 @@ namespace NEABenjaminFranklin
 
         private void btnEditAssignments_Click(object sender, EventArgs e)
         {
-            frmAddEditNewInstance frmAddNewInstance = new frmAddEditNewInstance(RotaID,"","",true,InstanceID);
+            string instanceDateTime = lblDate.Text + " " + lblTime.Text;
+            frmAddEditNewInstance frmAddNewInstance = new frmAddEditNewInstance(RotaID,"","",true,InstanceID,instanceDateTime);
             frmAddNewInstance.ShowDialog();
         }
     }
