@@ -36,8 +36,8 @@
             this.lblFacility = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flpInstances = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAddInstance = new System.Windows.Forms.Button();
+            this.flpInstances = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -51,7 +51,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(756, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(763, 31);
             this.pnlTopBar.TabIndex = 16;
             // 
             // picRotaConnect
@@ -102,7 +102,7 @@
             this.lblRotaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRotaName.Location = new System.Drawing.Point(16, 6);
             this.lblRotaName.Name = "lblRotaName";
-            this.lblRotaName.Size = new System.Drawing.Size(97, 16);
+            this.lblRotaName.Size = new System.Drawing.Size(100, 16);
             this.lblRotaName.TabIndex = 17;
             this.lblRotaName.Text = "{Rota Name}";
             // 
@@ -116,18 +116,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 31);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(756, 29);
+            this.panel1.Size = new System.Drawing.Size(763, 29);
             this.panel1.TabIndex = 20;
-            // 
-            // flpInstances
-            // 
-            this.flpInstances.AutoScroll = true;
-            this.flpInstances.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flpInstances.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpInstances.Location = new System.Drawing.Point(12, 81);
-            this.flpInstances.Name = "flpInstances";
-            this.flpInstances.Size = new System.Drawing.Size(731, 357);
-            this.flpInstances.TabIndex = 22;
             // 
             // btnAddInstance
             // 
@@ -140,11 +130,21 @@
             this.btnAddInstance.UseVisualStyleBackColor = true;
             this.btnAddInstance.Click += new System.EventHandler(this.btnAddInstance_Click);
             // 
+            // flpInstances
+            // 
+            this.flpInstances.AutoScroll = true;
+            this.flpInstances.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.flpInstances.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpInstances.Location = new System.Drawing.Point(12, 81);
+            this.flpInstances.Name = "flpInstances";
+            this.flpInstances.Size = new System.Drawing.Size(739, 357);
+            this.flpInstances.TabIndex = 22;
+            // 
             // frmViewManageRotaInstances
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(756, 450);
+            this.ClientSize = new System.Drawing.Size(763, 450);
             this.Controls.Add(this.flpInstances);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);

@@ -153,7 +153,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(351, 317);
+            this.tabControl1.Size = new System.Drawing.Size(368, 317);
             this.tabControl1.TabIndex = 17;
             // 
             // tabPage1
@@ -162,7 +162,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(343, 291);
+            this.tabPage1.Size = new System.Drawing.Size(360, 291);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "My Rotas";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -173,7 +173,7 @@
             this.flpRotas.BackColor = System.Drawing.Color.LightGray;
             this.flpRotas.Location = new System.Drawing.Point(6, 5);
             this.flpRotas.Name = "flpRotas";
-            this.flpRotas.Size = new System.Drawing.Size(331, 280);
+            this.flpRotas.Size = new System.Drawing.Size(348, 280);
             this.flpRotas.TabIndex = 0;
             // 
             // tabPage2

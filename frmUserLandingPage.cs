@@ -76,16 +76,26 @@ namespace NEABenjaminFranklin
         }
         private void FillFlpRotas()
         {
-            //Add controls for the rotas this user currently has at least one instancerolenum in
+            //Add controls for the rotas this user currently has at least one instancerolenum but don't add multiple times if they have multiple
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "";
+            string sqlCommand = "SELECT DISTINCT tblRota.RotaID, tblRota.RotaName, tblRota.RotaThemeColour, " +
+                "tblRota.FacilityID, tblFacility.FacilityName " +
+                "FROM(((((tblRotaInstance INNER JOIN tblRota ON tblRotaInstance.RotaID = tblRota.RotaID) INNER JOIN " +
+                "tblRotaInstanceRoles ON tblRotaInstance.RotaInstanceID = tblRotaInstanceRoles.RotaInstanceID) INNER JOIN " +
+                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+                "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                "INNER JOIN tblFacility ON tblRota.FacilityID = tblFacility.FacilityID) " +
+                $"WHERE(tblRotaInstanceRoles.RotaInstanceRoleNumber <> 0) AND(tblAssignedRotaRoles.UserID = {UserID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
 
             while (dr.Read())
             {
-                 
+                cntrlRotaOverview cntrlRotaOverview = 
+                    new cntrlRotaOverview(dr[1].ToString(),Convert.ToInt32(dr[0].ToString()),
+                    dr[4].ToString(),Convert.ToInt32(dr[3].ToString()),dr[2].ToString(),false);
+                flpRotas.Controls.Add(cntrlRotaOverview);
             }
             dbConnector.Close();
 
@@ -94,9 +104,7 @@ namespace NEABenjaminFranklin
 
 
 
-            //Testing control
-            cntrlRotaOverview cntrlRotaOverview = new cntrlRotaOverview("Pizza Planet", 17, "Auditorium", 1, "-510201", false);
-            flpRotas.Controls.Add(cntrlRotaOverview);
+
         }
 
     }
