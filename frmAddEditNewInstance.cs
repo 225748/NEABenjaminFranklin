@@ -60,7 +60,7 @@ namespace NEABenjaminFranklin
         private void frmAddNewInstance_Load(object sender, EventArgs e)
         {
             FillFlp();
-            dtpDate.MinDate = DateTime.Now;
+            //dtpDate.MinDate = DateTime.Now; //Not for now as makes issues for the update
             dtpTime.CustomFormat = "HH:mm"; //Captial HH for 24HR NOT for mins as that becomes month
             dtpTime.Format = DateTimePickerFormat.Custom;
             dtpTime.ShowUpDown = true;
@@ -82,6 +82,7 @@ namespace NEABenjaminFranklin
             {
 
                 this.Text = "Update / Delete Instance";
+                dtpDate.Value = Convert.ToDateTime(EditModeDateTime.Date.ToString());
                 dtpTime.Value = Convert.ToDateTime(EditModeDateTime.TimeOfDay.ToString());
                 pnlEditMode.Enabled = true;
                 pnlEditMode.Show();
@@ -246,27 +247,33 @@ namespace NEABenjaminFranklin
             while (dr.Read())
             {
                 instanceDateTime = Convert.ToDateTime(dr[0].ToString());
-                MessageBox.Show(instanceDateTime.ToString());
             }
             dbConnector.Close();
 
             string requiredUpdate = "";
+            //Checking is casuing issues - problem is putting the TIME as well as date into the correct format dt object in the while above
+            //if (instanceDateTime.Date.ToString() != dtpDate.Value.Date.ToString())
+            //{
+            //    requiredUpdate = requiredUpdate + "date";
+            //}
+            //if (instanceDateTime.TimeOfDay.ToString() != dtpTime.Value.ToString())
+            //{
+            //    requiredUpdate = requiredUpdate + "time";
+            //}
 
-            if (instanceDateTime.Date.ToString() != dtpDate.Value.ToString())
-            {
-                requiredUpdate = requiredUpdate + "date";
-            }
-            if (instanceDateTime.TimeOfDay.ToString() != dtpTime.Value.ToString())
-            {
-                requiredUpdate = requiredUpdate + "time";
-            }
-
+            //For now skipping checking and just updating it regardless
+            requiredUpdate = "a";
             if (requiredUpdate != "")
             {
+                DateTime newDateTime = Convert.ToDateTime(dtpDate.Value.Date.ToString().Substring(0,10) + " " + dtpTime.Value.TimeOfDay);
+
                 dbConnector = new clsDBConnector();
                 string cmdStr = "UPDATE tblRotaInstance " +
-                $"SET RotaInstanceDateTime = {instanceDateTime.ToString()} " +
+                $"SET RotaInstanceDateTime = '{newDateTime}' " +
                 $"WHERE (RotaInstanceID = {rotaInstanceID})";
+                dbConnector.Connect();
+                dbConnector.DoDML(cmdStr);
+                dbConnector.Close();
             }
         }
 
