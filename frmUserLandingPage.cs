@@ -82,18 +82,15 @@ namespace NEABenjaminFranklin
                 // don't show dates that have already happened
                 if (rotaInstanceDateTime > DateTime.Now)
                 {
-                    Label testing = new Label();
-                    testing.Text = rotaInstanceDateTime.Date.ToString() + " " + rotaInstanceDateTime.TimeOfDay.ToString();
-                    flpDates.Controls.Add(testing);
+                    string date = rotaInstanceDateTime.Date.ToString().Substring(0,10);
+                    string time = rotaInstanceDateTime.TimeOfDay.ToString().Substring(0,5);
+
                     /////////////
                     /////Currently building this bit
                     /////////////
-                    //cntrlAcceptDeclineDates cntrlAcceptDeclineDates = new cntrlAcceptDeclineDates();
-                    //flpDates.Controls.Add(cntrlAcceptDeclineDates);
-
-
-
-
+                    cntrlAcceptDeclineDates cntrlAcceptDeclineDates 
+                        = new cntrlAcceptDeclineDates(date,time,roleName,rotaName,rotaID,instanceID,rirn,UserID);
+                    flpDates.Controls.Add(cntrlAcceptDeclineDates);
                 }
 
             }

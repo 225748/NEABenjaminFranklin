@@ -19,7 +19,7 @@ namespace NEABenjaminFranklin
 
         private int RotaID { get; set; }
         private int InstanceID { get; set; }
-        private string RotaInstanceRoleNumber { get; set; }
+        private int RotaInstanceRoleNumber { get; set; }
         private int UserID  { get; set; }
 
 
@@ -28,6 +28,14 @@ namespace NEABenjaminFranklin
         public cntrlAcceptDeclineDates(string date, string time, string roleName, string rotaName, int rotaID, int instanceID, int rotaInstanceRoleNumber, int userID)
         {
             InitializeComponent();
+            Date = date;
+            Time = time;
+            RoleName = roleName;
+            RotaName = rotaName;
+            RotaID = rotaID;
+            InstanceID = instanceID;
+            RotaInstanceRoleNumber = rotaInstanceRoleNumber;
+            UserID = userID;
         }
 
         private void cntrlAcceptDeclineDates_Load(object sender, EventArgs e)
