@@ -127,11 +127,11 @@
             // flpDates
             // 
             this.flpDates.AutoScroll = true;
-            this.flpDates.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpDates.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.flpDates.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpDates.Location = new System.Drawing.Point(12, 27);
             this.flpDates.Name = "flpDates";
-            this.flpDates.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.flpDates.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.flpDates.Size = new System.Drawing.Size(222, 290);
             this.flpDates.TabIndex = 14;
             this.flpDates.WrapContents = false;
@@ -149,7 +149,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(306, 118);
+            this.tabControl1.Location = new System.Drawing.Point(282, 118);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tabControl1.SelectedIndex = 0;
@@ -170,7 +170,7 @@
             // flpRotas
             // 
             this.flpRotas.AutoScroll = true;
-            this.flpRotas.BackColor = System.Drawing.Color.LightGray;
+            this.flpRotas.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.flpRotas.Location = new System.Drawing.Point(6, 5);
             this.flpRotas.Name = "flpRotas";
             this.flpRotas.Size = new System.Drawing.Size(348, 280);

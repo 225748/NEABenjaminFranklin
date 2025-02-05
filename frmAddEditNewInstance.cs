@@ -19,8 +19,9 @@ namespace NEABenjaminFranklin
         public bool EditMode { get; set; }
         //IF edit mode
         public int EditModeInstanceID { get; set; }
+        public DateTime EditModeDateTime { get; set; }
 
-        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0)
+        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, DateTime ifEditModeInstanceDateTime = )
         {
             InitializeComponent();
             RotaID = rotaID;
@@ -52,6 +53,7 @@ namespace NEABenjaminFranklin
             }
             EditMode = editMode;
             EditModeInstanceID = InstanceIDIfEditMode;
+            EditModeDateTime = ifEditModeInstanceDateTime;
 
         }
 
@@ -80,6 +82,7 @@ namespace NEABenjaminFranklin
             {
 
                 this.Text = "Update / Delete Instance";
+                dtpTime.Value = Convert.ToDateTime(EditModeDateTime.TimeOfDay.ToString());
                 pnlEditMode.Enabled = true;
                 pnlEditMode.Show();
                 btnAddInstance.Enabled = false;
@@ -229,9 +232,48 @@ namespace NEABenjaminFranklin
             return 0;
         }
 
+        private void UpdateDateTimeDifference(int rotaInstanceID)
+        {
+            DateTime instanceDateTime = DateTime.Now;
+
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT RotaInstanceDateTime " +
+                "FROM tblRotaInstance " +
+                $"WHERE(RotaInstanceID = {rotaInstanceID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                instanceDateTime = Convert.ToDateTime(dr[0].ToString());
+                MessageBox.Show(instanceDateTime.ToString());
+            }
+            dbConnector.Close();
+
+            string requiredUpdate = "";
+
+            if (instanceDateTime.Date.ToString() != dtpDate.Value.ToString())
+            {
+                requiredUpdate = requiredUpdate + "date";
+            }
+            if (instanceDateTime.TimeOfDay.ToString() != dtpTime.Value.ToString())
+            {
+                requiredUpdate = requiredUpdate + "time";
+            }
+
+            if (requiredUpdate != "")
+            {
+                dbConnector = new clsDBConnector();
+                string cmdStr = "UPDATE tblRotaInstance " +
+                $"SET RotaInstanceDateTime = {instanceDateTime.ToString()} " +
+                $"WHERE (RotaInstanceID = {rotaInstanceID})";
+            }
+        }
+
         private void UpdateInstance(int rotaInstanceID)
         {
-
+            //Check if date and time are different to that which is stored, if so - update
+            UpdateDateTimeDifference(rotaInstanceID);
 
             //For every cntrl in flproles, get each userID in its lstVUsers and see if checked
             foreach (cntrlRoleWithListVUsers cntrlRoleWithListVUsers in flpRoles.Controls)

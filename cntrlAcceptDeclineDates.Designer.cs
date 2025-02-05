@@ -33,6 +33,7 @@
             this.btnAcceptDate = new System.Windows.Forms.Button();
             this.btnDeclineDate = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
+            this.lblRotaName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDate
@@ -57,7 +58,7 @@
             // btnAcceptDate
             // 
             this.btnAcceptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(190)))));
-            this.btnAcceptDate.Location = new System.Drawing.Point(3, 48);
+            this.btnAcceptDate.Location = new System.Drawing.Point(6, 48);
             this.btnAcceptDate.Name = "btnAcceptDate";
             this.btnAcceptDate.Size = new System.Drawing.Size(75, 23);
             this.btnAcceptDate.TabIndex = 2;
@@ -68,7 +69,7 @@
             // btnDeclineDate
             // 
             this.btnDeclineDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnDeclineDate.Location = new System.Drawing.Point(88, 48);
+            this.btnDeclineDate.Location = new System.Drawing.Point(108, 48);
             this.btnDeclineDate.Name = "btnDeclineDate";
             this.btnDeclineDate.Size = new System.Drawing.Size(75, 23);
             this.btnDeclineDate.TabIndex = 3;
@@ -79,25 +80,35 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(85, 11);
+            this.lblTime.Location = new System.Drawing.Point(105, 11);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(34, 13);
             this.lblTime.TabIndex = 4;
             this.lblTime.Text = "{time}";
             // 
+            // lblRotaName
+            // 
+            this.lblRotaName.AutoSize = true;
+            this.lblRotaName.Location = new System.Drawing.Point(105, 30);
+            this.lblRotaName.Name = "lblRotaName";
+            this.lblRotaName.Size = new System.Drawing.Size(33, 13);
+            this.lblRotaName.TabIndex = 5;
+            this.lblRotaName.Text = "{rota}";
+            // 
             // cntrlAcceptDeclineDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.lblRotaName);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.btnDeclineDate);
             this.Controls.Add(this.btnAcceptDate);
             this.Controls.Add(this.lblRole);
             this.Controls.Add(this.lblDate);
             this.Name = "cntrlAcceptDeclineDates";
-            this.Size = new System.Drawing.Size(164, 75);
+            this.Size = new System.Drawing.Size(190, 75);
             this.Load += new System.EventHandler(this.cntrlAcceptDeclineDates_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -111,5 +122,6 @@
         private System.Windows.Forms.Button btnAcceptDate;
         private System.Windows.Forms.Button btnDeclineDate;
         private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.Label lblRotaName;
     }
 }

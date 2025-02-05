@@ -12,12 +12,20 @@ namespace NEABenjaminFranklin
 {
     public partial class cntrlAcceptDeclineDates : UserControl
     {
-        public string Date { get; set; }
-        public string Time { get; set; }
-        public string Role { get; set; }
+        private string Date { get; set; }
+        private string Time { get; set; }
+        private string RoleName { get; set; }
+        private string RotaName { get; set; }
+
+        private int RotaID { get; set; }
+        private int InstanceID { get; set; }
+        private string RotaInstanceRoleNumber { get; set; }
+        private int UserID  { get; set; }
+
+
         public bool Accepted { get; set; }
 
-        public cntrlAcceptDeclineDates()
+        public cntrlAcceptDeclineDates(string date, string time, string roleName, string rotaName, int rotaID, int instanceID, int rotaInstanceRoleNumber, int userID)
         {
             InitializeComponent();
         }
@@ -26,7 +34,8 @@ namespace NEABenjaminFranklin
         {
             lblDate.Text = Date;
             lblTime.Text = Time;
-            lblRole.Text = Role;
+            lblRole.Text = RoleName;
+            lblRotaName.Text = RotaName;
             btnAcceptDate.Enabled = true;
             btnDeclineDate.Enabled = true;
         }

@@ -45,7 +45,7 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-               return dr[0].ToString() + " " + dr[1].ToString();
+                return dr[0].ToString() + " " + dr[1].ToString();
             }
             dbConnector.Close();
             return "";
@@ -53,26 +53,58 @@ namespace NEABenjaminFranklin
 
         private void FillADDates()
         {
-            //Filled list with testing values for now - fill lists from databases, be sure to include provision for no role
-            //
-            //In actual implementation, use a list of objects of a class and read it in a loop and then create a cc object for each
-            List<string> userRotaDates = new List<string> { "12/10/2024", "19/10/2024", "30/03/2026", "12/09/2040" };
-            List<string> userRotaRoles = new List<string> { "Sound", "Door Team", "Visuals", "NO ROLE" };
-            List<string> userRotaTimes = new List<string> { "10am", "10am", "4pm", "3pm" };
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT tblRotaInstance.RotaInstanceDateTime, tblRoles.RoleName, tblRota.RotaName, " +
+                "tblRotaInstance.RotaID, tblRotaInstance.RotaInstanceID, tblRotaInstanceRoles.RotaInstanceRoleNumber, " +
+                "tblAssignedRotaRoles.UserID " +
+                "FROM(((((tblRotaInstance INNER JOIN tblRota ON tblRotaInstance.RotaID = tblRota.RotaID) INNER JOIN " +
+                "tblRotaInstanceRoles ON tblRotaInstance.RotaInstanceID = tblRotaInstanceRoles.RotaInstanceID) INNER JOIN " +
+                "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID) INNER JOIN " +
+                "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) INNER JOIN " +
+                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID " +
+                "AND tblRotaRoles.RotaRoleNumber = tblAssignedRotaRoles.RotaRoleNumber) " +
+                $"WHERE(tblAssignedRotaRoles.UserID = {UserID}) " +
+                "ORDER BY tblRotaInstance.RotaInstanceDateTime";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
 
-            for (int i = 0; i < userRotaDates.Count(); i++)
+            while (dr.Read())
             {
-                cntrlAcceptDeclineDates ADModule = new cntrlAcceptDeclineDates();
-                ADModule.Name = $"ADModule {i}";
-                ADModule.Tag = ADModule.Name;
-                ADModule.Date = userRotaDates[i];
-                ADModule.Role = userRotaRoles[i];
-                ADModule.Time = userRotaTimes[i];
-                ADModule.Show();
-                flpDates.Controls.Add(ADModule);
-                
+                //For simplicity of reading - assigning the sql outputs to vars to manipulate
+                DateTime rotaInstanceDateTime = Convert.ToDateTime(dr[0].ToString());
+                string roleName = dr[1].ToString();
+                string rotaName = dr[2].ToString();
+                int rotaID = Convert.ToInt32(dr[3].ToString());
+                int instanceID = Convert.ToInt32(dr[4].ToString());
+                int rirn = Convert.ToInt32(dr[5].ToString()); //rirn = rota instance role number
+
+                // don't show dates that have already happened
+                if (rotaInstanceDateTime > DateTime.Now)
+                {
+                    Label testing = new Label();
+                    testing.Text = rotaInstanceDateTime.Date.ToString() + " " + rotaInstanceDateTime.TimeOfDay.ToString();
+                    flpDates.Controls.Add(testing);
+                    /////////////
+                    /////Currently building this bit
+                    /////////////
+                    //cntrlAcceptDeclineDates cntrlAcceptDeclineDates = new cntrlAcceptDeclineDates();
+                    //flpDates.Controls.Add(cntrlAcceptDeclineDates);
+
+
+
+
+                }
+
             }
-            // check for no dates (like the no roles bit in create new rota)
+            dbConnector.Close();
+            if (flpDates.Controls.Count == 0)
+            {//No assignements for this user
+                Label lblNoDates = new Label();
+                lblNoDates.Text = "There are no future assigned dates to display.";
+                lblNoDates.AutoSize = true;
+                flpDates.Controls.Add(lblNoDates);
+            }
         }
         private void FillFlpRotas()
         {
@@ -92,19 +124,12 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-                cntrlRotaOverview cntrlRotaOverview = 
-                    new cntrlRotaOverview(dr[1].ToString(),Convert.ToInt32(dr[0].ToString()),
-                    dr[4].ToString(),Convert.ToInt32(dr[3].ToString()),dr[2].ToString(),false);
+                cntrlRotaOverview cntrlRotaOverview =
+                    new cntrlRotaOverview(dr[1].ToString(), Convert.ToInt32(dr[0].ToString()),
+                    dr[4].ToString(), Convert.ToInt32(dr[3].ToString()), dr[2].ToString(), false);
                 flpRotas.Controls.Add(cntrlRotaOverview);
             }
             dbConnector.Close();
-
-
-
-
-
-
-
         }
 
     }
