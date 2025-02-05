@@ -57,7 +57,7 @@
             // 
             // btnAcceptDate
             // 
-            this.btnAcceptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(255)))), ((int)(((byte)(190)))));
+            this.btnAcceptDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAcceptDate.Location = new System.Drawing.Point(6, 48);
             this.btnAcceptDate.Name = "btnAcceptDate";
             this.btnAcceptDate.Size = new System.Drawing.Size(75, 23);
@@ -68,7 +68,7 @@
             // 
             // btnDeclineDate
             // 
-            this.btnDeclineDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnDeclineDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
             this.btnDeclineDate.Location = new System.Drawing.Point(108, 48);
             this.btnDeclineDate.Name = "btnDeclineDate";
             this.btnDeclineDate.Size = new System.Drawing.Size(75, 23);
