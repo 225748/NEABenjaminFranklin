@@ -142,6 +142,7 @@ namespace NEABenjaminFranklin
                     }
                     else if (Convert.ToInt32(dr[2].ToString()) == 0) //Not Acknowledged
                     {
+
                     }
                     lblUser.Show();
                     flpAssignedRoles.Controls.Add(lblUser);
