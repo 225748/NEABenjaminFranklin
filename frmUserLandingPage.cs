@@ -126,5 +126,10 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
+        private void btnAccountSettings_Click(object sender, EventArgs e)
+        {
+            frmUserEditUserInfo frmUserEditUserInfo = new frmUserEditUserInfo(UserID);
+            frmUserEditUserInfo.ShowDialog();
+        }
     }
 }

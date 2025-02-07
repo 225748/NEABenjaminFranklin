@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserLandingPage));
             this.pnlTopBar = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.btnAccountSettings = new System.Windows.Forms.Button();
             this.lblUserView = new System.Windows.Forms.Label();
@@ -53,7 +52,6 @@
             // pnlTopBar
             // 
             this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTopBar.Controls.Add(this.button3);
             this.pnlTopBar.Controls.Add(this.picRotaConnect);
             this.pnlTopBar.Controls.Add(this.btnAccountSettings);
             this.pnlTopBar.Controls.Add(this.lblUserView);
@@ -62,16 +60,6 @@
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
             this.pnlTopBar.TabIndex = 14;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button3.Location = new System.Drawing.Point(362, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = false;
             // 
             // picRotaConnect
             // 
@@ -87,12 +75,13 @@
             // btnAccountSettings
             // 
             this.btnAccountSettings.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnAccountSettings.Location = new System.Drawing.Point(251, 3);
+            this.btnAccountSettings.Location = new System.Drawing.Point(242, 3);
             this.btnAccountSettings.Name = "btnAccountSettings";
-            this.btnAccountSettings.Size = new System.Drawing.Size(105, 23);
+            this.btnAccountSettings.Size = new System.Drawing.Size(130, 23);
             this.btnAccountSettings.TabIndex = 0;
-            this.btnAccountSettings.Text = "Account";
+            this.btnAccountSettings.Text = "Account Information";
             this.btnAccountSettings.UseVisualStyleBackColor = false;
+            this.btnAccountSettings.Click += new System.EventHandler(this.btnAccountSettings_Click);
             // 
             // lblUserView
             // 
@@ -226,7 +215,6 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlTopBar;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox picRotaConnect;
         private System.Windows.Forms.Button btnAccountSettings;
         private System.Windows.Forms.Label lblUserView;
