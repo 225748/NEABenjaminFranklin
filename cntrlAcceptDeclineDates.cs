@@ -74,14 +74,16 @@ namespace NEABenjaminFranklin
         {//used for both inital button states (I.e. if user previously A/D) and updates
             if (Accepted == 1)
             {
-                btnAcceptDate.BackColor = Color.FromArgb(50, 255, 190);
+               // btnAcceptDate.BackColor = Color.FromArgb(50, 255, 190); //old colour
+                btnAcceptDate.BackColor = Color.FromArgb(192, 255, 192);
                 btnAcceptDate.Text = "Accepted";
                 btnDeclineDate.BackColor = Color.Empty;
                 btnDeclineDate.Text = "Decline";
             }
             else if (Accepted == -1)
             {
-                btnDeclineDate.BackColor = Color.FromArgb(255, 128, 128);
+                //btnDeclineDate.BackColor = Color.FromArgb(255, 128, 128); //old colour
+                btnDeclineDate.BackColor = Color.FromArgb(255, 150, 150);
                 btnDeclineDate.Text = "Declined";
                 btnAcceptDate.BackColor = Color.Empty;
                 btnAcceptDate.Text = "Accept";
