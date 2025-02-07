@@ -240,7 +240,7 @@ namespace NEABenjaminFranklin
 
         private void UpdateDateTimeDifference(int rotaInstanceID)
         {
-            DateTime instanceDateTime = DateTime.Now;
+            DateTime instanceDateTime = DateTime.Now; //creating the object, don't worry about its value here
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
