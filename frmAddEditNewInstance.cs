@@ -136,12 +136,13 @@ namespace NEABenjaminFranklin
             dbConnector.Connect();
             sqlStr = $" SELECT MAX({keyName}) AS maxID FROM {tableName} ";
             dr = dbConnector.DoSQL(sqlStr);
+            int ret = 0;
             while (dr.Read())
             {
-                return Convert.ToInt32(dr[0]);
+                ret = Convert.ToInt32(dr[0]);
             }
             dbConnector.Close();
-            return 0;
+            return ret;
         }
         private bool CheckForExistingInstance(int rotaID, DateTime dateTime)
         {
@@ -154,12 +155,13 @@ namespace NEABenjaminFranklin
                 $"AND (RotaInstanceDateTime = #{dateTime.ToString("MM/dd/yyyy HH:mm:00")}#)"; //Convert date to us format with time
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
+            bool ret = false;
             while (dr.Read())
             {
-                return true;
+                ret = true;
             }
             dbConnector.Close();
-            return false;
+            return ret;
         }
 
         private void AddNewInstance()
@@ -227,12 +229,13 @@ namespace NEABenjaminFranklin
                 $"WHERE(RotaInstanceID = {instanceID}) AND(AssignedRotaRolesID = {assignedRotaRoleID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
+            int ret = 0;
             while (dr.Read())
             {
-                return Convert.ToInt32(dr[0].ToString());
+                ret = Convert.ToInt32(dr[0].ToString());
             }
             dbConnector.Close();
-            return 0;
+            return ret;
         }
 
         private void UpdateDateTimeDifference(int rotaInstanceID)

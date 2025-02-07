@@ -107,12 +107,13 @@ namespace NEABenjaminFranklin
                 $"AND(UserID = {userID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
+            int ret = 0;
             while (dr.Read())
             {
-                return Convert.ToInt32(dr[0].ToString()); //return assignedRotaRoleID if there is one
+                ret = Convert.ToInt32(dr[0].ToString()); //return assignedRotaRoleID if there is one
             }
             dbConnector.Close();
-            return 0; //if there isn't one
+            return ret;
 
         }
         public void AssignUsersToRotaRole()
