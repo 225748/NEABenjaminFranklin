@@ -113,12 +113,12 @@ namespace NEABenjaminFranklin
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
                 dbConnector = new clsDBConnector();
-                sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName " +
+                sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName, tblRotaInstanceRoles.Accepted " +
                     "FROM(((tblAssignedRotaRoles INNER JOIN " +
                     "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
                     "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
                     "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-                    $"WHERE(tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) AND(tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID})";
+                    $"WHERE(tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) AND (tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID})";
                 dbConnector.Connect();
                 dr = dbConnector.DoSQL(sqlCommand);
 
@@ -129,6 +129,20 @@ namespace NEABenjaminFranklin
                     lblUser.Text = "       " + dr[0].ToString() + " " + dr[1].ToString();
                     lblUser.AutoSize = true;
                     lblUser.Margin = new System.Windows.Forms.Padding(0,2,0,6);
+
+                    //Code below is to colour (and strikethrough for declined) each name according to users A/D
+                    if (Convert.ToInt32(dr[2].ToString()) == 1) //Accepted
+                    {
+                        lblUser.ForeColor = Color.Green;
+                    }
+                    else if (Convert.ToInt32(dr[2].ToString()) == -1) //Declined
+                    {
+                        lblUser.ForeColor = Color.Crimson;
+                        lblUser.Font = new Font(lblUser.Font, FontStyle.Strikeout);
+                    }
+                    else if (Convert.ToInt32(dr[2].ToString()) == 0) //Not Acknowledged
+                    {
+                    }
                     lblUser.Show();
                     flpAssignedRoles.Controls.Add(lblUser);
                 }

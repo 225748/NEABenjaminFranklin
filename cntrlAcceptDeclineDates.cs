@@ -24,7 +24,9 @@ namespace NEABenjaminFranklin
         private int UserID  { get; set; }
 
 
-        public bool Accepted { get; set; }
+        public int Accepted { get; set; }
+        //Used to be a bool but updated to int to get tri-state
+        //(1 = accepted, 0 = not acknowledged, -1 = declined )
 
         public cntrlAcceptDeclineDates(string date, string time, string roleName, string rotaName, int rotaID, int instanceID, int rotaInstanceRoleNumber, int userID)
         {
@@ -50,7 +52,7 @@ namespace NEABenjaminFranklin
             Accepted = QueryADstate();
             UpdateADstate();
         }
-        private bool QueryADstate()
+        private int QueryADstate()
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -61,28 +63,35 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {
-                return Convert.ToBoolean(dr[0].ToString());
+                return Convert.ToInt32(dr[0].ToString());
             }
             dbConnector.Close();
-            return false;
+            return 0;
         }
 
 
         private void UpdateADstate()
         {//used for both inital button states (I.e. if user previously A/D) and updates
-            if (Accepted)
+            if (Accepted == 1)
             {
                 btnAcceptDate.BackColor = Color.FromArgb(50, 255, 190);
                 btnAcceptDate.Text = "Accepted";
                 btnDeclineDate.BackColor = Color.Empty;
                 btnDeclineDate.Text = "Decline";
             }
-            else
+            else if (Accepted == -1)
             {
                 btnDeclineDate.BackColor = Color.FromArgb(255, 128, 128);
                 btnDeclineDate.Text = "Declined";
                 btnAcceptDate.BackColor = Color.Empty;
                 btnAcceptDate.Text = "Accept";
+            }
+            else //not acknowledged yet
+            {
+                btnAcceptDate.BackColor = Color.FromArgb(192, 255, 192);
+                btnAcceptDate.Text = "Accept";
+                btnDeclineDate.BackColor = Color.FromArgb(255, 150, 150);
+                btnDeclineDate.Text = "Decline";
             }
         }
 
@@ -99,14 +108,14 @@ namespace NEABenjaminFranklin
 
         private void btnAcceptDate_Click(object sender, EventArgs e)
         {
-            Accepted = true;
+            Accepted = 1;
             UpdateADstate();
             UpdateADDatabaseState();
         }
 
         private void btnDeclineDate_Click(object sender, EventArgs e)
         {
-            Accepted = false;
+            Accepted = -1;
             UpdateADstate();
             UpdateADDatabaseState();
         }

@@ -53,8 +53,10 @@ namespace NEABenjaminFranklin
             }
             EditMode = editMode;
             EditModeInstanceID = InstanceIDIfEditMode;
-            EditModeDateTime = Convert.ToDateTime(ifEditModeInstanceDateTime);
-
+            if (ifEditModeInstanceDateTime != "")
+            {
+                EditModeDateTime = Convert.ToDateTime(ifEditModeInstanceDateTime);
+            }
         }
 
         private void frmAddNewInstance_Load(object sender, EventArgs e)
