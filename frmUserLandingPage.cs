@@ -85,9 +85,6 @@ namespace NEABenjaminFranklin
                     string date = rotaInstanceDateTime.Date.ToString().Substring(0,10);
                     string time = rotaInstanceDateTime.TimeOfDay.ToString().Substring(0,5);
 
-                    /////////////
-                    /////Currently building this bit
-                    /////////////
                     cntrlAcceptDeclineDates cntrlAcceptDeclineDates 
                         = new cntrlAcceptDeclineDates(date,time,roleName,rotaName,rotaID,instanceID,rirn,UserID);
                     flpDates.Controls.Add(cntrlAcceptDeclineDates);

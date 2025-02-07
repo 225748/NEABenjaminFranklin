@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -46,9 +47,28 @@ namespace NEABenjaminFranklin
             lblRotaName.Text = RotaName;
             btnAcceptDate.Enabled = true;
             btnDeclineDate.Enabled = true;
+            Accepted = QueryADstate();
+            UpdateADstate();
+        }
+        private bool QueryADstate()
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT Accepted FROM tblRotaInstanceRoles " +
+                $"WHERE(RotaInstanceRoleNumber = {RotaInstanceRoleNumber})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            while (dr.Read())
+            {
+                return Convert.ToBoolean(dr[0].ToString());
+            }
+            dbConnector.Close();
+            return false;
         }
 
-        private void updateADstate()
+
+        private void UpdateADstate()
         {//used for both inital button states (I.e. if user previously A/D) and updates
             if (Accepted)
             {
@@ -66,16 +86,29 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private void UpdateADDatabaseState()
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            string cmdStr = "UPDATE tblRotaInstanceRoles " +
+                $"SET Accepted = {Accepted} " +
+                $"WHERE(tblRotaInstanceRoles.RotaInstanceRoleNumber = {RotaInstanceRoleNumber})";
+            dbConnector.Connect();
+            dbConnector.DoDML(cmdStr);
+            dbConnector.Close();
+        }
+
         private void btnAcceptDate_Click(object sender, EventArgs e)
         {
             Accepted = true;
-            updateADstate();
+            UpdateADstate();
+            UpdateADDatabaseState();
         }
 
         private void btnDeclineDate_Click(object sender, EventArgs e)
         {
             Accepted = false;
-            updateADstate();
+            UpdateADstate();
+            UpdateADDatabaseState();
         }
     }
 }
