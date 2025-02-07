@@ -125,8 +125,9 @@ namespace NEABenjaminFranklin
                 while (dr.Read())
                 {
                     Label lblUser = new Label();
-                    //appending spaces so the names are 'tab shifted' right under the role headings
-                    lblUser.Text = "       " + dr[0].ToString() + " " + dr[1].ToString();
+                    lblUser.Text = dr[0].ToString() + " " + dr[1].ToString();
+                    //padding so the names are 'tab shifted' right under the role headings
+                    lblUser.Padding = new Padding(20, 0, 0, 0);
                     lblUser.AutoSize = true;
                     lblUser.Margin = new System.Windows.Forms.Padding(0,2,0,6);
 
