@@ -47,11 +47,10 @@
             this.btnAddNewUser = new System.Windows.Forms.Button();
             this.lblUsers = new System.Windows.Forms.Label();
             this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.lblHostView = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.pnlHostView.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -256,13 +255,23 @@
             this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTopBar.Controls.Add(this.btnLogout);
             this.pnlTopBar.Controls.Add(this.picRotaConnect);
-            this.pnlTopBar.Controls.Add(this.button1);
             this.pnlTopBar.Controls.Add(this.lblHostView);
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
             this.pnlTopBar.TabIndex = 13;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnLogout.Location = new System.Drawing.Point(715, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(72, 23);
+            this.btnLogout.TabIndex = 10;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // picRotaConnect
             // 
@@ -273,16 +282,6 @@
             this.picRotaConnect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picRotaConnect.TabIndex = 7;
             this.picRotaConnect.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button1.Location = new System.Drawing.Point(251, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // lblHostView
             // 
@@ -303,17 +302,6 @@
             this.lblWelcome.Size = new System.Drawing.Size(236, 40);
             this.lblWelcome.TabIndex = 8;
             this.lblWelcome.Text = "Welcome -------";
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnLogout.Location = new System.Drawing.Point(715, 2);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(72, 23);
-            this.btnLogout.TabIndex = 10;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = false;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmHostLandingPage
             // 
@@ -347,7 +335,6 @@
         private System.Windows.Forms.Panel pnlHostView;
         private System.Windows.Forms.PictureBox picRotaConnect;
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnAddNewUser;
         private System.Windows.Forms.Button btnManageUsers;
         private System.Windows.Forms.Panel pnlTopBar;
