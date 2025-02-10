@@ -79,11 +79,11 @@
     <Compile Include="cntrlRotaInstance.Designer.cs">
       <DependentUpon>cntrlRotaInstance.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmInitial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmInitial.Designer.cs">
+      <DependentUpon>frmInitial.cs</DependentUpon>
     </Compile>
     <Compile Include="frmAddEditNewInstance.cs">
       <SubType>Form</SubType>
@@ -172,8 +172,8 @@
     <EmbeddedResource Include="cntrlRotaInstance.resx">
       <DependentUpon>cntrlRotaInstance.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmInitial.resx">
+      <DependentUpon>frmInitial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddEditNewInstance.resx">
       <DependentUpon>frmAddEditNewInstance.cs</DependentUpon>

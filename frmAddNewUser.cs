@@ -22,9 +22,6 @@ namespace NEABenjaminFranklin
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            //put all validators in a seperate class and access the functions like db connector
-            //create validate string functions for firstname and last name
-
             //create validate email function
             Validation validator = new Validation();
             string response = validator.emailValidation(txtEmail.Text);
@@ -43,6 +40,7 @@ namespace NEABenjaminFranklin
             //create a temporary password
             Random random = new Random();
             string tempPassword = "";
+            tempPassword = tempPassword + txtFirstName.Text.Length;
             if (txtLastName.Text.Length > 3)
             {
                 tempPassword += txtLastName.Text.ToUpper().Substring(0, 3);
@@ -51,11 +49,24 @@ namespace NEABenjaminFranklin
             {
                 tempPassword += txtLastName.Text.ToUpper();
             }
-            tempPassword += txtFirstName.Text.ToUpper();
+            tempPassword += txtFirstName.Text.ToUpper()[0];
             tempPassword += random.Next(10, 99);
 
             //hash password using a function
-            string hashedPassword = "TEST";
+            string hashedPassword = tempPassword;
+
+            /////////////////////////////
+            //Need too code
+            //Eventually email this temporary password (using a seperate function) to the new user
+            ////////////////////////////
+
+            //if email not sucessfully sent
+            MessageBox.Show("There was an issue emailing the temporary password to the new user" +
+                "\n\nThis information will not be viewable once this window is closed" +
+                "\n\nPlease communicate the following manually:" +
+                $"\n\n Email: {validatedEmail}" +
+                $"\n One-Time Temporary Password: {hashedPassword}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
 
             bool successfulUserCreation = false;
             //insert data into people table

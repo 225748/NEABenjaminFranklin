@@ -74,22 +74,23 @@ namespace NEABenjaminFranklin
         //have a default password for new users and then prompt for change on first login
         private void btnHostLogin_Click(object sender, EventArgs e)
         {
-            int authorisedUserID = AuthoriseCredentials();
-            
-            //Now check for host credentials
-            bool validHost = false;
-            clsDBConnector dbConnector = new clsDBConnector();
-            OleDbDataReader dr;
-            string sqlCommand = "SELECT HostRole " +
-                "FROM tblPeople " +
-                $"WHERE(UserID = {authorisedUserID})";
-            dbConnector.Connect();
-            dr = dbConnector.DoSQL(sqlCommand);
-            while (dr.Read())
-            {
-                validHost = Convert.ToBoolean(dr[0].ToString());
-            }
+            //int authorisedUserID = AuthoriseCredentials();
 
+            ////Now check for host credentials
+            //bool validHost = false;
+            //clsDBConnector dbConnector = new clsDBConnector();
+            //OleDbDataReader dr;
+            //string sqlCommand = "SELECT HostRole " +
+            //    "FROM tblPeople " +
+            //    $"WHERE(UserID = {authorisedUserID})";
+            //dbConnector.Connect();
+            //dr = dbConnector.DoSQL(sqlCommand);
+            //while (dr.Read())
+            //{
+            //    validHost = Convert.ToBoolean(dr[0].ToString());
+            //}
+
+            bool validHost = true; //for bypass testing
             if (validHost)
             {
                 this.Hide();
