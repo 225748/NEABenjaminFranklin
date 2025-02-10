@@ -47,11 +47,11 @@
             this.btnAddNewUser = new System.Windows.Forms.Button();
             this.lblUsers = new System.Windows.Forms.Label();
             this.pnlTopBar = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblHostView = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.pnlHostView.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -254,7 +254,7 @@
             // pnlTopBar
             // 
             this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTopBar.Controls.Add(this.button3);
+            this.pnlTopBar.Controls.Add(this.btnLogout);
             this.pnlTopBar.Controls.Add(this.picRotaConnect);
             this.pnlTopBar.Controls.Add(this.button1);
             this.pnlTopBar.Controls.Add(this.lblHostView);
@@ -263,16 +263,6 @@
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
             this.pnlTopBar.TabIndex = 13;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button3.Location = new System.Drawing.Point(362, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(105, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = false;
             // 
             // picRotaConnect
             // 
@@ -314,6 +304,17 @@
             this.lblWelcome.TabIndex = 8;
             this.lblWelcome.Text = "Welcome -------";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnLogout.Location = new System.Drawing.Point(715, 2);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(72, 23);
+            this.btnLogout.TabIndex = 10;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // frmHostLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,7 +354,6 @@
         private System.Windows.Forms.Label lblUsers;
         private System.Windows.Forms.Label lblHostView;
         private System.Windows.Forms.FlowLayoutPanel flpUsers;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel pnlRotasGroup;
         private System.Windows.Forms.FlowLayoutPanel flpRotas;
         private System.Windows.Forms.Button btnCreateRota;
@@ -366,5 +366,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label lblRoles;
         private System.Windows.Forms.Button btnManageFacilities;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

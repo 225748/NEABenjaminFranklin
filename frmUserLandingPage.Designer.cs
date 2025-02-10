@@ -42,6 +42,7 @@
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblFullName = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
@@ -52,6 +53,7 @@
             // pnlTopBar
             // 
             this.pnlTopBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTopBar.Controls.Add(this.btnLogout);
             this.pnlTopBar.Controls.Add(this.picRotaConnect);
             this.pnlTopBar.Controls.Add(this.btnAccountSettings);
             this.pnlTopBar.Controls.Add(this.lblUserView);
@@ -186,6 +188,17 @@
             this.lblFullName.TabIndex = 18;
             this.lblFullName.Text = "{Full Name}";
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnLogout.Location = new System.Drawing.Point(715, 3);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(72, 23);
+            this.btnLogout.TabIndex = 9;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = false;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // frmUserLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,5 +240,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.FlowLayoutPanel flpRotas;
         private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Button btnLogout;
     }
 }

@@ -52,5 +52,14 @@ namespace NEABenjaminFranklin
             frmManageFacilities frmManageFacilities = new frmManageFacilities();
             frmManageFacilities.ShowDialog();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
+            this.Close();
+        }
     }
+    
 }

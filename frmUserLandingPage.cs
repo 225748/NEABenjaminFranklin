@@ -131,5 +131,13 @@ namespace NEABenjaminFranklin
             frmUserEditUserInfo frmUserEditUserInfo = new frmUserEditUserInfo(UserID);
             frmUserEditUserInfo.ShowDialog();
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
+            this.Close();
+        }
     }
 }
