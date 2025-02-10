@@ -135,8 +135,8 @@ namespace NEABenjaminFranklin
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
+            frmInitial frmInitial = new frmInitial();
+            frmInitial.ShowDialog();
             this.Close();
         }
     }

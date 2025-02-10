@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace NEABenjaminFranklin
 {
-    public partial class Form1 : Form
+    public partial class frmInitial : Form
     {
-        public Form1()
+        public frmInitial()
         {
             InitializeComponent();
         }
