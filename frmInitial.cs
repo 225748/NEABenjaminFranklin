@@ -22,14 +22,15 @@ namespace NEABenjaminFranklin
 
         }
 
-        private string hashPassword(string plainText)
+        private string hashPassword(string plainTextPassword)
         {
-            ////////////////////////////////////
-            ///NEED TO WRITE CUSTOM HASHING ALORGITHM - DONT USE BUILT IN IF CAN!!!
-            ///////////////////////////////////////
-            string hashed = "";
+            //Get user salt from database
+            string salt = "";
+
+            clsPasswordHasher passwordHasher = new clsPasswordHasher();
+            string hash = passwordHasher.performHash(plainTextPassword, salt);
             
-            return hashed;
+            return hash;
         }
 
         private int AuthoriseCredentials()
