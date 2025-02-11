@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,33 @@ namespace NEABenjaminFranklin
 {
     public partial class frmHostLandingPage : Form
     {
-        public frmHostLandingPage()
+        public int UserID { get; set; }
+
+        public frmHostLandingPage(int userID)
         {
             InitializeComponent();
+            UserID = userID;
+        }
+        private void frmHostLandingPage_Load(object sender, EventArgs e)
+        {
+            lblFullName.Text = GetUserFullName(UserID);
+        }
+        private string GetUserFullName(int userID)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT FirstName, LastName " +
+                "FROM tblPeople " +
+                $"WHERE (UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            while (dr.Read())
+            {
+                return dr[0].ToString() + " " + dr[1].ToString();
+            }
+            dbConnector.Close();
+            return "";
         }
 
         private void btnAddNewUser_Click(object sender, EventArgs e)
@@ -60,6 +85,7 @@ namespace NEABenjaminFranklin
             frmInitial.ShowDialog();
             this.Close();
         }
+
     }
     
 }

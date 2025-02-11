@@ -30,11 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHostLandingPage));
             this.pnlHostView = new System.Windows.Forms.Panel();
+            this.lblFullName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnVMCRoles = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.lblRoles = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlRotasGroup = new System.Windows.Forms.Panel();
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageRotas = new System.Windows.Forms.Button();
@@ -50,7 +52,6 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
-            this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlHostView.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -65,17 +66,29 @@
             // pnlHostView
             // 
             this.pnlHostView.BackColor = System.Drawing.Color.White;
+            this.pnlHostView.Controls.Add(this.lblFullName);
             this.pnlHostView.Controls.Add(this.panel1);
+            this.pnlHostView.Controls.Add(this.lblWelcome);
             this.pnlHostView.Controls.Add(this.pnlRotasGroup);
             this.pnlHostView.Controls.Add(this.pnlUsersGroup);
             this.pnlHostView.Controls.Add(this.pnlTopBar);
-            this.pnlHostView.Controls.Add(this.lblWelcome);
             this.pnlHostView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHostView.Location = new System.Drawing.Point(0, 0);
             this.pnlHostView.Name = "pnlHostView";
             this.pnlHostView.Size = new System.Drawing.Size(800, 450);
             this.pnlHostView.TabIndex = 0;
             this.pnlHostView.Tag = "";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFullName.Location = new System.Drawing.Point(47, 85);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(109, 25);
+            this.lblFullName.TabIndex = 20;
+            this.lblFullName.Text = "{Full Name}";
             // 
             // panel1
             // 
@@ -129,6 +142,16 @@
             this.lblRoles.Size = new System.Drawing.Size(34, 13);
             this.lblRoles.TabIndex = 12;
             this.lblRoles.Text = "Roles";
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Location = new System.Drawing.Point(45, 47);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(144, 40);
+            this.lblWelcome.TabIndex = 19;
+            this.lblWelcome.Text = "Welcome";
             // 
             // pnlRotasGroup
             // 
@@ -293,16 +316,6 @@
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
             // 
-            // lblWelcome
-            // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(56, 50);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(236, 40);
-            this.lblWelcome.TabIndex = 8;
-            this.lblWelcome.Text = "Welcome -------";
-            // 
             // frmHostLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -312,6 +325,7 @@
             this.Name = "frmHostLandingPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Host View";
+            this.Load += new System.EventHandler(this.frmHostLandingPage_Load);
             this.pnlHostView.ResumeLayout(false);
             this.pnlHostView.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -334,7 +348,6 @@
 
         private System.Windows.Forms.Panel pnlHostView;
         private System.Windows.Forms.PictureBox picRotaConnect;
-        private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnAddNewUser;
         private System.Windows.Forms.Button btnManageUsers;
         private System.Windows.Forms.Panel pnlTopBar;
@@ -354,5 +367,7 @@
         private System.Windows.Forms.Label lblRoles;
         private System.Windows.Forms.Button btnManageFacilities;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Label lblWelcome;
     }
 }

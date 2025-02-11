@@ -125,7 +125,7 @@ namespace NEABenjaminFranklin
             if (validHost)
             {
                 this.Hide();
-                frmHostLandingPage hostLandingPage = new frmHostLandingPage();
+                frmHostLandingPage hostLandingPage = new frmHostLandingPage(authorisedUserID);
                 hostLandingPage.ShowDialog();
                 this.Close();
             }
