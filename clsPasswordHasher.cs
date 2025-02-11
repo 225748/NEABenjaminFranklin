@@ -30,12 +30,6 @@ namespace NEABenjaminFranklin
             return salt;
         }
 
-        private ulong saltAndPasswordToBin(string combinedString)
-        {
-            ulong bin = ConvertStrToBinary(combinedString);//inherited from clsBinaryOperations
-            return bin;
-        }
-
         public string performHash(string rawPassword, string salt)
         {
             string combinedString = rawPassword + salt;
@@ -46,7 +40,7 @@ namespace NEABenjaminFranklin
             string hexDigest = "";
             foreach (byte b in byteArray)//using b instead of 'byte' as a variable name as byte is reserved
             {
-                hexDigest = hexDigest + ConvertByteToHex(b);
+                hexDigest = hexDigest + b.ToString("X");
             }
             return hexDigest;
         }
