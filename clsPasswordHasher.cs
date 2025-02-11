@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,30 @@ namespace NEABenjaminFranklin
             return salt;
         }
 
-        public string performHash(string rawPassword, string salt)
+        public string HashPassword(string rawPassword, int userID)
+        {
+            //get salt from db using userid
+            string salt = "";
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT Salt " +
+                "FROM tblPeople " +
+                $"WHERE (UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            while (dr.Read())
+            {
+                salt = dr[0].ToString();
+            }
+
+            //call peform hash
+            string hashDigest = "";
+            hashDigest = PerformHash(rawPassword, salt);
+            return hashDigest;
+        }
+
+        private string PerformHash(string rawPassword, string salt)
         {
             string combinedString = rawPassword + salt;
 

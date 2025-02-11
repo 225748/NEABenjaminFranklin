@@ -22,21 +22,42 @@ namespace NEABenjaminFranklin
 
         }
 
-        private string hashPassword(string plainTextPassword)
+        private bool CompareHash(string plainTextPassword, int userID)
         {
-            //Get user salt from database
-            string salt = "";
 
             clsPasswordHasher passwordHasher = new clsPasswordHasher();
-            string hash = passwordHasher.performHash(plainTextPassword, salt);
-            
-            return hash;
+            string hash = passwordHasher.HashPassword(plainTextPassword, userID);
+
+            //sql to compare
+            string databaseHash = "";
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT HashedPassword " +
+                "FROM tblPeople " +
+                $"WHERE (UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            while (dr.Read())
+            {
+                databaseHash = dr[0].ToString();
+            }
+            dbConnector.Close();
+            if (hash == databaseHash)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         private int AuthoriseCredentials()
         {
             bool validCredentials = false;
             bool validEmail = true;
+            int userID = 0;
 
             Validation validator = new Validation();
             string response = validator.emailValidation(txtEmail.Text);
@@ -54,45 +75,53 @@ namespace NEABenjaminFranklin
 
             if (validEmail)
             {
-                //Hash the password to compare to hash stored in database
-                string hashedPassword = hashPassword(txtPassword.Text);
-
+                //getUserID for the email
                 clsDBConnector dbConnector = new clsDBConnector();
                 OleDbDataReader dr;
                 string sqlCommand = "SELECT UserID " +
                     "FROM tblPeople " +
-                    $"WHERE(Email = {txtEmail.Text}) AND (HashedPassword = {hashedPassword})";
+                    $"WHERE (Email = '{txtEmail.Text}')";
                 dbConnector.Connect();
                 dr = dbConnector.DoSQL(sqlCommand);
+
                 while (dr.Read())
                 {
-                    validCredentials = true;
-                    return Convert.ToInt32(dr[0].ToString()); //userID found and returned for login
+                    userID = Convert.ToInt32(dr[0].ToString());
+                }
+                dbConnector.Close();
+
+
+                //hash password and then compare in compare hash
+                validCredentials = CompareHash(txtPassword.Text, userID);
+
+                if (!validCredentials)
+                {
+                    userID = 0; //even though we've found the userID above, the password was incorrect
                 }
             }
-            return 0; //no userID found for this combination of email and hashed password
+            return userID; //return userID = if not valid then 0 is returned
         }
 
         //have a default password for new users and then prompt for change on first login
         private void btnHostLogin_Click(object sender, EventArgs e)
         {
-            //int authorisedUserID = AuthoriseCredentials();
+            int authorisedUserID = AuthoriseCredentials();
 
-            ////Now check for host credentials
-            //bool validHost = false;
-            //clsDBConnector dbConnector = new clsDBConnector();
-            //OleDbDataReader dr;
-            //string sqlCommand = "SELECT HostRole " +
-            //    "FROM tblPeople " +
-            //    $"WHERE(UserID = {authorisedUserID})";
-            //dbConnector.Connect();
-            //dr = dbConnector.DoSQL(sqlCommand);
-            //while (dr.Read())
-            //{
-            //    validHost = Convert.ToBoolean(dr[0].ToString());
-            //}
+            //Now check for host credentials
+            bool validHost = false;
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT HostRole " +
+                "FROM tblPeople " +
+                $"WHERE(UserID = {authorisedUserID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                validHost = Convert.ToBoolean(dr[0].ToString());
+            }
 
-            bool validHost = true; //for bypass testing
+            //bool validHost = true; //for bypass testing
             if (validHost)
             {
                 this.Hide();
@@ -112,7 +141,7 @@ namespace NEABenjaminFranklin
             if (authorisedUserID != 0)
             {
                 this.Hide();                            //THIS (Currently 17 for testing) SHOULD BE THE USER ID OF THE LOGGED IN USER
-                frmUserLandingPage userLandingPage = new frmUserLandingPage(17);
+                frmUserLandingPage userLandingPage = new frmUserLandingPage(authorisedUserID);
                 userLandingPage.ShowDialog();
                 this.Close();
             }
