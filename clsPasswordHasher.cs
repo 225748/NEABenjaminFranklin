@@ -15,7 +15,7 @@ namespace NEABenjaminFranklin
         //ensure at a given size of bits - append 1 and then 0s to get to the size
         //perform bitwise operations and pads, shifts rotates etc
         //conv to hex and store in database
-        private string GenerateSalt()
+        public string GenerateSalt()
         {
             string salt = "";
             Random randValue = new Random();
@@ -31,7 +31,7 @@ namespace NEABenjaminFranklin
             return salt;
         }
 
-        public string HashPassword(string rawPassword, int userID)
+        public string HashPassword(string rawPassword, int userID) //call this when don't have salt //used in login
         {
             //get salt from db using userid
             string salt = "";
@@ -54,7 +54,7 @@ namespace NEABenjaminFranklin
             return hashDigest;
         }
 
-        private string PerformHash(string rawPassword, string salt)
+        public string PerformHash(string rawPassword, string salt) //call this to skip the salt //used in add
         {
             string combinedString = rawPassword + salt;
 

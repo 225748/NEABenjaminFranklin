@@ -53,7 +53,9 @@ namespace NEABenjaminFranklin
             tempPassword += random.Next(10, 99);
 
             //hash password using a function
-            string hashedPassword = tempPassword;
+            clsPasswordHasher passwordHasher = new clsPasswordHasher();
+            string salt = passwordHasher.GenerateSalt();
+            string hashedPassword = passwordHasher.PerformHash(tempPassword,salt);
 
             /////////////////////////////
             //Need too code
@@ -66,17 +68,17 @@ namespace NEABenjaminFranklin
                 "\n\nThis information will not be viewable once this window is closed" +
                 "\n\nPlease communicate the following manually:" +
                 $"\n\n Email: {validatedEmail}" +
-                $"\n One-Time Temporary Password: {hashedPassword}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
+                $"\n One-Time Temporary Password: {tempPassword}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Clipboard.SetText(tempPassword);
 
             bool successfulUserCreation = false;
             //insert data into people table
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
-                string cmdStr = $"INSERT INTO tblPeople  (FirstName, LastName, DOB, HostRole, Email, HashedPassword) " +
+                string cmdStr = $"INSERT INTO tblPeople  (FirstName, LastName, DOB, HostRole, Email, HashedPassword, Salt) " +
                     $"VALUES ('{txtFirstName.Text}', '{txtLastName.Text}','{dtpDOB.Value.Date}',{chkHostRole.Checked}," +
-                    $"'{validatedEmail}','{hashedPassword}')";
+                    $"'{validatedEmail}','{hashedPassword}','{salt}')";
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
