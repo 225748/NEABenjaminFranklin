@@ -52,6 +52,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsBinaryOperations.cs" />
     <Compile Include="clsDBConnector.cs" />
     <Compile Include="clsPasswordHasher.cs" />
     <Compile Include="clsUser.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NEABenjaminFranklin
 {
-    internal class clsPasswordHasher
+    internal class clsPasswordHasher :clsBinaryOperations
     {
         //create a random salt unique to each user and store in people table
         //append the salt to their raw password
@@ -28,9 +28,16 @@ namespace NEABenjaminFranklin
                 salt = salt + (Convert.ToChar(ascii));
             }
             return salt;
-
-            
         }
+        
+        private ulong saltAndPasswordToBin(string rawPassword, string salt)
+        {
+            string combinedString = rawPassword + salt;
+            ulong bin = ConvertStrToBinary(combinedString);//inherited from clsBinaryOperations
+            return bin;
+        }
+
+        
 
     }
 }
