@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsDBConnector.cs" />
+    <Compile Include="clsPasswordHasher.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="cntrlAcceptDeclineDates.cs">
       <SubType>UserControl</SubType>
