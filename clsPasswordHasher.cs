@@ -64,7 +64,7 @@ namespace NEABenjaminFranklin
             string hexDigest = "";
             foreach (byte b in byteArray)//using b instead of 'byte' as a variable name as byte is reserved
             {
-                hexDigest = hexDigest + b.ToString("X");
+                hexDigest = hexDigest + b.ToString("X");//hex form
             }
             return hexDigest;
         }
