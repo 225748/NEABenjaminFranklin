@@ -139,7 +139,7 @@ namespace NEABenjaminFranklin
         {
             int authorisedUserID = AuthoriseCredentials();
             if (authorisedUserID != 0)
-            {
+            {//add a provision for first time login / password reset - new bool field in database for 'password reset;
                 this.Hide();                            //THIS (Currently 17 for testing) SHOULD BE THE USER ID OF THE LOGGED IN USER
                 frmUserLandingPage userLandingPage = new frmUserLandingPage(authorisedUserID);
                 userLandingPage.ShowDialog();
