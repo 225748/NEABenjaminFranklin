@@ -120,6 +120,7 @@ namespace NEABenjaminFranklin
             {
                 validHost = Convert.ToBoolean(dr[0].ToString());
             }
+            dbConnector.Close();
 
             //bool validHost = true; //for bypass testing
             if (validHost)
@@ -135,11 +136,35 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private bool CheckForPasswordReset(int userID)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT ResetPassword " +
+                "FROM tblPeople " +
+                $"WHERE(UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            bool reset = false;
+            while (dr.Read())
+            {
+                 reset = Convert.ToBoolean(dr[0].ToString());
+            }
+            dbConnector.Close();
+            return reset;
+        }
+
         private void btnUserLogin_Click(object sender, EventArgs e)
         {
             int authorisedUserID = AuthoriseCredentials();
             if (authorisedUserID != 0)
-            {//add a provision for first time login / password reset - new bool field in database for 'password reset;
+            {//reset is provision for first time login / password reset - new bool field in database for reset password;
+                bool reset = CheckForPasswordReset(authorisedUserID);
+                if (reset)
+                {//Ask for new password using a dialoge form with a text box and then hash using their salt and update db
+                    frmPasswordReset frmPasswordReset = new frmPasswordReset(authorisedUserID);
+                    frmPasswordReset.ShowDialog();
+                }
                 this.Hide();                            //THIS (Currently 17 for testing) SHOULD BE THE USER ID OF THE LOGGED IN USER
                 frmUserLandingPage userLandingPage = new frmUserLandingPage(authorisedUserID);
                 userLandingPage.ShowDialog();
