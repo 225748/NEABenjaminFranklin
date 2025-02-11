@@ -28,6 +28,7 @@ namespace NEABenjaminFranklin
             ///NEED TO WRITE CUSTOM HASHING ALORGITHM - DONT USE BUILT IN IF CAN!!!
             ///////////////////////////////////////
             string hashed = "";
+            
             return hashed;
         }
 

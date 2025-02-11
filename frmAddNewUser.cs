@@ -58,6 +58,7 @@ namespace NEABenjaminFranklin
             /////////////////////////////
             //Need too code
             //Eventually email this temporary password (using a seperate function) to the new user
+            //CREATE AN EMAIL CLASS TO CREATE OBJECTS OFF WHEN SENDING EMAIL
             ////////////////////////////
 
             //if email not sucessfully sent
