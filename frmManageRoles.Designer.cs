@@ -185,6 +185,7 @@
             this.ClientSize = new System.Drawing.Size(410, 385);
             this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageRoles";
             this.Text = "frmManageRoles";

@@ -188,6 +188,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnResetPass);
             this.Controls.Add(this.pnlTopBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPasswordReset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

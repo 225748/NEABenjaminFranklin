@@ -209,6 +209,7 @@
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUserLandingPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

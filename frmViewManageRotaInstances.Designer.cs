@@ -148,6 +148,7 @@
             this.Controls.Add(this.flpInstances);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewManageRotaInstances";
             this.Text = "frmManageRotaInstance";

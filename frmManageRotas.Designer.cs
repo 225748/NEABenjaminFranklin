@@ -85,6 +85,7 @@
             this.ClientSize = new System.Drawing.Size(698, 365);
             this.Controls.Add(this.flpRotas);
             this.Controls.Add(this.pnlTopBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageRotas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

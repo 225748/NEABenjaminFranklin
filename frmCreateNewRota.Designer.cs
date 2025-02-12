@@ -202,6 +202,7 @@
             this.ClientSize = new System.Drawing.Size(319, 377);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCreateNewRota";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
