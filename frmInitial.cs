@@ -101,8 +101,24 @@ namespace NEABenjaminFranklin
             }
             return userID; //return userID = if not valid then 0 is returned
         }
+        private bool CheckForPasswordReset(int userID)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT ResetPassword " +
+                "FROM tblPeople " +
+                $"WHERE(UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            bool reset = false;
+            while (dr.Read())
+            {
+                 reset = Convert.ToBoolean(dr[0].ToString());
+            }
+            dbConnector.Close();
+            return reset;
+        }
 
-        //have a default password for new users and then prompt for change on first login
         private void btnHostLogin_Click(object sender, EventArgs e)
         {
             int authorisedUserID = AuthoriseCredentials();
@@ -124,7 +140,13 @@ namespace NEABenjaminFranklin
 
             //bool validHost = true; //for bypass testing
             if (validHost)
-            {
+            {//reset is provision for first time login / password reset - new bool field in database for reset password;
+                bool reset = CheckForPasswordReset(authorisedUserID);
+                if (reset)
+                {//Ask for new password using a dialoge form with a text box and then hash using their salt and update db
+                    frmPasswordReset frmPasswordReset = new frmPasswordReset(authorisedUserID);
+                    frmPasswordReset.ShowDialog();
+                }
                 this.Hide();
                 frmHostLandingPage hostLandingPage = new frmHostLandingPage(authorisedUserID);
                 hostLandingPage.ShowDialog();
@@ -136,23 +158,6 @@ namespace NEABenjaminFranklin
             }
         }
 
-        private bool CheckForPasswordReset(int userID)
-        {
-            clsDBConnector dbConnector = new clsDBConnector();
-            OleDbDataReader dr;
-            string sqlCommand = "SELECT ResetPassword " +
-                "FROM tblPeople " +
-                $"WHERE(UserID = {userID})";
-            dbConnector.Connect();
-            dr = dbConnector.DoSQL(sqlCommand);
-            bool reset = false;
-            while (dr.Read())
-            {
-                 reset = Convert.ToBoolean(dr[0].ToString());
-            }
-            dbConnector.Close();
-            return reset;
-        }
 
         private void btnUserLogin_Click(object sender, EventArgs e)
         {
