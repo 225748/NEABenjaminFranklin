@@ -189,6 +189,7 @@
             this.Controls.Add(this.btnResetPass);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmPasswordReset";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPasswordReset";
             this.Load += new System.EventHandler(this.frmPasswordReset_Load);
             this.pnlTopBar.ResumeLayout(false);

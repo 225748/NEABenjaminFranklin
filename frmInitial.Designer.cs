@@ -118,7 +118,7 @@
             this.picRotaConnect.TabIndex = 6;
             this.picRotaConnect.TabStop = false;
             // 
-            // Form1
+            // frmInitial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -126,7 +126,9 @@
             this.ClientSize = new System.Drawing.Size(332, 316);
             this.Controls.Add(this.picRotaConnect);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmInitial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Form1_Load);
