@@ -102,7 +102,7 @@
             this.lblRotaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRotaName.Location = new System.Drawing.Point(16, 6);
             this.lblRotaName.Name = "lblRotaName";
-            this.lblRotaName.Size = new System.Drawing.Size(100, 16);
+            this.lblRotaName.Size = new System.Drawing.Size(97, 16);
             this.lblRotaName.TabIndex = 17;
             this.lblRotaName.Text = "{Rota Name}";
             // 
@@ -148,6 +148,7 @@
             this.Controls.Add(this.flpInstances);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmViewManageRotaInstances";
             this.Text = "frmManageRotaInstance";
             this.Load += new System.EventHandler(this.frmManageRotaInstance_Load);

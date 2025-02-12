@@ -185,6 +185,7 @@
             this.ClientSize = new System.Drawing.Size(417, 389);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageFacilities";
             this.Text = "frmManageFacilities";
             this.Load += new System.EventHandler(this.frmManageFacilities_Load);

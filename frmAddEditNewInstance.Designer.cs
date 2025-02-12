@@ -223,6 +223,7 @@
             this.Controls.Add(this.flpRoles);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddEditNewInstance";
             this.Text = "frmAddNewInstance";
             this.Load += new System.EventHandler(this.frmAddNewInstance_Load);

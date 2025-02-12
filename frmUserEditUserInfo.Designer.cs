@@ -189,6 +189,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(364, 214);
             this.Controls.Add(this.pnlHostView);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUserEditUserInfo";
             this.Text = "frmUserEditUserInfo";
             this.Load += new System.EventHandler(this.frmUserEditUserInfo_Load);

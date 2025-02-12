@@ -38,10 +38,10 @@
             this.txtNewPass = new System.Windows.Forms.TextBox();
             this.btnResetPass = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblInfo = new System.Windows.Forms.Label();
-            this.lblInfoContinued = new System.Windows.Forms.Label();
             this.lblConfirm = new System.Windows.Forms.Label();
             this.txtConfirm = new System.Windows.Forms.TextBox();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.lblInfoContinued = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -140,6 +140,24 @@
             this.panel1.Size = new System.Drawing.Size(324, 91);
             this.panel1.TabIndex = 20;
             // 
+            // lblConfirm
+            // 
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirm.Location = new System.Drawing.Point(4, 59);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(117, 17);
+            this.lblConfirm.TabIndex = 19;
+            this.lblConfirm.Text = "Confirm Password:";
+            // 
+            // txtConfirm
+            // 
+            this.txtConfirm.Location = new System.Drawing.Point(127, 59);
+            this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.Size = new System.Drawing.Size(188, 20);
+            this.txtConfirm.TabIndex = 20;
+            this.txtConfirm.UseSystemPasswordChar = true;
+            // 
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
@@ -160,24 +178,6 @@
             this.lblInfoContinued.TabIndex = 22;
             this.lblInfoContinued.Text = "Please enter a new password";
             // 
-            // lblConfirm
-            // 
-            this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirm.Location = new System.Drawing.Point(4, 59);
-            this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(117, 17);
-            this.lblConfirm.TabIndex = 19;
-            this.lblConfirm.Text = "Confirm Password:";
-            // 
-            // txtConfirm
-            // 
-            this.txtConfirm.Location = new System.Drawing.Point(127, 59);
-            this.txtConfirm.Name = "txtConfirm";
-            this.txtConfirm.Size = new System.Drawing.Size(188, 20);
-            this.txtConfirm.TabIndex = 20;
-            this.txtConfirm.UseSystemPasswordChar = true;
-            // 
             // frmPasswordReset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -188,6 +188,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnResetPass);
             this.Controls.Add(this.pnlTopBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPasswordReset";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPasswordReset";

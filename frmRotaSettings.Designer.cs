@@ -214,6 +214,7 @@
             this.ClientSize = new System.Drawing.Size(298, 331);
             this.Controls.Add(this.pnlTopBar);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRotaSettings";
             this.Text = "frmUpdateDeleteRota";
             this.Load += new System.EventHandler(this.frmRotaSettings_Load);
