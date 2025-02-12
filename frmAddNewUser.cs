@@ -76,9 +76,9 @@ namespace NEABenjaminFranklin
             try
             {
                 clsDBConnector dbConnector = new clsDBConnector();
-                string cmdStr = $"INSERT INTO tblPeople  (FirstName, LastName, DOB, HostRole, Email, HashedPassword, Salt) " +
+                string cmdStr = $"INSERT INTO tblPeople  (FirstName, LastName, DOB, HostRole, Email, HashedPassword, Salt, NeedPasswordReset) " +
                     $"VALUES ('{txtFirstName.Text}', '{txtLastName.Text}','{dtpDOB.Value.Date}',{chkHostRole.Checked}," +
-                    $"'{validatedEmail}','{hashedPassword}','{salt}')";
+                    $"'{validatedEmail}','{hashedPassword}','{salt}', true)";
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
