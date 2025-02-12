@@ -89,6 +89,7 @@ namespace NEABenjaminFranklin
                     $"WHERE(tblPeople.UserID = {UserID})";
                 dbConnector.Connect();
                 dbConnector.DoSQL(sqlCommand);
+                dbConnector.Close();
                 MessageBox.Show("Information Updated", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

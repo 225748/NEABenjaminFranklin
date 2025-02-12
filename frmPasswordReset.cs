@@ -14,10 +14,10 @@ namespace NEABenjaminFranklin
     public partial class frmPasswordReset : Form
     {
         private int UserID { get; set; }
-        public frmPasswordReset(int UserID)
+        public frmPasswordReset(int userID)
         {
             InitializeComponent();
-            UserID = UserID;
+            UserID = userID;
         }
 
         private void frmPasswordReset_Load(object sender, EventArgs e)
@@ -41,12 +41,46 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
-        private void btnResetPass_Click(object sender, EventArgs e)
+        private void ResetPassword()
         {
-            MessageBox.Show("CODE THIS!");
+            clsPasswordHasher passwordHasher = new clsPasswordHasher();
+            string hashedPassword = passwordHasher.HashPassword(txtNewPass.Text, UserID);
+
+            //update their stored hash with this new one
+            //change the need reset bool/flag in database to 0
+
+            clsDBConnector dbConnector = new clsDBConnector();
+            string sqlCommand = $"UPDATE tblPeople " +
+                $"SET HashedPassword = '{hashedPassword}', NeedPasswordReset = false " +
+                $"WHERE(tblPeople.UserID = {UserID})";
+            dbConnector.Connect();
+            dbConnector.DoSQL(sqlCommand);
+            dbConnector.Close();
         }
 
-        //get salt, then on reset password press, use the class for hashing to hash new password,
-        //update db and display new pass (not the hash) to user
+        private void btnResetPass_Click(object sender, EventArgs e)
+        {
+            //first check if the 2 pswds match
+            if (txtNewPass.Text == txtConfirm.Text)
+            {
+                var promptResult = MessageBox.Show("Are you sure you wish to update your password?", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (promptResult == DialogResult.OK)
+                {
+                    ResetPassword();
+                    MessageBox.Show("Password Changed\nPlease login with your new password", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Changes not saved", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Passwords do not match\nPlease try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
+        }
     }
 }

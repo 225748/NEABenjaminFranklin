@@ -38,6 +38,10 @@
             this.txtNewPass = new System.Windows.Forms.TextBox();
             this.btnResetPass = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.lblInfoContinued = new System.Windows.Forms.Label();
+            this.lblConfirm = new System.Windows.Forms.Label();
+            this.txtConfirm = new System.Windows.Forms.TextBox();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -78,7 +82,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Nirmala UI", 9.75F);
-            this.lblEmail.Location = new System.Drawing.Point(68, 8);
+            this.lblEmail.Location = new System.Drawing.Point(4, 9);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(42, 17);
             this.lblEmail.TabIndex = 15;
@@ -98,7 +102,7 @@
             // 
             this.lblNewPass.AutoSize = true;
             this.lblNewPass.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNewPass.Location = new System.Drawing.Point(13, 33);
+            this.lblNewPass.Location = new System.Drawing.Point(4, 33);
             this.lblNewPass.Name = "lblNewPass";
             this.lblNewPass.Size = new System.Drawing.Size(97, 17);
             this.lblNewPass.TabIndex = 17;
@@ -110,10 +114,11 @@
             this.txtNewPass.Name = "txtNewPass";
             this.txtNewPass.Size = new System.Drawing.Size(188, 20);
             this.txtNewPass.TabIndex = 18;
+            this.txtNewPass.UseSystemPasswordChar = true;
             // 
             // btnResetPass
             // 
-            this.btnResetPass.Location = new System.Drawing.Point(200, 109);
+            this.btnResetPass.Location = new System.Drawing.Point(201, 180);
             this.btnResetPass.Name = "btnResetPass";
             this.btnResetPass.Size = new System.Drawing.Size(127, 35);
             this.btnResetPass.TabIndex = 19;
@@ -124,20 +129,62 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblConfirm);
+            this.panel1.Controls.Add(this.txtConfirm);
             this.panel1.Controls.Add(this.lblEmail);
             this.panel1.Controls.Add(this.lblNewPass);
             this.panel1.Controls.Add(this.txtNewPass);
             this.panel1.Controls.Add(this.lblUsersEmail);
-            this.panel1.Location = new System.Drawing.Point(12, 38);
+            this.panel1.Location = new System.Drawing.Point(12, 83);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(324, 65);
+            this.panel1.Size = new System.Drawing.Size(324, 91);
             this.panel1.TabIndex = 20;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfo.Location = new System.Drawing.Point(24, 42);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(298, 15);
+            this.lblInfo.TabIndex = 21;
+            this.lblInfo.Text = "A password reset for this acount has been requested";
+            // 
+            // lblInfoContinued
+            // 
+            this.lblInfoContinued.AutoSize = true;
+            this.lblInfoContinued.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoContinued.Location = new System.Drawing.Point(12, 67);
+            this.lblInfoContinued.Name = "lblInfoContinued";
+            this.lblInfoContinued.Size = new System.Drawing.Size(156, 13);
+            this.lblInfoContinued.TabIndex = 22;
+            this.lblInfoContinued.Text = "Please enter a new password";
+            // 
+            // lblConfirm
+            // 
+            this.lblConfirm.AutoSize = true;
+            this.lblConfirm.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConfirm.Location = new System.Drawing.Point(4, 59);
+            this.lblConfirm.Name = "lblConfirm";
+            this.lblConfirm.Size = new System.Drawing.Size(117, 17);
+            this.lblConfirm.TabIndex = 19;
+            this.lblConfirm.Text = "Confirm Password:";
+            // 
+            // txtConfirm
+            // 
+            this.txtConfirm.Location = new System.Drawing.Point(127, 59);
+            this.txtConfirm.Name = "txtConfirm";
+            this.txtConfirm.Size = new System.Drawing.Size(188, 20);
+            this.txtConfirm.TabIndex = 20;
+            this.txtConfirm.UseSystemPasswordChar = true;
             // 
             // frmPasswordReset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 156);
+            this.ClientSize = new System.Drawing.Size(348, 217);
+            this.Controls.Add(this.lblInfoContinued);
+            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnResetPass);
             this.Controls.Add(this.pnlTopBar);
@@ -150,6 +197,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -164,5 +212,9 @@
         private System.Windows.Forms.TextBox txtNewPass;
         private System.Windows.Forms.Button btnResetPass;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Label lblInfoContinued;
+        private System.Windows.Forms.Label lblConfirm;
+        private System.Windows.Forms.TextBox txtConfirm;
     }
 }
