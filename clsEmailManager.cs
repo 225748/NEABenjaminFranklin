@@ -14,7 +14,7 @@ using Google.Apis.Util.Store;
 using System.Net.Mail;
 using System.Net;
 
-namespace HTMLfromFileWithVariables
+namespace NEABenjaminFranklin
 {
     internal class clsEmailManager
     {
