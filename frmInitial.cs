@@ -119,11 +119,20 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
             if (reset)
-            {
-                frmPasswordReset frmPasswordReset = new frmPasswordReset(userID);
-                frmPasswordReset.ShowDialog();
-                txtPassword.Clear();
-                return true;
+            {//check temp password matches
+                bool correctTempPass = CompareHash(txtPassword.Text, userID);
+                if (correctTempPass)
+                {
+                    frmPasswordReset frmPasswordReset = new frmPasswordReset(userID);
+                    frmPasswordReset.ShowDialog();
+                    txtPassword.Clear();
+                    return true;//breaks out of login cycle to allow for password reset
+                }
+                else
+                {
+                    MessageBox.Show("There was an issue authorising this temporary password\nPlease check inputs and try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return true;//breaks out of login cycle to allow for password reset
+                }
             }
             else
             {

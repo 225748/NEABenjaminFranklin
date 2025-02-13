@@ -172,7 +172,7 @@ namespace NEABenjaminFranklin
             }
             if (successfull)
             {
-                MessageBox.Show("Email with temporary password successfully sent", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Welcome email with temporary password successfully sent", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             this.Close();
 
