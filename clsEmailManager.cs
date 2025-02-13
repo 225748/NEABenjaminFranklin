@@ -48,7 +48,7 @@ namespace NEABenjaminFranklin
         public void SendEmail(string addressTo, string body = "", string subject = "", string cc = "", string bcc = "")
         {
             string[] Scopes = {GmailService.Scope.GmailSend };
-            string ApplicationName = "SendMail";
+            string ApplicationName = "SendMail"; //name of my google cloud/developer application
 
             string Base64UrlEncode(string input)
             {
