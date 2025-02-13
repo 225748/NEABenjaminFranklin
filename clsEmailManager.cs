@@ -70,7 +70,7 @@ namespace NEABenjaminFranklin
                 $"\r\nCC:{cc}" +
                 $"\r\nBcc:{bcc}" +
                 $"\r\nSubject:{subject}" +
-                $"\r\nFrom: RotaConnect" +
+                $"\r\nFrom: RotaConnect <windowsformsmail@gmail.com>" +
                 $"\r\nContent-Type: text/html;charset=utf-8\r\n" +
                 $"\r\n<body>{body}</body>";
 
