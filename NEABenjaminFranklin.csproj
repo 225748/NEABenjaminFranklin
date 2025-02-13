@@ -73,6 +73,8 @@
   <ItemGroup>
     <Compile Include="clsBinaryOperations.cs" />
     <Compile Include="clsDBConnector.cs" />
+    <Compile Include="clsEmailManager.cs" />
+    <Compile Include="clshtmlVariable.cs" />
     <Compile Include="clsPasswordHasher.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="cntrlAcceptDeclineDates.cs">
