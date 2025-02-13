@@ -174,7 +174,9 @@ namespace NEABenjaminFranklin
             }
             else
             {
-                MessageBox.Show("There was an issue authorising this user as a host\nPlease check inputs and try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There was an issue authorising this user as a host." +
+                    "\n\nThis user may not have host privileges." +
+                    "\nIf you belive this user should have host privileges,\nplease check inputs and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

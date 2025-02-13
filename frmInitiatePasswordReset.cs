@@ -69,8 +69,8 @@ namespace NEABenjaminFranklin
 
             //for every unique variable in the template do this
             variableReplacements[0] = new clshtmlVariable("{firstName}", firstName);
-            variableReplacements[2] = new clshtmlVariable("{email}", email);
-            variableReplacements[3] = new clshtmlVariable("{temporaryPassword}", tempPassword);
+            variableReplacements[1] = new clshtmlVariable("{email}", email);
+            variableReplacements[2] = new clshtmlVariable("{temporaryPassword}", tempPassword);
 
 
             bool successfull = false;
