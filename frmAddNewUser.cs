@@ -62,6 +62,9 @@ namespace NEABenjaminFranklin
             //Eventually email this temporary password (using a seperate function) to the new user
             //CREATE AN EMAIL CLASS TO CREATE OBJECTS OFF WHEN SENDING EMAIL
             ////////////////////////////
+            ///
+            bool successfull = Email();
+
 
             //if email not sucessfully sent
             MessageBox.Show("There was an issue emailing the temporary password to the new user" +
@@ -101,7 +104,6 @@ namespace NEABenjaminFranklin
                 //if all goes well display a message box saying user created and login email sent
                 this.Close();
             }
-
         }
 
     }

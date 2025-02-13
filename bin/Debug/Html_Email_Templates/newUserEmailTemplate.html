@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <!-- styling only seems to work fully on apple mail app - use the mac app in testing video for best apperance of email-->
+    <!-- for the div style-->
+        <!-- margin is between 'body(the email walls)' and the div container -->
+        <!-- padding is between div and actual email content -->
+    <style>
+        div { max-width: 37.5em;
+            margin: 1%; 
+            padding: 5%; 
+            background-color: white;}
+        h1 {text-align: center; padding-bottom: 5%;}
+        body {text-align: left;}
+        h2 {font-size: 100%;
+            text-decoration: underline}
+        body{background-color:cornsilk;}
+    </style>
+    <body>
+    <div>
+    <img src="https://i.ibb.co/d01QvfjD/Logo-Design-ai-White-BG.png" 
+        alt="Rota Connect Logo" border="0" class = "centre", width = 50% height = ""></a>
+    
+        <h1>Welcome to Rota Connect!</h1>
+        <p style = "font-weight:bold;">Welcome {firstName},</p>
+        A host in your organisation has created an new account for you.
+        <br> Your account details can be found below
+
+        <br><br><hr>
+
+        <p>
+        <h2>Account Information:</h2>
+        <br>First Name: {firstName}
+        <br> Last Name: {lastName}
+        <br> Email: {email}
+        </p>
+
+        <hr>
+            <p style = "font-weight:bold";> Your temporary login password:</p>
+            <br><h1>{temporaryPassword}</h1>
+            <br>To login, you will need to enter your email as well as this temporary password.
+            For security, you will then be prompted to create a new password,
+            you will then be able to use your new password for all subsequent logins.
+        </p>
+        
+        <hr>
+        Should you have any issue getting started with your new account, please contact a host in your organisation
+        <br><br>
+        © Benjamin Franklin and RotaConnect
+    </div>
+    </body>
+</html>
