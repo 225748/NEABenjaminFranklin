@@ -40,10 +40,11 @@ namespace NEABenjaminFranklin
         private bool Email(string email, string tempPassword, int userID)
         {
             //Get first and last name
-            string firstName = ""; string lastName = "";
+            string firstName = ""; string lastName = ""; string privileges = "Standard User";
+            bool hostRole = false;
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT FirstName, LastName " +
+            string sqlCommand = "SELECT FirstName, LastName, HostRole " +
                 "FROM tblPeople " +
                 $"WHERE UserID = {userID}";
             dbConnector.Connect();
@@ -53,8 +54,14 @@ namespace NEABenjaminFranklin
             {
                 firstName = dr[0].ToString();
                 lastName = dr[1].ToString();
+                hostRole = Convert.ToBoolean(dr[2].ToString());
             }
             dbConnector.Close();
+
+            if (hostRole)
+            {
+                privileges = "Host (Admin) Privileges";
+            }
 
 
             //Email
@@ -64,13 +71,14 @@ namespace NEABenjaminFranklin
             string templateFilePath = (AppDomain.CurrentDomain.BaseDirectory + "/Html_Email_Templates/newUserEmailTemplate.html");//directs to its own debug folder and then the file
 
             //Make an array of variables to replace in the html template
-            clshtmlVariable[] variableReplacements = new clshtmlVariable[4];//num of unique variables in html template
+            clshtmlVariable[] variableReplacements = new clshtmlVariable[5];//num of unique variables in html template
 
             //for every unique variable in the template do this
             variableReplacements[0] = new clshtmlVariable("{firstName}", firstName);
             variableReplacements[1] = new clshtmlVariable("{lastName}", lastName);
             variableReplacements[2] = new clshtmlVariable("{email}", email);
             variableReplacements[3] = new clshtmlVariable("{temporaryPassword}", tempPassword);
+            variableReplacements[4] = new clshtmlVariable("{privileges}", privileges);
 
 
             bool successfull = false;
