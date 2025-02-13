@@ -37,6 +37,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
+            this.lblResetPassword = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.SuspendLayout();
@@ -118,12 +119,26 @@
             this.picRotaConnect.TabIndex = 6;
             this.picRotaConnect.TabStop = false;
             // 
+            // lblResetPassword
+            // 
+            this.lblResetPassword.AutoSize = true;
+            this.lblResetPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResetPassword.ForeColor = System.Drawing.SystemColors.ButtonShadow;
+            this.lblResetPassword.Location = new System.Drawing.Point(128, 295);
+            this.lblResetPassword.Name = "lblResetPassword";
+            this.lblResetPassword.Size = new System.Drawing.Size(86, 13);
+            this.lblResetPassword.TabIndex = 7;
+            this.lblResetPassword.Text = "Forgot Password";
+            this.lblResetPassword.Click += new System.EventHandler(this.lblResetPassword_Click);
+            // 
             // frmInitial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(332, 316);
+            this.Controls.Add(this.lblResetPassword);
             this.Controls.Add(this.picRotaConnect);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -136,6 +151,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,6 +165,7 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.PictureBox picRotaConnect;
+        private System.Windows.Forms.Label lblResetPassword;
     }
 }
 

@@ -165,7 +165,7 @@ namespace NEABenjaminFranklin
             }
             else
             {
-                MessageBox.Show("There was an issue authorising this user as a host\nPlease try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("There was an issue authorising this user as a host\nPlease check inputs and try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -191,5 +191,10 @@ namespace NEABenjaminFranklin
             }
         }
 
+        private void lblResetPassword_Click(object sender, EventArgs e)
+        {
+            frmInitiatePasswordReset frmInitiatePasswordReset = new frmInitiatePasswordReset();
+            frmInitiatePasswordReset.ShowDialog();
+        }
     }
 }
