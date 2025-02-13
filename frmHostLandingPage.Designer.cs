@@ -52,6 +52,7 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
+            this.btnPasswordReset = new System.Windows.Forms.Button();
             this.pnlHostView.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -94,7 +95,7 @@
             // 
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.lblRoles);
-            this.panel1.Location = new System.Drawing.Point(40, 273);
+            this.panel1.Location = new System.Drawing.Point(562, 110);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 157);
             this.panel1.TabIndex = 17;
@@ -159,7 +160,7 @@
             this.pnlRotasGroup.Controls.Add(this.lblRotas);
             this.pnlRotasGroup.Location = new System.Drawing.Point(295, 110);
             this.pnlRotasGroup.Name = "pnlRotasGroup";
-            this.pnlRotasGroup.Size = new System.Drawing.Size(200, 266);
+            this.pnlRotasGroup.Size = new System.Drawing.Size(200, 218);
             this.pnlRotasGroup.TabIndex = 16;
             // 
             // flpRotas
@@ -172,7 +173,7 @@
             this.flpRotas.Location = new System.Drawing.Point(12, 27);
             this.flpRotas.Name = "flpRotas";
             this.flpRotas.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpRotas.Size = new System.Drawing.Size(176, 236);
+            this.flpRotas.Size = new System.Drawing.Size(176, 181);
             this.flpRotas.TabIndex = 14;
             this.flpRotas.WrapContents = false;
             // 
@@ -225,7 +226,7 @@
             this.pnlUsersGroup.Controls.Add(this.lblUsers);
             this.pnlUsersGroup.Location = new System.Drawing.Point(40, 110);
             this.pnlUsersGroup.Name = "pnlUsersGroup";
-            this.pnlUsersGroup.Size = new System.Drawing.Size(200, 157);
+            this.pnlUsersGroup.Size = new System.Drawing.Size(200, 218);
             this.pnlUsersGroup.TabIndex = 15;
             // 
             // flpUsers
@@ -233,11 +234,12 @@
             this.flpUsers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpUsers.Controls.Add(this.btnManageUsers);
             this.flpUsers.Controls.Add(this.btnAddNewUser);
+            this.flpUsers.Controls.Add(this.btnPasswordReset);
             this.flpUsers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpUsers.Location = new System.Drawing.Point(12, 27);
             this.flpUsers.Name = "flpUsers";
             this.flpUsers.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpUsers.Size = new System.Drawing.Size(176, 121);
+            this.flpUsers.Size = new System.Drawing.Size(176, 181);
             this.flpUsers.TabIndex = 14;
             this.flpUsers.WrapContents = false;
             // 
@@ -316,6 +318,17 @@
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
             // 
+            // btnPasswordReset
+            // 
+            this.btnPasswordReset.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.btnPasswordReset.Location = new System.Drawing.Point(10, 119);
+            this.btnPasswordReset.Name = "btnPasswordReset";
+            this.btnPasswordReset.Size = new System.Drawing.Size(153, 50);
+            this.btnPasswordReset.TabIndex = 12;
+            this.btnPasswordReset.Text = "Password Reset";
+            this.btnPasswordReset.UseVisualStyleBackColor = true;
+            this.btnPasswordReset.Click += new System.EventHandler(this.btnPasswordReset_Click);
+            // 
             // frmHostLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,5 +384,6 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblWelcome;
+        private System.Windows.Forms.Button btnPasswordReset;
     }
 }

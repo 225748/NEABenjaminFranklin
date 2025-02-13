@@ -86,6 +86,11 @@ namespace NEABenjaminFranklin
             this.Close();
         }
 
+        private void btnPasswordReset_Click(object sender, EventArgs e)
+        {
+            frmInitiatePasswordReset frmInitiatePasswordReset = new frmInitiatePasswordReset();
+            frmInitiatePasswordReset.ShowDialog();
+        }
     }
     
 }
