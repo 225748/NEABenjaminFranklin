@@ -72,7 +72,6 @@ namespace NEABenjaminFranklin
             variableReplacements[1] = new clshtmlVariable("{email}", email);
             variableReplacements[2] = new clshtmlVariable("{temporaryPassword}", tempPassword);
 
-
             bool successfull = false;
 
             string htmlBody = emailManager.ReadAndPopulateEmailTemplate(templateFilePath, variableReplacements);
