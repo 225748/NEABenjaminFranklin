@@ -47,12 +47,12 @@
             this.flpUsers = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.btnAddNewUser = new System.Windows.Forms.Button();
+            this.btnPasswordReset = new System.Windows.Forms.Button();
             this.lblUsers = new System.Windows.Forms.Label();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
-            this.btnPasswordReset = new System.Windows.Forms.Button();
             this.pnlHostView.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -266,6 +266,17 @@
             this.btnAddNewUser.UseVisualStyleBackColor = true;
             this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
             // 
+            // btnPasswordReset
+            // 
+            this.btnPasswordReset.Font = new System.Drawing.Font("Trebuchet MS", 12F);
+            this.btnPasswordReset.Location = new System.Drawing.Point(10, 119);
+            this.btnPasswordReset.Name = "btnPasswordReset";
+            this.btnPasswordReset.Size = new System.Drawing.Size(153, 50);
+            this.btnPasswordReset.TabIndex = 12;
+            this.btnPasswordReset.Text = "Password Reset";
+            this.btnPasswordReset.UseVisualStyleBackColor = true;
+            this.btnPasswordReset.Click += new System.EventHandler(this.btnPasswordReset_Click);
+            // 
             // lblUsers
             // 
             this.lblUsers.AutoSize = true;
@@ -317,17 +328,6 @@
             this.lblHostView.Size = new System.Drawing.Size(93, 21);
             this.lblHostView.TabIndex = 8;
             this.lblHostView.Text = "Host Mode";
-            // 
-            // btnPasswordReset
-            // 
-            this.btnPasswordReset.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.btnPasswordReset.Location = new System.Drawing.Point(10, 119);
-            this.btnPasswordReset.Name = "btnPasswordReset";
-            this.btnPasswordReset.Size = new System.Drawing.Size(153, 50);
-            this.btnPasswordReset.TabIndex = 12;
-            this.btnPasswordReset.Text = "Password Reset";
-            this.btnPasswordReset.UseVisualStyleBackColor = true;
-            this.btnPasswordReset.Click += new System.EventHandler(this.btnPasswordReset_Click);
             // 
             // frmHostLandingPage
             // 
