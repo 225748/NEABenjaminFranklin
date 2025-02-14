@@ -79,7 +79,7 @@ namespace NEABenjaminFranklin
 
             if (hostRole)
             {
-                privileges = "Host (Admin) Privileges";
+                privileges = "Host (Admin)";
             }
 
 

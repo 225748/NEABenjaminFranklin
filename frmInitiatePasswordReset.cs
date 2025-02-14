@@ -106,7 +106,8 @@ namespace NEABenjaminFranklin
 
             //Create random temp password
             Random random = new Random();
-            string tempPassword = "T";
+            string tempPassword = "";
+            //tempPassword = tempPassword + "T";
             tempPassword = tempPassword + random.Next(0, 100);
             if (txtEmail.Text.Length > 20)
             {
