@@ -107,7 +107,7 @@ namespace NEABenjaminFranklin
             //Create random temp password
             Random random = new Random();
             string tempPassword = "T";
-            tempPassword = tempPassword + random.Next(10, 1000);
+            tempPassword = tempPassword + random.Next(0, 100);
             if (txtEmail.Text.Length > 20)
             {
                 tempPassword += txtEmail.Text.ToUpper().Substring(10, 3);
@@ -116,9 +116,9 @@ namespace NEABenjaminFranklin
             {
                 tempPassword += txtEmail.Text.ToUpper().Substring(0,3);
             }
-            tempPassword += txtEmail.Text.ToUpper()[random.Next(0, txtEmail.Text.Length)];
-            tempPassword += txtEmail.Text.ToUpper()[random.Next(0, txtEmail.Text.Length)];
-            tempPassword += random.Next(10, 100);
+            //tempPassword += txtEmail.Text.ToUpper()[random.Next(0, txtEmail.Text.Length)];
+            //tempPassword += txtEmail.Text.ToUpper()[random.Next(0, txtEmail.Text.Length)];
+            tempPassword += random.Next(0, 100);
 
             //hash password using a function
             clsPasswordHasher passwordHasher = new clsPasswordHasher();

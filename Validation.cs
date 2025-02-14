@@ -45,7 +45,8 @@ namespace NEABenjaminFranklin
             }
             else
             {
-                const string regexExpression = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$$";
+                //const string regexExpression = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$$"; //old regex, works but not for multiple emails to one inbox format (see below)
+                const string regexExpression = @"^[\w-\.]+(\+[\w-]+)?@([\w-]+\.)+[\w-]{2,4}$";//to allow for email+alias@mail.com
                 Match tryToMatch = Regex.Match(email, regexExpression);
                 if (tryToMatch.Success)
                 {
