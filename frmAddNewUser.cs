@@ -37,6 +37,25 @@ namespace NEABenjaminFranklin
             return ret;
         }
 
+        private bool CheckForExisting(string email)
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT UserID " +
+                "FROM tblPeople " +
+                $"WHERE Email = '{email}'";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            bool exists = false;
+            while (dr.Read())
+            {
+                exists = true;
+            }
+            dbConnector.Close();
+            return exists;
+        }
+
         private bool Email(string email, string tempPassword, int userID)
         {
             //Get first and last name
@@ -110,6 +129,13 @@ namespace NEABenjaminFranklin
             {
                 MessageBox.Show("Please enter a valid email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; //breaks out the function
+            }
+
+            bool alreadyExists = CheckForExisting(validatedEmail);
+            if (alreadyExists)
+            {
+                MessageBox.Show("An account already exists for this email", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
 
