@@ -5,7 +5,7 @@
         <!-- margin is between 'body(the email walls)' and the div container -->
         <!-- padding is between div and actual email content -->
     <style>
-        div { max-width: 37.5em;
+        .divMain { max-width: 37.5em;
             margin: 1%; 
             padding: 5%; 
             background-color: white;}
@@ -16,28 +16,31 @@
         body{background-color:cornsilk;}
     </style>
     <body>
-    <div>
+    <div class = "divMain">
     <img src="https://i.ibb.co/d01QvfjD/Logo-Design-ai-White-BG.png" 
         alt="Rota Connect Logo" border="0" class = "centre", width = 50% height = ""></a>
     
-        <h1>Password Reset</h1>
+        <h1>Your New Rota Assignment!</h1>
         <p style = "font-weight:bold;">Hello {firstName},</p>
-        A password reset request has been submitted for your account ({email}).
-        A new temporary password has been created for your next login.
+        A Host in your organisation has added you to an upcoming rota date.
+        <br> The details can be found below.
 
-        <br><br>
+        <br><br><hr>
 
-        <hr>
-            <p style = "font-weight:bold";> Your temporary login password:</p>
-            <br><h1>{temporaryPassword}</h1>
-            <br>To login, you will need to enter your email as well as this temporary password.
-            For security, you will then be prompted to create a new password,
-            you will then be able to use your new password for all subsequent logins.
+        <p>
+        <h2>New Assignment Details:</h2>
+        <br>Rota: <b>{rota}</b>
+        <br>Date: <b>{date}</b>
+        <br>Time: <b>{time}</b>
+        <br>Role: <b>{role}</b>
         </p>
-        
+
         <hr>
-        Should you have any issues with resetting your password, 
-        please contact a Host in your organisation. They can resubmit a password reset request.
+
+        To accept or decline this new assignment, please login as a user and visit your dashboard.
+        You will be able to see a list of your upcoming assignments and you have accepted or declined them.
+        <hr>
+        Should you have any issues viewing your new assignment, please contact a Host in your organisation
         <br><hr><br>
         © Benjamin Franklin and RotaConnect
     </div>
