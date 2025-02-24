@@ -100,13 +100,12 @@ namespace NEABenjaminFranklin
             variableReplacements[4] = new clshtmlVariable("{privileges}", privileges);
 
 
-            bool successfull = false;
+            bool successfull = true;
 
             string htmlBody = emailManager.ReadAndPopulateEmailTemplate(templateFilePath, variableReplacements);
             try
             {
                 emailManager.SendEmail(email, htmlBody, "Your new RotaConnect Account!");
-                successfull = true;
             }
             catch (Exception)
             {
