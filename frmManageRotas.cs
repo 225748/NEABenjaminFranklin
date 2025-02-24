@@ -13,9 +13,11 @@ namespace NEABenjaminFranklin
 {
     public partial class frmManageRotas : Form
     {
-        public frmManageRotas()
+        public int HostID {get;set;}
+        public frmManageRotas(int hostID)
         {
             InitializeComponent();
+            HostID = hostID;
         }
 
         private void frmManageRotas_Load(object sender, EventArgs e)

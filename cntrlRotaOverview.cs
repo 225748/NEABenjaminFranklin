@@ -19,10 +19,11 @@ namespace NEABenjaminFranklin
         public int FacilityID { get; set; }
         public string ThemeColour { get; set; }
         public bool HostMode { get; set; }
+        public int HostID { get; set; }
 
 
 
-        public cntrlRotaOverview(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour, bool hostMode = true)
+        public cntrlRotaOverview(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour, bool hostMode = true, int hostID = 0)
         {
             InitializeComponent();
             RotaName = rotaName;
@@ -31,6 +32,7 @@ namespace NEABenjaminFranklin
             FacilityID = facilityID;
             ThemeColour = themeColour;
             HostMode = hostMode;
+            HostID = hostID;
         }
 
         private void cntrlRotaOverview_Load(object sender, EventArgs e)
@@ -75,7 +77,7 @@ namespace NEABenjaminFranklin
         {
             //create an instance of the rota instances form and give it this info - use publics? - may need to put rota ID into this as a public
             this.Cursor = Cursors.WaitCursor;
-            frmViewManageRotaInstances frmManageRotaInstances = new frmViewManageRotaInstances(RotaName, RotaID, FacilityName, FacilityID, ThemeColour);
+            frmViewManageRotaInstances frmManageRotaInstances = new frmViewManageRotaInstances(RotaName, RotaID, FacilityName, FacilityID, ThemeColour, HostMode, HostID);
             frmManageRotaInstances.ShowDialog();
             this.Cursor = Cursors.Default;
         }

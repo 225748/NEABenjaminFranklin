@@ -68,7 +68,7 @@ namespace NEABenjaminFranklin
 
         private void btnManageRotas_Click(object sender, EventArgs e)
         {
-            frmManageRotas frmManageRotas = new frmManageRotas();
+            frmManageRotas frmManageRotas = new frmManageRotas(UserID);
             frmManageRotas.ShowDialog();
         }
 

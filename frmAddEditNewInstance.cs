@@ -20,8 +20,9 @@ namespace NEABenjaminFranklin
         //IF edit mode
         public int EditModeInstanceID { get; set; }
         public DateTime EditModeDateTime { get; set; }
+        public int HostID { get; set; }
 
-        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, string ifEditModeInstanceDateTime = "")
+        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, string ifEditModeInstanceDateTime = "", int hostID = 0)
         {
             InitializeComponent();
             RotaID = rotaID;
@@ -53,6 +54,7 @@ namespace NEABenjaminFranklin
             }
             EditMode = editMode;
             EditModeInstanceID = InstanceIDIfEditMode;
+            HostID = hostID;
             if (ifEditModeInstanceDateTime != "")
             {
                 EditModeDateTime = Convert.ToDateTime(ifEditModeInstanceDateTime);
@@ -207,8 +209,8 @@ namespace NEABenjaminFranklin
                     for (int i = 0; i < cntrl.AssignedRotaRoleIDs.Count; i++)
                     {
                         dbConnector = new clsDBConnector();
-                        cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID) " +
-                            $"VALUES ({rotaInstanceID}, {cntrl.AssignedRotaRoleIDs[i]})";
+                        cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID, AssignedByID) " +
+                            $"VALUES ({rotaInstanceID}, {cntrl.AssignedRotaRoleIDs[i]}, {HostID})";
                         dbConnector.Connect();
                         dbConnector.DoDML(cmdStr);
                         dbConnector.Close();
@@ -378,8 +380,8 @@ namespace NEABenjaminFranklin
                 foreach (clsUser user in needRotaInstRoleNum)
                 {
                     clsDBConnector dbConnector = new clsDBConnector();
-                    string cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID) " +
-                        $"VALUES({rotaInstanceID},{user.assignedRotaRoleID})";
+                    string cmdStr = $"INSERT INTO tblRotaInstanceRoles (RotaInstanceID, AssignedRotaRolesID, AssignedByID) " +
+                        $"VALUES({rotaInstanceID},{user.assignedRotaRoleID}, {HostID})";
                     dbConnector.Connect();
                     dbConnector.DoDML(cmdStr);
                     dbConnector.Close();
