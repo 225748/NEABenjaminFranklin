@@ -272,7 +272,7 @@ namespace NEABenjaminFranklin
             requiredUpdate = "a";
             if (requiredUpdate != "")
             {
-                DateTime newDateTime = Convert.ToDateTime(dtpDate.Value.Date.ToString().Substring(0,10) + " " + dtpTime.Value.TimeOfDay);
+                DateTime newDateTime = Convert.ToDateTime(dtpDate.Value.Date.ToString().Substring(0, 10) + " " + dtpTime.Value.TimeOfDay);
 
                 dbConnector = new clsDBConnector();
                 string cmdStr = "UPDATE tblRotaInstance " +
@@ -388,6 +388,77 @@ namespace NEABenjaminFranklin
                 }
 
 
+            }
+        }
+
+        private void Email(string email, int hostID, int rotaInstanceID, int assignedRotaRolesID) //NOT TESTED YET!
+        {
+            //Get name of host
+            string hostFullName = "";
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT FirstName, LastName" +
+                "FROM tblPeople " +
+                $"WHERE UserID = {hostID}";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                hostFullName = dr[0].ToString() + " " + dr[1].ToString();
+            }
+            dbConnector.Close();
+
+            //Get rotaName, date, time, role
+            string rotaName = ""; string date = ""; string time = ""; string role = ""; string firstName = "";
+            dbConnector = new clsDBConnector();
+            sqlCommand = "SELECT tblRoles.RoleName, tblRotaInstance.RotaInstanceDateTime, tblRota.RotaName, tblPeople.FirstName" +
+                "FROM(((((tblRotaInstance INNER JOIN " +
+                "tblRota ON tblRotaInstance.RotaID = tblRota.RotaID) INNER JOIN " +
+                "tblRotaInstanceRoles ON tblRotaInstance.RotaInstanceID = tblRotaInstanceRoles.RotaInstanceID) INNER JOIN " +
+                "(tblAssignedRotaRoles INNER JOIN " +
+                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID " +
+                "AND tblRotaInstanceRoles.AssignedByID = tblPeople.UserID) INNER JOIN " +
+                "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) INNER JOIN " +
+                "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
+                $"WHERE(tblRotaInstanceRoles.RotaInstanceID = {rotaInstanceID}) AND(tblRotaInstanceRoles.AssignedRotaRolesID = {assignedRotaRolesID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                rotaName = dr[2].ToString();
+                date = dr[1].ToString().Substring(0, 10);
+                time = dr[1].ToString().Substring(11, 5);
+                role = dr[0].ToString();
+                firstName = dr[3].ToString();
+            }
+            dbConnector.Close();
+
+            //Email
+            clsEmailManager emailManager = new clsEmailManager();
+
+            //Retrieve template
+            string templateFilePath = (AppDomain.CurrentDomain.BaseDirectory + "/Html_Email_Templates/newRotaAssignment.html");//directs to its own debug folder and then the file
+
+            //Make an array of variables to replace in the html template
+            clshtmlVariable[] variableReplacements = new clshtmlVariable[6];//num of unique variables in html template
+
+            //for every unique variable in the template do this
+            variableReplacements[0] = new clshtmlVariable("{firstName}", firstName);
+            variableReplacements[1] = new clshtmlVariable("{rota}", rotaName);
+            variableReplacements[2] = new clshtmlVariable("{date}", date);
+            variableReplacements[3] = new clshtmlVariable("{time}", time);
+            variableReplacements[4] = new clshtmlVariable("{role}", role);
+            variableReplacements[5] = new clshtmlVariable("{hostFullName}", hostFullName);
+
+
+            string htmlBody = emailManager.ReadAndPopulateEmailTemplate(templateFilePath, variableReplacements);
+            try
+            {
+                emailManager.SendEmail(email, htmlBody, $"Your new {rotaName} rota assignment!");
+            }
+            catch (Exception)
+            {
+                //didn't send
             }
         }
 
