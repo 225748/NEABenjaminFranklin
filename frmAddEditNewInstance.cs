@@ -430,24 +430,24 @@ namespace NEABenjaminFranklin
             //Get rotaName, date, time, role
             string rotaName = ""; string date = ""; string time = ""; string role = ""; string firstName = "";
             dbConnector = new clsDBConnector();
-            sqlCommand = "SELECT tblRoles.RoleName, tblRotaInstance.RotaInstanceDateTime, tblRota.RotaName, tblPeople.FirstName " +
-                "FROM(((((tblRotaInstance INNER JOIN " +
+            sqlCommand = "SELECT tblRotaInstance.RotaInstanceDateTime, tblRota.RotaName, " +
+                "tblRoles.RoleName, tblPeople.FirstName " +
+                "FROM ((((((tblRotaInstanceRoles INNER JOIN " +
+                "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) INNER JOIN " +
                 "tblRota ON tblRotaInstance.RotaID = tblRota.RotaID) INNER JOIN " +
-                "tblRotaInstanceRoles ON tblRotaInstance.RotaInstanceID = tblRotaInstanceRoles.RotaInstanceID) INNER JOIN " +
-                "(tblAssignedRotaRoles INNER JOIN " +
-                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID " +
-                "AND tblRotaInstanceRoles.AssignedByID = tblPeople.UserID) INNER JOIN " +
-                "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) INNER JOIN " +
-                "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
-                $"WHERE (tblRotaInstanceRoles.RotaInstanceID = {rotaInstanceID}) AND(tblRotaInstanceRoles.AssignedRotaRolesID = {assignedRotaRolesID})";
+                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+                "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblRotaRoles.RotaRoleNumber = tblAssignedRotaRoles.RotaRoleNumber) INNER JOIN " +
+                "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) INNER JOIN " +
+                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) " +
+                $"WHERE(tblRotaInstanceRoles.AssignedRotaRolesID = {assignedRotaRolesID}) AND (tblRotaInstanceRoles.RotaInstanceID = {rotaInstanceID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
             {
-                rotaName = dr[2].ToString();
-                date = dr[1].ToString().Substring(0, 10);
-                time = dr[1].ToString().Substring(11, 5);
-                role = dr[0].ToString();
+                date = dr[0].ToString().Substring(0, 10);
+                time = dr[0].ToString().Substring(11, 5);
+                rotaName = dr[1].ToString();
+                role = dr[2].ToString();
                 firstName = dr[3].ToString();
             }
             dbConnector.Close();
