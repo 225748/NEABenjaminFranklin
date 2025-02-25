@@ -14,10 +14,9 @@ namespace NEABenjaminFranklin
     public partial class frmManageRotas : Form
     {
         public int HostID {get;set;}
-        public frmManageRotas(int hostID)
+        public frmManageRotas()
         {
             InitializeComponent();
-            HostID = hostID;
         }
 
         private void frmManageRotas_Load(object sender, EventArgs e)
@@ -40,7 +39,7 @@ namespace NEABenjaminFranklin
 
             while (dr.Read())
             {//dr[0].ToString()
-                cntrlRotaOverview ccRotaOverview = new cntrlRotaOverview(dr[2].ToString(), Convert.ToInt32(dr[0]), dr[4].ToString(), Convert.ToInt32(dr[1]), dr[3].ToString());
+                cntrlRotaOverview ccRotaOverview = new cntrlRotaOverview(dr[2].ToString(), Convert.ToInt32(dr[0]), dr[4].ToString(), Convert.ToInt32(dr[1]), dr[3].ToString(),true);
                 //ccRotaOverview.RotaID = Convert.ToInt32(dr[0]);
                 //ccRotaOverview.FacilityID = Convert.ToInt32(dr[1]);
                 //ccRotaOverview.RotaName = dr[2].ToString();

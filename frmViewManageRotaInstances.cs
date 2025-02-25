@@ -19,9 +19,8 @@ namespace NEABenjaminFranklin
         public int FacilityID { get; set; }
         public string ThemeColour { get; set; }
         public bool HostMode { get; set; }
-        public int HostID { get; set; }
 
-        public frmViewManageRotaInstances(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour, bool hostMode = true, int hostID = 0)
+        public frmViewManageRotaInstances(string rotaName, int rotaID, string facilityName, int facilityID, string themeColour, bool hostMode = true)
         {
             InitializeComponent();
             RotaName = rotaName;
@@ -30,7 +29,6 @@ namespace NEABenjaminFranklin
             FacilityID = facilityID;
             ThemeColour = themeColour;
             HostMode = hostMode;
-            HostID = hostID;
         }
 
         private void frmManageRotaInstance_Load(object sender, EventArgs e)

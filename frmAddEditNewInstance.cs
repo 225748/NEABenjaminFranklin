@@ -22,7 +22,7 @@ namespace NEABenjaminFranklin
         public DateTime EditModeDateTime { get; set; }
         public int HostID { get; set; }
 
-        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, string ifEditModeInstanceDateTime = "", int hostID = 0)
+        public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, string ifEditModeInstanceDateTime = "")
         {
             InitializeComponent();
             RotaID = rotaID;
@@ -54,7 +54,9 @@ namespace NEABenjaminFranklin
             }
             EditMode = editMode;
             EditModeInstanceID = InstanceIDIfEditMode;
-            HostID = hostID;
+            //Pull the host's id from the landing page which is the second form to open
+            HostID = (Application.OpenForms[1] as frmHostLandingPage).UserID;
+
             if (ifEditModeInstanceDateTime != "")
             {
                 EditModeDateTime = Convert.ToDateTime(ifEditModeInstanceDateTime);
@@ -214,6 +216,7 @@ namespace NEABenjaminFranklin
                         dbConnector.Connect();
                         dbConnector.DoDML(cmdStr);
                         dbConnector.Close();
+                        Email(HostID, rotaInstanceID, cntrl.AssignedRotaRoleIDs[i]);
                     }
                 }
 
@@ -385,19 +388,20 @@ namespace NEABenjaminFranklin
                     dbConnector.Connect();
                     dbConnector.DoDML(cmdStr);
                     dbConnector.Close();
+                    Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
                 }
 
 
             }
         }
 
-        private void Email(string email, int hostID, int rotaInstanceID, int assignedRotaRolesID) //NOT TESTED YET!
+        private void Email(int hostID, int rotaInstanceID, int assignedRotaRolesID) //NOT TESTED YET!
         {
             //Get name of host
             string hostFullName = "";
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "SELECT FirstName, LastName" +
+            string sqlCommand = "SELECT FirstName, LastName " +
                 "FROM tblPeople " +
                 $"WHERE UserID = {hostID}";
             dbConnector.Connect();
@@ -408,10 +412,25 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
 
+            //Get user email
+            string emailAddress = "";
+            dbConnector = new clsDBConnector();
+            sqlCommand = "SELECT tblPeople.Email " +
+                "FROM(tblAssignedRotaRoles INNER JOIN " +
+                "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) " +
+                $"WHERE(tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRolesID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                emailAddress = dr[0].ToString();
+            }
+            dbConnector.Close();
+
             //Get rotaName, date, time, role
             string rotaName = ""; string date = ""; string time = ""; string role = ""; string firstName = "";
             dbConnector = new clsDBConnector();
-            sqlCommand = "SELECT tblRoles.RoleName, tblRotaInstance.RotaInstanceDateTime, tblRota.RotaName, tblPeople.FirstName" +
+            sqlCommand = "SELECT tblRoles.RoleName, tblRotaInstance.RotaInstanceDateTime, tblRota.RotaName, tblPeople.FirstName " +
                 "FROM(((((tblRotaInstance INNER JOIN " +
                 "tblRota ON tblRotaInstance.RotaID = tblRota.RotaID) INNER JOIN " +
                 "tblRotaInstanceRoles ON tblRotaInstance.RotaInstanceID = tblRotaInstanceRoles.RotaInstanceID) INNER JOIN " +
@@ -420,7 +439,7 @@ namespace NEABenjaminFranklin
                 "AND tblRotaInstanceRoles.AssignedByID = tblPeople.UserID) INNER JOIN " +
                 "tblRotaRoles ON tblRota.RotaID = tblRotaRoles.RotaID AND tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) INNER JOIN " +
                 "tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
-                $"WHERE(tblRotaInstanceRoles.RotaInstanceID = {rotaInstanceID}) AND(tblRotaInstanceRoles.AssignedRotaRolesID = {assignedRotaRolesID})";
+                $"WHERE (tblRotaInstanceRoles.RotaInstanceID = {rotaInstanceID}) AND(tblRotaInstanceRoles.AssignedRotaRolesID = {assignedRotaRolesID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
@@ -454,7 +473,7 @@ namespace NEABenjaminFranklin
             string htmlBody = emailManager.ReadAndPopulateEmailTemplate(templateFilePath, variableReplacements);
             try
             {
-                emailManager.SendEmail(email, htmlBody, $"Your new {rotaName} rota assignment!");
+                emailManager.SendEmail(emailAddress, htmlBody, $"Your new {rotaName} rota assignment!");
             }
             catch (Exception)
             {
