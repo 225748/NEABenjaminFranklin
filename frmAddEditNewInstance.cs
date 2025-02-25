@@ -170,6 +170,9 @@ namespace NEABenjaminFranklin
 
         private void AddNewInstance()
         {
+            //as email takes a while - discourages people from spam clicking
+            this.Cursor = Cursors.WaitCursor;
+
             //assign users to roles and create an instance of this date and time
             DateTime dateTime = new DateTime(dtpDate.Value.Year,
                                     dtpDate.Value.Month,
@@ -218,6 +221,7 @@ namespace NEABenjaminFranklin
                         dbConnector.Close();
                         Email(HostID, rotaInstanceID, cntrl.AssignedRotaRoleIDs[i]);
                     }
+                    this.Cursor = Cursors.Default;
                 }
 
                 //Check if successfull ----- to do
@@ -289,6 +293,9 @@ namespace NEABenjaminFranklin
 
         private void UpdateInstance(int rotaInstanceID)
         {
+            //as email takes a while - discourages people from spam clicking
+            this.Cursor = Cursors.WaitCursor;
+
             //Check if date and time are different to that which is stored, if so - update
             UpdateDateTimeDifference(rotaInstanceID);
 
@@ -375,7 +382,6 @@ namespace NEABenjaminFranklin
                             //If a RIRN = 0 do nothing (They've had the role before but were never assigned to it for this specific instance hence 0)
                         }
                         //No assRotaRoleID, do nothing (They've never had the role before on this rota and therefore are not assigned to it)
-
                     }
                 }
                 //For everyone in the list to be be assigned RotaInstanceRoleNumber, use their AssignedRotaRoleNunber and the InstanceID
@@ -390,8 +396,7 @@ namespace NEABenjaminFranklin
                     dbConnector.Close();
                     Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
                 }
-
-
+                this.Cursor = Cursors.Default;
             }
         }
 
