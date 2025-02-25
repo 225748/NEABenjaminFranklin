@@ -36,7 +36,7 @@ namespace NEABenjaminFranklin
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "Select (FirstName & " + "', '" + "& LastName) as Name, UserID, FirstName, LastName " +
+            string sqlCommand = "Select (LastName & " + "', '" + "& FirstName) as Name, UserID, FirstName, LastName " +
                 "FROM tblPeople " +
                 "ORDER BY LastName, FirstName";
             dbConnector.Connect();

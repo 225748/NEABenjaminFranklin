@@ -81,9 +81,13 @@ namespace NEABenjaminFranklin
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmInitial frmInitial = new frmInitial();
-            frmInitial.ShowDialog();
-            this.Close();
+            Application.Restart();
+            Environment.Exit(0);
+            //as forms were not closing when opening new ones, log out wouldn't reset the form indexes
+            //problem with that is to access hostID for new assignment email, it uses forms index
+            //frmInitial frmInitial = new frmInitial();
+            //frmInitial.ShowDialog();
+            //this.Close();
         }
 
         private void btnPasswordReset_Click(object sender, EventArgs e)
