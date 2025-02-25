@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblRole = new System.Windows.Forms.Label();
             this.btnAcceptDate = new System.Windows.Forms.Button();
             this.btnDeclineDate = new System.Windows.Forms.Button();
             this.lblTime = new System.Windows.Forms.Label();
             this.lblRotaName = new System.Windows.Forms.Label();
+            this.tmrEmailSendDelay = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // lblDate
@@ -95,6 +97,10 @@
             this.lblRotaName.TabIndex = 5;
             this.lblRotaName.Text = "{rota}";
             // 
+            // tmrEmailSendDelay
+            // 
+            this.tmrEmailSendDelay.Tick += new System.EventHandler(this.tmrEmailSendDelay_Tick);
+            // 
             // cntrlAcceptDeclineDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -123,5 +129,6 @@
         private System.Windows.Forms.Button btnDeclineDate;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblRotaName;
+        private System.Windows.Forms.Timer tmrEmailSendDelay;
     }
 }

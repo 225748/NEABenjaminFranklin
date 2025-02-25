@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Media3D;
 
 namespace NEABenjaminFranklin
 {
@@ -51,6 +52,9 @@ namespace NEABenjaminFranklin
             btnDeclineDate.Enabled = true;
             Accepted = QueryADstate();
             UpdateADstate();
+
+            tmrEmailSendDelay.Interval = 10000;//10 seconds grace period
+            tmrEmailSendDelay.Enabled = false;
         }
         private int QueryADstate()
         {
@@ -108,11 +112,42 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
+        private void StartEmailDelay()
+        {//allows user a 'grace period' to click A/D as much as they want before it sends the email
+         //prevents hosts being spammed with emails from people clicking the wrong thing or changing minds quickly
+
+            //First check if timer is not already set
+            if (tmrEmailSendDelay.Enabled != true)
+            {
+                tmrEmailSendDelay.Enabled = true;
+                tmrEmailSendDelay.Start();
+            }
+            else
+            {
+                //do nothing, A/D has very recently been changed so currently in delay anyways
+            }
+        }
+        private void tmrEmailSendDelay_Tick(object sender, EventArgs e)//delay elapsed
+        {
+            tmrEmailSendDelay.Stop();
+            tmrEmailSendDelay.Enabled = false;
+
+            //Now send the email for A/D to host
+            try
+            {
+                //DoEmail();
+            }
+            catch (Exception)
+            {//email not sent - not too worried as its not a critical email
+            }
+        }
+
         private void btnAcceptDate_Click(object sender, EventArgs e)
         {
             Accepted = 1;
             UpdateADstate();
             UpdateADDatabaseState();
+            StartEmailDelay();
         }
 
         private void btnDeclineDate_Click(object sender, EventArgs e)
@@ -120,6 +155,8 @@ namespace NEABenjaminFranklin
             Accepted = -1;
             UpdateADstate();
             UpdateADDatabaseState();
+            StartEmailDelay();
         }
+
     }
 }
