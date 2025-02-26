@@ -21,6 +21,7 @@ namespace NEABenjaminFranklin
         public int EditModeInstanceID { get; set; }
         public DateTime EditModeDateTime { get; set; }
         public int HostID { get; set; }
+        public bool DateTimeChanged { get; set; }
 
         public frmAddEditNewInstance(int rotaID, string rotaName = "", string themeColour = "", bool editMode = false, int InstanceIDIfEditMode = 0, string ifEditModeInstanceDateTime = "")
         {
@@ -56,6 +57,8 @@ namespace NEABenjaminFranklin
             EditModeInstanceID = InstanceIDIfEditMode;
             //Pull the host's id from the landing page which is the second form to open
             HostID = (Application.OpenForms[1] as frmHostLandingPage).UserID;
+
+            DateTimeChanged = false;
 
             if (ifEditModeInstanceDateTime != "")
             {
@@ -170,9 +173,6 @@ namespace NEABenjaminFranklin
 
         private void AddNewInstance()
         {
-            //as email takes a while - discourages people from spam clicking
-            this.Cursor = Cursors.WaitCursor;
-
             //assign users to roles and create an instance of this date and time
             DateTime dateTime = new DateTime(dtpDate.Value.Year,
                                     dtpDate.Value.Month,
@@ -264,19 +264,18 @@ namespace NEABenjaminFranklin
             }
             dbConnector.Close();
 
-            string requiredUpdate = "";
-            //Checking is casuing issues - problem is putting the TIME as well as date into the correct format dt object in the while above
-            //if (instanceDateTime.Date.ToString() != dtpDate.Value.Date.ToString())
-            //{
-            //    requiredUpdate = requiredUpdate + "date";
-            //}
-            //if (instanceDateTime.TimeOfDay.ToString() != dtpTime.Value.ToString())
-            //{
-            //    requiredUpdate = requiredUpdate + "time";
-            //}
 
-            //For now skipping checking and just updating it regardless
-            requiredUpdate = "a";
+            //Check if datetime has changed from what is stored
+            string requiredUpdate = "";
+            if (instanceDateTime.Date.ToString() != dtpDate.Value.Date.ToString())
+            {
+                requiredUpdate = requiredUpdate + "date";
+            }
+            if (instanceDateTime.TimeOfDay.ToString() != dtpTime.Value.TimeOfDay.ToString())
+            {
+                requiredUpdate = requiredUpdate + "time";
+            }
+
             if (requiredUpdate != "")
             {
                 DateTime newDateTime = Convert.ToDateTime(dtpDate.Value.Date.ToString().Substring(0, 10) + " " + dtpTime.Value.TimeOfDay);
@@ -288,6 +287,9 @@ namespace NEABenjaminFranklin
                 dbConnector.Connect();
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
+
+                //set the public so email system knows to send emails to those already assigned as the date and or time has changed
+                DateTimeChanged = true;
             }
         }
 
@@ -342,6 +344,12 @@ namespace NEABenjaminFranklin
 
 
                             //If so do nothing as it started as checked and has ended as checked
+                            //But if the date time has changed then send out a new assignement email to those assigned
+                            if (DateTimeChanged == true)
+                            {
+                                Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
+                            }
+
                             //If there isn't, add them to a list of people needing to be added to the Instance with their assRotaRoleNum
                             //started unchecked (not assigned to instance) but have has this assigned rota role before
                             if (rotaInstanceRoleNumber == 0) //0  returned as no RIRN found
@@ -396,12 +404,18 @@ namespace NEABenjaminFranklin
                     dbConnector.Close();
                     Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
                 }
-                this.Cursor = Cursors.Default;
             }
         }
 
         private void Email(int hostID, int rotaInstanceID, int assignedRotaRolesID) //NOT TESTED YET!
         {
+            //If start date is before today probably best not to email them
+            if (dtpDate.Value < DateTime.Today.Date)
+            {
+                MessageBox.Show("Before Today");
+                return;
+            }
+            
             //Get name of host
             string hostFullName = "";
             clsDBConnector dbConnector = new clsDBConnector();
@@ -498,14 +512,19 @@ namespace NEABenjaminFranklin
 
         private void btnAddInstance_Click(object sender, EventArgs e)
         {
+            //email takes a while the more people it needs to send to - discourages people from spam clicking
+            this.Cursor = Cursors.WaitCursor;
             AddNewInstance();
+            this.Cursor = Cursors.Default;
             (Application.OpenForms["frmViewManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
             this.Close();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             UpdateInstance(EditModeInstanceID);
+            this.Cursor = Cursors.Default;
             (Application.OpenForms["frmViewManageRotaInstances"] as frmViewManageRotaInstances).RefreshFlp();
             this.Close();
         }
