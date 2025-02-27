@@ -113,12 +113,20 @@ namespace NEABenjaminFranklin
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
                 dbConnector = new clsDBConnector();
+                //sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName, tblRotaInstanceRoles.Accepted" +
+                //    "FROM(((tblAssignedRotaRoles INNER JOIN " +
+                //    "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
+                //    "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
+                //    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                //    $"WHERE(tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) AND (tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID}) " +
+                //    $"";
                 sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName, tblRotaInstanceRoles.Accepted " +
-                    "FROM(((tblAssignedRotaRoles INNER JOIN " +
-                    "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
-                    "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
-                    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-                    $"WHERE(tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) AND (tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID})";
+                    "FROM (((tblAssignedRotaRoles INNER JOIN tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) " +
+                    "INNER JOIN tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
+                    "INNER JOIN tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                    $"WHERE (tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) " +
+                    $"AND (tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID}) " +
+                    $"AND (tblRotaInstanceRoles.RotaInstanceID = {instanceID})";
                 dbConnector.Connect();
                 dr = dbConnector.DoSQL(sqlCommand);
 
