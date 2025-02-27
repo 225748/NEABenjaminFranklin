@@ -59,7 +59,7 @@
             this.pcRefresh = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.crtRoles = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblHighestAssigner = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
@@ -71,7 +71,7 @@
             this.pgAcknowledgements.SuspendLayout();
             this.pgRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -316,7 +316,7 @@
             // pgRoles
             // 
             this.pgRoles.Controls.Add(this.lblHighestAssigner);
-            this.pgRoles.Controls.Add(this.chart1);
+            this.pgRoles.Controls.Add(this.crtRoles);
             this.pgRoles.Controls.Add(this.label5);
             this.pgRoles.Location = new System.Drawing.Point(4, 22);
             this.pgRoles.Name = "pgRoles";
@@ -367,22 +367,22 @@
             this.label5.TabIndex = 1;
             this.label5.Text = "Most Commonly Assigned By:";
             // 
-            // chart1
+            // crtRoles
             // 
-            this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
+            this.crtRoles.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.crtRoles.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(6, 0);
-            this.chart1.Name = "chart1";
+            this.crtRoles.Legends.Add(legend1);
+            this.crtRoles.Location = new System.Drawing.Point(6, 0);
+            this.crtRoles.Name = "crtRoles";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(344, 211);
-            this.chart1.TabIndex = 2;
-            this.chart1.Text = "chart1";
+            series1.Name = "Assignments";
+            this.crtRoles.Series.Add(series1);
+            this.crtRoles.Size = new System.Drawing.Size(344, 211);
+            this.crtRoles.TabIndex = 2;
+            this.crtRoles.Text = "chart1";
             // 
             // lblHighestAssigner
             // 
@@ -425,7 +425,7 @@
             this.pgRoles.ResumeLayout(false);
             this.pgRoles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crtRoles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -460,7 +460,7 @@
         private System.Windows.Forms.PictureBox pcRefresh;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblHighestAssigner;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart crtRoles;
         private System.Windows.Forms.Label label5;
     }
 }

@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace NEABenjaminFranklin
 {
@@ -193,6 +194,49 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
+        private void LoadRolesChart()
+        {
+            //Get the data we need
+            List<string> roles = new List<string>();
+            List<int> assigments = new List<int>();
+
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT  RoleName FROM tblRoles";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                roles.Add(dr[0].ToString());
+            }
+            dbConnector.Close();
+
+            foreach (string roleName in roles)
+            {
+                dbConnector = new clsDBConnector(); //count num of assignments for this role
+                sqlCommand = "SELECT COUNT(tblAssignedRotaRoles.RotaRoleNumber) " +
+                    "FROM (((tblAssignedRotaRoles INNER JOIN " +
+                    "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
+                    "INNER JOIN " +
+                    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                    "INNER JOIN tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
+                    $"WHERE (tblAssignedRotaRoles.UserID = {UserID}) AND (tblRoles.RoleName = '{roleName}')";
+                dbConnector.Connect();
+                dr = dbConnector.DoSQL(sqlCommand);
+                while (dr.Read())
+                {
+                    assigments.Add(Convert.ToInt32(dr[0]));
+                }
+                dbConnector.Close();
+            }
+            for (int i = 0; i < roles.Count; i++)
+            {
+                DataPoint dataPoint = new DataPoint(0, assigments[i]);
+                dataPoint.AxisLabel = roles[i];
+                crtRoles.Series[0].Points.Add(dataPoint);
+            }
+        }
+
         private void btnAccountSettings_Click(object sender, EventArgs e)
         {
             frmUserEditUserInfo frmUserEditUserInfo = new frmUserEditUserInfo(UserID);
@@ -217,13 +261,18 @@ namespace NEABenjaminFranklin
             {
                 if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
                 {
-                    LoadAcknowledgementStats();
-                    LoadMostCommonAssigner();
+                    if (tbStats.Enabled == true)//won't try again if we disabled it due to an issue
+                    {
+                        LoadAcknowledgementStats();
+                        LoadMostCommonAssigner();
+                        LoadRolesChart();
+                    }
                 }
             }
             catch (Exception)
             {
                 MessageBox.Show("There was an issue loading your statistics", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbStats.Enabled = false;
             }
         }
 
@@ -231,7 +280,10 @@ namespace NEABenjaminFranklin
         {
             try
             {
-                LoadAcknowledgementStats();
+                if (tbStats.Enabled == true)//won't try again if we disabled it due to an issue
+                {
+                    LoadAcknowledgementStats();
+                }
             }
             catch (Exception)
             {
