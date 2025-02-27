@@ -32,6 +32,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
@@ -378,8 +379,12 @@
             this.crtRoles.Name = "crtRoles";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
-            series1.Name = "Assignments";
+            series1.Name = "My Assignments";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Average";
             this.crtRoles.Series.Add(series1);
+            this.crtRoles.Series.Add(series2);
             this.crtRoles.Size = new System.Drawing.Size(344, 211);
             this.crtRoles.TabIndex = 2;
             this.crtRoles.Text = "chart1";

@@ -198,7 +198,8 @@ namespace NEABenjaminFranklin
         {
             //Get the data we need
             List<string> roles = new List<string>();
-            List<int> assigments = new List<int>();
+            List<int> assignments = new List<int>();
+            List<int> averageAssignments = new List<int>();
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -225,15 +226,50 @@ namespace NEABenjaminFranklin
                 dr = dbConnector.DoSQL(sqlCommand);
                 while (dr.Read())
                 {
-                    assigments.Add(Convert.ToInt32(dr[0]));
+                    assignments.Add(Convert.ToInt32(dr[0]));
+                }
+                dbConnector.Close();
+            }
+            ///Now get average stats
+            int userCount = 0;
+            dbConnector = new clsDBConnector();
+            sqlCommand = "SELECT COUNT(UserID) FROM tblPeople";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                userCount = Convert.ToInt32(dr[0]);
+            }
+            dbConnector.Close();
+
+            foreach (var roleName in roles)
+            {
+                //This does the same as the one for 1 user but for ALL users so we can get an average
+                dbConnector = new clsDBConnector(); //count num of assignments for this role
+                sqlCommand = "SELECT COUNT(tblAssignedRotaRoles.RotaRoleNumber) " +
+                    "FROM (((tblAssignedRotaRoles INNER JOIN " +
+                    "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
+                    "INNER JOIN " +
+                    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                    "INNER JOIN tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
+                    $"WHERE (tblRoles.RoleName = '{roleName}')";
+                dbConnector.Connect();
+                dr = dbConnector.DoSQL(sqlCommand);
+                while (dr.Read())
+                {
+                    int average = Convert.ToInt32(dr[0]) % userCount;
+                    averageAssignments.Add(average);
                 }
                 dbConnector.Close();
             }
             for (int i = 0; i < roles.Count; i++)
             {
-                DataPoint dataPoint = new DataPoint(0, assigments[i]);
+                DataPoint dataPoint = new DataPoint(0, assignments[i]);
                 dataPoint.AxisLabel = roles[i];
                 crtRoles.Series[0].Points.Add(dataPoint);
+                //dataPoint = new DataPoint(0, averageAssignments[i]);
+                //dataPoint.AxisLabel = roles[i];
+                //crtRoles.Series[1].Points.Add(dataPoint);
             }
         }
 
@@ -257,6 +293,9 @@ namespace NEABenjaminFranklin
 
         private void tbUserLanding_SelectedIndexChanged(object sender, EventArgs e)
         {
+            LoadRolesChart();
+
+
             try
             {
                 if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
@@ -265,7 +304,7 @@ namespace NEABenjaminFranklin
                     {
                         LoadAcknowledgementStats();
                         LoadMostCommonAssigner();
-                        LoadRolesChart();
+                        //LoadRolesChart();
                     }
                 }
             }
