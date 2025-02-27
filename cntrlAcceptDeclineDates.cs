@@ -64,13 +64,13 @@ namespace NEABenjaminFranklin
                 $"WHERE(RotaInstanceRoleNumber = {RotaInstanceRoleNumber})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
-
+            int ADstate = 0;
             while (dr.Read())
             {
-                return Convert.ToInt32(dr[0].ToString());
+                ADstate = Convert.ToInt32(dr[0].ToString());
             }
             dbConnector.Close();
-            return 0;
+            return ADstate;
         }
 
 
@@ -147,6 +147,7 @@ namespace NEABenjaminFranklin
             Accepted = 1;
             UpdateADstate();
             UpdateADDatabaseState();
+            (Application.OpenForms["frmUserLandingPage"] as frmUserLandingPage).LoadAcknowledgementStats();
             StartEmailDelay();
         }
 
@@ -155,6 +156,7 @@ namespace NEABenjaminFranklin
             Accepted = -1;
             UpdateADstate();
             UpdateADDatabaseState();
+            (Application.OpenForms["frmUserLandingPage"] as frmUserLandingPage).LoadAcknowledgementStats();
             StartEmailDelay();
         }
 

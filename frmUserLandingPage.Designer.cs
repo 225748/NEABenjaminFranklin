@@ -38,16 +38,32 @@
             this.pnlDatesGroup = new System.Windows.Forms.Panel();
             this.flpDates = new System.Windows.Forms.FlowLayoutPanel();
             this.lblDates = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbUserLanding = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbStats = new System.Windows.Forms.TabControl();
+            this.pgAcknowledgements = new System.Windows.Forms.TabPage();
+            this.lblNyaNum = new System.Windows.Forms.Label();
+            this.lblDeclinedNum = new System.Windows.Forms.Label();
+            this.lblAcceptedNum = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblUpcoming = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.lblFullName = new System.Windows.Forms.Label();
+            this.pcRefresh = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tbUserLanding.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tbStats.SuspendLayout();
+            this.pgAcknowledgements.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -147,16 +163,17 @@
             this.lblDates.TabIndex = 12;
             this.lblDates.Text = "Next Dates (Accept / Decline)";
             // 
-            // tabControl1
+            // tbUserLanding
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(282, 118);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(368, 317);
-            this.tabControl1.TabIndex = 17;
+            this.tbUserLanding.Controls.Add(this.tabPage1);
+            this.tbUserLanding.Controls.Add(this.tabPage2);
+            this.tbUserLanding.Location = new System.Drawing.Point(282, 118);
+            this.tbUserLanding.Name = "tbUserLanding";
+            this.tbUserLanding.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.tbUserLanding.SelectedIndex = 0;
+            this.tbUserLanding.Size = new System.Drawing.Size(368, 317);
+            this.tbUserLanding.TabIndex = 17;
+            this.tbUserLanding.SelectedIndexChanged += new System.EventHandler(this.tbUserLanding_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -180,13 +197,123 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.tbStats);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(360, 291);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "My Stats";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tbStats
+            // 
+            this.tbStats.Controls.Add(this.pgAcknowledgements);
+            this.tbStats.Controls.Add(this.tabPage4);
+            this.tbStats.Location = new System.Drawing.Point(-4, 0);
+            this.tbStats.Name = "tbStats";
+            this.tbStats.SelectedIndex = 0;
+            this.tbStats.Size = new System.Drawing.Size(364, 298);
+            this.tbStats.TabIndex = 0;
+            // 
+            // pgAcknowledgements
+            // 
+            this.pgAcknowledgements.Controls.Add(this.label4);
+            this.pgAcknowledgements.Controls.Add(this.pcRefresh);
+            this.pgAcknowledgements.Controls.Add(this.lblNyaNum);
+            this.pgAcknowledgements.Controls.Add(this.lblDeclinedNum);
+            this.pgAcknowledgements.Controls.Add(this.lblAcceptedNum);
+            this.pgAcknowledgements.Controls.Add(this.label3);
+            this.pgAcknowledgements.Controls.Add(this.label2);
+            this.pgAcknowledgements.Controls.Add(this.label1);
+            this.pgAcknowledgements.Controls.Add(this.lblUpcoming);
+            this.pgAcknowledgements.Location = new System.Drawing.Point(4, 22);
+            this.pgAcknowledgements.Name = "pgAcknowledgements";
+            this.pgAcknowledgements.Padding = new System.Windows.Forms.Padding(3);
+            this.pgAcknowledgements.Size = new System.Drawing.Size(356, 272);
+            this.pgAcknowledgements.TabIndex = 0;
+            this.pgAcknowledgements.Text = "Acknowledgements";
+            this.pgAcknowledgements.UseVisualStyleBackColor = true;
+            // 
+            // lblNyaNum
+            // 
+            this.lblNyaNum.AutoSize = true;
+            this.lblNyaNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNyaNum.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblNyaNum.Location = new System.Drawing.Point(157, 85);
+            this.lblNyaNum.Name = "lblNyaNum";
+            this.lblNyaNum.Size = new System.Drawing.Size(40, 42);
+            this.lblNyaNum.TabIndex = 5;
+            this.lblNyaNum.Text = "0";
+            // 
+            // lblDeclinedNum
+            // 
+            this.lblDeclinedNum.AutoSize = true;
+            this.lblDeclinedNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDeclinedNum.ForeColor = System.Drawing.Color.Crimson;
+            this.lblDeclinedNum.Location = new System.Drawing.Point(266, 85);
+            this.lblDeclinedNum.Name = "lblDeclinedNum";
+            this.lblDeclinedNum.Size = new System.Drawing.Size(40, 42);
+            this.lblDeclinedNum.TabIndex = 4;
+            this.lblDeclinedNum.Text = "0";
+            // 
+            // lblAcceptedNum
+            // 
+            this.lblAcceptedNum.AutoSize = true;
+            this.lblAcceptedNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAcceptedNum.ForeColor = System.Drawing.Color.Green;
+            this.lblAcceptedNum.Location = new System.Drawing.Point(38, 85);
+            this.lblAcceptedNum.Name = "lblAcceptedNum";
+            this.lblAcceptedNum.Size = new System.Drawing.Size(40, 42);
+            this.lblAcceptedNum.TabIndex = 0;
+            this.lblAcceptedNum.Text = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(261, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Declined";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(132, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Unacknowledged";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Accepted";
+            // 
+            // lblUpcoming
+            // 
+            this.lblUpcoming.AutoSize = true;
+            this.lblUpcoming.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUpcoming.Location = new System.Drawing.Point(7, 7);
+            this.lblUpcoming.Name = "lblUpcoming";
+            this.lblUpcoming.Size = new System.Drawing.Size(238, 15);
+            this.lblUpcoming.TabIndex = 0;
+            this.lblUpcoming.Text = "Your Upcoming Assignments Status:";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(356, 272);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // lblFullName
             // 
@@ -199,6 +326,26 @@
             this.lblFullName.TabIndex = 18;
             this.lblFullName.Text = "{Full Name}";
             // 
+            // pcRefresh
+            // 
+            this.pcRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pcRefresh.Image")));
+            this.pcRefresh.Location = new System.Drawing.Point(245, 243);
+            this.pcRefresh.Name = "pcRefresh";
+            this.pcRefresh.Size = new System.Drawing.Size(20, 20);
+            this.pcRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcRefresh.TabIndex = 6;
+            this.pcRefresh.TabStop = false;
+            this.pcRefresh.Click += new System.EventHandler(this.pcRefresh_Click);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 246);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(232, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Click to refresh this page to update the statistics";
+            // 
             // frmUserLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,7 +355,7 @@
             this.Controls.Add(this.pnlDatesGroup);
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.pnlTopBar);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbUserLanding);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUserLandingPage";
@@ -220,8 +367,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
             this.pnlDatesGroup.ResumeLayout(false);
             this.pnlDatesGroup.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tbUserLanding.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tbStats.ResumeLayout(false);
+            this.pgAcknowledgements.ResumeLayout(false);
+            this.pgAcknowledgements.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,11 +389,23 @@
         private System.Windows.Forms.Panel pnlDatesGroup;
         private System.Windows.Forms.FlowLayoutPanel flpDates;
         private System.Windows.Forms.Label lblDates;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbUserLanding;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.FlowLayoutPanel flpRotas;
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.TabControl tbStats;
+        private System.Windows.Forms.TabPage pgAcknowledgements;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Label lblNyaNum;
+        private System.Windows.Forms.Label lblDeclinedNum;
+        private System.Windows.Forms.Label lblAcceptedNum;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblUpcoming;
+        private System.Windows.Forms.PictureBox pcRefresh;
+        private System.Windows.Forms.Label label4;
     }
 }

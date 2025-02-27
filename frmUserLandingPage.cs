@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -42,13 +43,13 @@ namespace NEABenjaminFranklin
                 $"WHERE (UserID = {userID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
-
+            string userFullName = "";
             while (dr.Read())
             {
-                return dr[0].ToString() + " " + dr[1].ToString();
+                userFullName = dr[0].ToString() + " " + dr[1].ToString();
             }
             dbConnector.Close();
-            return "";
+            return userFullName;
         }
 
         private void FillADDates()
@@ -82,11 +83,11 @@ namespace NEABenjaminFranklin
                 // don't show dates that have already happened
                 if (rotaInstanceDateTime > DateTime.Now)
                 {
-                    string date = rotaInstanceDateTime.Date.ToString().Substring(0,10);
-                    string time = rotaInstanceDateTime.TimeOfDay.ToString().Substring(0,5);
+                    string date = rotaInstanceDateTime.Date.ToString().Substring(0, 10);
+                    string time = rotaInstanceDateTime.TimeOfDay.ToString().Substring(0, 5);
 
-                    cntrlAcceptDeclineDates cntrlAcceptDeclineDates 
-                        = new cntrlAcceptDeclineDates(date,time,roleName,rotaName,rotaID,instanceID,rirn,UserID);
+                    cntrlAcceptDeclineDates cntrlAcceptDeclineDates
+                        = new cntrlAcceptDeclineDates(date, time, roleName, rotaName, rotaID, instanceID, rirn, UserID);
                     flpDates.Controls.Add(cntrlAcceptDeclineDates);
                 }
 
@@ -126,6 +127,42 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
+        public void LoadAcknowledgementStats()
+        {
+            for (int i = -1; i < 2; i++)
+            {
+                clsDBConnector dbConnector = new clsDBConnector();
+                OleDbDataReader dr;
+                string sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.RotaInstanceRoleNumber) " +
+                    "FROM ((tblRotaInstanceRoles INNER JOIN " +
+                    "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+                    "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) " +
+                    $"WHERE (tblAssignedRotaRoles.UserID = {UserID}) " +
+                    $"AND tblRotaInstance.RotaInstanceDateTime > #" + DateTime.Now.ToString("MM/dd/yyyy") + "# " +
+                    $"AND Accepted = {i}";
+                dbConnector.Connect();
+                dr = dbConnector.DoSQL(sqlCommand);
+                while (dr.Read())
+                {
+                    if (i == 1)
+                    {
+                        lblAcceptedNum.Text = dr[0].ToString();
+                    }
+                    else if(i==0)
+                    {
+                        lblNyaNum.Text = dr[0].ToString();
+                    }
+                    else if (i == -1)
+                    {
+                        lblDeclinedNum.Text = dr[0].ToString();
+                    }
+                }
+                dbConnector.Close();
+
+            }
+
+        }
+
         private void btnAccountSettings_Click(object sender, EventArgs e)
         {
             frmUserEditUserInfo frmUserEditUserInfo = new frmUserEditUserInfo(UserID);
@@ -142,6 +179,19 @@ namespace NEABenjaminFranklin
             //frmInitial frmInitial = new frmInitial();
             //frmInitial.ShowDialog();
             //this.Close();
+        }
+
+        private void tbUserLanding_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
+            {
+                LoadAcknowledgementStats();
+            }
+        }
+
+        private void pcRefresh_Click(object sender, EventArgs e)
+        {
+            LoadAcknowledgementStats();
         }
     }
 }
