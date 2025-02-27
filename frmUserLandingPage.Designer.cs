@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserLandingPage));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
@@ -51,10 +54,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblUpcoming = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.pgRoles = new System.Windows.Forms.TabPage();
             this.lblFullName = new System.Windows.Forms.Label();
             this.pcRefresh = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblHighestAssigner = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
@@ -63,7 +69,9 @@
             this.tabPage2.SuspendLayout();
             this.tbStats.SuspendLayout();
             this.pgAcknowledgements.SuspendLayout();
+            this.pgRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -209,7 +217,7 @@
             // tbStats
             // 
             this.tbStats.Controls.Add(this.pgAcknowledgements);
-            this.tbStats.Controls.Add(this.tabPage4);
+            this.tbStats.Controls.Add(this.pgRoles);
             this.tbStats.Location = new System.Drawing.Point(-4, 0);
             this.tbStats.Name = "tbStats";
             this.tbStats.SelectedIndex = 0;
@@ -305,15 +313,18 @@
             this.lblUpcoming.TabIndex = 0;
             this.lblUpcoming.Text = "Your Upcoming Assignments Status:";
             // 
-            // tabPage4
+            // pgRoles
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(356, 272);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "tabPage4";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.pgRoles.Controls.Add(this.lblHighestAssigner);
+            this.pgRoles.Controls.Add(this.chart1);
+            this.pgRoles.Controls.Add(this.label5);
+            this.pgRoles.Location = new System.Drawing.Point(4, 22);
+            this.pgRoles.Name = "pgRoles";
+            this.pgRoles.Padding = new System.Windows.Forms.Padding(3);
+            this.pgRoles.Size = new System.Drawing.Size(356, 272);
+            this.pgRoles.TabIndex = 1;
+            this.pgRoles.Text = "Roles";
+            this.pgRoles.UseVisualStyleBackColor = true;
             // 
             // lblFullName
             // 
@@ -346,6 +357,44 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Click to refresh this page to update the statistics";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(194, 15);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Most Commonly Assigned By:";
+            // 
+            // chart1
+            // 
+            this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(6, 0);
+            this.chart1.Name = "chart1";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(344, 211);
+            this.chart1.TabIndex = 2;
+            this.chart1.Text = "chart1";
+            // 
+            // lblHighestAssigner
+            // 
+            this.lblHighestAssigner.AutoSize = true;
+            this.lblHighestAssigner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHighestAssigner.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblHighestAssigner.Location = new System.Drawing.Point(6, 244);
+            this.lblHighestAssigner.Name = "lblHighestAssigner";
+            this.lblHighestAssigner.Size = new System.Drawing.Size(82, 16);
+            this.lblHighestAssigner.TabIndex = 6;
+            this.lblHighestAssigner.Text = "{HostName}";
+            // 
             // frmUserLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,7 +422,10 @@
             this.tbStats.ResumeLayout(false);
             this.pgAcknowledgements.ResumeLayout(false);
             this.pgAcknowledgements.PerformLayout();
+            this.pgRoles.ResumeLayout(false);
+            this.pgRoles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,7 +449,7 @@
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.TabControl tbStats;
         private System.Windows.Forms.TabPage pgAcknowledgements;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage pgRoles;
         private System.Windows.Forms.Label lblNyaNum;
         private System.Windows.Forms.Label lblDeclinedNum;
         private System.Windows.Forms.Label lblAcceptedNum;
@@ -407,5 +459,8 @@
         private System.Windows.Forms.Label lblUpcoming;
         private System.Windows.Forms.PictureBox pcRefresh;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblHighestAssigner;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.Label label5;
     }
 }

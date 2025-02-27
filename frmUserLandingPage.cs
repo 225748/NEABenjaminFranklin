@@ -6,6 +6,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -127,7 +128,7 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
-        public void LoadAcknowledgementStats()
+        public void LoadAcknowledgementStats()//public as accessed from the ad cntrls
         {
             for (int i = -1; i < 2; i++)
             {
@@ -148,7 +149,7 @@ namespace NEABenjaminFranklin
                     {
                         lblAcceptedNum.Text = dr[0].ToString();
                     }
-                    else if(i==0)
+                    else if (i == 0)
                     {
                         lblNyaNum.Text = dr[0].ToString();
                     }
@@ -158,9 +159,38 @@ namespace NEABenjaminFranklin
                     }
                 }
                 dbConnector.Close();
-
             }
+        }
 
+        private void LoadMostCommonAssigner()
+        {
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.AssignedByID) AS numAssignedTo, " +
+                "tblPeople.FirstName + ' ' + tblPeople.LastName AS name " +
+                "FROM((tblRotaInstanceRoles INNER JOIN " +
+                "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
+                "tblPeople ON tblRotaInstanceRoles.AssignedByID = tblPeople.UserID AND tblRotaInstanceRoles.AssignedByID = tblPeople.UserID) " +
+                $"WHERE(tblAssignedRotaRoles.UserID = {UserID}) " +
+                "GROUP BY tblRotaInstanceRoles.AssignedByID, tblPeople.FirstName, tblPeople.LastName";
+            //Counts each assignement of this user by an 'AssignedBy' UserID, and then 'Groups' that to output the count per AssignedByID
+            //Output format of dr is
+            //dr[0] is the number assigned by a host
+            //dr[1] is the name of the host that assigned those
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            int highestAssignments = 0;
+            string highestAssigner = "";
+            while (dr.Read())
+            {
+                if (Convert.ToInt32(dr[0]) > highestAssignments)
+                {
+                    highestAssignments = Convert.ToInt32(dr[0]);
+                    highestAssigner = dr[1].ToString();
+                }
+            }
+            lblHighestAssigner.Text = highestAssigner.ToString();
+            dbConnector.Close();
         }
 
         private void btnAccountSettings_Click(object sender, EventArgs e)
@@ -183,15 +213,30 @@ namespace NEABenjaminFranklin
 
         private void tbUserLanding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
+            try
             {
-                LoadAcknowledgementStats();
+                if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
+                {
+                    LoadAcknowledgementStats();
+                    LoadMostCommonAssigner();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There was an issue loading your statistics", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void pcRefresh_Click(object sender, EventArgs e)
         {
-            LoadAcknowledgementStats();
+            try
+            {
+                LoadAcknowledgementStats();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There was an issue loading your statistics", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
