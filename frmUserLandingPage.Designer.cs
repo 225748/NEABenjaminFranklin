@@ -365,7 +365,7 @@
             this.crtRoles.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.crtRoles.Legends.Add(legend1);
-            this.crtRoles.Location = new System.Drawing.Point(6, 0);
+            this.crtRoles.Location = new System.Drawing.Point(3, 0);
             this.crtRoles.Name = "crtRoles";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -375,7 +375,7 @@
             series2.Name = "Average";
             this.crtRoles.Series.Add(series1);
             this.crtRoles.Series.Add(series2);
-            this.crtRoles.Size = new System.Drawing.Size(344, 211);
+            this.crtRoles.Size = new System.Drawing.Size(350, 217);
             this.crtRoles.TabIndex = 2;
             this.crtRoles.Text = "chart1";
             // 

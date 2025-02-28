@@ -208,7 +208,7 @@ namespace NEABenjaminFranklin
             //Get the data we need
             List<string> roles = new List<string>();
             List<int> assignments = new List<int>();
-            List<int> averageAssignments = new List<int>();
+            List<float> averageAssignments = new List<float>();
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -253,9 +253,8 @@ namespace NEABenjaminFranklin
 
             foreach (var roleName in roles)
             {
-                //This does the same as the one for 1 user but for ALL users so we can get an average
                 dbConnector = new clsDBConnector(); //count num of assignments for this role
-                sqlCommand = "SELECT COUNT(tblAssignedRotaRoles.RotaRoleNumber) " +
+                sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.RotaInstanceRoleNumber) " +
                     "FROM (((tblAssignedRotaRoles INNER JOIN " +
                     "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
                     "INNER JOIN " +
@@ -266,19 +265,20 @@ namespace NEABenjaminFranklin
                 dr = dbConnector.DoSQL(sqlCommand);
                 while (dr.Read())
                 {
-                    int average = Convert.ToInt32(dr[0]) % userCount;
+                    int temp = Convert.ToInt32(dr[0]);
+                    float average = Convert.ToInt32(dr[0]) / userCount; //this CURRENTLY NOT CALCULATING CORRECTLY!!
                     averageAssignments.Add(average);
                 }
                 dbConnector.Close();
             }
             for (int i = 0; i < roles.Count; i++)
-            {
+            {//unless you delete series 2 (avg) in the graph, if you don't add data for the 2nd series, it will duplicate first
                 DataPoint dataPoint = new DataPoint(0, assignments[i]);
                 dataPoint.AxisLabel = roles[i];
                 crtRoles.Series[0].Points.Add(dataPoint);
-                //dataPoint = new DataPoint(0, averageAssignments[i]);
-                //dataPoint.AxisLabel = roles[i];
-                //crtRoles.Series[1].Points.Add(dataPoint);
+                dataPoint = new DataPoint(0, averageAssignments[i]);
+                dataPoint.AxisLabel = roles[i] + "Ave";
+                crtRoles.Series[1].Points.Add(dataPoint);
             }
         }
 
@@ -302,16 +302,13 @@ namespace NEABenjaminFranklin
 
         private void tbUserLanding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadAcknowledgementStats();
-
-
             try
             {
                 if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
                 {
                     if (tbStats.Enabled == true)//won't try again if we disabled it due to an issue
                     {
-                        // LoadAcknowledgementStats();
+                        LoadAcknowledgementStats();
                         LoadMostCommonAssigner();
                         LoadRolesChart();
                     }
