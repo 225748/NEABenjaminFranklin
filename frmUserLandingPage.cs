@@ -129,35 +129,44 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
-        public void LoadAcknowledgementStats()//public as accessed from the ad cntrls
+        public void LoadAcknowledgementStats()//public as accessed from the ad cntrls too
         {
             for (int i = -1; i < 2; i++)
             {
                 clsDBConnector dbConnector = new clsDBConnector();
                 OleDbDataReader dr;
-                string sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.RotaInstanceRoleNumber) " +
-                    "FROM ((tblRotaInstanceRoles INNER JOIN " +
+                string sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.RotaInstanceRoleNumber) AS Expr1, tblRotaInstance.RotaInstanceDateTime " +
+                    "FROM((tblRotaInstanceRoles INNER JOIN " +
                     "tblAssignedRotaRoles ON tblRotaInstanceRoles.AssignedRotaRolesID = tblAssignedRotaRoles.AssignedRotaRolesID) INNER JOIN " +
                     "tblRotaInstance ON tblRotaInstanceRoles.RotaInstanceID = tblRotaInstance.RotaInstanceID) " +
-                    $"WHERE (tblAssignedRotaRoles.UserID = {UserID}) " +
-                    $"AND tblRotaInstance.RotaInstanceDateTime > #" + DateTime.Now.ToString("MM/dd/yyyy") + "# " +
-                    $"AND Accepted = {i}";
+                    $"WHERE(tblAssignedRotaRoles.UserID = {UserID}) AND(tblRotaInstanceRoles.Accepted = {i}) " +
+                    "GROUP BY tblRotaInstance.RotaInstanceDateTime";
                 dbConnector.Connect();
                 dr = dbConnector.DoSQL(sqlCommand);
+                //sql returns:
+                //dr[0] num of roles that are either A/D/NYA - dependant on while - on a specific instance
+                //dr[1] is the date of it
+
+                int numOfADNYA = 0;
                 while (dr.Read())
                 {
-                    if (i == 1)
+                    if (Convert.ToDateTime(dr[1].ToString()) > DateTime.Now)
                     {
-                        lblAcceptedNum.Text = dr[0].ToString();
+                        //for every day later than today, add its num of A/D/NYA to a total of all days - dependant on our i
+                        numOfADNYA += Convert.ToInt32(dr[0]);
                     }
-                    else if (i == 0)
-                    {
-                        lblNyaNum.Text = dr[0].ToString();
-                    }
-                    else if (i == -1)
-                    {
-                        lblDeclinedNum.Text = dr[0].ToString();
-                    }
+                }
+                if (i == 1)
+                {
+                    lblAcceptedNum.Text = numOfADNYA.ToString();
+                }
+                else if (i == 0)
+                {
+                    lblNyaNum.Text = numOfADNYA.ToString();
+                }
+                else if (i == -1)
+                {
+                    lblDeclinedNum.Text = numOfADNYA.ToString();
                 }
                 dbConnector.Close();
             }
@@ -293,7 +302,7 @@ namespace NEABenjaminFranklin
 
         private void tbUserLanding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadRolesChart();
+            LoadAcknowledgementStats();
 
 
             try
@@ -302,9 +311,9 @@ namespace NEABenjaminFranklin
                 {
                     if (tbStats.Enabled == true)//won't try again if we disabled it due to an issue
                     {
-                        LoadAcknowledgementStats();
+                        // LoadAcknowledgementStats();
                         LoadMostCommonAssigner();
-                        //LoadRolesChart();
+                        LoadRolesChart();
                     }
                 }
             }

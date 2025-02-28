@@ -116,6 +116,7 @@ namespace NEABenjaminFranklin
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
             //validate email
             Validation validator = new Validation();
             string response = validator.emailValidation(txtEmail.Text);
@@ -207,6 +208,7 @@ namespace NEABenjaminFranklin
             {
                 MessageBox.Show("Welcome email with temporary password successfully sent", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            this.Cursor = Cursors.Default;
             this.Close();
 
         }

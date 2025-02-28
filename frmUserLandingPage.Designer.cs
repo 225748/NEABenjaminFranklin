@@ -48,6 +48,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tbStats = new System.Windows.Forms.TabControl();
             this.pgAcknowledgements = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pcRefresh = new System.Windows.Forms.PictureBox();
             this.lblNyaNum = new System.Windows.Forms.Label();
             this.lblDeclinedNum = new System.Windows.Forms.Label();
             this.lblAcceptedNum = new System.Windows.Forms.Label();
@@ -56,12 +58,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblUpcoming = new System.Windows.Forms.Label();
             this.pgRoles = new System.Windows.Forms.TabPage();
-            this.lblFullName = new System.Windows.Forms.Label();
-            this.pcRefresh = new System.Windows.Forms.PictureBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.crtRoles = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblHighestAssigner = new System.Windows.Forms.Label();
+            this.crtRoles = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
@@ -70,8 +70,8 @@
             this.tabPage2.SuspendLayout();
             this.tbStats.SuspendLayout();
             this.pgAcknowledgements.SuspendLayout();
-            this.pgRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).BeginInit();
+            this.pgRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crtRoles)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,9 +168,9 @@
             this.lblDates.AutoSize = true;
             this.lblDates.Location = new System.Drawing.Point(16, 11);
             this.lblDates.Name = "lblDates";
-            this.lblDates.Size = new System.Drawing.Size(150, 13);
+            this.lblDates.Size = new System.Drawing.Size(176, 13);
             this.lblDates.TabIndex = 12;
-            this.lblDates.Text = "Next Dates (Accept / Decline)";
+            this.lblDates.Text = "Upcoming Dates (Accept / Decline)";
             // 
             // tbUserLanding
             // 
@@ -243,6 +243,26 @@
             this.pgAcknowledgements.TabIndex = 0;
             this.pgAcknowledgements.Text = "Acknowledgements";
             this.pgAcknowledgements.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 246);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(232, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Click to refresh this page to update the statistics";
+            // 
+            // pcRefresh
+            // 
+            this.pcRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pcRefresh.Image")));
+            this.pcRefresh.Location = new System.Drawing.Point(245, 243);
+            this.pcRefresh.Name = "pcRefresh";
+            this.pcRefresh.Size = new System.Drawing.Size(20, 20);
+            this.pcRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcRefresh.TabIndex = 6;
+            this.pcRefresh.TabStop = false;
+            this.pcRefresh.Click += new System.EventHandler(this.pcRefresh_Click);
             // 
             // lblNyaNum
             // 
@@ -327,46 +347,16 @@
             this.pgRoles.Text = "Roles";
             this.pgRoles.UseVisualStyleBackColor = true;
             // 
-            // lblFullName
+            // lblHighestAssigner
             // 
-            this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFullName.Location = new System.Drawing.Point(20, 77);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(109, 25);
-            this.lblFullName.TabIndex = 18;
-            this.lblFullName.Text = "{Full Name}";
-            // 
-            // pcRefresh
-            // 
-            this.pcRefresh.Image = ((System.Drawing.Image)(resources.GetObject("pcRefresh.Image")));
-            this.pcRefresh.Location = new System.Drawing.Point(245, 243);
-            this.pcRefresh.Name = "pcRefresh";
-            this.pcRefresh.Size = new System.Drawing.Size(20, 20);
-            this.pcRefresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pcRefresh.TabIndex = 6;
-            this.pcRefresh.TabStop = false;
-            this.pcRefresh.Click += new System.EventHandler(this.pcRefresh_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 246);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(232, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Click to refresh this page to update the statistics";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 220);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(194, 15);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Most Commonly Assigned By:";
+            this.lblHighestAssigner.AutoSize = true;
+            this.lblHighestAssigner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHighestAssigner.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblHighestAssigner.Location = new System.Drawing.Point(6, 244);
+            this.lblHighestAssigner.Name = "lblHighestAssigner";
+            this.lblHighestAssigner.Size = new System.Drawing.Size(82, 16);
+            this.lblHighestAssigner.TabIndex = 6;
+            this.lblHighestAssigner.Text = "{HostName}";
             // 
             // crtRoles
             // 
@@ -389,16 +379,26 @@
             this.crtRoles.TabIndex = 2;
             this.crtRoles.Text = "chart1";
             // 
-            // lblHighestAssigner
+            // label5
             // 
-            this.lblHighestAssigner.AutoSize = true;
-            this.lblHighestAssigner.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHighestAssigner.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblHighestAssigner.Location = new System.Drawing.Point(6, 244);
-            this.lblHighestAssigner.Name = "lblHighestAssigner";
-            this.lblHighestAssigner.Size = new System.Drawing.Size(82, 16);
-            this.lblHighestAssigner.TabIndex = 6;
-            this.lblHighestAssigner.Text = "{HostName}";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(3, 220);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(194, 15);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Most Commonly Assigned By:";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFullName.Location = new System.Drawing.Point(20, 77);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(109, 25);
+            this.lblFullName.TabIndex = 18;
+            this.lblFullName.Text = "{Full Name}";
             // 
             // frmUserLandingPage
             // 
@@ -427,9 +427,9 @@
             this.tbStats.ResumeLayout(false);
             this.pgAcknowledgements.ResumeLayout(false);
             this.pgAcknowledgements.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).EndInit();
             this.pgRoles.ResumeLayout(false);
             this.pgRoles.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.crtRoles)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
