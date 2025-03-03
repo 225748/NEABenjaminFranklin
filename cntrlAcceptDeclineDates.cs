@@ -135,10 +135,78 @@ namespace NEABenjaminFranklin
             //Now send the email for A/D to host
             try
             {
-                //DoEmail();
+                DoEmail();
             }
             catch (Exception)
             {//email not sent - not too worried as its not a critical email
+            }
+        }
+
+        private void DoEmail()
+        {
+            //Get name of host
+            string hostFirstName = "";
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "S";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                hostFirstName = dr[0].ToString();
+            }
+            dbConnector.Close();
+
+            //Get user email
+            string emailAddress = "";
+            dbConnector = new clsDBConnector();
+            sqlCommand = "";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+                emailAddress = dr[0].ToString();
+            }
+            dbConnector.Close();
+
+            //Get rotaName, date, time, role
+            string rotaName = ""; string date = ""; string time = ""; string role = ""; string firstName = "";
+            dbConnector = new clsDBConnector();
+            sqlCommand = "";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+            while (dr.Read())
+            {
+
+            }
+            dbConnector.Close();
+
+            //Email
+            clsEmailManager emailManager = new clsEmailManager();
+
+            //Retrieve template
+            string templateFilePath = (AppDomain.CurrentDomain.BaseDirectory + "/Html_Email_Templates/assingmentResponse.html");//directs to its own debug folder and then the file
+
+            //Make an array of variables to replace in the html template
+            clshtmlVariable[] variableReplacements = new clshtmlVariable[6];//num of unique variables in html template
+
+            //for every unique variable in the template do this
+            ////variableReplacements[0] = new clshtmlVariable("{hostFirstName}", hostFirstName);
+            ////variableReplacements[1] = new clshtmlVariable("{rota}", rotaName);
+            ////variableReplacements[2] = new clshtmlVariable("{date}", date);
+            ////variableReplacements[3] = new clshtmlVariable("{time}", time);
+            ////variableReplacements[4] = new clshtmlVariable("{role}", role);
+            ////variableReplacements[5] = new clshtmlVariable("{userName}", userName);
+
+
+            string htmlBody = emailManager.ReadAndPopulateEmailTemplate(templateFilePath, variableReplacements);
+            try
+            {
+                emailManager.SendEmail(emailAddress, htmlBody, $"A new {rotaName} assignment response!");
+            }
+            catch (Exception)
+            {
+                //didn't send
             }
         }
 

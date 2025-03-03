@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <!-- styling only seems to work fully on apple mail app - use the mac app in testing video for best apperance of email-->
+    <!-- for the div style-->
+        <!-- margin is between 'body(the email walls)' and the div container -->
+        <!-- padding is between div and actual email content -->
+    <style>
+        .divMain { max-width: 37.5em;
+            margin: 1%; 
+            padding: 5%; 
+            background-color: white;}
+        h1 {text-align: center; padding-bottom: 5%;}
+        body {text-align: left;}
+        h2 {font-size: 100%;
+            text-decoration: underline}
+        body{background-color:cadetblue;}
+    </style>
+        <!-- old body bg colour was cornsilk-->
+    <body>
+    <div class = "divMain">
+    <img src="https://i.ibb.co/d01QvfjD/Logo-Design-ai-White-BG.png" 
+        alt="Rota Connect Logo" border="0" class = "centre", width = 50% height = ""></a>
+    
+        <h1>Rota Assignment Response</h1>
+        <p style = "font-weight:bold;">Hello {hostFirstName},</p>
+        {userName} has responed to their new rota assignment you created
+        <br> The details can be found below.
+
+		    <hr>
+            <p style = "font-weight:bold";> Assignment Status:</p>
+            <br><h1>{ADState}</h1>
+            <br>
+            </p>
+			<hr>
+
+        <p>
+        <h2>Assignment Details:</h2>
+        <br>Rota: <b>{rota}</b>
+        <br>Date: <b>{date}</b>
+        <br>Time: <b>{time}</b>
+        <br>Role: <b>{role}</b>
+		<br>Assigned By: <b>{hostFullName}</b>
+		<br>Status: <b>{ADState}
+        </p>
+
+        <hr><br>
+        © Benjamin Franklin and RotaConnect
+    </div>
+    </body>
+</html>
