@@ -34,6 +34,22 @@ namespace NEABenjaminFranklin
             FillADDates();
             FillFlpRotas();
             lblFullName.Text = GetUserFullName(UserID);
+            try//load stats
+            {
+                if (tbStats.Enabled == true)//won't try again if we disabled it due to an issue
+                {
+                    LoadAcknowledgementStats();
+                    LoadMostCommonAssigner();
+                    LoadRolesChart();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There was an issue loading your statistics", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbStats.Enabled = false;
+            }
+
         }
 
         private string GetUserFullName(int userID)
@@ -131,6 +147,9 @@ namespace NEABenjaminFranklin
 
         public void LoadAcknowledgementStats()//public as accessed from the ad cntrls too
         {
+            crtRoles.Series[0].Points.Clear();
+            crtRoles.Series[1].Points.Clear();
+
             for (int i = -1; i < 2; i++)
             {
                 clsDBConnector dbConnector = new clsDBConnector();
@@ -208,7 +227,7 @@ namespace NEABenjaminFranklin
             //Get the data we need
             List<string> roles = new List<string>();
             List<int> assignments = new List<int>();
-            List<float> averageAssignments = new List<float>();
+            List<double> averageAssignments = new List<double>();
 
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -254,23 +273,28 @@ namespace NEABenjaminFranklin
             foreach (var roleName in roles)
             {
                 dbConnector = new clsDBConnector(); //count num of assignments for this role
-                sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.RotaInstanceRoleNumber) " +
-                    "FROM (((tblAssignedRotaRoles INNER JOIN " +
+                sqlCommand = "SELECT COUNT(tblRotaInstanceRoles.RotaInstanceRoleNumber) AS numOfAssignments " +
+                    "FROM(((tblAssignedRotaRoles INNER JOIN " +
                     "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
-                    "INNER JOIN " +
-                    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
+                    "INNER JOIN tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
                     "INNER JOIN tblRoles ON tblRotaRoles.RoleNumber = tblRoles.RoleNumber) " +
-                    $"WHERE (tblRoles.RoleName = '{roleName}')";
+                    $"WHERE(tblRoles.RoleName = '{roleName}')";
                 dbConnector.Connect();
                 dr = dbConnector.DoSQL(sqlCommand);
                 while (dr.Read())
                 {
-                    int temp = Convert.ToInt32(dr[0]);
-                    float average = Convert.ToInt32(dr[0]) / userCount; //this CURRENTLY NOT CALCULATING CORRECTLY!!
+                    double average = Convert.ToDouble(dr[0]) / userCount;
                     averageAssignments.Add(average);
                 }
                 dbConnector.Close();
             }
+            for (int i = 0; i < roles.Count; i++)
+            {
+                MessageBox.Show($"{roles[i]}, {averageAssignments[i]}");
+            }
+
+
+
             for (int i = 0; i < roles.Count; i++)
             {//unless you delete series 2 (avg) in the graph, if you don't add data for the 2nd series, it will duplicate first
                 DataPoint dataPoint = new DataPoint(0, assignments[i]);
@@ -302,23 +326,7 @@ namespace NEABenjaminFranklin
 
         private void tbUserLanding_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (tbUserLanding.SelectedTab == tbUserLanding.TabPages[1])//on stats page
-                {
-                    if (tbStats.Enabled == true)//won't try again if we disabled it due to an issue
-                    {
-                        LoadAcknowledgementStats();
-                        LoadMostCommonAssigner();
-                        LoadRolesChart();
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("There was an issue loading your statistics", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbStats.Enabled = false;
-            }
+            //moved load of chart to form load for better usability
         }
 
         private void pcRefresh_Click(object sender, EventArgs e)
