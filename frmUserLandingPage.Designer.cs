@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUserLandingPage));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
@@ -62,6 +62,8 @@
             this.crtRoles = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label5 = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUnavailability = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
@@ -73,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcRefresh)).BeginInit();
             this.pgRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crtRoles)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -180,7 +183,7 @@
             this.tbUserLanding.Name = "tbUserLanding";
             this.tbUserLanding.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.tbUserLanding.SelectedIndex = 0;
-            this.tbUserLanding.Size = new System.Drawing.Size(368, 317);
+            this.tbUserLanding.Size = new System.Drawing.Size(368, 320);
             this.tbUserLanding.TabIndex = 17;
             this.tbUserLanding.SelectedIndexChanged += new System.EventHandler(this.tbUserLanding_SelectedIndexChanged);
             // 
@@ -190,7 +193,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(360, 291);
+            this.tabPage1.Size = new System.Drawing.Size(360, 294);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "My Rotas";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -361,20 +364,20 @@
             // crtRoles
             // 
             this.crtRoles.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Emboss;
-            chartArea1.Name = "ChartArea1";
-            this.crtRoles.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.crtRoles.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.crtRoles.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.crtRoles.Legends.Add(legend2);
             this.crtRoles.Location = new System.Drawing.Point(3, 0);
             this.crtRoles.Name = "crtRoles";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "My Assignments";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Average";
-            this.crtRoles.Series.Add(series1);
-            this.crtRoles.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "My Assignments";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Average";
+            this.crtRoles.Series.Add(series3);
+            this.crtRoles.Series.Add(series4);
             this.crtRoles.Size = new System.Drawing.Size(350, 217);
             this.crtRoles.TabIndex = 2;
             this.crtRoles.Text = "chart1";
@@ -400,11 +403,31 @@
             this.lblFullName.TabIndex = 18;
             this.lblFullName.Text = "{Full Name}";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.btnUnavailability);
+            this.panel1.Location = new System.Drawing.Point(656, 140);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(132, 295);
+            this.panel1.TabIndex = 19;
+            // 
+            // btnUnavailability
+            // 
+            this.btnUnavailability.Location = new System.Drawing.Point(10, 17);
+            this.btnUnavailability.Name = "btnUnavailability";
+            this.btnUnavailability.Size = new System.Drawing.Size(112, 44);
+            this.btnUnavailability.TabIndex = 0;
+            this.btnUnavailability.Text = "My Unavailability";
+            this.btnUnavailability.UseVisualStyleBackColor = true;
+            this.btnUnavailability.Click += new System.EventHandler(this.btnUnavailability_Click);
+            // 
             // frmUserLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblFullName);
             this.Controls.Add(this.pnlDatesGroup);
             this.Controls.Add(this.lblWelcome);
@@ -431,6 +454,7 @@
             this.pgRoles.ResumeLayout(false);
             this.pgRoles.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crtRoles)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,5 +491,7 @@
         private System.Windows.Forms.Label lblHighestAssigner;
         private System.Windows.Forms.DataVisualization.Charting.Chart crtRoles;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnUnavailability;
     }
 }

@@ -339,5 +339,11 @@ namespace NEABenjaminFranklin
                 MessageBox.Show("There was an issue loading your statistics", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnUnavailability_Click(object sender, EventArgs e)
+        {
+            frmUserUnavailability frmUserUnavailability = new frmUserUnavailability(UserID);
+            frmUserUnavailability.ShowDialog();
+        }
     }
 }
