@@ -73,7 +73,6 @@ namespace NEABenjaminFranklin
             return ADstate;
         }
 
-
         private void UpdateADstate()
         {//used for both inital button states (I.e. if user previously A/D) and updates
             if (Accepted == 1)
@@ -144,65 +143,80 @@ namespace NEABenjaminFranklin
 
         private void DoEmail()
         {
-            //Get name of host
+            //Get full and first name of host
+            string hostFullName = "";
             string hostFirstName = "";
+            string hostEmailAddress = "";
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            string sqlCommand = "S";
+            string sqlCommand = "SELECT tblPeople.FirstName, tblPeople.LastName, tblPeople.Email " +
+                "FROM(tblRotaInstanceRoles INNER JOIN tblPeople ON tblRotaInstanceRoles.AssignedByID = tblPeople.UserID) " +
+                $"WHERE(tblRotaInstanceRoles.RotaInstanceRoleNumber = {RotaInstanceRoleNumber})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
             {
+                hostFullName = dr[0].ToString() + " " + dr[1].ToString();
                 hostFirstName = dr[0].ToString();
+                hostEmailAddress = dr[2].ToString();
             }
             dbConnector.Close();
 
-            //Get user email
-            string emailAddress = "";
+            //Get user email and firstName
+            string firstName = "";
             dbConnector = new clsDBConnector();
-            sqlCommand = "";
+            sqlCommand = "SELECT FirstName " +
+                "FROM tblPeople " +
+                $"WHERE(UserID = {UserID})";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())
             {
-                emailAddress = dr[0].ToString();
+                firstName = dr[0].ToString();
             }
             dbConnector.Close();
 
-            //Get rotaName, date, time, role
-            string rotaName = ""; string date = ""; string time = ""; string role = ""; string firstName = "";
-            dbConnector = new clsDBConnector();
-            sqlCommand = "";
-            dbConnector.Connect();
-            dr = dbConnector.DoSQL(sqlCommand);
-            while (dr.Read())
+            string rotaName = RotaName;
+            string date = Date;
+            string time = Time;
+            string role = RoleName;
+
+            //Get ADState
+            int ADint = QueryADstate();
+            string ADState = "Not Yet Acknowledged";
+            if (ADint == 1)
             {
-
+                ADState = "Accepted";
             }
-            dbConnector.Close();
+            else if (ADint == -1)
+            {
+                ADState = "Declined";
+            }
 
             //Email
             clsEmailManager emailManager = new clsEmailManager();
 
             //Retrieve template
-            string templateFilePath = (AppDomain.CurrentDomain.BaseDirectory + "/Html_Email_Templates/assingmentResponse.html");//directs to its own debug folder and then the file
+            string templateFilePath = (AppDomain.CurrentDomain.BaseDirectory + "/Html_Email_Templates/assignmentResponse.html");//directs to its own debug folder and then the file
 
             //Make an array of variables to replace in the html template
-            clshtmlVariable[] variableReplacements = new clshtmlVariable[6];//num of unique variables in html template
+            clshtmlVariable[] variableReplacements = new clshtmlVariable[8];//num of unique variables in html template
 
             //for every unique variable in the template do this
-            ////variableReplacements[0] = new clshtmlVariable("{hostFirstName}", hostFirstName);
-            ////variableReplacements[1] = new clshtmlVariable("{rota}", rotaName);
-            ////variableReplacements[2] = new clshtmlVariable("{date}", date);
-            ////variableReplacements[3] = new clshtmlVariable("{time}", time);
-            ////variableReplacements[4] = new clshtmlVariable("{role}", role);
-            ////variableReplacements[5] = new clshtmlVariable("{userName}", userName);
+            variableReplacements[0] = new clshtmlVariable("{hostFullName}", hostFullName);
+            variableReplacements[1] = new clshtmlVariable("{hostFirstName}", hostFirstName);
+            variableReplacements[2] = new clshtmlVariable("{rota}", rotaName);
+            variableReplacements[3] = new clshtmlVariable("{date}", date);
+            variableReplacements[4] = new clshtmlVariable("{time}", time);
+            variableReplacements[5] = new clshtmlVariable("{role}", role);
+            variableReplacements[6] = new clshtmlVariable("{usersName}", firstName);
+            variableReplacements[7] = new clshtmlVariable("{ADState}", ADState);
 
 
             string htmlBody = emailManager.ReadAndPopulateEmailTemplate(templateFilePath, variableReplacements);
             try
             {
-                emailManager.SendEmail(emailAddress, htmlBody, $"A new {rotaName} assignment response!");
+                emailManager.SendEmail(hostEmailAddress, htmlBody, $"A new {rotaName} assignment response!");
             }
             catch (Exception)
             {

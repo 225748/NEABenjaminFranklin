@@ -288,10 +288,6 @@ namespace NEABenjaminFranklin
                 }
                 dbConnector.Close();
             }
-            for (int i = 0; i < roles.Count; i++)
-            {
-                MessageBox.Show($"{roles[i]}, {averageAssignments[i]}");
-            }
 
 
 
