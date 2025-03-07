@@ -176,7 +176,6 @@ namespace NEABenjaminFranklin
             catch (Exception)
             {
                 MessageBox.Show("Error adding user to database\nUser has not been created", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw;
             }
             if (!successfulUserCreation)
             {

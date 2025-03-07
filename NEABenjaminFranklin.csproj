@@ -122,6 +122,12 @@
     <Compile Include="cntrlRotaInstance.Designer.cs">
       <DependentUpon>cntrlRotaInstance.cs</DependentUpon>
     </Compile>
+    <Compile Include="cntrlUnavailability.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="cntrlUnavailability.Designer.cs">
+      <DependentUpon>cntrlUnavailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmInitial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -232,6 +238,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cntrlRotaInstance.resx">
       <DependentUpon>cntrlRotaInstance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="cntrlUnavailability.resx">
+      <DependentUpon>cntrlUnavailability.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmInitial.resx">
       <DependentUpon>frmInitial.cs</DependentUpon>

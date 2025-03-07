@@ -32,9 +32,16 @@
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblUserView = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpUnavailability = new System.Windows.Forms.FlowLayoutPanel();
+            this.pblNewUnavailability = new System.Windows.Forms.Panel();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.lblEndDate = new System.Windows.Forms.Label();
+            this.btnAddUnavailability = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
+            this.pblNewUnavailability.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlTopBar
@@ -45,7 +52,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(630, 31);
             this.pnlTopBar.TabIndex = 15;
             // 
             // picRotaConnect
@@ -69,26 +76,87 @@
             this.lblUserView.TabIndex = 8;
             this.lblUserView.Text = "User View";
             // 
-            // flowLayoutPanel1
+            // flpUnavailability
             // 
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(22, 39);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(280, 399);
-            this.flowLayoutPanel1.TabIndex = 16;
+            this.flpUnavailability.AutoScroll = true;
+            this.flpUnavailability.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.flpUnavailability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpUnavailability.Location = new System.Drawing.Point(22, 39);
+            this.flpUnavailability.Name = "flpUnavailability";
+            this.flpUnavailability.Size = new System.Drawing.Size(280, 266);
+            this.flpUnavailability.TabIndex = 16;
+            // 
+            // pblNewUnavailability
+            // 
+            this.pblNewUnavailability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pblNewUnavailability.Controls.Add(this.btnAddUnavailability);
+            this.pblNewUnavailability.Controls.Add(this.dtpEnd);
+            this.pblNewUnavailability.Controls.Add(this.lblEndDate);
+            this.pblNewUnavailability.Controls.Add(this.dtpStart);
+            this.pblNewUnavailability.Controls.Add(this.lblStartDate);
+            this.pblNewUnavailability.Location = new System.Drawing.Point(354, 87);
+            this.pblNewUnavailability.Name = "pblNewUnavailability";
+            this.pblNewUnavailability.Size = new System.Drawing.Size(222, 159);
+            this.pblNewUnavailability.TabIndex = 29;
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Location = new System.Drawing.Point(22, 11);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(58, 13);
+            this.lblStartDate.TabIndex = 0;
+            this.lblStartDate.Text = "Start Date:";
+            // 
+            // dtpStart
+            // 
+            this.dtpStart.Location = new System.Drawing.Point(25, 27);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(174, 20);
+            this.dtpStart.TabIndex = 1;
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.Location = new System.Drawing.Point(25, 79);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(174, 20);
+            this.dtpEnd.TabIndex = 3;
+            // 
+            // lblEndDate
+            // 
+            this.lblEndDate.AutoSize = true;
+            this.lblEndDate.Location = new System.Drawing.Point(22, 63);
+            this.lblEndDate.Name = "lblEndDate";
+            this.lblEndDate.Size = new System.Drawing.Size(55, 13);
+            this.lblEndDate.TabIndex = 2;
+            this.lblEndDate.Text = "End Date:";
+            // 
+            // btnAddUnavailability
+            // 
+            this.btnAddUnavailability.Location = new System.Drawing.Point(41, 114);
+            this.btnAddUnavailability.Name = "btnAddUnavailability";
+            this.btnAddUnavailability.Size = new System.Drawing.Size(131, 23);
+            this.btnAddUnavailability.TabIndex = 4;
+            this.btnAddUnavailability.Text = "Add New Unavailability";
+            this.btnAddUnavailability.UseVisualStyleBackColor = true;
+            this.btnAddUnavailability.Click += new System.EventHandler(this.btnAddUnavailability_Click);
             // 
             // frmUserUnavailability
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(630, 319);
+            this.Controls.Add(this.pblNewUnavailability);
+            this.Controls.Add(this.flpUnavailability);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmUserUnavailability";
             this.Text = "frmUserUnavailability";
+            this.Load += new System.EventHandler(this.frmUserUnavailability_Load);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).EndInit();
+            this.pblNewUnavailability.ResumeLayout(false);
+            this.pblNewUnavailability.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -98,6 +166,12 @@
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.PictureBox picRotaConnect;
         private System.Windows.Forms.Label lblUserView;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        public System.Windows.Forms.FlowLayoutPanel flpUnavailability;
+        private System.Windows.Forms.Panel pblNewUnavailability;
+        private System.Windows.Forms.Button btnAddUnavailability;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
+        private System.Windows.Forms.Label lblEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStart;
+        private System.Windows.Forms.Label lblStartDate;
     }
 }
