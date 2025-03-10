@@ -34,11 +34,12 @@
             this.lblUserView = new System.Windows.Forms.Label();
             this.flpUnavailability = new System.Windows.Forms.FlowLayoutPanel();
             this.pblNewUnavailability = new System.Windows.Forms.Panel();
-            this.lblStartDate = new System.Windows.Forms.Label();
-            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.btnAddUnavailability = new System.Windows.Forms.Button();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.lblEndDate = new System.Windows.Forms.Label();
-            this.btnAddUnavailability = new System.Windows.Forms.Button();
+            this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.lblStartDate = new System.Windows.Forms.Label();
+            this.lblNoToShow = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pblNewUnavailability.SuspendLayout();
@@ -83,6 +84,7 @@
             this.flpUnavailability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpUnavailability.Location = new System.Drawing.Point(22, 39);
             this.flpUnavailability.Name = "flpUnavailability";
+            this.flpUnavailability.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.flpUnavailability.Size = new System.Drawing.Size(280, 266);
             this.flpUnavailability.TabIndex = 16;
             // 
@@ -99,21 +101,15 @@
             this.pblNewUnavailability.Size = new System.Drawing.Size(222, 159);
             this.pblNewUnavailability.TabIndex = 29;
             // 
-            // lblStartDate
+            // btnAddUnavailability
             // 
-            this.lblStartDate.AutoSize = true;
-            this.lblStartDate.Location = new System.Drawing.Point(22, 11);
-            this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(58, 13);
-            this.lblStartDate.TabIndex = 0;
-            this.lblStartDate.Text = "Start Date:";
-            // 
-            // dtpStart
-            // 
-            this.dtpStart.Location = new System.Drawing.Point(25, 27);
-            this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(174, 20);
-            this.dtpStart.TabIndex = 1;
+            this.btnAddUnavailability.Location = new System.Drawing.Point(41, 114);
+            this.btnAddUnavailability.Name = "btnAddUnavailability";
+            this.btnAddUnavailability.Size = new System.Drawing.Size(131, 23);
+            this.btnAddUnavailability.TabIndex = 4;
+            this.btnAddUnavailability.Text = "Add New Unavailability";
+            this.btnAddUnavailability.UseVisualStyleBackColor = true;
+            this.btnAddUnavailability.Click += new System.EventHandler(this.btnAddUnavailability_Click);
             // 
             // dtpEnd
             // 
@@ -131,21 +127,38 @@
             this.lblEndDate.TabIndex = 2;
             this.lblEndDate.Text = "End Date:";
             // 
-            // btnAddUnavailability
+            // dtpStart
             // 
-            this.btnAddUnavailability.Location = new System.Drawing.Point(41, 114);
-            this.btnAddUnavailability.Name = "btnAddUnavailability";
-            this.btnAddUnavailability.Size = new System.Drawing.Size(131, 23);
-            this.btnAddUnavailability.TabIndex = 4;
-            this.btnAddUnavailability.Text = "Add New Unavailability";
-            this.btnAddUnavailability.UseVisualStyleBackColor = true;
-            this.btnAddUnavailability.Click += new System.EventHandler(this.btnAddUnavailability_Click);
+            this.dtpStart.Location = new System.Drawing.Point(25, 27);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(174, 20);
+            this.dtpStart.TabIndex = 1;
+            // 
+            // lblStartDate
+            // 
+            this.lblStartDate.AutoSize = true;
+            this.lblStartDate.Location = new System.Drawing.Point(22, 11);
+            this.lblStartDate.Name = "lblStartDate";
+            this.lblStartDate.Size = new System.Drawing.Size(58, 13);
+            this.lblStartDate.TabIndex = 0;
+            this.lblStartDate.Text = "Start Date:";
+            // 
+            // lblNoToShow
+            // 
+            this.lblNoToShow.AutoSize = true;
+            this.lblNoToShow.Location = new System.Drawing.Point(198, 71);
+            this.lblNoToShow.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.lblNoToShow.Name = "lblNoToShow";
+            this.lblNoToShow.Size = new System.Drawing.Size(262, 13);
+            this.lblNoToShow.TabIndex = 0;
+            this.lblNoToShow.Text = "There are no existing unavailability durations to display";
             // 
             // frmUserUnavailability
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 319);
+            this.Controls.Add(this.lblNoToShow);
             this.Controls.Add(this.pblNewUnavailability);
             this.Controls.Add(this.flpUnavailability);
             this.Controls.Add(this.pnlTopBar);
@@ -158,6 +171,7 @@
             this.pblNewUnavailability.ResumeLayout(false);
             this.pblNewUnavailability.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -173,5 +187,6 @@
         private System.Windows.Forms.Label lblEndDate;
         private System.Windows.Forms.DateTimePicker dtpStart;
         private System.Windows.Forms.Label lblStartDate;
+        private System.Windows.Forms.Label lblNoToShow;
     }
 }
