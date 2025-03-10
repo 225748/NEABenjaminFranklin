@@ -48,6 +48,7 @@
             this.btnManageUsers = new System.Windows.Forms.Button();
             this.btnAddNewUser = new System.Windows.Forms.Button();
             this.btnPasswordReset = new System.Windows.Forms.Button();
+            this.btnUnavailability = new System.Windows.Forms.Button();
             this.lblUsers = new System.Windows.Forms.Label();
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -226,7 +227,7 @@
             this.pnlUsersGroup.Controls.Add(this.lblUsers);
             this.pnlUsersGroup.Location = new System.Drawing.Point(40, 110);
             this.pnlUsersGroup.Name = "pnlUsersGroup";
-            this.pnlUsersGroup.Size = new System.Drawing.Size(200, 218);
+            this.pnlUsersGroup.Size = new System.Drawing.Size(200, 269);
             this.pnlUsersGroup.TabIndex = 15;
             // 
             // flpUsers
@@ -235,11 +236,12 @@
             this.flpUsers.Controls.Add(this.btnManageUsers);
             this.flpUsers.Controls.Add(this.btnAddNewUser);
             this.flpUsers.Controls.Add(this.btnPasswordReset);
+            this.flpUsers.Controls.Add(this.btnUnavailability);
             this.flpUsers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpUsers.Location = new System.Drawing.Point(12, 27);
             this.flpUsers.Name = "flpUsers";
             this.flpUsers.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpUsers.Size = new System.Drawing.Size(176, 181);
+            this.flpUsers.Size = new System.Drawing.Size(176, 233);
             this.flpUsers.TabIndex = 14;
             this.flpUsers.WrapContents = false;
             // 
@@ -276,6 +278,17 @@
             this.btnPasswordReset.Text = "Password Reset";
             this.btnPasswordReset.UseVisualStyleBackColor = true;
             this.btnPasswordReset.Click += new System.EventHandler(this.btnPasswordReset_Click);
+            // 
+            // btnUnavailability
+            // 
+            this.btnUnavailability.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnavailability.Location = new System.Drawing.Point(10, 175);
+            this.btnUnavailability.Name = "btnUnavailability";
+            this.btnUnavailability.Size = new System.Drawing.Size(153, 50);
+            this.btnUnavailability.TabIndex = 13;
+            this.btnUnavailability.Text = "View\r\nUnavailability";
+            this.btnUnavailability.UseVisualStyleBackColor = true;
+            this.btnUnavailability.Click += new System.EventHandler(this.btnUnavailability_Click);
             // 
             // lblUsers
             // 
@@ -385,5 +398,6 @@
         private System.Windows.Forms.Label lblFullName;
         private System.Windows.Forms.Label lblWelcome;
         private System.Windows.Forms.Button btnPasswordReset;
+        private System.Windows.Forms.Button btnUnavailability;
     }
 }

@@ -95,6 +95,12 @@ namespace NEABenjaminFranklin
             frmInitiatePasswordReset frmInitiatePasswordReset = new frmInitiatePasswordReset();
             frmInitiatePasswordReset.ShowDialog();
         }
+
+        private void btnUnavailability_Click(object sender, EventArgs e)
+        {
+            frmUnavailability frmUnavailability = new frmUnavailability(UserID, true);
+            frmUnavailability.ShowDialog();
+        }
     }
     
 }

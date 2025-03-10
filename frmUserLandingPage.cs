@@ -342,8 +342,8 @@ namespace NEABenjaminFranklin
 
         private void btnUnavailability_Click(object sender, EventArgs e)
         {
-            frmUserUnavailability frmUserUnavailability = new frmUserUnavailability(UserID);
-            frmUserUnavailability.ShowDialog();
+            frmUnavailability frmUnavailability = new frmUnavailability(UserID, false);
+            frmUnavailability.ShowDialog();
         }
     }
 }

@@ -61,6 +61,7 @@
             this.Controls.Add(this.labelDates);
             this.Name = "cntrlUnavailability";
             this.Size = new System.Drawing.Size(248, 26);
+            this.Load += new System.EventHandler(this.cntrlUnavailability_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
