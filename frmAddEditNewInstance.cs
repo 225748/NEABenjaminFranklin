@@ -203,12 +203,13 @@ namespace NEABenjaminFranklin
                 dbConnector.DoDML(cmdStr);
                 dbConnector.Close();
                 int rotaInstanceID = FindLargestID("tblRotaInstance", "RotaInstanceID");
-
                 foreach (cntrlRoleWithListVUsers cntrl in flpRoles.Controls)
                 {
+                    //1a see if user has conflicting unavailability
                     //2 check if an assigned rota role id for this user id, role and this rota already exsist, if so do not add one - do this in the cntrl
                     //2a.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
-                    cntrl.AssignUsersToRotaRole();
+                   
+                    cntrl.AssignUsersToRotaRole(rotaInstanceID);
 
                     //For a new instance we dont need to check if an instance role already exists - when editing you will need to check
                     //3.Create RotaInstanceRole Number using assignedRotaRoleID pulled from each control and RotaInstanceID from local var
@@ -248,7 +249,7 @@ namespace NEABenjaminFranklin
             return ret;
         }
 
-        private bool CheckForUnavailabiliyConflict(int userID, int rotaInstanceID)
+        public bool CheckForUnavailabiliyConflict(int userID, int rotaInstanceID) //also called from the controls for add
         {
             //Get this instance's date
             DateTime instanceDateTime = GetInstanceDateTime(rotaInstanceID).Date;

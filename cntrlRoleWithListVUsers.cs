@@ -16,6 +16,7 @@ namespace NEABenjaminFranklin
         public string RoleName { get; set; }
         public int RotaRoleNumber { get; set; }
         public int RotaID { get; set; }
+        private List<string> UnassignableUsers = new List<string>();
         //These below are used when edit mode of AddEditNewInstance is active
         public bool PreSelectUsers { get; set; }
         public int InstanceID { get; set; }
@@ -116,27 +117,64 @@ namespace NEABenjaminFranklin
             return ret;
 
         }
-        public void AssignUsersToRotaRole()
+        public void AssignUsersToRotaRole(int rotaInstanceID)
         {
             for (int i = 0; i < lstVUsers.CheckedItems.Count; i++)
             {
-                //First check if they already have been assigned this rota role, if so do nothing
-                int existingAssignmentID = CheckForExistingAssignment(lstVUsers.CheckedItems[i]);
-                if (existingAssignmentID == 0) //none already existing, therfore can add a new one
+                //First check for any conflicting unavailability
+                int userID = Convert.ToInt32(lstVUsers.CheckedItems[i].SubItems[1].Text);
+                bool unavailable = ((Application.OpenForms["frmAddEditNewInstance"] as frmAddEditNewInstance).CheckForUnavailabiliyConflict(userID, rotaInstanceID));
+                //Reason why open form name is different from type is legacy - form was just add before dual use
+               
+                var result = DialogResult.No;//initalised here to use later
+                if (unavailable)
                 {
+                    //Get their full name
+                    string fullName = "";
                     clsDBConnector dbConnector = new clsDBConnector();
-                    string cmdStr = $"INSERT INTO tblAssignedRotaRoles (RotaRoleNumber, UserID) " +
-                        $"VALUES ({RotaRoleNumber}, '{Convert.ToInt32(lstVUsers.CheckedItems[i].SubItems[1].Text)}')";
+                    OleDbDataReader dr;
+                    string sqlCommand = "SELECT FirstName, LastName " +
+                        "FROM tblPeople " +
+                        $"WHERE UserID = {userID}";
                     dbConnector.Connect();
-                    dbConnector.DoDML(cmdStr);
+                    dr = dbConnector.DoSQL(sqlCommand);
+                    while (dr.Read())
+                    {
+                        fullName = (dr[0].ToString() + " " + dr[1].ToString());
+                    }
                     dbConnector.Close();
-                    AssignedRotaRoleIDs.Add(FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"));
-                }
-                else //one already existing, add to assignedrotarolesIds list the assignedrotaRoleID returned from the check
-                {
-                    AssignedRotaRoleIDs.Add(existingAssignmentID);
-                }
 
+                    result = MessageBox.Show($"{fullName} has conflicting unavailability with this date.\n" +
+                        "Would you like to ignore this unavailability and assign them anyways?", "Unavailability Conflict", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.No)
+                    {
+                        //append their name to a list to read out at end
+                        UnassignableUsers.Add(fullName);
+                    }
+
+                    //if they still want to assign, proceed as usual
+                }
+                if (!unavailable | result == DialogResult.Yes)
+                {//allows for all available users or users we have chosen to ignore their unavailability to continue with assignment
+
+                    //check if they already have been assigned this rota role, if so do nothing
+                    int existingAssignmentID = CheckForExistingAssignment(lstVUsers.CheckedItems[i]);
+                    if (existingAssignmentID == 0) //none already existing, therfore can add a new one
+                    {
+                        clsDBConnector dbConnector = new clsDBConnector();
+                        string cmdStr = $"INSERT INTO tblAssignedRotaRoles (RotaRoleNumber, UserID) " +
+                            $"VALUES ({RotaRoleNumber}, '{Convert.ToInt32(lstVUsers.CheckedItems[i].SubItems[1].Text)}')";
+                        dbConnector.Connect();
+                        dbConnector.DoDML(cmdStr);
+                        dbConnector.Close();
+                        AssignedRotaRoleIDs.Add(FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"));
+                    }
+                    else //one already existing, add to assignedrotarolesIds list the assignedrotaRoleID returned from the check
+                    {
+                        AssignedRotaRoleIDs.Add(existingAssignmentID);
+                    }
+                }
 
             }
         }

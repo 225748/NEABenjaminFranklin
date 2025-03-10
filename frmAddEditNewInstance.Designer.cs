@@ -100,7 +100,7 @@
             this.lblRotaName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRotaName.Location = new System.Drawing.Point(16, 6);
             this.lblRotaName.Name = "lblRotaName";
-            this.lblRotaName.Size = new System.Drawing.Size(97, 16);
+            this.lblRotaName.Size = new System.Drawing.Size(100, 16);
             this.lblRotaName.TabIndex = 17;
             this.lblRotaName.Text = "{Rota Name}";
             // 
@@ -248,7 +248,6 @@
         private System.Windows.Forms.Label lblRotaName;
         private System.Windows.Forms.Button btnThemeColour;
         private System.Windows.Forms.Label lblFacility;
-        private System.Windows.Forms.FlowLayoutPanel flpRoles;
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label lblDate;
         private System.Windows.Forms.Label lblTime;
@@ -257,5 +256,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel pnlEditMode;
+        public System.Windows.Forms.FlowLayoutPanel flpRoles;
     }
 }
