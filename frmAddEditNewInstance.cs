@@ -245,7 +245,6 @@ namespace NEABenjaminFranklin
                     }
                     unassigned = unassigned.Remove(unassigned.Length - 2); //remove the last ", " (removes everything after the last full name)
                     MessageBox.Show($"The Following users were not assigned due to unavailability\n{unassigned}", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 }
             }
         }
@@ -493,6 +492,17 @@ namespace NEABenjaminFranklin
                     dbConnector.Close();
                     Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
                 }
+            }
+
+            if (UnassignableUsers.Count != 0)
+            {
+                string unassigned = "";
+                foreach (string fullName in UnassignableUsers)
+                {
+                    unassigned += fullName + ", ";
+                }
+                unassigned = unassigned.Remove(unassigned.Length - 2); //remove the last ", " (removes everything after the last full name)
+                MessageBox.Show($"The Following users were not assigned due to unavailability\n{unassigned}", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
