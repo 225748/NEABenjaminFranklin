@@ -77,7 +77,7 @@
             this.pnlHostView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHostView.Location = new System.Drawing.Point(0, 0);
             this.pnlHostView.Name = "pnlHostView";
-            this.pnlHostView.Size = new System.Drawing.Size(800, 450);
+            this.pnlHostView.Size = new System.Drawing.Size(692, 450);
             this.pnlHostView.TabIndex = 0;
             this.pnlHostView.Tag = "";
             // 
@@ -86,7 +86,7 @@
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFullName.Location = new System.Drawing.Point(47, 85);
+            this.lblFullName.Location = new System.Drawing.Point(56, 119);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(109, 25);
             this.lblFullName.TabIndex = 20;
@@ -96,7 +96,7 @@
             // 
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.lblRoles);
-            this.panel1.Location = new System.Drawing.Point(562, 110);
+            this.panel1.Location = new System.Drawing.Point(38, 219);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 157);
             this.panel1.TabIndex = 17;
@@ -149,7 +149,7 @@
             // 
             this.lblWelcome.AutoSize = true;
             this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(45, 47);
+            this.lblWelcome.Location = new System.Drawing.Point(54, 81);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(144, 40);
             this.lblWelcome.TabIndex = 19;
@@ -159,9 +159,9 @@
             // 
             this.pnlRotasGroup.Controls.Add(this.flpRotas);
             this.pnlRotasGroup.Controls.Add(this.lblRotas);
-            this.pnlRotasGroup.Location = new System.Drawing.Point(295, 110);
+            this.pnlRotasGroup.Location = new System.Drawing.Point(261, 219);
             this.pnlRotasGroup.Name = "pnlRotasGroup";
-            this.pnlRotasGroup.Size = new System.Drawing.Size(200, 218);
+            this.pnlRotasGroup.Size = new System.Drawing.Size(359, 157);
             this.pnlRotasGroup.TabIndex = 16;
             // 
             // flpRotas
@@ -170,21 +170,18 @@
             this.flpRotas.Controls.Add(this.btnManageRotas);
             this.flpRotas.Controls.Add(this.btnCreateRota);
             this.flpRotas.Controls.Add(this.btnManageFacilities);
-            this.flpRotas.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpRotas.Location = new System.Drawing.Point(12, 27);
             this.flpRotas.Name = "flpRotas";
-            this.flpRotas.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpRotas.Size = new System.Drawing.Size(176, 181);
+            this.flpRotas.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
+            this.flpRotas.Size = new System.Drawing.Size(333, 121);
             this.flpRotas.TabIndex = 14;
-            this.flpRotas.WrapContents = false;
             // 
             // btnManageRotas
             // 
-            this.btnManageRotas.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageRotas.Location = new System.Drawing.Point(10, 5);
-            this.btnManageRotas.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.btnManageRotas.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageRotas.Location = new System.Drawing.Point(10, 6);
             this.btnManageRotas.Name = "btnManageRotas";
-            this.btnManageRotas.Size = new System.Drawing.Size(153, 52);
+            this.btnManageRotas.Size = new System.Drawing.Size(153, 50);
             this.btnManageRotas.TabIndex = 12;
             this.btnManageRotas.Text = "View and Manage Current Rotas";
             this.btnManageRotas.UseVisualStyleBackColor = true;
@@ -193,7 +190,7 @@
             // btnCreateRota
             // 
             this.btnCreateRota.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.btnCreateRota.Location = new System.Drawing.Point(10, 63);
+            this.btnCreateRota.Location = new System.Drawing.Point(169, 6);
             this.btnCreateRota.Name = "btnCreateRota";
             this.btnCreateRota.Size = new System.Drawing.Size(153, 50);
             this.btnCreateRota.TabIndex = 13;
@@ -203,10 +200,10 @@
             // 
             // btnManageFacilities
             // 
-            this.btnManageFacilities.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageFacilities.Location = new System.Drawing.Point(10, 119);
+            this.btnManageFacilities.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageFacilities.Location = new System.Drawing.Point(10, 62);
             this.btnManageFacilities.Name = "btnManageFacilities";
-            this.btnManageFacilities.Size = new System.Drawing.Size(153, 52);
+            this.btnManageFacilities.Size = new System.Drawing.Size(153, 50);
             this.btnManageFacilities.TabIndex = 14;
             this.btnManageFacilities.Text = "Create and Manage Facilities";
             this.btnManageFacilities.UseVisualStyleBackColor = true;
@@ -225,9 +222,9 @@
             // 
             this.pnlUsersGroup.Controls.Add(this.flpUsers);
             this.pnlUsersGroup.Controls.Add(this.lblUsers);
-            this.pnlUsersGroup.Location = new System.Drawing.Point(40, 110);
+            this.pnlUsersGroup.Location = new System.Drawing.Point(261, 47);
             this.pnlUsersGroup.Name = "pnlUsersGroup";
-            this.pnlUsersGroup.Size = new System.Drawing.Size(200, 269);
+            this.pnlUsersGroup.Size = new System.Drawing.Size(359, 157);
             this.pnlUsersGroup.TabIndex = 15;
             // 
             // flpUsers
@@ -237,21 +234,18 @@
             this.flpUsers.Controls.Add(this.btnAddNewUser);
             this.flpUsers.Controls.Add(this.btnPasswordReset);
             this.flpUsers.Controls.Add(this.btnUnavailability);
-            this.flpUsers.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flpUsers.Location = new System.Drawing.Point(12, 27);
             this.flpUsers.Name = "flpUsers";
-            this.flpUsers.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpUsers.Size = new System.Drawing.Size(176, 233);
+            this.flpUsers.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
+            this.flpUsers.Size = new System.Drawing.Size(333, 121);
             this.flpUsers.TabIndex = 14;
-            this.flpUsers.WrapContents = false;
             // 
             // btnManageUsers
             // 
-            this.btnManageUsers.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageUsers.Location = new System.Drawing.Point(10, 5);
-            this.btnManageUsers.Margin = new System.Windows.Forms.Padding(3, 5, 3, 3);
+            this.btnManageUsers.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManageUsers.Location = new System.Drawing.Point(10, 6);
             this.btnManageUsers.Name = "btnManageUsers";
-            this.btnManageUsers.Size = new System.Drawing.Size(153, 52);
+            this.btnManageUsers.Size = new System.Drawing.Size(153, 50);
             this.btnManageUsers.TabIndex = 10;
             this.btnManageUsers.Text = "Manage Current Users";
             this.btnManageUsers.UseVisualStyleBackColor = true;
@@ -260,7 +254,7 @@
             // btnAddNewUser
             // 
             this.btnAddNewUser.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.btnAddNewUser.Location = new System.Drawing.Point(10, 63);
+            this.btnAddNewUser.Location = new System.Drawing.Point(169, 6);
             this.btnAddNewUser.Name = "btnAddNewUser";
             this.btnAddNewUser.Size = new System.Drawing.Size(153, 50);
             this.btnAddNewUser.TabIndex = 11;
@@ -271,7 +265,7 @@
             // btnPasswordReset
             // 
             this.btnPasswordReset.Font = new System.Drawing.Font("Trebuchet MS", 12F);
-            this.btnPasswordReset.Location = new System.Drawing.Point(10, 119);
+            this.btnPasswordReset.Location = new System.Drawing.Point(10, 62);
             this.btnPasswordReset.Name = "btnPasswordReset";
             this.btnPasswordReset.Size = new System.Drawing.Size(153, 50);
             this.btnPasswordReset.TabIndex = 12;
@@ -282,7 +276,7 @@
             // btnUnavailability
             // 
             this.btnUnavailability.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUnavailability.Location = new System.Drawing.Point(10, 175);
+            this.btnUnavailability.Location = new System.Drawing.Point(169, 62);
             this.btnUnavailability.Name = "btnUnavailability";
             this.btnUnavailability.Size = new System.Drawing.Size(153, 50);
             this.btnUnavailability.TabIndex = 13;
@@ -308,13 +302,13 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(692, 31);
             this.pnlTopBar.TabIndex = 13;
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnLogout.Location = new System.Drawing.Point(715, 2);
+            this.btnLogout.Location = new System.Drawing.Point(609, 3);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(72, 23);
             this.btnLogout.TabIndex = 10;
@@ -346,7 +340,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(692, 450);
             this.Controls.Add(this.pnlHostView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
