@@ -32,7 +32,6 @@
             this.pnlTopBar = new System.Windows.Forms.Panel();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblUserView = new System.Windows.Forms.Label();
-            this.flpUnavailability = new System.Windows.Forms.FlowLayoutPanel();
             this.pblNewUnavailability = new System.Windows.Forms.Panel();
             this.btnAddUnavailability = new System.Windows.Forms.Button();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
@@ -40,6 +39,7 @@
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
             this.lblStartDate = new System.Windows.Forms.Label();
             this.lblNoToShow = new System.Windows.Forms.Label();
+            this.flpUnavailability = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pblNewUnavailability.SuspendLayout();
@@ -76,17 +76,6 @@
             this.lblUserView.Size = new System.Drawing.Size(86, 21);
             this.lblUserView.TabIndex = 8;
             this.lblUserView.Text = "User View";
-            // 
-            // flpUnavailability
-            // 
-            this.flpUnavailability.AutoScroll = true;
-            this.flpUnavailability.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.flpUnavailability.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpUnavailability.Location = new System.Drawing.Point(22, 39);
-            this.flpUnavailability.Name = "flpUnavailability";
-            this.flpUnavailability.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.flpUnavailability.Size = new System.Drawing.Size(280, 266);
-            this.flpUnavailability.TabIndex = 16;
             // 
             // pblNewUnavailability
             // 
@@ -146,21 +135,30 @@
             // lblNoToShow
             // 
             this.lblNoToShow.AutoSize = true;
-            this.lblNoToShow.Location = new System.Drawing.Point(198, 71);
+            this.lblNoToShow.Location = new System.Drawing.Point(356, 53);
             this.lblNoToShow.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.lblNoToShow.Name = "lblNoToShow";
             this.lblNoToShow.Size = new System.Drawing.Size(262, 13);
             this.lblNoToShow.TabIndex = 0;
             this.lblNoToShow.Text = "There are no existing unavailability durations to display";
             // 
+            // flpUnavailability
+            // 
+            this.flpUnavailability.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.flpUnavailability.Location = new System.Drawing.Point(22, 38);
+            this.flpUnavailability.Name = "flpUnavailability";
+            this.flpUnavailability.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.flpUnavailability.Size = new System.Drawing.Size(296, 269);
+            this.flpUnavailability.TabIndex = 31;
+            // 
             // frmUserUnavailability
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(630, 319);
+            this.Controls.Add(this.flpUnavailability);
             this.Controls.Add(this.lblNoToShow);
             this.Controls.Add(this.pblNewUnavailability);
-            this.Controls.Add(this.flpUnavailability);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmUserUnavailability";
             this.Text = "frmUserUnavailability";
@@ -180,7 +178,6 @@
         private System.Windows.Forms.Panel pnlTopBar;
         private System.Windows.Forms.PictureBox picRotaConnect;
         private System.Windows.Forms.Label lblUserView;
-        public System.Windows.Forms.FlowLayoutPanel flpUnavailability;
         private System.Windows.Forms.Panel pblNewUnavailability;
         private System.Windows.Forms.Button btnAddUnavailability;
         private System.Windows.Forms.DateTimePicker dtpEnd;
@@ -188,5 +185,6 @@
         private System.Windows.Forms.DateTimePicker dtpStart;
         private System.Windows.Forms.Label lblStartDate;
         private System.Windows.Forms.Label lblNoToShow;
+        private System.Windows.Forms.FlowLayoutPanel flpUnavailability;
     }
 }

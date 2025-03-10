@@ -53,6 +53,7 @@ namespace NEABenjaminFranklin
                 Label label = new Label();
                 label.Text = "There are no existing unavailability durations to display";
                 label.Visible = true;
+                label.MinimumSize = new System.Drawing.Size(270, 13);
                 flpUnavailability.Controls.Add(label);
             }
             else
