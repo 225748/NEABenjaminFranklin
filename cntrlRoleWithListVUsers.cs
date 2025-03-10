@@ -16,7 +16,7 @@ namespace NEABenjaminFranklin
         public string RoleName { get; set; }
         public int RotaRoleNumber { get; set; }
         public int RotaID { get; set; }
-        private List<string> UnassignableUsers = new List<string>();
+        public List<string> UnassignableUsers = new List<string>();  //also pulled from parent form as well as in cntrl
         //These below are used when edit mode of AddEditNewInstance is active
         public bool PreSelectUsers { get; set; }
         public int InstanceID { get; set; }
@@ -149,7 +149,7 @@ namespace NEABenjaminFranklin
 
                     if (result == DialogResult.No)
                     {
-                        //append their name to a list to read out at end
+                        //append their name to a list to read out at end (read out from form not each control) - form pulls these lists
                         UnassignableUsers.Add(fullName);
                     }
 

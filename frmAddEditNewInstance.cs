@@ -205,6 +205,8 @@ namespace NEABenjaminFranklin
                 int rotaInstanceID = FindLargestID("tblRotaInstance", "RotaInstanceID");
                 foreach (cntrlRoleWithListVUsers cntrl in flpRoles.Controls)
                 {
+                    //1a,2,2a done in cntrl.AssignUsersToRotaRole
+
                     //1a see if user has conflicting unavailability
                     //2 check if an assigned rota role id for this user id, role and this rota already exsist, if so do not add one - do this in the cntrl
                     //2a.Create an assignedRotaRoleID using tblRotaRoles.RoleNumber and UserID for each role control
@@ -223,11 +225,28 @@ namespace NEABenjaminFranklin
                         dbConnector.Close();
                         Email(HostID, rotaInstanceID, cntrl.AssignedRotaRoleIDs[i]);
                     }
+                    //Check if this control had any unassignable users (due to unavailability)
+                    //If so, add them to our master list to output in one go at the end (instead of each control outputting their own)
+                    foreach (string fullName in cntrl.UnassignableUsers)
+                    {
+                        UnassignableUsers.Add(fullName);
+                    }
                     this.Cursor = Cursors.Default;
                 }
 
-                //Check if successfull ----- to do
                 MessageBox.Show("Date Added and User(s) Assigned Successfully", "Rota Connect Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //If we have some unassignable users (due to unavailability), then put them into a string and output
+                if (UnassignableUsers.Count != 0 )
+                {
+                    string unassigned = "";
+                    foreach (string fullName in UnassignableUsers)
+                    {
+                        unassigned += fullName + ", ";
+                    }
+                    unassigned = unassigned.Remove(unassigned.Length - 2); //remove the last ", " (removes everything after the last full name)
+                    MessageBox.Show($"The Following users were not assigned due to unavailability\n{unassigned}", "Rota Connect", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
             }
         }
 
