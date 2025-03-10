@@ -17,6 +17,7 @@ namespace NEABenjaminFranklin
         public string RotaName { get; set; }
         public string ThemeColour { get; set; }
         public bool EditMode { get; set; }
+        private List<string> UnassignableUsers = new List<string>();
         //IF edit mode
         public int EditModeInstanceID { get; set; }
         public DateTime EditModeDateTime { get; set; }
@@ -247,7 +248,35 @@ namespace NEABenjaminFranklin
             return ret;
         }
 
-        private void UpdateDateTimeDifference(int rotaInstanceID)
+        private bool CheckForUnavailabiliyConflict(int userID, int rotaInstanceID)
+        {
+            //Get this instance's date
+            DateTime instanceDateTime = GetInstanceDateTime(rotaInstanceID).Date;
+
+            //Check against user unavailability
+            clsDBConnector dbConnector = new clsDBConnector();
+            OleDbDataReader dr;
+            string sqlCommand = "SELECT DateStart, DateEnd " +
+                "FROM tblUnavailability " +
+                $"WHERE(UserID = {userID})";
+            dbConnector.Connect();
+            dr = dbConnector.DoSQL(sqlCommand);
+
+            bool conflict = false;
+
+            while (dr.Read())
+            {
+                DateTime StartDate = Convert.ToDateTime(dr[0].ToString());
+                DateTime EndDate = Convert.ToDateTime(dr[1].ToString());
+                if (instanceDateTime >= StartDate && instanceDateTime <= EndDate)
+                {
+                    conflict = true;
+                }
+            }
+            dbConnector.Close();
+            return conflict;
+        }
+        private DateTime GetInstanceDateTime(int rotaInstanceID)
         {
             DateTime instanceDateTime = DateTime.Now; //creating the object, don't worry about its value here
 
@@ -263,7 +292,13 @@ namespace NEABenjaminFranklin
                 instanceDateTime = Convert.ToDateTime(dr[0].ToString());
             }
             dbConnector.Close();
+            return instanceDateTime;
+        }
 
+        private void UpdateDateTimeDifference(int rotaInstanceID)
+        {
+            DateTime instanceDateTime = DateTime.Now; //creating the object, don't worry about its value here
+            instanceDateTime = GetInstanceDateTime(rotaInstanceID);
 
             //Check if datetime has changed from what is stored
             string requiredUpdate = "";
@@ -280,7 +315,7 @@ namespace NEABenjaminFranklin
             {
                 DateTime newDateTime = Convert.ToDateTime(dtpDate.Value.Date.ToString().Substring(0, 10) + " " + dtpTime.Value.TimeOfDay);
 
-                dbConnector = new clsDBConnector();
+                clsDBConnector dbConnector = new clsDBConnector();
                 string cmdStr = "UPDATE tblRotaInstance " +
                 $"SET RotaInstanceDateTime = '{newDateTime}' " +
                 $"WHERE (RotaInstanceID = {rotaInstanceID})";
@@ -331,44 +366,78 @@ namespace NEABenjaminFranklin
 
                 //If checked then see if there is an exisitng AssignedRotaRoleNunber for that user (done in control as above i believe)
                 foreach (clsUser user in desiredUpdatelst)
-                {
+                { 
                     if (user.CheckedinListV == true)
                     {
-                        user.assignedRotaRoleID = cntrlRoleWithListVUsers.CheckForExistingAssignmentByUserID(user.userID);
-                        if (user.assignedRotaRoleID != 0) //There is one, and it has been returned
+                        bool unavailable = CheckForUnavailabiliyConflict(user.userID, rotaInstanceID);
+                        var result = DialogResult.No;//initalised here to use later
+                        if (unavailable)
                         {
-                            //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
-
-
-                            int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
-
-
-                            //If so do nothing as it started as checked and has ended as checked
-                            //But if the date time has changed then send out a new assignement email to those assigned
-                            if (DateTimeChanged == true)
+                            //Get their full name
+                            string fullName = "";
+                            clsDBConnector dbConnector = new clsDBConnector();
+                            OleDbDataReader dr;
+                            string sqlCommand = "SELECT FirstName, LastName " +
+                                "FROM tblPeople " +
+                                $"WHERE UserID = {user.userID}";
+                            dbConnector.Connect();
+                            dr = dbConnector.DoSQL(sqlCommand);
+                            while (dr.Read())
                             {
-                                Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
+                                fullName = (dr[0].ToString() + " " + dr[1].ToString());
+                            }
+                            dbConnector.Close();
+
+                            result = MessageBox.Show($"{fullName} has conflicting unavailability with this date.\n" +
+                                "Would you like to ignore this unavailability and assign them anyways?", "Unavailability Conflict", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            if (result == DialogResult.No)
+                            {
+                                //append their name to a list to read out at end
+                                UnassignableUsers.Add(fullName);
                             }
 
-                            //If there isn't, add them to a list of people needing to be added to the Instance with their assRotaRoleNum
-                            //started unchecked (not assigned to instance) but have has this assigned rota role before
-                            if (rotaInstanceRoleNumber == 0) //0  returned as no RIRN found
+                            //if they still want to assign, proceed as usual
+                        }
+                        if (!unavailable | result == DialogResult.Yes)
+                        {//allows for all available users or users we have chosen to ignore their unavailability to continue with assignment
+
+                            user.assignedRotaRoleID = cntrlRoleWithListVUsers.CheckForExistingAssignmentByUserID(user.userID);
+                            if (user.assignedRotaRoleID != 0) //There is one, and it has been returned
                             {
+                                //If so check if there is an existing RotaInstanceRoleNumber for that AssignedRotaRoleNunber and InstanceID
+
+
+                                int rotaInstanceRoleNumber = CheckForExistingRotaInstanceRoleNumber(user.assignedRotaRoleID, EditModeInstanceID);
+
+
+                                //If so do nothing as it started as checked and has ended as checked
+                                //But if the date time has changed then send out a new assignement email to those assigned
+                                if (DateTimeChanged == true)
+                                {
+                                    Email(HostID, rotaInstanceID, user.assignedRotaRoleID);
+                                }
+
+                                //If there isn't, add them to a list of people needing to be added to the Instance with their assRotaRoleNum
+                                //started unchecked (not assigned to instance) but have has this assigned rota role before
+                                if (rotaInstanceRoleNumber == 0) //0  returned as no RIRN found
+                                {
+                                    needRotaInstRoleNum.Add(user);
+                                }
+                            }
+                            else //0 has been returned therefore there isnt an existing assRotaRoleID
+                            {//checked but no AssignedRotaRoleNumber, make one and then add them to the list of people needing a RIRN
+                             //They Started unchecked and have never had this assigned rota role before
+
+                                clsDBConnector dbConnector = new clsDBConnector();
+                                string cmdStr = $"INSERT INTO tblAssignedRotaRoles (RotaRoleNumber, UserID) " +
+                                    $"VALUES ({cntrlRoleWithListVUsers.RotaRoleNumber}, '{user.userID}')";
+                                dbConnector.Connect();
+                                dbConnector.DoDML(cmdStr);
+                                dbConnector.Close();
+                                user.assignedRotaRoleID = FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"); //Gets their new assRotaRoleID
                                 needRotaInstRoleNum.Add(user);
                             }
-                        }
-                        else //0 has been returned therefore there isnt an existing assRotaRoleID
-                        {//checked but no AssignedRotaRoleNumber, make one and then add them to the list of people needing a RIRN
-                            //They Started unchecked and have never had this assigned rota role before
-
-                            clsDBConnector dbConnector = new clsDBConnector();
-                            string cmdStr = $"INSERT INTO tblAssignedRotaRoles (RotaRoleNumber, UserID) " +
-                                $"VALUES ({cntrlRoleWithListVUsers.RotaRoleNumber}, '{user.userID}')";
-                            dbConnector.Connect();
-                            dbConnector.DoDML(cmdStr);
-                            dbConnector.Close();
-                            user.assignedRotaRoleID = FindLargestID("tblAssignedRotaRoles", "AssignedRotaRolesID"); //Gets their new assRotaRoleID
-                            needRotaInstRoleNum.Add(user);
                         }
                     }
                     else//not checked
@@ -415,7 +484,7 @@ namespace NEABenjaminFranklin
                 MessageBox.Show("Before Today");
                 return;
             }
-            
+
             //Get name of host
             string hostFullName = "";
             clsDBConnector dbConnector = new clsDBConnector();
