@@ -31,18 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHostLandingPage));
             this.pnlHostView = new System.Windows.Forms.Panel();
             this.lblFullName = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnVMCRoles = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.lblRoles = new System.Windows.Forms.Label();
-            this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlRotasGroup = new System.Windows.Forms.Panel();
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageRotas = new System.Windows.Forms.Button();
             this.btnCreateRota = new System.Windows.Forms.Button();
             this.btnManageFacilities = new System.Windows.Forms.Button();
             this.lblRotas = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnVMCRoles = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.lblRoles = new System.Windows.Forms.Label();
+            this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlUsersGroup = new System.Windows.Forms.Panel();
             this.flpUsers = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageUsers = new System.Windows.Forms.Button();
@@ -55,10 +55,10 @@
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.lblHostView = new System.Windows.Forms.Label();
             this.pnlHostView.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.pnlRotasGroup.SuspendLayout();
             this.flpRotas.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.pnlUsersGroup.SuspendLayout();
             this.flpUsers.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
@@ -68,8 +68,8 @@
             // pnlHostView
             // 
             this.pnlHostView.BackColor = System.Drawing.Color.White;
-            this.pnlHostView.Controls.Add(this.lblFullName);
             this.pnlHostView.Controls.Add(this.pnlRotasGroup);
+            this.pnlHostView.Controls.Add(this.lblFullName);
             this.pnlHostView.Controls.Add(this.panel1);
             this.pnlHostView.Controls.Add(this.lblWelcome);
             this.pnlHostView.Controls.Add(this.pnlUsersGroup);
@@ -77,7 +77,7 @@
             this.pnlHostView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHostView.Location = new System.Drawing.Point(0, 0);
             this.pnlHostView.Name = "pnlHostView";
-            this.pnlHostView.Size = new System.Drawing.Size(676, 393);
+            this.pnlHostView.Size = new System.Drawing.Size(697, 364);
             this.pnlHostView.TabIndex = 0;
             this.pnlHostView.Tag = "";
             // 
@@ -86,79 +86,19 @@
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFullName.Location = new System.Drawing.Point(49, 109);
+            this.lblFullName.Location = new System.Drawing.Point(33, 97);
             this.lblFullName.Name = "lblFullName";
             this.lblFullName.Size = new System.Drawing.Size(109, 25);
             this.lblFullName.TabIndex = 20;
             this.lblFullName.Text = "{Full Name}";
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
-            this.panel1.Controls.Add(this.lblRoles);
-            this.panel1.Location = new System.Drawing.Point(26, 178);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(202, 163);
-            this.panel1.TabIndex = 17;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.btnVMCRoles);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 123);
-            this.flowLayoutPanel1.TabIndex = 14;
-            // 
-            // btnVMCRoles
-            // 
-            this.btnVMCRoles.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVMCRoles.Location = new System.Drawing.Point(10, 6);
-            this.btnVMCRoles.Name = "btnVMCRoles";
-            this.btnVMCRoles.Size = new System.Drawing.Size(153, 50);
-            this.btnVMCRoles.TabIndex = 12;
-            this.btnVMCRoles.Text = "View, Manage and Create Roles";
-            this.btnVMCRoles.UseVisualStyleBackColor = true;
-            this.btnVMCRoles.Click += new System.EventHandler(this.btnVMCRoles_Click);
-            // 
-            // button4
-            // 
-            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(10, 62);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 50);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Search Users by Role";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // lblRoles
-            // 
-            this.lblRoles.AutoSize = true;
-            this.lblRoles.Location = new System.Drawing.Point(16, 11);
-            this.lblRoles.Name = "lblRoles";
-            this.lblRoles.Size = new System.Drawing.Size(34, 13);
-            this.lblRoles.TabIndex = 12;
-            this.lblRoles.Text = "Roles";
-            // 
-            // lblWelcome
-            // 
-            this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWelcome.Location = new System.Drawing.Point(47, 71);
-            this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(144, 40);
-            this.lblWelcome.TabIndex = 19;
-            this.lblWelcome.Text = "Welcome";
-            // 
             // pnlRotasGroup
             // 
             this.pnlRotasGroup.Controls.Add(this.flpRotas);
             this.pnlRotasGroup.Controls.Add(this.lblRotas);
-            this.pnlRotasGroup.Location = new System.Drawing.Point(242, 71);
+            this.pnlRotasGroup.Location = new System.Drawing.Point(247, 134);
             this.pnlRotasGroup.Name = "pnlRotasGroup";
-            this.pnlRotasGroup.Size = new System.Drawing.Size(205, 216);
+            this.pnlRotasGroup.Size = new System.Drawing.Size(205, 210);
             this.pnlRotasGroup.TabIndex = 16;
             // 
             // flpRotas
@@ -215,13 +155,73 @@
             this.lblRotas.TabIndex = 12;
             this.lblRotas.Text = "Rotas";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.lblRoles);
+            this.panel1.Location = new System.Drawing.Point(26, 134);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(202, 210);
+            this.panel1.TabIndex = 17;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel1.Controls.Add(this.btnVMCRoles);
+            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 177);
+            this.flowLayoutPanel1.TabIndex = 14;
+            // 
+            // btnVMCRoles
+            // 
+            this.btnVMCRoles.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVMCRoles.Location = new System.Drawing.Point(10, 6);
+            this.btnVMCRoles.Name = "btnVMCRoles";
+            this.btnVMCRoles.Size = new System.Drawing.Size(153, 50);
+            this.btnVMCRoles.TabIndex = 12;
+            this.btnVMCRoles.Text = "View, Manage and Create Roles";
+            this.btnVMCRoles.UseVisualStyleBackColor = true;
+            this.btnVMCRoles.Click += new System.EventHandler(this.btnVMCRoles_Click);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(10, 62);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(153, 50);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "Search Users by Role";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // lblRoles
+            // 
+            this.lblRoles.AutoSize = true;
+            this.lblRoles.Location = new System.Drawing.Point(16, 11);
+            this.lblRoles.Name = "lblRoles";
+            this.lblRoles.Size = new System.Drawing.Size(34, 13);
+            this.lblRoles.TabIndex = 12;
+            this.lblRoles.Text = "Roles";
+            // 
+            // lblWelcome
+            // 
+            this.lblWelcome.AutoSize = true;
+            this.lblWelcome.Font = new System.Drawing.Font("Nirmala UI", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWelcome.Location = new System.Drawing.Point(31, 59);
+            this.lblWelcome.Name = "lblWelcome";
+            this.lblWelcome.Size = new System.Drawing.Size(144, 40);
+            this.lblWelcome.TabIndex = 19;
+            this.lblWelcome.Text = "Welcome";
+            // 
             // pnlUsersGroup
             // 
             this.pnlUsersGroup.Controls.Add(this.flpUsers);
             this.pnlUsersGroup.Controls.Add(this.lblUsers);
-            this.pnlUsersGroup.Location = new System.Drawing.Point(457, 71);
+            this.pnlUsersGroup.Location = new System.Drawing.Point(469, 78);
             this.pnlUsersGroup.Name = "pnlUsersGroup";
-            this.pnlUsersGroup.Size = new System.Drawing.Size(207, 282);
+            this.pnlUsersGroup.Size = new System.Drawing.Size(207, 266);
             this.pnlUsersGroup.TabIndex = 15;
             // 
             // flpUsers
@@ -234,7 +234,7 @@
             this.flpUsers.Location = new System.Drawing.Point(12, 27);
             this.flpUsers.Name = "flpUsers";
             this.flpUsers.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
-            this.flpUsers.Size = new System.Drawing.Size(178, 243);
+            this.flpUsers.Size = new System.Drawing.Size(178, 233);
             this.flpUsers.TabIndex = 14;
             // 
             // btnManageUsers
@@ -299,13 +299,13 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(676, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(697, 31);
             this.pnlTopBar.TabIndex = 13;
             // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnLogout.Location = new System.Drawing.Point(589, 1);
+            this.btnLogout.Location = new System.Drawing.Point(603, 4);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(72, 23);
             this.btnLogout.TabIndex = 10;
@@ -337,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 393);
+            this.ClientSize = new System.Drawing.Size(697, 364);
             this.Controls.Add(this.pnlHostView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -347,12 +347,12 @@
             this.Load += new System.EventHandler(this.frmHostLandingPage_Load);
             this.pnlHostView.ResumeLayout(false);
             this.pnlHostView.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.pnlRotasGroup.ResumeLayout(false);
             this.pnlRotasGroup.PerformLayout();
             this.flpRotas.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.pnlUsersGroup.ResumeLayout(false);
             this.pnlUsersGroup.PerformLayout();
             this.flpUsers.ResumeLayout(false);
