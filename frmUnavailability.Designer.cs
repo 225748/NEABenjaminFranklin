@@ -53,7 +53,7 @@
             this.pnlTopBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTopBar.Location = new System.Drawing.Point(0, 0);
             this.pnlTopBar.Name = "pnlTopBar";
-            this.pnlTopBar.Size = new System.Drawing.Size(630, 31);
+            this.pnlTopBar.Size = new System.Drawing.Size(554, 31);
             this.pnlTopBar.TabIndex = 15;
             // 
             // picRotaConnect
@@ -85,7 +85,7 @@
             this.pnlNewUnavailability.Controls.Add(this.lblEndDate);
             this.pnlNewUnavailability.Controls.Add(this.dtpStart);
             this.pnlNewUnavailability.Controls.Add(this.lblStartDate);
-            this.pnlNewUnavailability.Location = new System.Drawing.Point(363, 89);
+            this.pnlNewUnavailability.Location = new System.Drawing.Point(324, 91);
             this.pnlNewUnavailability.Name = "pnlNewUnavailability";
             this.pnlNewUnavailability.Size = new System.Drawing.Size(222, 159);
             this.pnlNewUnavailability.TabIndex = 29;
@@ -144,7 +144,7 @@
             // cmbUsers
             // 
             this.cmbUsers.FormattingEnabled = true;
-            this.cmbUsers.Location = new System.Drawing.Point(363, 38);
+            this.cmbUsers.Location = new System.Drawing.Point(328, 64);
             this.cmbUsers.Name = "cmbUsers";
             this.cmbUsers.Size = new System.Drawing.Size(214, 21);
             this.cmbUsers.TabIndex = 32;
@@ -154,7 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 319);
+            this.ClientSize = new System.Drawing.Size(554, 319);
             this.Controls.Add(this.cmbUsers);
             this.Controls.Add(this.flpUnavailability);
             this.Controls.Add(this.pnlNewUnavailability);
