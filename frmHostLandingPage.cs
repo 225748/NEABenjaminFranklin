@@ -101,6 +101,12 @@ namespace NEABenjaminFranklin
             frmUnavailability frmUnavailability = new frmUnavailability(UserID, true);
             frmUnavailability.ShowDialog();
         }
+
+        private void btnSByRole_Click(object sender, EventArgs e)
+        {
+            frmSearchByRole frmSearchByRole = new frmSearchByRole();
+            frmSearchByRole.ShowDialog();
+        }
     }
     
 }

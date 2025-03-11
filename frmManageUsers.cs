@@ -34,7 +34,7 @@ namespace NEABenjaminFranklin
             dr = dbConnector.DoSQL(sqlCommand);
             lstVUsers.Items.Clear();
 
-            while (dr.Read()) // change this so all the sub items are added using a nested loop
+            while (dr.Read())
             {
                 lstVUsers.Items.Add(dr[0].ToString());
                 lstVUsers.Items[lstVUsers.Items.Count - 1].SubItems.Add(dr[1].ToString());

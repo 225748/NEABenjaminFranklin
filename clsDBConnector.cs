@@ -6,7 +6,7 @@ namespace NEABenjaminFranklin
 {
     class clsDBConnector
     {
-         OleDbConnection conn = new OleDbConnection();
+        OleDbConnection conn = new OleDbConnection();
         string dbProvider;
         string dbSource;
         string workingDirectory = Environment.CurrentDirectory;
@@ -44,7 +44,7 @@ namespace NEABenjaminFranklin
         {
             OleDbCommand cmd;
             cmd = new OleDbCommand(sqlString, conn);
-            return cmd.ExecuteReader() ;
-        }  
+            return cmd.ExecuteReader();
+        }
     }
 }

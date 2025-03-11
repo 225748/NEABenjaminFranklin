@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHostLandingPage));
             this.pnlHostView = new System.Windows.Forms.Panel();
-            this.lblFullName = new System.Windows.Forms.Label();
             this.pnlRotasGroup = new System.Windows.Forms.Panel();
             this.flpRotas = new System.Windows.Forms.FlowLayoutPanel();
             this.btnManageRotas = new System.Windows.Forms.Button();
             this.btnCreateRota = new System.Windows.Forms.Button();
             this.btnManageFacilities = new System.Windows.Forms.Button();
             this.lblRotas = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnVMCRoles = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnSByRole = new System.Windows.Forms.Button();
             this.lblRoles = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.pnlUsersGroup = new System.Windows.Forms.Panel();
@@ -80,17 +80,6 @@
             this.pnlHostView.Size = new System.Drawing.Size(697, 385);
             this.pnlHostView.TabIndex = 0;
             this.pnlHostView.Tag = "";
-            // 
-            // lblFullName
-            // 
-            this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblFullName.Location = new System.Drawing.Point(33, 97);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(109, 25);
-            this.lblFullName.TabIndex = 20;
-            this.lblFullName.Text = "{Full Name}";
             // 
             // pnlRotasGroup
             // 
@@ -155,6 +144,17 @@
             this.lblRotas.TabIndex = 12;
             this.lblRotas.Text = "Rotas";
             // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFullName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblFullName.Location = new System.Drawing.Point(33, 97);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(109, 25);
+            this.lblFullName.TabIndex = 20;
+            this.lblFullName.Text = "{Full Name}";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.flowLayoutPanel1);
@@ -168,7 +168,7 @@
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.btnVMCRoles);
-            this.flowLayoutPanel1.Controls.Add(this.button4);
+            this.flowLayoutPanel1.Controls.Add(this.btnSByRole);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
@@ -186,15 +186,16 @@
             this.btnVMCRoles.UseVisualStyleBackColor = true;
             this.btnVMCRoles.Click += new System.EventHandler(this.btnVMCRoles_Click);
             // 
-            // button4
+            // btnSByRole
             // 
-            this.button4.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(10, 62);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 50);
-            this.button4.TabIndex = 13;
-            this.button4.Text = "Search Users by Role";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnSByRole.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSByRole.Location = new System.Drawing.Point(10, 62);
+            this.btnSByRole.Name = "btnSByRole";
+            this.btnSByRole.Size = new System.Drawing.Size(153, 50);
+            this.btnSByRole.TabIndex = 13;
+            this.btnSByRole.Text = "Search Users by Role";
+            this.btnSByRole.UseVisualStyleBackColor = true;
+            this.btnSByRole.Click += new System.EventHandler(this.btnSByRole_Click);
             // 
             // lblRoles
             // 
@@ -382,7 +383,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnVMCRoles;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnSByRole;
         private System.Windows.Forms.Label lblRoles;
         private System.Windows.Forms.Button btnManageFacilities;
         private System.Windows.Forms.Button btnLogout;
