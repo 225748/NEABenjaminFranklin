@@ -77,7 +77,7 @@
             this.pnlHostView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlHostView.Location = new System.Drawing.Point(0, 0);
             this.pnlHostView.Name = "pnlHostView";
-            this.pnlHostView.Size = new System.Drawing.Size(697, 364);
+            this.pnlHostView.Size = new System.Drawing.Size(697, 385);
             this.pnlHostView.TabIndex = 0;
             this.pnlHostView.Tag = "";
             // 
@@ -96,7 +96,7 @@
             // 
             this.pnlRotasGroup.Controls.Add(this.flpRotas);
             this.pnlRotasGroup.Controls.Add(this.lblRotas);
-            this.pnlRotasGroup.Location = new System.Drawing.Point(247, 134);
+            this.pnlRotasGroup.Location = new System.Drawing.Point(245, 144);
             this.pnlRotasGroup.Name = "pnlRotasGroup";
             this.pnlRotasGroup.Size = new System.Drawing.Size(205, 210);
             this.pnlRotasGroup.TabIndex = 16;
@@ -159,7 +159,7 @@
             // 
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.lblRoles);
-            this.panel1.Location = new System.Drawing.Point(26, 134);
+            this.panel1.Location = new System.Drawing.Point(24, 144);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(202, 210);
             this.panel1.TabIndex = 17;
@@ -219,7 +219,7 @@
             // 
             this.pnlUsersGroup.Controls.Add(this.flpUsers);
             this.pnlUsersGroup.Controls.Add(this.lblUsers);
-            this.pnlUsersGroup.Location = new System.Drawing.Point(469, 78);
+            this.pnlUsersGroup.Location = new System.Drawing.Point(467, 88);
             this.pnlUsersGroup.Name = "pnlUsersGroup";
             this.pnlUsersGroup.Size = new System.Drawing.Size(207, 266);
             this.pnlUsersGroup.TabIndex = 15;
@@ -337,7 +337,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 364);
+            this.ClientSize = new System.Drawing.Size(697, 385);
             this.Controls.Add(this.pnlHostView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
