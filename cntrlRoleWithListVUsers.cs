@@ -145,7 +145,9 @@ namespace NEABenjaminFranklin
                     dbConnector.Close();
 
                     result = MessageBox.Show($"{fullName} has conflicting unavailability with this date.\n" +
-                        "Would you like to ignore this unavailability and assign them anyways?", "Unavailability Conflict", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        "Would you like to ignore this unavailability and assign them anyways?\n" +
+                        $"(Currently Assigned to: {RoleName}" +
+                        "", "Unavailability Conflict", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                     if (result == DialogResult.No)
                     {

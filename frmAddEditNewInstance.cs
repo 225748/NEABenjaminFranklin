@@ -407,8 +407,13 @@ namespace NEABenjaminFranklin
                             }
                             dbConnector.Close();
 
+                            //Get role name for dialog message
+                            string roleName = cntrlRoleWithListVUsers.RoleName;
+
                             result = MessageBox.Show($"{fullName} has conflicting unavailability with this date.\n" +
-                                "Would you like to ignore this unavailability and assign them anyways?", "Unavailability Conflict", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                                    "Would you like to ignore this unavailability and assign them anyways?\n" +
+                                                    $"(Currently Assigned to: {roleName})" +
+                                                    "", "Unavailability Conflict", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                             if (result == DialogResult.No)
                             {
