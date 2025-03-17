@@ -38,7 +38,7 @@
             this.lblRotas = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpRoles = new System.Windows.Forms.FlowLayoutPanel();
             this.btnVMCRoles = new System.Windows.Forms.Button();
             this.btnSByRole = new System.Windows.Forms.Button();
             this.lblRoles = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.pnlRotasGroup.SuspendLayout();
             this.flpRotas.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.flpRoles.SuspendLayout();
             this.pnlUsersGroup.SuspendLayout();
             this.flpUsers.SuspendLayout();
             this.pnlTopBar.SuspendLayout();
@@ -157,23 +157,23 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.flowLayoutPanel1);
+            this.panel1.Controls.Add(this.flpRoles);
             this.panel1.Controls.Add(this.lblRoles);
             this.panel1.Location = new System.Drawing.Point(24, 144);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(202, 210);
             this.panel1.TabIndex = 17;
             // 
-            // flowLayoutPanel1
+            // flpRoles
             // 
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.btnVMCRoles);
-            this.flowLayoutPanel1.Controls.Add(this.btnSByRole);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(177, 177);
-            this.flowLayoutPanel1.TabIndex = 14;
+            this.flpRoles.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpRoles.Controls.Add(this.btnVMCRoles);
+            this.flpRoles.Controls.Add(this.btnSByRole);
+            this.flpRoles.Location = new System.Drawing.Point(12, 27);
+            this.flpRoles.Name = "flpRoles";
+            this.flpRoles.Padding = new System.Windows.Forms.Padding(7, 3, 0, 0);
+            this.flpRoles.Size = new System.Drawing.Size(177, 177);
+            this.flpRoles.TabIndex = 14;
             // 
             // btnVMCRoles
             // 
@@ -353,7 +353,7 @@
             this.flpRotas.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flpRoles.ResumeLayout(false);
             this.pnlUsersGroup.ResumeLayout(false);
             this.pnlUsersGroup.PerformLayout();
             this.flpUsers.ResumeLayout(false);
@@ -381,7 +381,7 @@
         private System.Windows.Forms.Label lblRotas;
         private System.Windows.Forms.Panel pnlUsersGroup;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpRoles;
         private System.Windows.Forms.Button btnVMCRoles;
         private System.Windows.Forms.Button btnSByRole;
         private System.Windows.Forms.Label lblRoles;
