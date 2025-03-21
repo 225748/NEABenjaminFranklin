@@ -21,6 +21,7 @@ namespace NEABenjaminFranklin
         private string CredentialsFileLocation = (AppDomain.CurrentDomain.BaseDirectory + "/credentials.json");//directs itself to its own debug folder and then the file
 
         public string ReadAndPopulateEmailTemplate(string filePath, clshtmlVariable[] variableReplacement)
+        //Function gets sent in a class object list of variable replacements for the html template it wishes to fill. This list acts as a lightweight dictionary 
         {
             //Read the file in
             StreamReader htmlFile = new StreamReader(filePath);
