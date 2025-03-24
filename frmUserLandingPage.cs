@@ -292,7 +292,7 @@ namespace NEABenjaminFranklin
 
 
             for (int i = 0; i < roles.Count; i++)
-            {//unless you delete series 2 (avg) in the graph, if you don't add data for the 2nd series, it will duplicate first
+            {//unless you delete series 2 (avg) in the graph, if you don't add data for the 2nd series, it will duplicate 1st series
                 DataPoint dataPoint = new DataPoint(0, assignments[i]);
                 dataPoint.AxisLabel = roles[i];
                 crtRoles.Series[0].Points.Add(dataPoint);
