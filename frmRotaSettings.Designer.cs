@@ -217,7 +217,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRotaSettings";
-            this.Text = "frmUpdateDeleteRota";
+            this.Text = "Rota Settings";
             this.Load += new System.EventHandler(this.frmRotaSettings_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

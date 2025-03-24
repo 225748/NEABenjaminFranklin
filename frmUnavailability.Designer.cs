@@ -160,7 +160,7 @@
             this.Controls.Add(this.pnlNewUnavailability);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmUnavailability";
-            this.Text = "frmUserUnavailability";
+            this.Text = "User Unavailability";
             this.Load += new System.EventHandler(this.frmUserUnavailability_Load);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();

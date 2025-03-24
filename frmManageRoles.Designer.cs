@@ -188,7 +188,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmManageRoles";
-            this.Text = "frmManageRoles";
+            this.Text = "Manage Roles";
             this.Load += new System.EventHandler(this.frmManageRoles_Load);
             this.panel1.ResumeLayout(false);
             this.pnlUserControls.ResumeLayout(false);

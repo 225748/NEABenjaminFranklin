@@ -58,7 +58,8 @@ namespace NEABenjaminFranklin
             OleDbDataReader dr;
             string sqlCommand = "SELECT DateStart, DateEnd, UnavailabilityID " +
                 "FROM tblUnavailability " +
-                $"WHERE(UserID = {userID})";
+                $"WHERE(UserID = {userID}) " +
+                $"ORDER BY DateStart";
             dbConnector.Connect();
             dr = dbConnector.DoSQL(sqlCommand);
             while (dr.Read())

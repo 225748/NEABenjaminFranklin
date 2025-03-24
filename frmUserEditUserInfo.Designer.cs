@@ -192,7 +192,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUserEditUserInfo";
-            this.Text = "frmUserEditUserInfo";
+            this.Text = "Edit User Info";
             this.Load += new System.EventHandler(this.frmUserEditUserInfo_Load);
             this.pnlHostView.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

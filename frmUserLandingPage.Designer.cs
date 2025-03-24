@@ -34,6 +34,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlTopBar = new System.Windows.Forms.Panel();
+            this.btnUnavailability = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.picRotaConnect = new System.Windows.Forms.PictureBox();
             this.btnAccountSettings = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnUnavailability = new System.Windows.Forms.Button();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.pnlDatesGroup.SuspendLayout();
@@ -90,6 +90,17 @@
             this.pnlTopBar.Name = "pnlTopBar";
             this.pnlTopBar.Size = new System.Drawing.Size(800, 31);
             this.pnlTopBar.TabIndex = 14;
+            // 
+            // btnUnavailability
+            // 
+            this.btnUnavailability.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.btnUnavailability.Location = new System.Drawing.Point(378, 3);
+            this.btnUnavailability.Name = "btnUnavailability";
+            this.btnUnavailability.Size = new System.Drawing.Size(130, 23);
+            this.btnUnavailability.TabIndex = 0;
+            this.btnUnavailability.Text = "My Unavailability";
+            this.btnUnavailability.UseVisualStyleBackColor = false;
+            this.btnUnavailability.Click += new System.EventHandler(this.btnUnavailability_Click);
             // 
             // btnLogout
             // 
@@ -411,17 +422,6 @@
             this.panel1.Size = new System.Drawing.Size(132, 295);
             this.panel1.TabIndex = 19;
             // 
-            // btnUnavailability
-            // 
-            this.btnUnavailability.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.btnUnavailability.Location = new System.Drawing.Point(378, 3);
-            this.btnUnavailability.Name = "btnUnavailability";
-            this.btnUnavailability.Size = new System.Drawing.Size(130, 23);
-            this.btnUnavailability.TabIndex = 0;
-            this.btnUnavailability.Text = "My Unavailability";
-            this.btnUnavailability.UseVisualStyleBackColor = false;
-            this.btnUnavailability.Click += new System.EventHandler(this.btnUnavailability_Click);
-            // 
             // frmUserLandingPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,7 +437,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmUserLandingPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmUserLandingPage";
+            this.Text = "User Landing Page";
             this.Load += new System.EventHandler(this.frmUserLandingPage_Load);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();

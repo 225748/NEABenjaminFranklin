@@ -34,10 +34,10 @@
             this.lblHostView = new System.Windows.Forms.Label();
             this.cmbRoles = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lstUsers = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlTopBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRotaConnect)).BeginInit();
             this.panel1.SuspendLayout();
@@ -94,6 +94,15 @@
             this.panel1.Size = new System.Drawing.Size(260, 300);
             this.panel1.TabIndex = 34;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(14, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(221, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Select a role to find previously assigned users";
+            // 
             // lstUsers
             // 
             this.lstUsers.AllowColumnReorder = true;
@@ -118,15 +127,6 @@
             this.columnHeader2.Text = "First Name";
             this.columnHeader2.Width = 107;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 13);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "Select a role to find previously assigned users";
-            // 
             // frmSearchByRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,7 +135,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlTopBar);
             this.Name = "frmSearchByRole";
-            this.Text = "frmSearchByRole";
+            this.Text = "Search By Role";
             this.Load += new System.EventHandler(this.frmSearchByRole_Load);
             this.pnlTopBar.ResumeLayout(false);
             this.pnlTopBar.PerformLayout();
