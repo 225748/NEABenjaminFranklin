@@ -19,7 +19,7 @@ namespace NEABenjaminFranklin
             InitializeComponent();
             UnavailabilityID = unavailabilityID;
             labelDates.Text = duration;
-            HostMode = hostMode;
+            HostMode = hostMode; 
         }
         private void cntrlUnavailability_Load(object sender, EventArgs e)
         {
