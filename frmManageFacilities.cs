@@ -118,7 +118,6 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("Are you sure you wish to add this Facility", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (promptResult == DialogResult.OK)
             {
-                //validate the text field - for now skipping
                 string validatedFacilityName = txtFacilityName.Text;
                 AddFacility(validatedFacilityName);
             }
@@ -133,7 +132,6 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (promptResult == DialogResult.OK)
             {
-                //validate the text field - for now skipping
                 string validatedFacilityName = txtFacilityName.Text;
                 UpdateFacility(cmbFacility.SelectedValue.ToString(), validatedFacilityName);
             }

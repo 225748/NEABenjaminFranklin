@@ -154,7 +154,6 @@ namespace NEABenjaminFranklin
         }
         private bool CheckForExistingInstance(int rotaID, DateTime dateTime)
         {
-            //MessageBox.Show(dateTime.ToString("MM/dd/yyyy HH:mm:00"));
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
             string sqlCommand = "SELECT RotaInstanceID " +
@@ -183,7 +182,6 @@ namespace NEABenjaminFranklin
                                     0, 0);
 
 
-            //Need to do// -------
             //1. --- Check if this datetime  of this specific rota already exisits, if so dont do any more of these steps
             bool exists = CheckForExistingInstance(RotaID, dateTime);
 

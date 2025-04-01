@@ -20,8 +20,6 @@ namespace NEABenjaminFranklin
             InitializeComponent();
         }
         private string themeColour { get; set; }
-        //private List<clsRoles> roleList { get; set; } - not used
-        // private List<string> selectedRoles { get; set; } - not used
 
         private void frmCreateNewRota_Load(object sender, EventArgs e)
         {
@@ -105,7 +103,6 @@ namespace NEABenjaminFranklin
         private void CreateRota()
         {
             bool succsessfulCreation = false;
-            //need to validate all inputs for presence checks including roles
 
             clsDBConnector dbConnector = new clsDBConnector();
             string cmdStr;

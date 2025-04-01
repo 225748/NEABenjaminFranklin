@@ -25,7 +25,7 @@ namespace NEABenjaminFranklin
             cmbRoles.Text = "-- Select a Role -- ";
             AllowListFill = true;
         }
-        private void DisplayUsers(int roleNum)
+        private void DisplayUsers(int roleNum) //displays all users who have been assigned to this role
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -45,11 +45,10 @@ namespace NEABenjaminFranklin
             {
                 lstUsers.Items.Add(dr[1].ToString());
                 lstUsers.Items[lstUsers.Items.Count - 1].SubItems.Add(dr[0].ToString());
-
             }
             dbConnector.Close();
         }
-        private void FillCombo()
+        private void FillCombo() //Fills combo with a list of all roles
         {
             clsDBConnector dBConnector = new clsDBConnector();
             dBConnector.Connect();

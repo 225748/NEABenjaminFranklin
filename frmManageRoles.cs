@@ -62,7 +62,6 @@ namespace NEABenjaminFranklin
 
         private void cmbRoles_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //txtRoleName.Text = cmbRoles.SelectedText;
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
             string sqlCommand = $"SELECT RoleName FROM tblRoles WHERE RoleNumber = {cmbRoles.SelectedValue}";
@@ -132,15 +131,11 @@ namespace NEABenjaminFranklin
             }
         }
 
-
-
-
         private void btnAddNewRole_Click(object sender, EventArgs e)
         {
             var promptResult = MessageBox.Show("Are you sure you wish to add this role", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (promptResult == DialogResult.OK)
             {
-                //validate the text field - for now skipping
                 string validatedRoleName = txtRoleName.Text;
                 AddRole(validatedRoleName);
             }
@@ -156,7 +151,6 @@ namespace NEABenjaminFranklin
             var promptResult = MessageBox.Show("Are you sure you wish to make these changes", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (promptResult == DialogResult.OK)
             {
-                //validate the text field - for now skipping
                 string validatedRoleName = txtRoleName.Text;
                 UpdateRole(cmbRoles.SelectedValue.ToString(),validatedRoleName);
             }

@@ -16,13 +16,17 @@ namespace NEABenjaminFranklin
         public string RoleName { get; set; }
         public int RotaRoleNumber { get; set; }
         public int RotaID { get; set; }
-        public List<string> UnassignableUsers = new List<string>();  //also pulled from parent form as well as in cntrl
-        //These below are used when edit mode of AddEditNewInstance is active
+        public List<string> UnassignableUsers = new List<string>();  //pulled from parent form as well as in cntrl istelf
+
+        //These globals below are used when edit mode of AddEditNewInstance is active
         public bool PreSelectUsers { get; set; }
         public int InstanceID { get; set; }
         public List<clsUser> UsersList = new List<clsUser>();
-        //
+
+        // -- //
+
         public List<int> AssignedRotaRoleIDs = new List<int>();
+
         public cntrlRoleWithListVUsers()
         {
             InitializeComponent();
@@ -72,7 +76,6 @@ namespace NEABenjaminFranklin
                         lstVUsers.Items[user.chkListIndex].Checked = true;
                     }
                     dbConnector.Close();
-
                 }
             }
 
@@ -98,6 +101,7 @@ namespace NEABenjaminFranklin
             int userID = Convert.ToInt32(CheckedItem.SubItems[1].Text);
             return CheckForExistingAssignmentByUserID(userID);
         }
+        //Reason for segmented function is some places have the userID but not the listview therefore skip the step above
         public int CheckForExistingAssignmentByUserID(int userID)
         {
             clsDBConnector dbConnector = new clsDBConnector();

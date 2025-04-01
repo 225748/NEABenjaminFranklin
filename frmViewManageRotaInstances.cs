@@ -83,7 +83,6 @@ namespace NEABenjaminFranklin
             //Do SQL TO get InstanceID, date and time and role numbers for rota
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
-            //select instance date, time and ID for this rota ID
             string sqlCommand = "SELECT RotaInstanceDateTime, RotaInstanceID " +
                 "FROM tblRotaInstance " +
                 $"WHERE(RotaID = {RotaID}) " +

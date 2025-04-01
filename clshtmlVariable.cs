@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NEABenjaminFranklin
 {
     public class clshtmlVariable
-    {
+    {//class is used as a disctionary when put into an array of class objects
         public string FileIdentifier { get ; set; }
         public string VariableValue { get; set; }
 

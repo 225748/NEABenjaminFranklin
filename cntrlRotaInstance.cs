@@ -113,13 +113,6 @@ namespace NEABenjaminFranklin
             foreach (int assignedRotaRoleID in assignedRotaRoleIDs)
             {
                 dbConnector = new clsDBConnector();
-                //sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName, tblRotaInstanceRoles.Accepted" +
-                //    "FROM(((tblAssignedRotaRoles INNER JOIN " +
-                //    "tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) INNER JOIN " +
-                //    "tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) INNER JOIN " +
-                //    "tblRotaRoles ON tblAssignedRotaRoles.RotaRoleNumber = tblRotaRoles.RotaRoleNumber) " +
-                //    $"WHERE(tblAssignedRotaRoles.RotaRoleNumber = {rotaRoleNumber}) AND (tblAssignedRotaRoles.AssignedRotaRolesID = {assignedRotaRoleID}) " +
-                //    $"";
                 sqlCommand = "SELECT DISTINCT tblPeople.FirstName, tblPeople.LastName, tblRotaInstanceRoles.Accepted " +
                     "FROM (((tblAssignedRotaRoles INNER JOIN tblPeople ON tblAssignedRotaRoles.UserID = tblPeople.UserID) " +
                     "INNER JOIN tblRotaInstanceRoles ON tblAssignedRotaRoles.AssignedRotaRolesID = tblRotaInstanceRoles.AssignedRotaRolesID) " +
@@ -151,7 +144,7 @@ namespace NEABenjaminFranklin
                     }
                     else if (Convert.ToInt32(dr[2].ToString()) == 0) //Not Acknowledged
                     {
-
+                        //Leave as defuault
                     }
                     lblUser.Show();
                     flpAssignedRoles.Controls.Add(lblUser);

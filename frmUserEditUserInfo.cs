@@ -26,7 +26,7 @@ namespace NEABenjaminFranklin
             PreFillInformation(UserID);
         }
         private void PreFillInformation(int userID)
-        {
+        {//populates input fields with the user's information
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
             string sqlCommand = "SELECT FirstName, LastName, DOB, Email " +

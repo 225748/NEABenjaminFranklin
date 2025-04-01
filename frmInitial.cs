@@ -24,7 +24,6 @@ namespace NEABenjaminFranklin
 
         private bool CompareHash(string plainTextPassword, int userID)
         {
-
             clsPasswordHasher passwordHasher = new clsPasswordHasher();
             string hash = passwordHasher.HashPassword(plainTextPassword, userID);
 
@@ -191,7 +190,7 @@ namespace NEABenjaminFranklin
             int authorisedUserID = AuthoriseCredentials();
             if (authorisedUserID != 0)
             {
-                this.Hide();                            //THIS (Currently 17 for testing) SHOULD BE THE USER ID OF THE LOGGED IN USER
+                this.Hide();                           
                 frmUserLandingPage userLandingPage = new frmUserLandingPage(authorisedUserID);
                 userLandingPage.ShowDialog();
                 this.Close();

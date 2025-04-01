@@ -109,7 +109,7 @@ namespace NEABenjaminFranklin
         private void btnChangeThemeColour_Click(object sender, EventArgs e)
         {
             ColorDialog colorDialog = new ColorDialog();
-            //colorDialog.AllowFullOpen = false; restricts to system colours
+            //colorDialog.AllowFullOpen = false; // - restricts selection to system colours instead of custom too
             colorDialog.ShowDialog();
             btnChangeThemeColour.Text = "Change Rota Theme Colour";
             ThemeColour = colorDialog.Color.ToArgb().ToString();
@@ -117,12 +117,16 @@ namespace NEABenjaminFranklin
             btnColourDisplay.Show();
         }
 
-        private void UpdateRota()  //need to fix pre check roles updating the class list with checked or not before the roles code below will work
+        private void UpdateRota()
         {
-            // validate inputs - for now directly assigning them
-            string VrotaName = txtRotaName.Text;
+            string VrotaName = "";
+
+
+            VrotaName = txtRotaName.Text;
             int VFacilityID = Convert.ToInt32(cmbFacility.SelectedValue.ToString());
             VrotaName = VrotaName.Replace("'", "''"); // Replace single quotes - sql thinks it is the end of a string
+
+            //update
             clsDBConnector dbConnector = new clsDBConnector();
             string sqlCommand = $"UPDATE tblRota" +
                 $" SET RotaName = '{VrotaName}'" +
@@ -138,12 +142,10 @@ namespace NEABenjaminFranklin
             {
                 if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == true) //checked in list and database
                 {
-                    //MessageBox.Show("debugging - went to if - doing nothing");
                     //do nothing
                 }
                 else if (lstVRoles.Items[i].Checked == true && rotaRolesList[i].CheckedInList == false)//checked in list not in database
                 {
-                    //MessageBox.Show("debugging - adding");
                     //add to database
                     dbConnector = new clsDBConnector();
                     string cmdStr = $"INSERT INTO tblRotaRoles (RotaID, RoleNumber) " +
@@ -155,7 +157,6 @@ namespace NEABenjaminFranklin
                 }
                 else if (lstVRoles.Items[i].Checked == false && rotaRolesList[i].CheckedInList == true)//checked in database but not list
                 {
-                    //MessageBox.Show("debugging - deleting");
                     //delete from database
                     dbConnector = new clsDBConnector();
                     string cmdStr = $"DELETE FROM tblRotaRoles WHERE (RotaID = {RotaID}) AND (RoleNumber = {rotaRolesList[i].RoleNumber})";
@@ -166,7 +167,6 @@ namespace NEABenjaminFranklin
                 }
                 else
                 {
-                    //MessageBox.Show("debugging - Went to else - doing nothing");
                     //not in database or checked in list - do nothing
                 }
             }
@@ -179,7 +179,6 @@ namespace NEABenjaminFranklin
             dbConnector.Connect();
             dbConnector.DoSQL(sqlCommand);
             MessageBox.Show("Rota Deleted", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
 
@@ -193,7 +192,7 @@ namespace NEABenjaminFranklin
 
         private void btnDeleteRota_Click(object sender, EventArgs e)
         {
-            var promptResult = MessageBox.Show($"Are you sure you wish to delete this Rota?\nChanges are irreversible!","Warning",MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            var promptResult = MessageBox.Show($"Are you sure you wish to delete this Rota?\nChanges are irreversible!", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (promptResult == DialogResult.OK)
             {
                 DeleteRota();

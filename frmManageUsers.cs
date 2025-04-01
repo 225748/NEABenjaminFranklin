@@ -89,7 +89,6 @@ namespace NEABenjaminFranklin
                 chkHostRole.Checked = false;
                 cmbUsers.Text = "-- Select a user to modify --";
                 //cmbUsers.Font = new Font(cmbUsers.Font, FontStyle.Bold);
-
                 pnlUserInfoInputFields.Enabled = false;
             }
         }

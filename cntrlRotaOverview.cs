@@ -66,14 +66,14 @@ namespace NEABenjaminFranklin
 
         private void btnEditRotaSettings_Click(object sender, EventArgs e)
         {
-            //create an instance of the edit rota form and give it this info - use publics? - may need to put rota ID into this as a public
+            //create an instance of the edit rota form and give it required info via constructor - assign to globals within class
             frmRotaSettings frmRotaSettings = new frmRotaSettings(RotaName, RotaID, FacilityName, FacilityID, ThemeColour);
             frmRotaSettings.ShowDialog();
         }
 
         private void btnMangeRotaInstances_Click(object sender, EventArgs e)
         {
-            //create an instance of the rota instances form and give it this info - use publics? - may need to put rota ID into this as a public
+            //create an instance of the rota instances form and give it required info via constructor - assign to globals within class
             this.Cursor = Cursors.WaitCursor;
             frmViewManageRotaInstances frmManageRotaInstances = new frmViewManageRotaInstances(RotaName, RotaID, FacilityName, FacilityID, ThemeColour, HostMode);
             frmManageRotaInstances.ShowDialog();

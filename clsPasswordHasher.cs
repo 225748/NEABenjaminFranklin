@@ -31,7 +31,7 @@ namespace NEABenjaminFranklin
             return salt;
         }
 
-        public string HashPassword(string rawPassword, int userID) //call this when don't have salt //used in login
+        public string HashPassword(string rawPassword, int userID) //call this when don't have salt //used in login form
         {
             //get salt from db using userid
             string salt = "";
@@ -54,7 +54,7 @@ namespace NEABenjaminFranklin
             return hashDigest;
         }
 
-        public string PerformHash(string rawPassword, string salt) //call this to skip the salt //used in add
+        public string PerformHash(string rawPassword, string salt) //call this to skip discovering the salt //used in add new user
         {
             string combinedString = rawPassword + salt;
 

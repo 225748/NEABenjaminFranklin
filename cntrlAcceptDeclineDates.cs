@@ -53,7 +53,7 @@ namespace NEABenjaminFranklin
             Accepted = QueryADstate();
             UpdateADstate();
 
-            tmrEmailSendDelay.Interval = 10000;//10 seconds grace period
+            tmrEmailSendDelay.Interval = 10000;//10 seconds grace period before email sent to host
             tmrEmailSendDelay.Enabled = false;
         }
         private int QueryADstate()

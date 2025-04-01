@@ -38,14 +38,8 @@ namespace NEABenjaminFranklin
             flpRotas.Controls.Clear();
 
             while (dr.Read())
-            {//dr[0].ToString()
+            {
                 cntrlRotaOverview ccRotaOverview = new cntrlRotaOverview(dr[2].ToString(), Convert.ToInt32(dr[0]), dr[4].ToString(), Convert.ToInt32(dr[1]), dr[3].ToString(),true);
-                //ccRotaOverview.RotaID = Convert.ToInt32(dr[0]);
-                //ccRotaOverview.FacilityID = Convert.ToInt32(dr[1]);
-                //ccRotaOverview.RotaName = dr[2].ToString();
-                //ccRotaOverview.ThemeColour = dr[3].ToString();
-                //ccRotaOverview.FacilityName = dr[4].ToString();
-                //Add sql to retrieve rota theme colour and add it to a new public in control
                 ccRotaOverview.Show();
                 flpRotas.Controls.Add(ccRotaOverview);
             }

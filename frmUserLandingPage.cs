@@ -70,7 +70,7 @@ namespace NEABenjaminFranklin
             return userFullName;
         }
 
-        private void FillADDates()
+        private void FillADDates() //Fill the flp with upcoming dates to accept / decline
         {
             clsDBConnector dbConnector = new clsDBConnector();
             OleDbDataReader dr;
@@ -145,8 +145,8 @@ namespace NEABenjaminFranklin
             dbConnector.Close();
         }
 
-        public void LoadAcknowledgementStats()//public as accessed from the ad cntrls too
-        {
+        public void LoadAcknowledgementStats()//public as also accessed from the A/D cntrls
+        {//Method populates the Accepted/Declined/Unacknowledged fields in 'My Stats'
             crtRoles.Series[0].Points.Clear();
             crtRoles.Series[1].Points.Clear();
 
@@ -315,6 +315,7 @@ namespace NEABenjaminFranklin
             Environment.Exit(0);
             //as forms were not closing when opening new ones, log out wouldn't reset the form indexes
             //problem with that is to access hostID for new assignment email, it uses forms index
+            //Old logout method
             //frmInitial frmInitial = new frmInitial();
             //frmInitial.ShowDialog();
             //this.Close();
